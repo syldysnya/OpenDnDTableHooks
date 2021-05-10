@@ -1,26 +1,14 @@
 class Api::PlayersController < ApplicationController
 
-    def new
-        @player = Player.new
-    end
-
-    def show
-        @player = Player.find(params[:id])
-    end
-
     def create
         @player = Player.new(player_params)
-
+        debugger
         if @player.save
             login!(@player)
             render 'api/players/show'
         else
             render json: @player.errors.full_messages, status: 422
         end
-    end
-
-    def edit
-        @player = Player.find(params[:id])
     end
 
     def update
