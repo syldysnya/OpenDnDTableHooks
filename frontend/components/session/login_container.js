@@ -7,10 +7,14 @@ import { hideModal, openModal } from '../../actions/modal_actions';
 //     formType: 'login'
 // })
 
-const mapDTP = dispatch => ({
-    login: player => dispatch(login(player)),
-    hideModal: () => dispatch(hideModal()),
-    openModal: (modal) => dispatch(openModal(modal))
-});
+const mapDTP = dispatch => {
+    const demoUser = { email: 'sykh@mail.com', password: '12345678' }
+    return ({
+        login: player => dispatch(login(player)),
+        loginDemo: () => dispatch(login(loginDemo)),
+        hideModal: () => dispatch(hideModal()),
+        openModal: (modal) => dispatch(openModal(modal))
+    })
+};
 
 export default connect(null, mapDTP)(Login);

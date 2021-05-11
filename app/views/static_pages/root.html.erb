@@ -1,13 +1,12 @@
 <main id="root"></main>
 
 <% if logged_in? %>
-    <% debugger %>
-      <script type="text/javascript">
+      <script>
             window.currentPlayer = {
-                "id": "<% current_player.id %>",
-                "email": "<% current_player.email %>",
-                "fname": "<% current_player.fname %>",
-                "lname": "<% current_player.lname %>",
+                "id": "<%= current_player.id %>",
+                "email": "<%= current_player.email %>",
+                "fname": "<%= current_player.fname %>",
+                "lname": "<%= current_player.lname %>",
             };
       </script>
 <% end %>

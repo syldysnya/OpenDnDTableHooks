@@ -8,7 +8,13 @@ class Login extends React.Component {
             email: '',
             password: ''
         };
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.demoSubmit = this.demoSubmit.bind(this);
+    }
+
+    demoSubmit(e) {
+        e.preventDefault();
+        this.props.loginDemo().then(this.props.hideModal);
     }
 
     handleInput(field) {
@@ -63,6 +69,14 @@ class Login extends React.Component {
                         <button
                             onClick={() => this.props.openModal('Sign Up')}> 
                             Create an account
+                        </button>
+                    </div>
+                    <div className='demouser-form'>
+                        <h2>Don't want to complete the form?</h2>
+                        <button
+                            className='demouser-button'
+                            onClick={this.demoSubmit}>
+                            Continue with DemoUser
                         </button>
                     </div>
                 </div>

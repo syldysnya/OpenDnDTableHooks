@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     [id]: currentPlayer
                 }
             },
-            session: { id }
+            session: { currentPlayer: id }
         };
 
         store = configureStore(preloadedState);

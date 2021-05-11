@@ -16,13 +16,15 @@ class NavBar extends React.Component {
     render() {
         const { currentPlayer } = this.props
 
-        if (currentPlayer) {
+        const ifLoggedIn = () => {
             return (
                 <div className='main-page-navbar'>
                     <p>You are logged in</p>
                 </div>
             )
-        } else {
+        };
+
+        const notLoggedIn = () => {
             return (
                 <div className='auth_button'>
                     <button
@@ -37,7 +39,10 @@ class NavBar extends React.Component {
                 </button>
                 </div>
             )
-        }
+        };
+
+        return currentPlayer ? ifLoggedIn() : notLoggedIn();
+
     }
 };
 
