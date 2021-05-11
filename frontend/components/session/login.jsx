@@ -22,7 +22,7 @@ class Login extends React.Component {
 
     render() {
         return (
-            <body id='login-modal-background'>
+            <div id='login-modal-background'>
                 <div className='row'>
                     <div className='column'>
                         <h1>Please sign in</h1>
@@ -49,7 +49,7 @@ class Login extends React.Component {
                         <button onClick={this.handleSubmit}>Sign In</button>
                     </form>
                 </div>
-            </body>
+            </div>
         )
     }
 };

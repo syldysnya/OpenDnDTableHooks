@@ -9,10 +9,10 @@ const _nullSession = {
 
 const sessionReducer = (state=_nullSession, action) => {
     Object.freeze(state);
-
+    debugger
     switch (action.type) {
         case RECEIVE_CURRENT_PLAYER:
-            return { id: action.currentPlayer.id };
+            return { currentPlayer: action.player.id };
         case LOGOUT_CURRENT_PLAYER:
             return _nullSession;
         default:

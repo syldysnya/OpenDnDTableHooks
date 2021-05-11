@@ -1,19 +1,19 @@
 import { CLOSE_MODAL, SHOW_MODAL } from "../actions/modal_actions";
 
 
-const initialState = {
-    showModal: false,
+// const initialState = {
+//     showModal: false,
 
-};
+// };
 
-const modalReducer = (state = initialState, action) => {
+const modalReducer = (state = {}, action) => {
     Object.freeze(state);
 
     switch (action.type) {
         case SHOW_MODAL:
-            return Object.assign({}, state, { showModal: true });
+            return action.modal;
         case CLOSE_MODAL:
-            return Object.assign({}, state, { showModal: false });
+            return null;
         default:
             return state;
     }

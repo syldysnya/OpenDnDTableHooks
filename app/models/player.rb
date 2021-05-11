@@ -8,9 +8,10 @@ class Player < ApplicationRecord
     after_initialize :ensure_session_token
 
     def self.find_by_credentials(email, password)
+        # debugger
         player = Player.find_by(email: email)
         return nil unless player
-        player.is_password?(password) ? user : nil
+        player.is_password?(password) ? player : nil
     end
 
     def self.generate_session_token
@@ -23,7 +24,7 @@ class Player < ApplicationRecord
     end
 
     def is_password?(password)
-        BCrypt::Password.new(self.password_digest).is_password?(password)
+        BCrypt::Password.new(password_digest).is_password?(password)
     end
 
     def ensure_session_token

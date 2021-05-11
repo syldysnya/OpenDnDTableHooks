@@ -1,11 +1,12 @@
 class Api::SessionsController < ApplicationController
 
     def create
+        # debugger
         @player = Player.find_by_credentials(
-            params[:players][:email],
-            params[:players][:password]
+            params[:player][:email],
+            params[:player][:password]
         )
-
+        
         if @player.nil?
             render json: ['Wrong credentials'], status: 401
         else
