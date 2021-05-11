@@ -3,8 +3,9 @@ class ApplicationController < ActionController::Base
     helper_method :logged_in?, :current_player
     
     def current_player
+        debugger
         @current_player ||= Player.find_by(session_token: session[:session_token])
-        return @current_player if @current_player
+        return nil unless @current_player
     end
 
     def login!(player)
@@ -17,6 +18,7 @@ class ApplicationController < ActionController::Base
     end
 
     def logged_in?
+        debugger
         !!current_player
     end
 

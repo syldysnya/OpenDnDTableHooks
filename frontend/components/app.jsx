@@ -13,5 +13,3 @@ const App = () => (
 
 export default App;
 
-
-{/* <AuthRoute path='login' component={LoginContainer}/> */}
