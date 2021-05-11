@@ -7,7 +7,7 @@ class NavBar extends React.Component {
     }
 
     render() {
-        // debugger
+        
         return (
             // <React.Fragment>
                 <div className='auth_button'>

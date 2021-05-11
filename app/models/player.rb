@@ -8,7 +8,7 @@ class Player < ApplicationRecord
     after_initialize :ensure_session_token
 
     def self.find_by_credentials(email, password)
-        # debugger
+        
         player = Player.find_by(email: email)
         return nil unless player
         player.is_password?(password) ? player : nil

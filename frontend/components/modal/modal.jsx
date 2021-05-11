@@ -7,7 +7,7 @@ class Modal extends React.Component {
     }
     
     render() {
-        debugger
+        
         if (!this.props.modal) return null;
 
         let modalForm;

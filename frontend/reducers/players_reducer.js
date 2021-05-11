@@ -5,7 +5,7 @@ import {
 
 const playersReducer = (state = {}, action) => {
     Object.freeze(state);
-    debugger
+    
     switch (action.type) {
         case RECEIVE_CURRENT_PLAYER:
             return Object.assign({}, state, { [action.player.id]: action.player });
