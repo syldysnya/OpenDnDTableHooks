@@ -19,7 +19,7 @@ export const login = player => dispatch => {
 
 export const signup = player => dispatch => {
     return ApiUtilSession.signup(player)
-        .then(player => dispatch(receiveCurrentPlayer))
+        .then(player => dispatch(receiveCurrentPlayer(player)))
 };
 
 export const logout = () => dispatch => {

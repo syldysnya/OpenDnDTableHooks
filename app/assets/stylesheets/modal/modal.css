@@ -1,5 +1,5 @@
 .modal-background {
-  display: none;
+  /* display: none; */
   position: fixed;
   z-index: 1;
   background-color: rgba(0, 0, 0, 0.25);
@@ -9,3 +9,7 @@
   background-color: white;
   position: absolute;
 }
+
+/* #login-modal-background {
+    display: block;
+} */

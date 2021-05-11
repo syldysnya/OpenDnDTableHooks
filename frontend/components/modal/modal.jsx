@@ -1,5 +1,6 @@
 import React from 'react';
-import LoginContainer from '../session/login_container'
+import LoginContainer from '../session/login_container';
+import SignupContainer from '../session/signup_container';
 
 class Modal extends React.Component {
     constructor(props) {
@@ -13,8 +14,12 @@ class Modal extends React.Component {
         let modalForm;
 
         switch (this.props.modal) {
-            case 'login':
+            case 'Sign In':
+                debugger
                 modalForm = <LoginContainer />
+                break
+            case 'Sign Up':
+                modalForm = <SignupContainer />
                 break
             default:
                 return null
@@ -22,7 +27,7 @@ class Modal extends React.Component {
         
         return (
             <div>
-                <div className='modal-background' onClick={this.props.closeModal}>
+                <div className='modal-background' onClick={this.props.hideModal}>
                     <div className='modal-content' onClick={e => e.stopPropagation()}>
                         { modalForm }
                     </div>
