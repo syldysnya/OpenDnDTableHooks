@@ -8,7 +8,11 @@ export default () => {
     return (
         <div className='home'>
             <div className='home-nav'>
-                <NavBarContainer />
+                <div className='home-nav-right'>
+                    <NavBarContainer />
+                </div>
+                <div className='home-nav-left'>
+                </div>
             </div>
             <div className='home-page-header-frame'>
                 <img className='home-page-img' src="https://media-waterdeep.cursecdn.com/attachments/thumbnails/0/642/850/213/half-elfintro.png"/>
