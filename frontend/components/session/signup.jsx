@@ -33,13 +33,14 @@ class Signup extends React.Component {
         return (
             <div id='signup-modal-background'>
                 <div className='row'>
-                    <div className='column'>
+                    <div className='first-message-column-modal'>
                         <h1>Welcome to OpenTable!</h1>
                     </div>
                     <div className='row'>
                         <form className='user-form'>
                             <label htmlFor="fname-login">
                                 <input
+                                    className='modal-input'
                                     type="text"
                                     id="fname-login"
                                     placeholder='First Name *'
@@ -48,6 +49,7 @@ class Signup extends React.Component {
                             </label>
                             <label htmlFor="lname-login">
                                 <input
+                                    className='modal-input'
                                     type="text"
                                     id="lname-login"
                                     placeholder='Last Name *'
@@ -56,6 +58,7 @@ class Signup extends React.Component {
                             </label>
                             <label htmlFor="email-login">
                                 <input
+                                    className='modal-input'
                                     type="text"
                                     id="email-login"
                                     placeholder='Enter Email *'
@@ -64,6 +67,7 @@ class Signup extends React.Component {
                             </label>
                             <label htmlFor="password-login">
                                 <input
+                                    className='modal-input'
                                     type="password"
                                     id="password-login"
                                     placeholder='Enter password *'
@@ -72,20 +76,25 @@ class Signup extends React.Component {
                             </label>
                             <label htmlFor="password-login">
                                 <input
+                                    className='modal-input'
                                     type="password"
                                     id="password-login"
                                     placeholder='Re-enter password *'
                                     onChange={this.handleInput('password')}
                                 />
                             </label>
-                            <button onClick={this.handleSubmit}>Create Account</button>
+                            <button
+                                className='auth-button'
+                                onClick={this.handleSubmit}>
+                                    Create Account
+                            </button>
                         </form>
                         <div className='demouser-form'>
-                            <h2>Don't want to complete the form?</h2>
+                            <div>Don't want to complete the form?</div>
                             <button
-                                className='demouser-button'
+                                className='auth-button demouser-button'
                                 onClick={this.demoSubmit}>
-                                Continue with DemoUser
+                                Continue with <span>DemoUser</span>
                         </button>
                         </div>
                     </div>

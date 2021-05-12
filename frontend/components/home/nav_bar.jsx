@@ -30,14 +30,14 @@ class NavBar extends React.Component {
             return (
                 <div className='auth_button'>
                     <button
-                        className='button-login'
-                        onClick={this.handleClick}>
-                        Sign In
-                </button>
-                    <button
-                        className='button-signup'
+                        className='btn btn-signup'
                         onClick={this.handleClick}>
                         Sign Up
+                    </button>
+                    <button
+                        className='btn btn-login'
+                        onClick={this.handleClick}>
+                        Sign In
                 </button>
                 </div>
             )

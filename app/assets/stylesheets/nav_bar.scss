@@ -1,0 +1,69 @@
+.home-nav {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px
+}
+
+.btn {
+    padding: 8px 12px;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+.btn-signup {
+    color: #fff;
+    background-color: #247f9e;
+    margin: 0 8px;
+    border: .0625rem solid #247f9e;
+}
+
+.btn-login {
+    color: #2d333f;
+    background-color: transparent;
+    border: .0625rem solid #d8d9db;
+    margin: 0;
+}
+
+.button-profile{
+    border-radius: 100%;
+    padding: 3px 6px;
+    background-color: #dadada;
+    margin-right: 50px;
+}
+
+.dropdown-profile-open {
+    display: flex;
+}
+
+.dropdown-profile-open {
+    position: absolute;
+    display: flex;
+    width: 20rem;
+    margin-top: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    border-color: 1px solid #dadada;
+    background-color: white;
+    right: 200px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    border-radius: 4px;
+    z-index: 100;
+
+    p {
+        font-weight: bold;
+    }
+}
+
+.menu-links {
+    padding: 10px 0px;
+    text-decoration: none;
+    color: #2d333f;
+}
+
+.signout-div {
+    cursor: pointer;
+    padding: 10px 0px;
+    color: #da3743;
+}
