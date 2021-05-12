@@ -15,6 +15,26 @@ class Signup extends React.Component {
         this.demoSubmit = this.demoSubmit.bind(this);
     }
 
+    handleErrors() {
+        const mapped = this.props.errors.map((error, i) => {
+            return (
+                <li key={`error - ${i}`}>
+                    { error}
+                </li>
+            )
+        })
+        return (
+            <ul className='auth-errors'>
+                { mapped}
+            </ul>
+        )
+
+    }
+
+    componentWillUnmount() {
+        this.props.removeErrors();
+    }
+
     demoSubmit(e) {
         e.preventDefault();
         this.props.loginDemo().then(this.props.hideModal);
@@ -38,6 +58,7 @@ class Signup extends React.Component {
                     </div>
                     <div className='row'>
                         <form className='user-form'>
+                            {this.handleErrors()}
                             <label htmlFor="fname-login">
                                 <input
                                     className='modal-input'

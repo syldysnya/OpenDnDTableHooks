@@ -1,6 +1,7 @@
 import {
     LOGOUT_CURRENT_PLAYER,
-    RECEIVE_CURRENT_PLAYER
+    RECEIVE_CURRENT_PLAYER,
+    REMOVE_ERRORS
 } from "../actions/session_actions";
 
 const _nullSession = {
@@ -15,6 +16,8 @@ const sessionReducer = (state=_nullSession, action) => {
             return { currentPlayer: action.player.id };
         case LOGOUT_CURRENT_PLAYER:
             return _nullSession;
+        case REMOVE_ERRORS:
+            return [];
         default:
             return state;
     }

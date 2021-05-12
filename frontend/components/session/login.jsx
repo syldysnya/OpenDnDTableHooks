@@ -12,6 +12,26 @@ class Login extends React.Component {
         this.demoSubmit = this.demoSubmit.bind(this);
     }
 
+    handleErrors() {
+        const mapped = this.props.errors.map((error, i) => {
+            return (
+                <li key={`error - ${i}`}>
+                    { error }
+                </li>
+            )
+        })
+        return(
+            <ul className='auth-errors'>
+                { mapped }
+            </ul>
+        )
+
+    }
+
+    componentWillUnmount() {
+        this.props.removeErrors();
+    }
+
     demoSubmit(e) {
         e.preventDefault();
         this.props.loginDemo().then(this.props.hideModal);
@@ -23,7 +43,10 @@ class Login extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.login(this.state).then(this.props.hideModal);
+        this.props.login(this.state).then((payload) => {
+            this.props.hideModal();
+            this.props.removeErrors()
+        })
     }
 
     render() {
@@ -36,6 +59,7 @@ class Login extends React.Component {
                 </div>
                 <div className='row'>
                     <form className='user-form'>
+                        {this.handleErrors()}
                         <label htmlFor="email-login">
                             <input
                                 className='modal-input'
@@ -54,7 +78,7 @@ class Login extends React.Component {
                                 onChange={this.handleInput('password')}
                             />
                         </label>
-                        <button 
+                        <button type='submit'
                             className='auth-button'
                             onClick={this.handleSubmit}>
                                 Sign In

@@ -1,11 +1,13 @@
 import { connect } from "react-redux";
-import { login } from "../../actions/session_actions";
+import { login, receiveErrors } from "../../actions/session_actions";
 import Login from "./login";
 import { hideModal, openModal } from '../../actions/modal_actions';
 
-// const mapSTP = () => ({
-//     formType: 'login'
-// })
+const mapSTP = state => {
+    return ({
+        errors: state.errors.session,
+    })
+};
 
 const mapDTP = dispatch => {
     const demoUser = { email: 'sykh@mail.com', password: '12345678' }
@@ -13,8 +15,9 @@ const mapDTP = dispatch => {
         login: player => dispatch(login(player)),
         loginDemo: () => dispatch(login(demoUser)),
         hideModal: () => dispatch(hideModal()),
-        openModal: (modal) => dispatch(openModal(modal))
+        openModal: (modal) => dispatch(openModal(modal)),
+        removeErrors: () => dispatch(receiveErrors([]))
     })
 };
 
-export default connect(null, mapDTP)(Login);
+export default connect(mapSTP, mapDTP)(Login);
