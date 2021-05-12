@@ -2,8 +2,8 @@ import { combineReducers } from "redux";
 import playersReducer from "./players_reducer";
 
 
-const entititiesReducer = combineReducers({
+const entitiesReducer = combineReducers({
     players: playersReducer,
 });
 
-export default entititiesReducer;
+export default entitiesReducer;

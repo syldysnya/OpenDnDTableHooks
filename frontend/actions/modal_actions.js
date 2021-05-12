@@ -2,7 +2,6 @@ export const SHOW_MODAL = 'SHOW_MODAL';
 export const CLOSE_MODAL = 'CLOSE_MODAL';
 
 export const openModal = modal => {
-    debugger
     return ({
         type: SHOW_MODAL,
         modal 

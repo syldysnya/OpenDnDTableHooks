@@ -6,13 +6,11 @@ import configureStore from './store/store';
 document.addEventListener('DOMContentLoaded', () => {
     
     let store;
-    debugger
     if (window.currentPlayer) {
         const { currentPlayer } = window;
         const { id } = currentPlayer;
-        debugger
         const preloadedState = {
-            entitities: {
+            entities: {
                 players: {
                     [id]: currentPlayer
                 }

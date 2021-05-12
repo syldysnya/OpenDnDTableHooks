@@ -15,7 +15,6 @@ class Modal extends React.Component {
 
         switch (this.props.modal) {
             case 'Sign In':
-                debugger
                 modalForm = <LoginContainer />
                 break
             case 'Sign Up':

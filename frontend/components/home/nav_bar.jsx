@@ -1,10 +1,9 @@
 import React from 'react';
-import { openModal } from '../../actions/modal_actions';
+import DropdownProfileContainer from './dropdown_profile_container';
 
 class NavBar extends React.Component {
     constructor(props){
         super(props);
-        debugger
         this.handleClick = this.handleClick.bind(this)
     }
 
@@ -19,7 +18,7 @@ class NavBar extends React.Component {
         const ifLoggedIn = () => {
             return (
                 <div className='main-page-navbar'>
-                    <p>You are logged in</p>
+                    <DropdownProfileContainer />
                 </div>
             )
         };

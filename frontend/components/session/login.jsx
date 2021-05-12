@@ -22,13 +22,11 @@ class Login extends React.Component {
     }
 
     handleSubmit(e) {
-        debugger
         e.preventDefault();
         this.props.login(this.state).then(this.props.hideModal);
     }
 
     render() {
-        debugger
         return (
             <div id='login-modal-background'>
                 <div className='row'>
@@ -60,7 +58,7 @@ class Login extends React.Component {
                         <h2>Don't want to complete the form?</h2>
                         <button
                             className='demouser-button'
-                            onClick={this.handleSubmit}>
+                            onClick={this.demoSubmit}>
                             Continue with DemoUser
                         </button>
                     </div>
@@ -69,14 +67,6 @@ class Login extends React.Component {
                         <button
                             onClick={() => this.props.openModal('Sign Up')}> 
                             Create an account
-                        </button>
-                    </div>
-                    <div className='demouser-form'>
-                        <h2>Don't want to complete the form?</h2>
-                        <button
-                            className='demouser-button'
-                            onClick={this.demoSubmit}>
-                            Continue with DemoUser
                         </button>
                     </div>
                 </div>
