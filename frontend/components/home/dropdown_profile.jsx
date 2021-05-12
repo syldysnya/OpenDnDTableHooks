@@ -38,9 +38,9 @@ class DropdownProfile extends React.Component {
             <div className='dropdown-profile-content'>
                 <button
                     className='button-profile'
-                    onClick={this.handleDropdownProfile}>
+                    onClick={this.handleDropdownProfile}
+                    onBlur={this.handleDropdownProfile}>
                     P
-                </button>
                 { this.state.visible ? (
                     <div className='dropdown-profile-open'
                         onClick={e => e.stopPropagation()}>
@@ -55,6 +55,7 @@ class DropdownProfile extends React.Component {
                         </div>
                     </div>
                     ) : null}
+                </button>
             </div>
         )
     }
