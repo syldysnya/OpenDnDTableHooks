@@ -1,4 +1,5 @@
 body {
+    background-color: #dadada;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: #2d333f;
 }
@@ -9,5 +10,6 @@ span {
 }
 
 #root {
-    padding: 20px 100px;
+    background-color: white;
+    margin: 20px 50px;
 }

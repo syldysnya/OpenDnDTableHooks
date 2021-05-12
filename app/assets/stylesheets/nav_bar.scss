@@ -1,5 +1,6 @@
 .home-nav {
     display: flex;
+    flex-direction: row;
     justify-content: flex-end;
     padding: 20px
 }
@@ -31,25 +32,30 @@
     margin-right: 50px;
 }
 
-.dropdown-profile-open {
+.dropdown-page-navbar {
     display: flex;
+    position: relative;
+}
+
+.dropdown-profile-content {
+    position: relative;
 }
 
 .dropdown-profile-open {
     position: absolute;
     display: flex;
     width: 20rem;
-    margin-top: 10px;
+    margin-top: 30px;
     flex-direction: column;
     align-items: flex-start;
     border-color: 1px solid #dadada;
     background-color: white;
-    right: 200px;
+    right: 100px;
     flex-direction: column;
     align-items: flex-start;
     padding: 20px;
     border-radius: 4px;
-    z-index: 100;
+    z-index: 20;
 
     p {
         font-weight: bold;
