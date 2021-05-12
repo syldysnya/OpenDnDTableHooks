@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_12_130518) do
+ActiveRecord::Schema.define(version: 2021_05_12_192751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,50 @@ ActiveRecord::Schema.define(version: 2021_05_12_130518) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "cities", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "state", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_cities_on_name"
+    t.index ["state"], name: "index_cities_on_state", unique: true
+  end
+
+  create_table "dnd_campaigns", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "adventure_type", null: false
+    t.boolean "remote", null: false
+    t.boolean "fifth_edition", null: false
+    t.text "description", null: false
+    t.integer "game_place_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["adventure_type"], name: "index_dnd_campaigns_on_adventure_type"
+    t.index ["game_place_id"], name: "index_dnd_campaigns_on_game_place_id"
+    t.index ["title"], name: "index_dnd_campaigns_on_title"
+  end
+
+  create_table "game_places", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "address", null: false
+    t.string "phone_num", null: false
+    t.decimal "latitude", null: false
+    t.decimal "longitude", null: false
+    t.datetime "open_hour", null: false
+    t.datetime "close_hour", null: false
+    t.string "wedsite"
+    t.text "description", null: false
+    t.integer "city_id", null: false
+    t.integer "dnd_campaign_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_game_places_on_city_id"
+    t.index ["close_hour"], name: "index_game_places_on_close_hour"
+    t.index ["dnd_campaign_id"], name: "index_game_places_on_dnd_campaign_id"
+    t.index ["name"], name: "index_game_places_on_name"
+    t.index ["open_hour"], name: "index_game_places_on_open_hour"
+  end
+
   create_table "players", force: :cascade do |t|
     t.string "email", null: false
     t.string "password_digest", null: false
@@ -44,6 +88,8 @@ ActiveRecord::Schema.define(version: 2021_05_12_130518) do
     t.string "lname", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "city_id"
+    t.index ["city_id"], name: "index_players_on_city_id"
     t.index ["email"], name: "index_players_on_email", unique: true
     t.index ["session_token"], name: "index_players_on_session_token", unique: true
   end
