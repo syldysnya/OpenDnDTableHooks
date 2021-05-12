@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    padding: 20px
+    padding: 10px
 }
 
 .btn {
@@ -26,10 +26,15 @@
 }
 
 .button-profile{
-    border-radius: 100%;
-    padding: 3px 6px;
-    background-color: #dadada;
-    margin-right: 50px;
+    width: 35px;
+    height: 35px;
+    border: 1px solid #d8d9db;
+    border-radius: 100px;
+    font-size: 16px;
+}
+
+.fa-user .far{
+    display: flex;
 }
 
 .dropdown-page-navbar {
