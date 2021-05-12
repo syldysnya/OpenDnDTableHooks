@@ -1,30 +1,19 @@
 import { connect } from "react-redux";
 import { openModal } from "../../actions/modal_actions";
+import { logout } from "../../actions/session_actions";
 import NavBar from "./nav_bar";
 
 
 const mapSTP = (state) => {
     return {
+        player: state.entities.players[state.session.currentPlayer],
         currentPlayer: state.session.currentPlayer,
     }
 };
 
 const mapDTP = dispatch => ({
-    openModal: (modal) => dispatch(openModal(modal))
+    openModal: (modal) => dispatch(openModal(modal)),
+    logout: () => dispatch(logout())
 });
 
 export default connect(mapSTP, mapDTP)(NavBar);
-
-// function myFunction() {
-//     document.getElementById("myDropdown").classList.toggle("show");
-// }
-
-// // Close the dropdown if the user clicks outside of it
-// window.onclick = function (e) {
-//     if (!e.target.matches('.dropbtn')) {
-//         var myDropdown = document.getElementById("myDropdown");
-//         if (myDropdown.classList.contains('show')) {
-//             myDropdown.classList.remove('show');
-//         }
-//     }
-// }
