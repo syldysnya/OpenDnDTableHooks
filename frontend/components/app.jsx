@@ -8,10 +8,8 @@ import GamePLaceContainer from './game_places/game_place_container';
 const App = () => (
     <div>
         <ModalContainer />
-            <Route exact path='/' component={Home}/>
-        <Switch>
-            <Route path='/gamePlaces/:gamePlaceId' component={GamePLaceContainer}/>
-        </Switch>
+        <Route exact path='/' component={Home}/>
+        <Route exact path='/gameplaces/:gamePlaceId' component={GamePLaceContainer}/>
     </div>
 );
 
