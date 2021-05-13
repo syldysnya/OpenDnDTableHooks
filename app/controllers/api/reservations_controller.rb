@@ -1,7 +1,7 @@
 class Api::ReservationsController < ApplicationController
 
     def index
-        @reservations = Reservation.where(:player_id: current_player.id)
+        @reservations = Reservation.where(player_id: current_player.id)
     end
 
     def show
@@ -50,4 +50,5 @@ class Api::ReservationsController < ApplicationController
                 :game_places_id,
                 :player_id
                 )
+    end
 end
