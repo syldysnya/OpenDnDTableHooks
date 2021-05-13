@@ -8,9 +8,9 @@ import GamePLaceContainer from './game_places/game_place_container';
 const App = () => (
     <div>
         <ModalContainer />
-        <Switch>
             <Route exact path='/' component={Home}/>
-            {/* <Route path='/gp/:gamePlacesId' component={GamePLaceContainer}/> */}
+        <Switch>
+            <Route path='/gamePlaces/:gamePlaceId' component={GamePLaceContainer}/>
         </Switch>
     </div>
 );

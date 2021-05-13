@@ -6,7 +6,7 @@ import playersReducer from "./players_reducer";
 
 const entitiesReducer = combineReducers({
     players: playersReducer,
-    // gamePlaces: gamePlacesReducer,
+    gamePlaces: gamePlacesReducer,
     cities: citiesReducer,
 });
 
