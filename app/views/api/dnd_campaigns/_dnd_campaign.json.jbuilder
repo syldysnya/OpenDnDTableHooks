@@ -1,0 +1,1 @@
+json.extract! dnd_campaign, :id, :title, :adventure_type, :remote, :fifth_edition, :description, :game_place_id

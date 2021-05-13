@@ -1,0 +1,1 @@
+json.extract! reservation, :game_date, :game_start, :players_num, :dnd_campaign_id, :game_places_id, :player_id

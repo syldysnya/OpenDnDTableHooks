@@ -1,0 +1,1 @@
+json.extract! game_place, :name, :address, :phone_num, :latitude, :longitude, :open_hour, :close_hour, :description, :city_id, :dnd_campaign_id
