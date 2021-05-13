@@ -21,6 +21,8 @@ class Api::PlayersController < ApplicationController
         end
     end
 
+    private
+
     def player_params
         params.require(:player).permit(:email, :lname, :fname, :password, :city_id)
     end
