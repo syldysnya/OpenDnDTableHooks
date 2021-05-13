@@ -10,7 +10,7 @@ class Api::FavoritesController < ApplicationController
     end
 
     def destroy
-        @favorite = Favorite.find(params[:id]);
+        @favorite = Favorite.find(params[:id])
 
         if current_player.id === @favorite.player_id
             if @favorite.destroy
@@ -25,7 +25,7 @@ class Api::FavoritesController < ApplicationController
     private
 
     def favorite_params
-        params.require(:favorite)
-            .permit()
+        params.require(:favorite).permit(:game_place_id, :player_id)
+    end
 
 end
