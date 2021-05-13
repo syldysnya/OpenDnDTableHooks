@@ -3,6 +3,7 @@ import React from 'react';
 class GamePlace extends React.Component {
     constructor(props) {
         super(props)
+        debugger
     }
 
     componentDidMount() {
@@ -13,7 +14,7 @@ class GamePlace extends React.Component {
         debugger
         return(
             <div>
-                Game Place Page!
+                {this.props.gamePlace}
             </div>
         )
     }
