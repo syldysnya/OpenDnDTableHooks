@@ -8,7 +8,7 @@ const gamePlacesReducer = (state={}, action) => {
         case RECEIVE_GAME_PLACES:
             return action.gamePlaces
         case RECEIVE_GAME_PLACE:
-            return action.gamePlaceId
+            return Object.assign({}, state, { [action.gamePlace.id]: action.gamePlace })
         default:
             return state;
     }

@@ -6,10 +6,10 @@ export const fetchAllGamePlaces = () => (
     })
 )
 
-export const fetchGamePlace = gamePlaceId => (
-    $.ajax({
+export const fetchGamePlace = gamePlaceId => {
+    return $.ajax({
         method: 'GET',
         url: `api/game_places/${gamePlaceId}`,
         // contentType: 'application/json'
     })
-);
+};

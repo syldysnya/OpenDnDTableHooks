@@ -6,13 +6,15 @@ export const signup = player => (
     })
 );
 
-export const login = player => (
-    $.ajax({
+export const login = player => {
+    debugger
+
+    return $.ajax({
         method: 'POST',
         url: '/api/session',
         data: { player }
     })
-);
+};
 
 export const logout = player => (
     $.ajax({

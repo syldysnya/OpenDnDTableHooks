@@ -10,11 +10,11 @@ const receiveAllgamePlaces = gamePlaces => {
     })
 };
 
-const receiveGamePlace = gamePlaceId => {
-    
+const receiveGamePlace = gamePlace => {
+    debugger
     return ({
     type: RECEIVE_GAME_PLACE,
-    gamePlaceId
+    gamePlace
     })
 };
 

@@ -4,9 +4,9 @@ import GamePlace from "./game_place";
 
 
 const mapSTP = (state, ownProps) => {
-    debugger
+    const id = parseInt(ownProps.match.params.gamePlaceId)
     return ({
-        gamePlace: state.entities.gamePlaces[ownProps.match.params.gamePlaceId]
+        gamePlace: state.entities.gamePlaces[id]
     })
 };
 
