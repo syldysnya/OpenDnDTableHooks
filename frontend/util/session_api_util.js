@@ -20,3 +20,10 @@ export const logout = player => (
         url: '/api/session'
     })
 );
+
+export const fetchCities = () => (
+    $.ajax({
+        method: "GET",
+        url: '/api/cities'
+    })
+) 

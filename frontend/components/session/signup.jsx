@@ -9,10 +9,12 @@ class Signup extends React.Component {
             password: '',
             fname: '',
             lname: '',
+            city_id: ''
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.demoSubmit = this.demoSubmit.bind(this);
+        this.handleInputCity = this.handleInputCity.bind(this)
     }
 
     handleErrors() {
@@ -31,6 +33,10 @@ class Signup extends React.Component {
 
     }
 
+    componentDidMount() {
+        this.props.fetchCities();
+    }
+
     componentWillUnmount() {
         this.props.removeErrors();
     }
@@ -41,7 +47,13 @@ class Signup extends React.Component {
     }
 
     handleInput(field) {
-        return e => this.setState({ [field]: e.currentTarget.value })
+        return e => this.setState({ [field]: e.target.value })
+    }
+
+    handleInputCity(e) {
+        debugger
+        const idx = parseInt(e.target.value);
+        this.setState({ city_id: this.props.city_indices[idx] })
     }
 
     handleSubmit(e) {
@@ -103,6 +115,16 @@ class Signup extends React.Component {
                                     placeholder='Re-enter password *'
                                     onChange={this.handleInput('password')}
                                 />
+                            </label>
+                            <label htmlFor="city-login">
+                                <select onChange={this.handleInputCity}
+                                        className='cities-list-dropdown'>
+                                    {this.props.cities.map((city, i) => (
+                                        <option value={i}>
+                                            {city}
+                                        </option>
+                                    ))}
+                                </select>
                             </label>
                             <button
                                 className='auth-button'

@@ -4,6 +4,8 @@ class Player < ApplicationRecord
     validates :password_digest, presence: true
     validates :password, length: { minimum: 8 }, allow_nil: true
 
+    belongs_to :city
+
     attr_reader :password
     after_initialize :ensure_session_token
 

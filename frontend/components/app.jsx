@@ -10,7 +10,7 @@ const App = () => (
         <ModalContainer />
         <Switch>
             <Route exact path='/' component={Home}/>
-            <Route path='/gp/:gamePlacesId' component={GamePLaceContainer}/>
+            {/* <Route path='/gp/:gamePlacesId' component={GamePLaceContainer}/> */}
         </Switch>
     </div>
 );

@@ -2,6 +2,7 @@ class Api::PlayersController < ApplicationController
 
     def create
         @player = Player.new(player_params)
+        debugger
         if @player.save
             login!(@player)
             render 'api/players/show'
@@ -21,7 +22,7 @@ class Api::PlayersController < ApplicationController
     end
 
     def player_params
-        params.require(:player).permit(:email, :lname, :fname, :password)
+        params.require(:player).permit(:email, :lname, :fname, :password, :city_id)
     end
 
 end

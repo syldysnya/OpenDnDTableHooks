@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do 
     resources :players, only: [:create, :update]
+    resources :cities, only: [:index]
     resource :session, only: [:create, :destroy]
   end
 end
