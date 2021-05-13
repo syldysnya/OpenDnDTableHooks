@@ -5,6 +5,8 @@ class Player < ApplicationRecord
     validates :password, length: { minimum: 8 }, allow_nil: true
 
     belongs_to :city
+    has_many :reservations
+    has_many :favorites
 
     attr_reader :password
     after_initialize :ensure_session_token
