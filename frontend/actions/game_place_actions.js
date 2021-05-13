@@ -3,29 +3,24 @@ export const RECEIVE_GAME_PLACE = 'RECEIVE_GAME_PLACE';
 export const RECEIVE_GAME_PLACES = 'RECEIVE_GAME_PLACES';
 
 const receiveAllgamePlaces = gamePlaces => {
-    
-    return ({
-        type: RECEIVE_GAME_PLACES,
-        gamePlaces
-    })
-};
-
-const receiveGamePlace = gamePlace => {
     debugger
     return ({
-    type: RECEIVE_GAME_PLACE,
-    gamePlace
+    type: RECEIVE_GAME_PLACES,
+    gamePlaces
     })
 };
 
-export const fetchAllGamePlaces = () => dispatch => {
-    
-    return ApiUtilGP.fetchAllGamePlaces()
-        .then(gamePlaces => dispatch(receiveAllgamePlaces(gamePlaces)))
-};
+const receiveGamePlace = gamePlace => ({
+    type: RECEIVE_GAME_PLACE,
+    gamePlace
+});
 
-export const fetchGamePlace = gamePlaceId => dispatch => {
-    
-    return ApiUtilGP.fetchGamePlace(gamePlaceId)
+export const fetchAllGamePlaces = () => dispatch => (
+    ApiUtilGP.fetchAllGamePlaces()
+        .then(gamePlaces => dispatch(receiveAllgamePlaces(gamePlaces)))
+);
+
+export const fetchGamePlace = gamePlaceId => dispatch => (
+    ApiUtilGP.fetchGamePlace(gamePlaceId)
         .then(gamePlace => dispatch(receiveGamePlace(gamePlace)))
-};
+);
