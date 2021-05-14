@@ -8,7 +8,6 @@ export const signup = player => (
 
 export const login = player => {
     
-
     return $.ajax({
         method: 'POST',
         url: '/api/session',
@@ -29,3 +28,10 @@ export const fetchCities = () => (
         url: '/api/cities'
     })
 ) 
+
+export const fetchPlayer = playerId => (
+    $.ajax({
+        method: 'GET',
+        url: `/api/players/${playerId}`,
+    })
+)

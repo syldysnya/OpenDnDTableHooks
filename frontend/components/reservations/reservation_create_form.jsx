@@ -1,30 +1,24 @@
 import React, { useState } from 'react';
 import DatePicker from "react-datepicker";
+import { NavLink } from 'react-router-dom';
+import ReservationViewForm from './reservation_view_form';
 
 class ReservationCreateForm extends React.Component {
     constructor(props) {
         super(props);
-        
+        debugger
         this.state = props.reservation;
-        this.handleSubmit = this.handleSubmit.bind(this)
-        
     }
 
     update(field) {
         return e => this.setState({ [field]: e.target.value })
     };
 
-    handleSubmit(e) {
-        e.preventDefault();
-        this.props.createReservation(this.state)
-    };
-
     render() {
         return (
             <div>
                 <h1>Make a reservation</h1>
-                <form className='create-form-box'
-                    onSubmit={this.handleSubmit}>
+                <form className='create-form-box'>
                     <label className='info-create-form'>
                         Party Size
                         <select onChange={this.update('playersNum')}>
@@ -45,10 +39,18 @@ class ReservationCreateForm extends React.Component {
                         <TimePick time={this.state.gameStart}
                             onChange={this.update('gameStart')}/>
                     </label>
-                    <button type='submit'
-                        className='auth-button'>
+                    <NavLink to={{
+                            pathname: '/booking/details',
+                            aboutProps: {
+                                reservation: this.state,
+                                createReservation: this.props.createReservation,
+                                currentPlayer: this.props.currentPlayer,
+                                fetchGamePlace: this.props.fetchGamePlace,
+                                fetchPlayer: this.props.fetchPlayer
+                            }
+                        }} exact>
                             Find a table
-                    </button>
+                    </NavLink>
                 </form>
             </div>
         )

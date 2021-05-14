@@ -1,4 +1,7 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import { fetchGamePlace } from '../../actions/game_place_actions';
+import { fetchPlayer } from '../../actions/player_actions';
 import { createReservation } from '../../actions/reservation_actions';
 import ReservationCreateForm from './reservation_create_form';
 
@@ -31,20 +34,26 @@ const mapSTP = (state, ownProps) => {
         return (`${dow}, ${m}/${d}`)
     }
 
+    let gpId = parseInt(ownProps.match.params.gamePlaceId);
+    let gp = state.entities.gamePlaces[gpId];
+    debugger
     return ({
         reservation: {
             gameDate: currentDate(),
             gameStart: currentTime(),
             playersNim: 2,
-            dndCampaignId: state.entities.gamePlaces.dndCampaignId,
-            gamePlaceId: state.entities.gamePlaces.id,
+            dndCampaignId: gp.dndCampaignId,
+            gamePlaceId: gpId,
             playerId: state.session.currentPlayer
-        }
+        },
+        currentPlayer: state.session.currentPlayer
     })
 }
 
 const mapDTP = dispatch => ({
-    createReservation: () => dispatch(createReservation(reservation))
+    createReservation: () => dispatch(createReservation(reservation)),
+    fetchGamePlace: gamePlaceId => dispatch(fetchGamePlace(gamePlaceId)),
+    fetchPlayer: playerId => dispatch(fetchPlayer(playerId))
 });
 
-export default connect(mapSTP, mapDTP)(ReservationCreateForm);
+export default withRouter(connect(mapSTP, mapDTP)(ReservationCreateForm));

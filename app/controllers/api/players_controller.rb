@@ -1,5 +1,9 @@
 class Api::PlayersController < ApplicationController
 
+    def show 
+        @player = Player.find(params[:id])
+    end
+
     def create
         @player = Player.new(player_params)
         

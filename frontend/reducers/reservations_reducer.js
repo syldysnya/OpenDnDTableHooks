@@ -1,3 +1,4 @@
+import { REQUEST_PLAYER } from "../actions/player_actions";
 import { RECEIVE_ALL_RESERVATIONS, RECEIVE_RESERVATION } from "../actions/reservation_actions";
 
 
