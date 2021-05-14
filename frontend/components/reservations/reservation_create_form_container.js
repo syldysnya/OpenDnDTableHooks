@@ -36,8 +36,8 @@ const mapSTP = (state, ownProps) => {
             gameDate: currentDate(),
             gameStart: currentTime(),
             playersNim: 2,
-            dndCampaignId: 1,
-            gamePlacesId: state.entities.gamePlaces.id,
+            dndCampaignId: state.entities.gamePlaces.dndCampaignId,
+            gamePlaceId: state.entities.gamePlaces.id,
             playerId: state.session.currentPlayer
         }
     })

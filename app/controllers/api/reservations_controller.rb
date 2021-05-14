@@ -47,7 +47,7 @@ class Api::ReservationsController < ApplicationController
                 :game_start,
                 :players_num,
                 :dnd_campaign_id,
-                :game_places_id,
+                :game_place_id,
                 :player_id
                 )
     end
