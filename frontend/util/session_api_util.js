@@ -7,7 +7,7 @@ export const signup = player => (
 );
 
 export const login = player => {
-    debugger
+    
 
     return $.ajax({
         method: 'POST',

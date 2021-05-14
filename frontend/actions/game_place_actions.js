@@ -3,7 +3,7 @@ export const RECEIVE_GAME_PLACE = 'RECEIVE_GAME_PLACE';
 export const RECEIVE_GAME_PLACES = 'RECEIVE_GAME_PLACES';
 
 const receiveAllgamePlaces = gamePlaces => {
-    debugger
+    
     return ({
     type: RECEIVE_GAME_PLACES,
     gamePlaces

@@ -1,4 +1,5 @@
 import React from 'react';
+import ReservationCreateFormContainer from '../reservations/reservation_create_form_container'
 
 class GamePlace extends React.Component {
     constructor(props) {
@@ -6,7 +7,7 @@ class GamePlace extends React.Component {
     }
 
     componentDidMount() {
-        debugger
+        
         this.props.fetchGamePlace(this.props.match.params.gamePlaceId);
     }
 
@@ -23,7 +24,6 @@ class GamePlace extends React.Component {
         if (!this.props.gamePlace) return null;
 
         const { gamePlace }  = this.props
-        // debugger
         return(
             <div className='gp-body'>
                <div className='gp-header'>
@@ -83,7 +83,7 @@ class GamePlace extends React.Component {
                     </div>
                </div>
                <div className='reservation-box'>
-                   [reservation component]
+                   <ReservationCreateFormContainer />
                </div>
             </div>
         )
