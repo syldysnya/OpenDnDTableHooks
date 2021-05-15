@@ -1,40 +1,27 @@
 import React from 'react';
 import { Redirect } from 'react-router';
-import ReservationContainer from './reservation_container';
+import ReservationContainer from './reservations_index_container';
 
 class ReservationViewForm extends React.Component {
     constructor(props) {
         super(props)
-        this.state = { redirecting : false };
+        debugger
+        this.state = props.location.aboutProps.reservation;
         this.handleClick = this.handleClick.bind(this);
     }
 
+    update(field) {
+        return e => this.setState({ [field]: e.target.value })
+    };
+
     handleClick(e) {
         e.preventDefault();
-        this.props.location.aboutProps.createReservation(this.props.location.aboutProps.reservation);
-        this.setState({ redirecting: true })
+        this.props.location.aboutProps.createReservation(this.state)
+            .then(this.props.history.push('/my/profile'));
     }
-    
+
     render() {
-        
-        debugger
-        let reservation = this.props.location.aboutProps.reservation;
-        let currentPlayer = this.props.location.aboutProps.currentPlayer;
         let currGamePlace = this.props.location.aboutProps.fetchGamePlace(this.state.gamePlaceId);
-        let player = this.props.location.aboutProps.fetchPlayer(parseInt(this.state.playerId));
-        // let resId = this.props.location.aboutProps.
-        // if (!currentPlayer) {
-        //     return (
-
-        //     )
-        // } else {
-            
-        // }
-        debugger
-
-        if (this.state.redirecting) (
-            <Redirect to='/reservations/:reservationId' component={ReservationContainer}/>
-        );
 
         return (
             <div className='reservation-completion'>
@@ -43,14 +30,14 @@ class ReservationViewForm extends React.Component {
                     <h1>{currGamePlace.name}</h1>
                     <ul className='reservation-info'>
                         <i class="far fa-calendar"></i>
-                        <li id='1'>{reservation.gameDate}</li>
+                        <li id='1'>{this.state.gameDate}</li>
                         <i class="far fa-clock"></i>
-                        <li id='2'>{reservation.gameStart}</li>
+                        <li id='2'>{this.state.gameStart}</li>
                         <i class="far fa-user"></i>
-                        <li id='3'>{reservation.playersNum}</li>
+                        <li id='3'>{this.state.playersNum}</li>
                     </ul>
                     <h2>Game session details</h2>
-                    <h3>{player.fname} {player.lname}</h3>
+                    <h3>[Player Name]</h3>
                     <form className='reservation-completion-box'>
                         <select className='phone-codes'>
                             <option className='Canada'>🇨🇦</option>
@@ -58,12 +45,14 @@ class ReservationViewForm extends React.Component {
                             <option className='Russia'>🇷🇺</option>
                             <option selected className="USA">🇺🇸</option>
                         </select>
-                        <input type="text" />
-                        <input type="text" 
-                            value={player.email} />
+                        <select className='adventure-type-list'>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
                         <textarea className='Additional-info-inp'
-                            />
-                        <button className='auth-button' 
+                                onChange={this.update('add_info')}/>
+                        <button className='auth-button'
                             onClick={this.handleClick}>
                             Complete Reservation
                         </button>
@@ -72,8 +61,8 @@ class ReservationViewForm extends React.Component {
                 <div className='right-bar-info'>
                     <h1>What to know before you go</h1>
                     <p>Important dining information
-                        We have a 15 minute grace period. Please call us if you are running later than 15 minutes after your reservation time.
-                        Your table will be reserved for 2 hours for parties of up to 4; and 2 hours 15 minutes for parties of 5+.
+                    We have a 15 minute grace period. Please call us if you are running later than 15 minutes after your reservation time.
+                    Your table will be reserved for 2 hours for parties of up to 4; and 2 hours 15 minutes for parties of 5+.
                     </p>
                     <h1>Points</h1>
                     <p>
@@ -86,4 +75,3 @@ class ReservationViewForm extends React.Component {
 };
 
 export default ReservationViewForm;
-

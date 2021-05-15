@@ -40,7 +40,7 @@ class DropdownProfile extends React.Component {
                     className='button-profile'
                     onClick={this.handleDropdownProfile}
                     onBlur={this.handleDropdownProfile}>
-                    <i class="far fa-user">
+                    <i class="fas fa-dice-d20">
                     { this.state.visible ? (
                     <div className='dropdown-profile-open'
                         onClick={e => e.stopPropagation()}>

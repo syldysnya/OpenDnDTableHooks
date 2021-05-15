@@ -1,5 +1,5 @@
 @cities.each do |city|
     json.set! city.id do 
-        json.extract! city, :id, :name, :state
+        json.partial! 'api/cities/city', city: city
     end
 end

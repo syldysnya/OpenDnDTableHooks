@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_12_211325) do
+ActiveRecord::Schema.define(version: 2021_05_14_155637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,14 +104,16 @@ ActiveRecord::Schema.define(version: 2021_05_12_211325) do
   end
 
   create_table "reservations", force: :cascade do |t|
-    t.datetime "game_date", null: false
-    t.datetime "game_start", null: false
     t.integer "players_num", null: false
     t.integer "dnd_campaign_id", null: false
     t.integer "game_place_id", null: false
-    t.integer "player_id", null: false
+    t.integer "player_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "confirmation_num"
+    t.text "add_info"
+    t.string "game_date", null: false
+    t.string "game_start", null: false
     t.index ["dnd_campaign_id"], name: "index_reservations_on_dnd_campaign_id"
     t.index ["game_place_id"], name: "index_reservations_on_game_place_id"
     t.index ["player_id"], name: "index_reservations_on_player_id"

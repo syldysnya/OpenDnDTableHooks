@@ -7,7 +7,6 @@ class GamePlace extends React.Component {
     }
 
     componentDidMount() {
-        
         this.props.fetchGamePlace(this.props.match.params.gamePlaceId);
     }
 

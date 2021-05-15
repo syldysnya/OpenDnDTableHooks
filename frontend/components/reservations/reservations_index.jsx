@@ -1,17 +1,19 @@
 import React from 'react';
 
-class Reservation extends React.Component {
+class ReservationsIndex extends React.Component {
     constructor(props) {
         super(props)
+        debugger
     }
 
     render() {
+
         return (
             <div>
-                This is a reservation component
+                This is a list of reservations
             </div>
         )
     }
 };
 
-export default Reservation;
+export default ReservationsIndex;

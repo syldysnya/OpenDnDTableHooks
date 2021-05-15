@@ -129,11 +129,13 @@ dndcamp3 = DndCampaign.create!(
 
 reserv1 = Reservation.create!(
     game_date: '05/01/2021',
-    game_start: '18:00:00',
+    game_start: '6:00 PM',
     players_num: 2,
     dnd_campaign_id: dndcamp1.id,
     game_place_id: gPlace2.id,
-    player_id: player2.id
+    player_id: player2.id,
+    confirmation_num: 1234567892,
+    add_info: 'Ill be with friends'
 )
 
 favorites = Favorite.create!(

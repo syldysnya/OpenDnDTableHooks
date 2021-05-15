@@ -27,11 +27,20 @@ export const fetchCities = () => (
         method: "GET",
         url: '/api/cities'
     })
-) 
+)
 
-export const fetchPlayer = playerId => (
+export const fetchCity = cityId => (
     $.ajax({
         method: 'GET',
-        url: `/api/players/${playerId}`,
+        url: `/api/cities/${cityId}`
     })
-)
+);
+
+export const fetchPlayer = playerId => {
+    debugger
+    return $.ajax({
+            method: 'GET',
+            url: `/api/players/${playerId}`,
+        })
+
+};

@@ -1,6 +1,7 @@
 class Api::ReservationsController < ApplicationController
 
     def index
+        debugger
         @reservations = Reservation.where(player_id: current_player.id)
     end
 
@@ -9,8 +10,12 @@ class Api::ReservationsController < ApplicationController
     end
 
     def create
-        @reservation.create!(reservation_params)
-        render :show
+        @reservation = Reservation.new(reservation_params)
+        if @reservation.save
+            render 'api/reservations/show'
+        else 
+            render json: @reservation.errors.full_messages, status: 422
+        end
     end
 
     def update
@@ -18,7 +23,7 @@ class Api::ReservationsController < ApplicationController
 
         if @reservation.player_id === current_player.id
             if @reservation.update(reservation_params)
-                render :show
+                render 'api/reservations/show'
             else
                 render @reservation.errors.full_messages, status: 422
             end
@@ -48,7 +53,9 @@ class Api::ReservationsController < ApplicationController
                 :players_num,
                 :dnd_campaign_id,
                 :game_place_id,
-                :player_id
-                )
+                :player_id,
+                :confirmation_num,
+                :add_info
+            )
     end
 end

@@ -42,7 +42,6 @@ class NavBar extends React.Component {
                 </div>
             )
         };
-
         return currentPlayer ? ifLoggedIn() : notLoggedIn();
 
     }
