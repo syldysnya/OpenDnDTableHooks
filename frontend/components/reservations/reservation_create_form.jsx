@@ -1,7 +1,35 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import LoginContainer from '../session/login_container';
+import ChooseTime from './choose_time';
 // import Calendar from 'react-calendar';
+
+const RES_TIME = [
+    "12:00 AM", "12:30 AM",
+    "1:00 AM", "1:30 AM",
+    "2:00 AM", "2:30 AM",
+    "3:00 AM", "3:30 AM",
+    "4:00 AM", "4:30 AM",
+    "5:00 AM", "5:30 AM",
+    "6:00 AM", "6:30 AM",
+    "7:00 AM", "7:30 AM",
+    "8:00 AM", "8:30 AM",
+    "9:00 AM", "9:30 AM",
+    "10:00 AM", "10:30 AM",
+    "11:00 AM", "11:30 AM",
+    "12:00 PM", "12:30 PM",
+    "1:00 PM", "1:30 PM",
+    "2:00 PM", "2:30 PM",
+    "3:00 PM", "3:30 PM",
+    "4:00 PM", "4:30 PM",
+    "5:00 PM", "5:30 PM",
+    "6:00 PM", "6:30 PM",
+    "7:00 PM", "7:30 PM",
+    "8:00 PM", "8:30 PM",
+    "9:00 PM", "9:30 PM",
+    "10:00 PM", "10:30 PM",
+    "11:00 PM", "11:30 PM"
+];
 
 class ReservationCreateForm extends React.Component {
     constructor(props) {
@@ -13,9 +41,10 @@ class ReservationCreateForm extends React.Component {
             dndCampaignId: 1,
             gamePlaceId: props.reservation.gamePlaceId,
             playerId: 1,
-            confirmation_num: randomNum(100000000000),
+            confirmation_num: randomNum(10000),
             addInfo: ''
         };
+
         this.handleAuth = this.handleAuth.bind(this)
     }
 
@@ -29,9 +58,10 @@ class ReservationCreateForm extends React.Component {
     }
 
     TimePick = () => {
+
         return (
             <select onChange={this.update('gameStart')} >
-                {this.dateRange().map(t => {
+                {RES_TIME.map(t => {
                     if (t === '8:00 PM') {
                         return (
                             <option selected value={t}>{t}</option>
@@ -46,39 +76,9 @@ class ReservationCreateForm extends React.Component {
         )
     }
 
-    dateRange = () => {
-        let amTimes = [];
-        let pmTimes = [];
-        let idx = 1;
-
-        while (idx <= 12) {
-            let am1 = `${idx}:00 AM`
-            let am2 = `${idx}:30 AM`
-            let pm1 = `${idx}:00 PM`
-            let pm2 = `${idx}:30 PM`
-
-            amTimes.push(am1);
-            amTimes.push(am2);
-            pmTimes.push(pm1);
-            pmTimes.push(pm2);
-
-            idx += 1;
-        }
-
-        for (let i = 0; i < 2; i++) {
-            let pop1 = amTimes.pop(1);
-            amTimes.unshift(pop1);
-            let pop2 = pmTimes.pop(1);
-            pmTimes.unshift(pop2);
-        }
-
-        let merged = amTimes.concat(pmTimes);
-        return merged;
-    }
-
     render() {
-
         const ifLoggedIn = () => {
+            
             return (
                 <div>
                     <h1>Make a reservation</h1>
@@ -107,17 +107,19 @@ class ReservationCreateForm extends React.Component {
                             pathname: '/booking/details',
                             aboutProps: {
                                 reservation: this.state,
+                                gamePlace: this.props.gamePlaces[0],
                                 createReservation: this.props.createReservation,
                                 currentPlayer: this.props.currentPlayer,
-                                fetchGamePlace: this.props.fetchGamePlace
+                                fetchReservation: this.props.fetchReservation
                             }
                         }} exact>
-                            Find a table
-                    </NavLink>
+                            Find a table from lalala
+                        </NavLink>
                     </form>
                 </div>
             )
         }
+
 
         const ifLoggedOut = () => {
             return (
@@ -164,11 +166,26 @@ const currentDate = () => {
     const arrOfDow = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
     let d = new Date().getDate();
     let m = new Date().getMonth();
-    let dow = arrOfDow[new Date().getDay() - 1];
-
+    let dNum = new Date().getDay()
+    dNum === 0 ? dNum = 6 : dNum -= 1; 
+    let dow = arrOfDow[dNum];
     return (`${dow}, ${m}/${d}`)
 }
 
 const randomNum = (max) => {
-    return (Math.floor(Math.random() * max).to_s)
+    return (Math.floor(Math.random() * max))
 }
+
+
+
+// return (
+//     <div className='dropdown-time-opts'>
+//         {timeOptions.map(timePick => {
+//             return (
+//                 <button key={time}>
+//                     {timePick}
+//                 </button>
+//             )
+//         })}
+//     </div>
+// )

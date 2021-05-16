@@ -1,7 +1,7 @@
 class Api::ReservationsController < ApplicationController
 
     def index
-        debugger
+        
         @reservations = Reservation.where(player_id: current_player.id)
     end
 

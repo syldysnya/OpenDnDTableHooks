@@ -15,7 +15,7 @@ class GamePlacesIndex extends React.Component {
         if (!this.props) return null;
 
         let mapped = this.props.gamePlaces.map((gPlace, i) => {
-            debugger
+            
             return (
                 <li id={`game-place-${i}`}>
                     <p>IMAGE OF PLACE</p>

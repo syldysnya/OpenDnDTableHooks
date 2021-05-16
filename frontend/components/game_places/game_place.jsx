@@ -4,6 +4,9 @@ import ReservationCreateFormContainer from '../reservations/reservation_create_f
 class GamePlace extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
+            visible: false
+        }
     }
 
     componentDidMount() {
@@ -19,14 +22,21 @@ class GamePlace extends React.Component {
     }
 
     render() {
-
+        
         if (!this.props.gamePlace) return null;
 
         const { gamePlace }  = this.props
+        const img_mapped = gamePlace.pictureUrls.map((pic, i) => {
+            return (
+                <li className={`gallery-pic-${i}`}>
+                    <img src={pic} />
+                </li>
+            )
+        })
         return(
             <div className='gp-body'>
                <div className='gp-header'>
-                    [THIS IS A GP HEADER]
+                    <img src={gamePlace.photoUrl} />
                </div>
                <div className='gp-page-box'>
                     <div className='gp-info-navbar'>
@@ -39,7 +49,9 @@ class GamePlace extends React.Component {
                         <h1>{gamePlace.name}</h1>
                         <p>{this.loremIpsumText()}</p>
                     </div>
-                    <p># of Photos</p>
+                    <div className='gp-gallery'>
+                        {img_mapped}
+                    </div>
                     <div className='dnd-campaigns-list'>
                         <li key='1'>Dnd campaign 1</li>
                         <li key='2'>Dnd campaign 2</li>

@@ -10,7 +10,7 @@ class ReservationsIndex extends React.Component {
 
         return (
             <div>
-                This is a list of reservations
+                
             </div>
         )
     }

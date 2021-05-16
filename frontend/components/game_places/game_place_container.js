@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { fetchAllGamePlaces, fetchGamePlace } from "../../actions/game_place_actions";
+import { openModal } from "../../actions/modal_actions";
 import GamePlace from "./game_place";
 
 
@@ -12,7 +13,8 @@ const mapSTP = (state, ownProps) => {
 
 const mapDTP = dispatch => ({
     fetchAllGamePlaces: () => dispatch(fetchAllGamePlaces()),
-    fetchGamePlace: gamePlaceId => dispatch(fetchGamePlace(gamePlaceId))
+    fetchGamePlace: gamePlaceId => dispatch(fetchGamePlace(gamePlaceId)),
+    openModal: modal => dispatch(openModal(modal))
 })
 
 export default connect(mapSTP, mapDTP)(GamePlace);

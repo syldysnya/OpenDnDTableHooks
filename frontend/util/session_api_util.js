@@ -37,7 +37,7 @@ export const fetchCity = cityId => (
 );
 
 export const fetchPlayer = playerId => {
-    debugger
+    
     return $.ajax({
             method: 'GET',
             url: `/api/players/${playerId}`,

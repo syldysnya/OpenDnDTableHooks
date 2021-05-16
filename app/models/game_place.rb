@@ -14,6 +14,11 @@ class GamePlace < ApplicationRecord
     has_many :reservations
     has_many :favorites
 
+    has_one_attached :photo
+    has_one_attached :avatar
+    has_many_attached :pictures
+
+
     belongs_to :city
 
 end

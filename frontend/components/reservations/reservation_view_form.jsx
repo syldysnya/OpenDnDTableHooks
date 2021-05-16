@@ -5,7 +5,7 @@ import ReservationContainer from './reservations_index_container';
 class ReservationViewForm extends React.Component {
     constructor(props) {
         super(props)
-        debugger
+        // debugger
         this.state = props.location.aboutProps.reservation;
         this.handleClick = this.handleClick.bind(this);
     }
@@ -16,18 +16,22 @@ class ReservationViewForm extends React.Component {
 
     handleClick(e) {
         e.preventDefault();
+        debugger
         this.props.location.aboutProps.createReservation(this.state)
-            .then(this.props.history.push('/my/profile'));
+            .then(this.props.history.push({
+                pathname: '/book/view',
+                reservation: this.state,
+                gamePlace: this.props.location.aboutProps.gamePlace
+            }));
     }
 
     render() {
-        let currGamePlace = this.props.location.aboutProps.fetchGamePlace(this.state.gamePlaceId);
 
         return (
             <div className='reservation-completion'>
                 <div className='reservation-completion-form'>
                     <p>You’re almost done!</p>
-                    <h1>{currGamePlace.name}</h1>
+                    <h1>{this.props.location.aboutProps.gamePlace.name}</h1>
                     <ul className='reservation-info'>
                         <i class="far fa-calendar"></i>
                         <li id='1'>{this.state.gameDate}</li>
