@@ -13,6 +13,7 @@ const mapSTP = (state, ownProps) => {
         gamePlaces: Object.values(state.entities.gamePlaces),
         reservation: { gamePlaceId: gpId },
         currentPlayer: state.session.currentPlayer,
+        players: Object.values(state.entities.players)
     })
 }
 

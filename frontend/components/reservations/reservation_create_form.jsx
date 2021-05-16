@@ -78,7 +78,6 @@ class ReservationCreateForm extends React.Component {
 
     render() {
         const ifLoggedIn = () => {
-            
             return (
                 <div>
                     <h1>Make a reservation</h1>
@@ -108,6 +107,7 @@ class ReservationCreateForm extends React.Component {
                             aboutProps: {
                                 reservation: this.state,
                                 gamePlace: this.props.gamePlaces[0],
+                                player: this.props.players[0],
                                 createReservation: this.props.createReservation,
                                 currentPlayer: this.props.currentPlayer,
                                 fetchReservation: this.props.fetchReservation

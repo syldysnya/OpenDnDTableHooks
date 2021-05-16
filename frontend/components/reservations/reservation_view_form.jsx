@@ -5,7 +5,7 @@ import ReservationContainer from './reservations_index_container';
 class ReservationViewForm extends React.Component {
     constructor(props) {
         super(props)
-        // debugger
+        debugger
         this.state = props.location.aboutProps.reservation;
         this.handleClick = this.handleClick.bind(this);
     }
@@ -21,7 +21,8 @@ class ReservationViewForm extends React.Component {
             .then(this.props.history.push({
                 pathname: '/book/view',
                 reservation: this.state,
-                gamePlace: this.props.location.aboutProps.gamePlace
+                gamePlace: this.props.location.aboutProps.gamePlace,
+                player: this.props.location.aboutProps.player,
             }));
     }
 
@@ -41,7 +42,7 @@ class ReservationViewForm extends React.Component {
                         <li id='3'>{this.state.playersNum}</li>
                     </ul>
                     <h2>Game session details</h2>
-                    <h3>[Player Name]</h3>
+                    <h3>{this.props.location.aboutProps.player.lname} {this.props.location.aboutProps.player.fname}</h3>
                     <form className='reservation-completion-box'>
                         <select className='phone-codes'>
                             <option className='Canada'>🇨🇦</option>

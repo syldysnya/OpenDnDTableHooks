@@ -1,3 +1,18 @@
 .home-page-img {
     width: 100%;
 }
+
+.main-page {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.gp-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+
+    
+}

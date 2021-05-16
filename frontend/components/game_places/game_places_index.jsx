@@ -31,9 +31,11 @@ class GamePlacesIndex extends React.Component {
         })
 
         return (
-            <div>
+            <div className='list-of-gps'>
                 List of places
-                {mapped}
+                <hgroup className='gp-list'>
+                    {mapped}
+                </hgroup>
             </div>
         )
     }
