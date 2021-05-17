@@ -12,6 +12,7 @@ const App = () => (
     <div>
         <ModalContainer />
         <Route exact path='/' component={Home}/>
+        <Route exact path='/my/profile/info' component={ReservationsIndexContainer}/>
         <Route exact path='/gameplaces/:gamePlaceId' component={GamePLaceContainer}/>
         <Route exact path='/booking/details' component={ReservationViewForm} />
         <Route exact path='/book/view' component={ReservationViewFormConf} />

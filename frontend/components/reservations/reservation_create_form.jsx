@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LoginContainer from '../session/login_container';
 import ChooseTime from './choose_time';
@@ -53,6 +53,7 @@ class ReservationCreateForm extends React.Component {
     };
 
     handleAuth(e) {
+        e.preventDefault();
         let field = e.target.innerHTML;
         this.props.openModal(field)
     }
@@ -77,6 +78,7 @@ class ReservationCreateForm extends React.Component {
     }
 
     render() {
+
         const ifLoggedIn = () => {
             return (
                 <div>

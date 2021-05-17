@@ -9,7 +9,8 @@ class Signup extends React.Component {
             password: '',
             fname: '',
             lname: '',
-            city_id: ''
+            city_id: '',
+            confirmPassword: ''
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -58,7 +59,11 @@ class Signup extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.signup(this.state).then(this.props.hideModal);
+        if (this.state.password === this.state.confirmPassword) {
+            this.props.signup(this.state).then(this.props.hideModal);
+        } else {
+            alert("The passwords don't match");
+        }
     }
 
     render() {
@@ -107,18 +112,19 @@ class Signup extends React.Component {
                                     onChange={this.handleInput('password')}
                                 />
                             </label>
-                            <label htmlFor="password-login">
+                            <label htmlFor="password-login2">
                                 <input
                                     className='modal-input'
                                     type="password"
-                                    id="password-login"
+                                    id="password-login2"
                                     placeholder='Re-enter password *'
-                                    onChange={this.handleInput('password')}
+                                    onChange={this.handleInput('confirmPassword')}
                                 />
                             </label>
                             <label htmlFor="city-login">
                                 <select onChange={this.handleInputCity}
-                                        className='cities-list-dropdown'>
+                                    className='modal-input'>
+                                    <option disabled selected>Primary city*</option>
                                     {this.props.cities.map((city, i) => (
                                         <option value={i}>
                                             {city}

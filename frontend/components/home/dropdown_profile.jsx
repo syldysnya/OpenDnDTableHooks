@@ -46,9 +46,9 @@ class DropdownProfile extends React.Component {
                         onClick={e => e.stopPropagation()}>
                         <p>Hello, {this.props.player.lname}!</p>
                         <div className='break-auth'></div>
-                            <Link className='menu-links' to='my/profile/info'>My Profile</Link>
-                            <Link className='menu-links' to='my/profile/info'>My Dining History</Link>
-                            <Link className='menu-links' to='my/favorites'>My Saved Game Places</Link>
+                            <Link className='menu-links' to='/my/profile/info'>My Profile</Link>
+                            <Link className='menu-links' to='/my/profile/info'>My Dining History</Link>
+                            <Link className='menu-links' to='/my/favorites'>My Saved Game Places</Link>
                         <div className='signout-div'
                             onClick={this.handleClick}>
                             Sign out
