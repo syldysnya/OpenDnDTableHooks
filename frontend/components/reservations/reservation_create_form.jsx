@@ -1,7 +1,6 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import LoginContainer from '../session/login_container';
-import ChooseTime from './choose_time';
+import LoggedOutForm from './logged_out_form';
+import LoggedInForm from './logged_in_form';
 // import Calendar from 'react-calendar';
 
 const RES_TIME = [
@@ -45,21 +44,14 @@ class ReservationCreateForm extends React.Component {
             addInfo: ''
         };
 
-        this.handleAuth = this.handleAuth.bind(this)
     }
 
     update(field) {
         return e => this.setState({ [field]: e.target.value })
     };
 
-    handleAuth(e) {
-        e.preventDefault();
-        let field = e.target.innerHTML;
-        this.props.openModal(field)
-    }
-
     TimePick = () => {
-
+        debugger
         return (
             <select onChange={this.update('gameStart')} >
                 {RES_TIME.map(t => {
@@ -79,86 +71,51 @@ class ReservationCreateForm extends React.Component {
 
     render() {
 
-        const ifLoggedIn = () => {
-            return (
-                <div>
-                    <h1>Make a reservation</h1>
-                    <form className='create-form-box'>
-                        <label className='info-create-form'>
-                            Party Size
-                        <select onChange={this.update('playersNum')}>
-                                <option value="1">For 1</option>
-                                <option selected value="2">For 2</option>
-                                <option value="3">For 3</option>
-                                <option value="4">For 4</option>
-                                <option value="5">For 5</option>
-                            </select>
-                        </label>
-                        <label className='info-create-form'>
-                            Date
-                        <div onChange={this.update('gameDate')}>
-                                {this.state.gameDate}
-                            </div>
-                        </label>
-                        <label className='info-create-form'>
-                            Time
-                        {this.TimePick()}
-                        </label>
-                        <NavLink className='auth-button' to={{
-                            pathname: '/booking/details',
-                            aboutProps: {
-                                reservation: this.state,
-                                gamePlace: this.props.gamePlaces[0],
-                                player: this.props.players[0],
-                                createReservation: this.props.createReservation,
-                                currentPlayer: this.props.currentPlayer,
-                                fetchReservation: this.props.fetchReservation
-                            }
-                        }} exact>
-                            Find a table from lalala
-                        </NavLink>
-                    </form>
-                </div>
-            )
+        let createForm;
+
+        if (!this.props.currentPlayer) {
+            createForm = <LoggedOutForm openModal={this.props.openModal}/>
+        } else {
+            createForm = <LoggedInForm reservation={this.state}
+                gamePlace={this.props.gamePlaces[0]}
+                player={this.props.players[0]}
+                createReservation={this.props.createReservation}
+                currentPlayer={this.props.currentPlayer}
+                fetchReservation={this.props.fetchReservation}
+            />
         }
 
+        let buttonForm;
 
-        const ifLoggedOut = () => {
-            return (
-                <div>
-                    <h1>Make a reservation</h1>
-                    <form className='create-form-box'>
-                        <label className='info-create-form'>
-                            Party Size
-                        <select onChange={this.update('playersNum')}>
-                                <option value="1">For 1</option>
-                                <option selected value="2">For 2</option>
-                                <option value="3">For 3</option>
-                                <option value="4">For 4</option>
-                                <option value="5">For 5</option>
-                            </select>
-                        </label>
-                        <label className='info-create-form'>
-                            Date
-                        <div onChange={this.update('gameDate')}>
-                                {this.state.gameDate}
-                            </div>
-                        </label>
-                        <label className='info-create-form'>
-                            Time
+        return (
+            <div>
+                <h1>Make a reservation</h1>
+                <form className='create-form-box'>
+                    <label className='info-create-form'>
+                        Party Size
+                                <select onChange={this.update('playersNum')}>
+                            <option value="1">For 1</option>
+                            <option selected value="2">For 2</option>
+                            <option value="3">For 3</option>
+                            <option value="4">For 4</option>
+                            <option value="5">For 5</option>
+                        </select>
+                    </label>
+                    <label className='info-create-form'>
+                        Date
+                                <div onChange={this.update('gameDate')}>
+                            {this.state.gameDate}
+                        </div>
+                    </label>
+                    <label className='info-create-form'>
+                        Time
                         {this.TimePick()}
-                        </label>
-                        <button onClick={this.handleAuth} className='auth-button'>
-                                Sign In
-                        </button>
-                        <button onClick={this.handleAuth} className='auth-button'>
-                                Sign Up
-                        </button>
-                    </form>
-                </div>
-            )
-        }
-        return this.props.currentPlayer ? ifLoggedIn() : ifLoggedOut()
+                    </label>
+                </form>
+                {createForm}
+            </div>
+        )
+        // return this.props.currentPlayer ? ifLoggedIn() : ifLoggedOut()
     }
 };
 
