@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 class LoggedInForm extends React.Component {
     constructor(props) {
         super(props)
-        // debugger 
+         
         this.state = {
             reservation: props.reservation,
             renderTimeOpts: false
@@ -20,13 +20,13 @@ class LoggedInForm extends React.Component {
     }
 
     handleClick(e) {
-        debugger
+        
         // e.preventDefault();
         this.setState({ gameStart: e.currentTarget.innerHTML })
     }
 
     timeOptions(field) {
-        // debugger
+        
         let curTime = field;
         let splitted = curTime.split(' ');
         let t = splitted[0].split(':');
@@ -81,7 +81,7 @@ class LoggedInForm extends React.Component {
     }
 
     render() {
-        // debugger
+        
         let buttonForm;
         
         if (this.state.renderTimeOpts) {

@@ -5,7 +5,7 @@ import ReservationContainer from './reservations_index_container';
 class ReservationViewForm extends React.Component {
     constructor(props) {
         super(props)
-        debugger
+        
         this.state = props.location.aboutProps.reservation;
         this.handleClick = this.handleClick.bind(this);
     }
@@ -26,7 +26,7 @@ class ReservationViewForm extends React.Component {
     }
 
     render() {
-        debugger
+        
         return (
             <div className='reservation-completion'>
                 <div className='reservation-completion-form'>
@@ -38,7 +38,7 @@ class ReservationViewForm extends React.Component {
                         <i class="far fa-clock"></i>
                         <li id='2'>{this.state.gameStart}</li>
                         <i class="far fa-user"></i>
-                        <li id='3'>{this.state.playersNum}</li>
+                        <li id='3'>{this.state.playersNum} people</li>
                     </ul>
                     <h2>Game session details</h2>
                     <h3>{this.props.location.aboutProps.player.lname} {this.props.location.aboutProps.player.fname}</h3>
@@ -54,8 +54,11 @@ class ReservationViewForm extends React.Component {
                             <option value="2">2</option>
                             <option value="3">3</option>
                         </select>
+                        <input type="text" onChange={this.update('phoneNum')}/>
+                        <input type="text" onChange={this.update('email')}/>
                         <textarea className='Additional-info-inp'
-                                onChange={this.update('add_info')}/>
+                                onChange={this.update('add_info')}
+                                placeholder='Add a special request (optional)'/>
                         <button className='auth-button'
                             onClick={this.handleClick}>
                             Complete Reservation

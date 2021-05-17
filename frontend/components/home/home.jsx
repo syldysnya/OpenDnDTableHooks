@@ -1,6 +1,7 @@
 import React from 'react';
 import GamePlacesIndexContainer from '../game_places/game_places_index_container';
 import NavBarContainer from '../home/nav_bar_container';
+import MapSearchContainer from '../map/map_search_container';
 
 export default () => {
 
@@ -18,6 +19,7 @@ export default () => {
             </div>
             <div className='main-page'>
                 <GamePlacesIndexContainer />
+                {/* <MapSearchContainer /> */}
             </div>
         </div>
 

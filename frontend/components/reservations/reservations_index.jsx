@@ -5,19 +5,27 @@ class ReservationsIndex extends React.Component {
         super(props)
     }
 
+    componentDidMount() {
+        this.props.fetchAllReservations();
+    }
+
     render() {
 
+        if (!this.props.reservations) return null;
+        
         const mapped = this.props.reservations.map((res, i) => {
-            <li id={`res-${i}`}>
-                <p>{res.gameDate}</p>
-                <p>{res.gameStart}</p>
-                <p>{`Table for ${res.playersNum} people`}</p>
-                <button>View</button>
-                <button>Modify</button>
-                <button>Cancel</button>
-            </li>
+            return (
+                    <li id={`res-${i}`}>
+                    <p>{res.gameDate}</p>
+                    <p>{res.gameStart}</p>
+                    <p>{`Table for ${res.playersNum} people`}</p>
+                    <button>View</button>
+                    <button>Modify</button>
+                    <button>Cancel</button>
+                </li>
+            )
         })
-
+        
         return (
             <div>
                 {mapped}

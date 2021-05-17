@@ -4,10 +4,6 @@ import { withRouter } from 'react-router';
 import { fetchGamePlace } from '../../actions/game_place_actions';
 
 class ReservationViewFormConf extends React.Component {
-    constructor(props) {
-        super(props) 
-        debugger
-    }
     
     render() {
 
@@ -23,6 +19,8 @@ class ReservationViewFormConf extends React.Component {
                     <span>{this.props.location.reservation.gameDate}</span>
                     <span>{this.props.location.reservation.gameStart}</span>
                     <p>{this.props.location.reservation.playersNum} people</p>
+                    <p>Modify</p>
+                    <p>Cancel</p>
                 </div>
             </div>
         )

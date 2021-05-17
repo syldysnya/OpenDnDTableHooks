@@ -1,7 +1,6 @@
 class Api::ReservationsController < ApplicationController
 
     def index
-        
         @reservations = Reservation.where(player_id: current_player.id)
     end
 

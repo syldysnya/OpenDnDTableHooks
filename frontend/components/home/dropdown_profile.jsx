@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link, NavLink, Redirect } from 'react-router-dom'
 
 class DropdownProfile extends React.Component {
     constructor(props) {
@@ -10,8 +10,17 @@ class DropdownProfile extends React.Component {
 
         this.handleClick = this.handleClick.bind(this);
         this.hide = this.hide.bind(this);
+        // this.handleLink = this.handleLink.bind(this);
         this.handleDropdownProfile = this.handleDropdownProfile.bind(this)
     }
+
+    // handleLink(e) {
+    //     e.preventDefault();
+    //     
+    //     if (e.currentTarget.innerHTML === 'My Profile') {
+    //         <Redirect to='my/profile/info' />
+    //     }
+    // }
 
     hide(e) {
         e.preventDefault();
@@ -36,7 +45,7 @@ class DropdownProfile extends React.Component {
 
         return (
             <div className='dropdown-profile-content'>
-                <button
+                <div
                     className='button-profile'
                     onClick={this.handleDropdownProfile}
                     onBlur={this.handleDropdownProfile}>
@@ -46,6 +55,7 @@ class DropdownProfile extends React.Component {
                         onClick={e => e.stopPropagation()}>
                         <p>Hello, {this.props.player.lname}!</p>
                         <div className='break-auth'></div>
+                            {/* <button onClick={this.handleLink}></button> */}
                             <Link className='menu-links' to='/my/profile/info'>My Profile</Link>
                             <Link className='menu-links' to='/my/profile/info'>My Dining History</Link>
                             <Link className='menu-links' to='/my/favorites'>My Saved Game Places</Link>
@@ -56,7 +66,7 @@ class DropdownProfile extends React.Component {
                     </div>
                     ) : null}
                     </i>
-                </button>
+                </div>
             </div>
         )
     }

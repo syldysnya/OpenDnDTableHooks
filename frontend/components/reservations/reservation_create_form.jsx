@@ -51,7 +51,7 @@ class ReservationCreateForm extends React.Component {
     };
 
     TimePick = () => {
-        debugger
+        
         return (
             <select onChange={this.update('gameStart')} >
                 {RES_TIME.map(t => {
@@ -84,8 +84,6 @@ class ReservationCreateForm extends React.Component {
                 fetchReservation={this.props.fetchReservation}
             />
         }
-
-        let buttonForm;
 
         return (
             <div>
