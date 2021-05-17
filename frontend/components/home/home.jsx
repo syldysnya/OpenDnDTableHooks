@@ -9,12 +9,12 @@ export default () => {
             <div className='home-nav'>
                 <div className='home-nav-right'>
                     <NavBarContainer />
-                </div>
                 <div className='home-nav-left'>
+                </div>
                 </div>
             </div>
             <div className='home-page-header-frame'>
-                <img className='home-page-img' src="https://media-waterdeep.cursecdn.com/attachments/thumbnails/0/642/850/213/half-elfintro.png"/>
+                <img className='home-page-img' src="https://app-opendndtable-seed.s3.amazonaws.com/Tiamat_2560x1600_0.jpeg"/>
             </div>
             <div className='main-page'>
                 <GamePlacesIndexContainer />

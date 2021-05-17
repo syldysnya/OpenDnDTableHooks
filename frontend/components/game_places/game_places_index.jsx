@@ -18,7 +18,7 @@ class GamePlacesIndex extends React.Component {
             
             return (
                 <li id={`game-place-${i}`}>
-                    <p>IMAGE OF PLACE</p>
+                    <img src={gPlace.avatar}/>
                     <NavLink to={`/gameplaces/${gPlace.id}`}>
                         {gPlace.name}
                     </NavLink>

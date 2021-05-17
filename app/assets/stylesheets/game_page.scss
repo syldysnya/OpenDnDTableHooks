@@ -1,0 +1,89 @@
+.header-img {
+    width: 100%;
+}
+
+.grey-line {
+    border: 1px solid #dadada;
+    margin: 0% 3%;
+}
+
+.right-box-res {
+    padding: 0 0% 0 5%;
+    margin-top: -4%;
+    width: 300px;
+}
+
+.create-form-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 5%;
+}
+
+.reservation-box {
+    display: flex;
+    border: 1px solid #dadada;
+    border-radius: 2px;
+    align-content: center;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: white;
+
+    div {
+        font-size: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 80%;
+    }
+}
+
+.right-bar-gp-info {
+    display: flex;
+    border: 1px solid #dadada;
+    border-radius: 2px;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    flex-direction: column;
+}
+
+.gp {
+    display: flex;
+    padding: 0 10%;
+    align-items: flex-start;
+}
+
+.gp-info-box h1 {
+    font-size: 40px;
+    // padding: 5% 25% 5% 3%
+}
+
+.gp-page-box {
+    margin-top: -4%;
+}
+
+.gp-info-navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2% 20% 2.4% 3%;
+    background-color: white;
+
+}
+
+.gp-gallery {
+    display: grid;
+    grid-template-columns: 30% 40% 15% 15%;
+    grid-template-rows: 50%;
+    column-gap: 2px;
+    grid-row-gap: 2px;
+    margin: 0;
+    
+    img {
+        width: 100px
+    }
+    
+}

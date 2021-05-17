@@ -1,8 +1,23 @@
 .home-nav {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    padding: 10px
+    align-items: center;
+    height: 4rem;
+    justify-content: space-between;
+    padding: 0 2%;
+
+    .home-nav-left {
+        display: grid;
+        grid-template-columns: 40% 55%;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    span {
+        font-weight: bold;
+    }
+    .logo {
+        height: 50px;
+    }
 }
 
 .btn {
