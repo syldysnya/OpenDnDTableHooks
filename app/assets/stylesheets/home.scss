@@ -25,15 +25,16 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     column-gap: 15px;
+    // grid-template-rows: 200px;
     row-gap: 15px;
     margin: 0;
     
     li {
-        
         border: 1px solid #dadada;
         border-radius: 3px;
         padding-bottom: 5px;
-        .avatar {
+        
+        img {
             width: 100%;
         }
 

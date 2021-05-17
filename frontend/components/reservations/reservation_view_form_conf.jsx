@@ -12,7 +12,7 @@ class ReservationViewFormConf extends React.Component {
     render() {
 
         return (
-            <div>
+            <div className='confirmation-box'>
                 <div className='green-bos-confirmation'>
                     <h1>Thanks! Your reservation is confirmed.</h1>
                     <p>Confirmation # {this.props.location.reservation.confirmation_num}</p>

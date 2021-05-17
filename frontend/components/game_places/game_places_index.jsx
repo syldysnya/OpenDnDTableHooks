@@ -18,7 +18,9 @@ class GamePlacesIndex extends React.Component {
             
             return (
                 <li id={`game-place-${i}`}>
-                    <img src={gPlace.avatar}/>
+                    <div className='avatar'>
+                        <img src={gPlace.avatarUrl}/>
+                    </div>
                     <NavLink to={`/gameplaces/${gPlace.id}`}>
                         {gPlace.name}
                     </NavLink>
@@ -33,9 +35,9 @@ class GamePlacesIndex extends React.Component {
         return (
             <div className='list-of-gps'>
                 List of places
-                <hgroup className='gp-list'>
+                <div className='gp-list'>
                     {mapped}
-                </hgroup>
+                </div>
             </div>
         )
     }

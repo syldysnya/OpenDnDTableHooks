@@ -2,6 +2,15 @@
     width: 100%;
 }
 
+.gp-page-box {
+    display: grid;
+    grid-template-columns: 4fr 2fr;
+}
+
+.gp-header img {
+    width: 100%;
+}
+
 .grey-line {
     border: 1px solid #dadada;
     margin: 0% 3%;
@@ -20,17 +29,22 @@
     padding: 5%;
 }
 
-.reservation-box {
-    display: flex;
-    border: 1px solid #dadada;
-    border-radius: 2px;
-    align-content: center;
-    justify-content: center;
-    align-items: flex-start;
-    background-color: white;
+.right-gpage {
 
-    div {
-        font-size: 20px;
+    padding: 0 20% 0 5%;
+
+    .reservation-box {
+        display: flex;
+        border: 1px solid #dadada;
+        border-radius: 2px;
+        align-content: center;
+        justify-content: center;
+        align-items: flex-start;
+        background-color: white;
+
+        div {
+            font-size: 20px;
+        }
     }
 
     h1 {
@@ -64,26 +78,41 @@
     margin-top: -4%;
 }
 
-.gp-info-navbar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2% 20% 2.4% 3%;
-    background-color: white;
+.left-gpage {
+    padding: 0 5% 0 10%;
+    
+    .gp-info-navbar {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2% 20% 2.4% 3%;
+        background-color: white;
 
+    }
 }
 
 .gp-gallery {
     display: grid;
-    grid-template-columns: 30% 40% 15% 15%;
-    grid-template-rows: 50%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 150px 150px;
     column-gap: 2px;
-    grid-row-gap: 2px;
+    row-gap: 2px;
     margin: 0;
     
     img {
-        width: 100px
+        width: 100%;
     }
     
+}
+
+.confirmation-box {
+    padding: 5% 10% 0 10%;
+    .res-details {
+
+        img {
+            width: 100px;
+            height: auto;
+        }
+    }
 }

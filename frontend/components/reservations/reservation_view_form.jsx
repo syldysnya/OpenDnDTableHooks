@@ -26,7 +26,7 @@ class ReservationViewForm extends React.Component {
     }
 
     render() {
-
+        debugger
         return (
             <div className='reservation-completion'>
                 <div className='reservation-completion-form'>
