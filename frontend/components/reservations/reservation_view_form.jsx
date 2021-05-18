@@ -21,15 +21,10 @@ class ReservationViewForm extends React.Component {
         this.props.location.aboutProps.createReservation(this.state)
             .then((res) => {
                 return this.props.history.push({
-                pathname: `/book/view/${res.reservation.id}`,
-                // reservation: this.state,
-                // gamePlace: this.props.location.aboutProps.gamePlace,
-                // player: this.props.location.aboutProps.player,
-                // fetchReservation: this.props.fetchReservation
+                pathname: `/book/view/${res.reservation.id}`
             })
         }
-            )
-    }
+    )}
 
     render() {
         if (!this.props.location.aboutProps.reservation.gameDate) return null;

@@ -5,6 +5,7 @@ class ModifyForm extends React.Component {
         super(props)
         debugger
         this.state = {
+            id: props.location.aboutProps.reservation.id,
             gameDate: props.location.aboutProps.reservation.gameDate,
             gameStart: props.location.aboutProps.reservation.gameStart,
             playersNum: props.location.aboutProps.reservation.playersNum,
@@ -30,14 +31,13 @@ class ModifyForm extends React.Component {
 
     handleClick(e) {
         e.preventDefault();
+        debugger
         this.props.location.aboutProps.editReservation(this.state)
             .then((res) => {
                 debugger
                 return this.props.history.push({
                     pathname: `/book/view/${res.reservation.id}`,
-                    // reservation: this.state,
-                    // gamePlace: this.props.location.aboutProps.gamePlace,
-                    // player: this.props.location.aboutProps.player,
+                    
                 })
             }
         )
