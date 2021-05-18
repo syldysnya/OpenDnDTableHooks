@@ -1,1 +1,1 @@
-json.extract! reservation, :id, :game_date, :game_start, :players_num, :dnd_campaign_id, :game_place_id, :player_id, :confirmation_num, :add_info
+json.extract! reservation, :id, :game_date, :game_start, :players_num, :dnd_campaign_id, :game_place_id, :player_id, :confirmation_num, :add_info, :canceled

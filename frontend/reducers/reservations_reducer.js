@@ -4,7 +4,7 @@ import { RECEIVE_ALL_RESERVATIONS, RECEIVE_RESERVATION } from "../actions/reserv
 
 const reservationsReducer = (state = {}, action) => {
     Object.freeze(state);
-
+    
     switch (action.type) {
         case RECEIVE_ALL_RESERVATIONS:
             return action.reservations;

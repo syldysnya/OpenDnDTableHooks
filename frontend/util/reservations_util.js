@@ -32,3 +32,13 @@ export const createReservation = reservation => {
     })
 }
 
+export const editReservation = reservation => {
+    reservation = convertToSnakeCase(reservation);
+
+    return $.ajax({
+        method: 'PATCH',
+        url: `/api/reservations/${reservation.id}`,
+        data: { reservation }
+    })
+}
+

@@ -13,10 +13,11 @@ const receiveReservation = reservation => ({
     reservation
 });
 
-export const fetchAllReservations = () => dispatch => (
-    ApiUtil.fetchAllReservations()
+export const fetchAllReservations = () => dispatch => {
+    
+    return ApiUtil.fetchAllReservations()
         .then(reservations => dispatch(receiveAllReservations(reservations)))
-);
+};
 
 export const fetchReservation = reservationId => dispatch => (
     ApiUtil.fetchReservation(reservationId)
@@ -25,5 +26,10 @@ export const fetchReservation = reservationId => dispatch => (
 
 export const createReservation = reservation => dispatch => (
     ApiUtil.createReservation(reservation)
+        .then(reservation => dispatch(receiveReservation(reservation)))
+)
+
+export const editReservation = reservation => dispatch => (
+    ApiUtil.editReservation(reservation)
         .then(reservation => dispatch(receiveReservation(reservation)))
 )

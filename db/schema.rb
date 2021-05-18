@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_15_210023) do
+ActiveRecord::Schema.define(version: 2021_05_18_012514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(version: 2021_05_15_210023) do
     t.datetime "updated_at", null: false
     t.string "confirmation_num", null: false
     t.text "add_info"
+    t.boolean "canceled", default: false, null: false
     t.index ["dnd_campaign_id"], name: "index_reservations_on_dnd_campaign_id"
     t.index ["game_place_id"], name: "index_reservations_on_game_place_id"
     t.index ["player_id"], name: "index_reservations_on_player_id"

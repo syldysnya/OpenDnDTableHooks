@@ -1,7 +1,4 @@
 import React from 'react';
-import { connect } from "react-redux";
-import { withRouter } from 'react-router';
-import { fetchGamePlace } from '../../actions/game_place_actions';
 
 class ReservationViewFormConf extends React.Component {
     
@@ -27,4 +24,4 @@ class ReservationViewFormConf extends React.Component {
     }
 };
 
-export default withRouter(ReservationViewFormConf);
+export default ReservationViewFormConf;

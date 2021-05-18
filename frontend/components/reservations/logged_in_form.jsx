@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 class LoggedInForm extends React.Component {
     constructor(props) {
         super(props)
-        // debugger
+        
         this.state = {
             gameDate: props.reservation.gameDate,
             gameStart: props.reservation.gameStart,

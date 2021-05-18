@@ -1,6 +1,4 @@
 import React from 'react';
-import { Redirect } from 'react-router';
-import ReservationContainer from './reservations_index_container';
 
 class ReservationViewForm extends React.Component {
     constructor(props) {

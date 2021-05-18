@@ -398,22 +398,30 @@ dndcamp3 = DndCampaign.create!(
 )
 
 reserv1 = Reservation.create!(
-    game_date: '05/01/2021',
+    game_date: '07/01/2021',
     game_start: '6:00 PM',
     players_num: 2,
     dnd_campaign_id: dndcamp1.id,
     game_place_id: gPlace2.id,
     player_id: player2.id,
-    confirmation_num: '1234567892',
-    add_info: 'Ill be with friends'
+    confirmation_num: '45623',
+    add_info: 'Ill be with friends',
+    canceled: false
+)
+
+reserv1 = Reservation.create!(
+    game_date: '08/01/2021',
+    game_start: '4:00 PM',
+    players_num: 2,
+    dnd_campaign_id: dndcamp2.id,
+    game_place_id: gPlace3.id,
+    player_id: player1.id,
+    confirmation_num: '12345',
+    add_info: 'Ill be with friends',
+    canceled: false
 )
 
 favorites = Favorite.create!(
     game_place_id: gPlace3.id,
     player_id: player3.id
 )
-
-# 10.times do 
-#     random_num = Random.rand(30)
-#     gPlace1.images.attach(io: File.open(`/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_#{random_num}.jpeg`), filename: `img_#{random_num}.jpeg`)
-# end
