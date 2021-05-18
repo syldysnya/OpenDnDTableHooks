@@ -3,13 +3,19 @@ import React from 'react';
 class ReservationViewForm extends React.Component {
     constructor(props) {
         super(props)
-        
+        debugger
         this.state = props.location.aboutProps.reservation;
         this.handleClick = this.handleClick.bind(this);
     }
 
     componentDidMount() {
         this.setState({ gameStart: this.props.location.aboutProps.gameStart})
+    }
+
+    componentDidUpdate(prevState) {
+        if (prevState.location.aboutProps.reservation !== this.state ) {
+            this.props.location.aboutProps.createReservation(this.state)
+        }
     }
 
     update(field) {
@@ -19,16 +25,16 @@ class ReservationViewForm extends React.Component {
     handleClick(e) {
         debugger
         e.preventDefault();
-        this.props.location.aboutProps.createReservation(this.state)
-            .then(this.props.history.push({
-                pathname: `/book/view/${reservation.id}`,
+        history.push({
+                pathname: `/book/view/`,
                 reservation: this.state,
                 gamePlace: this.props.location.aboutProps.gamePlace,
                 player: this.props.location.aboutProps.player,
-            }));
+            });
     }
 
     render() {
+        if (!this.props.location.aboutProps.reservation.gameDate) return null;
         
         return (
             <div className='reservation-completion'>
@@ -36,21 +42,21 @@ class ReservationViewForm extends React.Component {
                     <p>You’re almost done!</p>
                     <h1>{this.props.location.aboutProps.gamePlace.name}</h1>
                     <ul className='reservation-info'>
-                        <i class="far fa-calendar"></i>
+                        <i className="far fa-calendar"></i>
                         <li id='1'>{this.state.gameDate}</li>
-                        <i class="far fa-clock"></i>
+                        <i className="far fa-clock"></i>
                         <li id='2'>{this.state.gameStart}</li>
-                        <i class="far fa-user"></i>
+                        <i className="far fa-user"></i>
                         <li id='3'>{this.state.playersNum} people</li>
                     </ul>
                     <h2>Game session details</h2>
                     <h3>{this.props.location.aboutProps.player.lname} {this.props.location.aboutProps.player.fname}</h3>
                     <form className='reservation-completion-box'>
-                        <select className='phone-codes'>
-                            <option className='Canada'>🇨🇦</option>
-                            <option className='Mexico'>🇲🇽</option>
-                            <option className='Russia'>🇷🇺</option>
-                            <option selected className="USA">🇺🇸</option>
+                        <select className='phone-codes' defaultValue='USA'>
+                            <option value='Canada' className='Canada'>🇨🇦</option>
+                            <option value='Mexico' className='Mexico'>🇲🇽</option>
+                            <option value='Russia' className='Russia'>🇷🇺</option>
+                            <option value='USA' className="USA">🇺🇸</option>
                         </select>
                         <select className='adventure-type-list'>
                             <option value="1">1</option>

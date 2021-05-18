@@ -14,7 +14,8 @@ class LoggedInForm extends React.Component {
             playerId: props.reservation.playerId,
             confirmation_num: props.reservation.confirmation_num,
             addInfo: props.reservation.addInfo,
-            renderTimeOpts: false
+            renderTimeOpts: false,
+            saved: false
         }
 
         this.handleClick = this.handleClick.bind(this);
