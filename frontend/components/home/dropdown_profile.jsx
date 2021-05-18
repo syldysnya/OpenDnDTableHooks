@@ -10,17 +10,8 @@ class DropdownProfile extends React.Component {
 
         this.handleClick = this.handleClick.bind(this);
         this.hide = this.hide.bind(this);
-        // this.handleLink = this.handleLink.bind(this);
         this.handleDropdownProfile = this.handleDropdownProfile.bind(this)
     }
-
-    // handleLink(e) {
-    //     e.preventDefault();
-    //     
-    //     if (e.currentTarget.innerHTML === 'My Profile') {
-    //         <Redirect to='my/profile/info' />
-    //     }
-    // }
 
     hide(e) {
         e.preventDefault();
@@ -45,27 +36,23 @@ class DropdownProfile extends React.Component {
 
         return (
             <div className='dropdown-profile-content'>
-                <div
-                    className='button-profile'
-                    onClick={this.handleDropdownProfile}
-                    onBlur={this.handleDropdownProfile}>
-                    <i class="fas fa-dice-d20">
+                <div className='button-profile' tabIndex='0'
+                    onClick={this.handleDropdownProfile}>
+                    <i className="fas fa-dice-d20"></i>
                     { this.state.visible ? (
                     <div className='dropdown-profile-open'
                         onClick={e => e.stopPropagation()}>
                         <p>Hello, {this.props.player.lname}!</p>
                         <div className='break-auth'></div>
-                            {/* <button onClick={this.handleLink}></button> */}
-                            <Link className='menu-links' to='/my/profile/info'>My Profile</Link>
-                            <Link className='menu-links' to='/my/profile/info'>My Dining History</Link>
-                            <Link className='menu-links' to='/my/favorites'>My Saved Game Places</Link>
+                        <Link className='menu-links' to='/my/profile/info'>My Profile</Link>
+                        <Link className='menu-links' to='/my/profile/info'>My Dining History</Link>
+                        <Link className='menu-links' to='/my/favorites'>My Saved Game Places</Link>
                         <div className='signout-div'
                             onClick={this.handleClick}>
                             Sign out
                         </div>
                     </div>
                     ) : null}
-                    </i>
                 </div>
             </div>
         )

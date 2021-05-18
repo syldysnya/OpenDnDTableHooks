@@ -1,7 +1,7 @@
 class Player < ApplicationRecord
 
     validates :email, :session_token, uniqueness: true, presence: true
-    validates :password_digest, presence: true
+    validates :password_digest, :lname, :fname, presence: true
     validates :password, length: { minimum: 8 }, allow_nil: true
 
     belongs_to :city

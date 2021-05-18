@@ -18,27 +18,38 @@ class NavBar extends React.Component {
 
         const ifLoggedIn = () => {
             return (
-                <div className='dropdown-page-navbar'>
-                    <DropdownProfile
-                        player={this.props.player} 
-                        logout={this.props.logout}/>
-                </div>
+                <div className='home-nav'>
+                    <div className='home-nav-right'></div>
+                        <div className='dropdown-page-navbar'>
+                            <DropdownProfile
+                                player={this.props.player} 
+                                logout={this.props.logout}/>
+                        </div>
+                    <div className='home-nav-left'>
+                    </div>
+                </div >
             )
         };
 
         const notLoggedIn = () => {
             return (
-                <div className='auth_button'>
-                    <button
-                        className='btn btn-signup'
-                        onClick={this.handleClick}>
-                        Sign Up
-                    </button>
-                    <button
-                        className='btn btn-login'
-                        onClick={this.handleClick}>
-                        Sign In
-                </button>
+                <div className='home-nav'>
+                    <div className='home-nav-right'>
+                        <div className='auth_button'>
+                            <button
+                                className='btn btn-signup'
+                                onClick={this.handleClick}>
+                                Sign Up
+                            </button>
+                            <button
+                                className='btn btn-login'
+                                onClick={this.handleClick}>
+                                Sign In
+                            </button>
+                        </div>
+                    </div>
+                    <div className='home-nav-left'>
+                    </div>
                 </div>
             )
         };

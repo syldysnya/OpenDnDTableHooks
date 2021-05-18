@@ -17,14 +17,14 @@ class GamePlacesIndex extends React.Component {
         let mapped = this.props.gamePlaces.map((gPlace, i) => {
             
             return (
-                <li id={`game-place-${i}`}>
+                <li key={`game-place-${i}`}>
                     <div className='avatar'>
                         <img src={gPlace.avatarUrl}/>
                     </div>
                     <NavLink to={`/gameplaces/${gPlace.id}`}>
                         {gPlace.name}
                     </NavLink>
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i>
                     <p>[number of reviews</p>
                     <span>[dnd campaign title]</span>
                     <span>{gPlace.cityId}</span>

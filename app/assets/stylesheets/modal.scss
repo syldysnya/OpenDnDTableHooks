@@ -11,10 +11,16 @@
   background-color: rgba(0, 0, 0, 0.25);
 }
 
+.auth-error {
+  color: #da3743;
+  padding-top: 1%;
+  font-size: 15px;
+}
+
 .modal-content {
-  width: 400px;
+  width: 35%;
   border-radius: 5px;
-  padding: 30px 16px;
+  padding: 3% 2.5%;
   background-color: white;
   position: absolute;
   font-size: 15px;
@@ -23,10 +29,8 @@
 .first-message-column-modal {
   display: flex;
   justify-content: flex-start;
-  align-items: flex-end;
-  align-content: flex-end;
-  padding-top: 16px;
-  border-bottom: 1px solid #dadada;
+  padding-top: 3%;
+  border-bottom: 1px solid #dadada
   
   h1 {
     font-size: 22px;

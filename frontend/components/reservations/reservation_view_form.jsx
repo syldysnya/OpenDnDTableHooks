@@ -10,6 +10,10 @@ class ReservationViewForm extends React.Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
+    componentDidMount() {
+        this.setState({ gameStart: this.props.location.aboutProps.gameStart})
+    }
+
     update(field) {
         return e => this.setState({ [field]: e.target.value })
     };

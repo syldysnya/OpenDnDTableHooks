@@ -18,20 +18,8 @@ class Signup extends React.Component {
         this.handleInputCity = this.handleInputCity.bind(this)
     }
 
-    handleErrors() {
-        const mapped = this.props.errors.map((error, i) => {
-            return (
-                <li key={`error - ${i}`}>
-                    { error}
-                </li>
-            )
-        })
-        return (
-            <ul className='auth-errors'>
-                { mapped}
-            </ul>
-        )
-
+    handleErrors(field) {
+        return this.props.errors.filter(error => error.includes(field))
     }
 
     componentDidMount() {
@@ -59,11 +47,7 @@ class Signup extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        if (this.state.password === this.state.confirmPassword) {
-            this.props.signup(this.state).then(this.props.hideModal);
-        } else {
-            alert("The passwords don't match");
-        }
+        this.props.signup(this.state).then(this.props.hideModal);
     }
 
     render() {
@@ -75,7 +59,6 @@ class Signup extends React.Component {
                     </div>
                     <div className='row'>
                         <form className='user-form'>
-                            {this.handleErrors()}
                             <label htmlFor="fname-login">
                                 <input
                                     className='modal-input'
@@ -84,6 +67,9 @@ class Signup extends React.Component {
                                     placeholder='First Name *'
                                     onChange={this.handleInput('fname')}
                                 />
+                                <li className='auth-error' key='fname-error'>
+                                    {this.handleErrors('Fname')}
+                                </li>
                             </label>
                             <label htmlFor="lname-login">
                                 <input
@@ -93,6 +79,9 @@ class Signup extends React.Component {
                                     placeholder='Last Name *'
                                     onChange={this.handleInput('lname')}
                                 />
+                                <li className='auth-error' key='lname-error'>
+                                    {this.handleErrors('Lname')}
+                                </li>
                             </label>
                             <label htmlFor="email-login">
                                 <input
@@ -102,6 +91,9 @@ class Signup extends React.Component {
                                     placeholder='Enter Email *'
                                     onChange={this.handleInput('email')}
                                 />
+                                <li className='auth-error' key='email-error'>
+                                    {this.handleErrors('Email')}
+                                </li>
                             </label>
                             <label htmlFor="password-login">
                                 <input
@@ -111,6 +103,9 @@ class Signup extends React.Component {
                                     placeholder='Enter password *'
                                     onChange={this.handleInput('password')}
                                 />
+                                <li className='auth-error' key='password-error'>
+                                    {this.handleErrors('Password')}
+                                </li>
                             </label>
                             <label htmlFor="password-login2">
                                 <input
@@ -120,18 +115,24 @@ class Signup extends React.Component {
                                     placeholder='Re-enter password *'
                                     onChange={this.handleInput('confirmPassword')}
                                 />
+                                <li className='auth-error' key='password-error'>
+                                    {this.handleErrors('Password')}
+                                </li>
                             </label>
                             <label htmlFor="city-login">
                                 <select onChange={this.handleInputCity}
                                     className='modal-input'>
-                                    <option disabled selected>Primary city*</option>
+                                    <option disabled defaultValue='Primary city'>Primary city*</option>
                                     {this.props.cities.map((city, i) => (
-                                        <option value={i}>
+                                        <option key={`city-${i}`} value={i}>
                                             {city}
                                         </option>
                                     ))}
                                 </select>
                             </label>
+                            <li className='auth-error' key='city-error'>
+                                {this.handleErrors('City')}
+                            </li>
                             <button
                                 className='auth-button'
                                 onClick={this.handleSubmit}>

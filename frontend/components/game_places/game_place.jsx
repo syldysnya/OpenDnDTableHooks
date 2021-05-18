@@ -28,7 +28,7 @@ class GamePlace extends React.Component {
         const { gamePlace }  = this.props
         const img_mapped = gamePlace.pictureUrls.map((pic, i) => {
             return (
-                <li className={`gallery-pic-${i}`}>
+                <li className='gallery-pic' key={`gallery-pic-${i}`}>
                     <img src={pic} />
                 </li>
             )
@@ -48,7 +48,7 @@ class GamePlace extends React.Component {
                         </div>
                         <div className='gp-info-box' ref={this.myRef}>
                             <h1>{gamePlace.name}</h1>
-                            <p>{this.loremIpsumText()}</p>
+                            {this.loremIpsumText()}
                         </div>
                         <div className='gp-gallery'>
                             {img_mapped}
@@ -87,13 +87,13 @@ class GamePlace extends React.Component {
                                 </ul>
                             </div>
                             <div className='dnd-campaign-title-list'>
-                                <i class="fab fa-d-and-d"></i>
+                                <i className="fab fa-d-and-d"></i>
                                 <span> dnd titles</span>
                                 <p>dndtitle1, dndtitle2, dndtitle3</p>
                                 
                             </div>
                             <div className='additional-info-right-bar'>
-                                <i class="fas fa-hat-wizard"></i>
+                                <i className="fas fa-hat-wizard"></i>
                                 <span> Dress Code</span>
                                 <p>Casual Dress</p>
                             </div>

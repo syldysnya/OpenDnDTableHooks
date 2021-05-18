@@ -53,17 +53,12 @@ class ReservationCreateForm extends React.Component {
     TimePick = () => {
         
         return (
-            <select onChange={this.update('gameStart')} >
+            <select onChange={this.update('gameStart')} 
+                defaultValue='8:00 PM'>
                 {RES_TIME.map(t => {
-                    if (t === '8:00 PM') {
-                        return (
-                            <option selected value={t}>{t}</option>
-                            )
-                    } else {
-                        return (
-                            <option value={t}>{t}</option>
-                        )
-                    }
+                    return (
+                        <option key={t} value={t}>{t}</option>
+                    )
                 })}
             </select>
         )
@@ -91,17 +86,18 @@ class ReservationCreateForm extends React.Component {
                 <form className='create-form-box'>
                     <label className='info-create-form'>
                         Party Size
-                                <select onChange={this.update('playersNum')}>
-                            <option value="1">For 1</option>
-                            <option selected value="2">For 2</option>
-                            <option value="3">For 3</option>
-                            <option value="4">For 4</option>
-                            <option value="5">For 5</option>
+                            <select defaultValue='2'
+                                onChange={this.update('playersNum')}>
+                            <option key='1'value="1">For 1</option>
+                            <option key='2'value="2">For 2</option>
+                            <option key='3'value="3">For 3</option>
+                            <option key='4'value="4">For 4</option>
+                            <option key='5'value="5">For 5</option>
                         </select>
                     </label>
                     <label className='info-create-form'>
                         Date
-                                <div onChange={this.update('gameDate')}>
+                        <div onChange={this.update('gameDate')}>
                             {this.state.gameDate}
                         </div>
                     </label>

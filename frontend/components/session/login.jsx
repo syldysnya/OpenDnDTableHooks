@@ -12,20 +12,8 @@ class Login extends React.Component {
         this.demoSubmit = this.demoSubmit.bind(this);
     }
 
-    handleErrors() {
-        const mapped = this.props.errors.map((error, i) => {
-            return (
-                <li key={`error - ${i}`}>
-                    { error }
-                </li>
-            )
-        })
-        return(
-            <ul className='auth-errors'>
-                { mapped }
-            </ul>
-        )
-
+    handleErrors(field) {
+        return this.props.errors.filter(error => error.includes(field))
     }
 
     componentWillUnmount() {
@@ -59,7 +47,6 @@ class Login extends React.Component {
                 </div>
                 <div className='row'>
                     <form className='user-form'>
-                        {this.handleErrors()}
                         <label htmlFor="email-login">
                             <input
                                 className='modal-input'
@@ -68,6 +55,9 @@ class Login extends React.Component {
                                 placeholder='Email'
                                 onChange={this.handleInput('email')}
                             />
+                            <li className='auth-error' key='fname-error'>
+                                {this.handleErrors('Wrong')}
+                            </li>
                         </label>
                         <label htmlFor="password-login">
                             <input
@@ -77,6 +67,9 @@ class Login extends React.Component {
                                 placeholder='Password'
                                 onChange={this.handleInput('password')}
                             />
+                            <li className='auth-error' key='fname-error'>
+                                {this.handleErrors('Wrong')}
+                            </li>
                         </label>
                         <button type='submit'
                             className='auth-button'

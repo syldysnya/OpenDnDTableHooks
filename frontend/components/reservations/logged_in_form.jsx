@@ -4,9 +4,16 @@ import { NavLink } from 'react-router-dom';
 class LoggedInForm extends React.Component {
     constructor(props) {
         super(props)
-         
+        // debugger
         this.state = {
-            reservation: props.reservation,
+            gameDate: props.reservation.gameDate,
+            gameStart: props.reservation.gameStart,
+            playersNum: props.reservation.playersNum,
+            dndCampaignId: props.reservation.dndCampaignId,
+            gamePlaceId: props.reservation.gamePlaceId,
+            playerId: props.reservation.playerId,
+            confirmation_num: props.reservation.confirmation_num,
+            addInfo: props.reservation.addInfo,
             renderTimeOpts: false
         }
 
@@ -19,9 +26,15 @@ class LoggedInForm extends React.Component {
         this.setState({ renderTimeOpts: true })
     }
 
+    // componentDidUpdate(prevProps) {
+    //     if (prevProps.reservation.playersNum !== this.props.playersNum) {
+    //         this.setState({ playersNum: this.props.playersNum })
+    //     } else if (prevProps.reservation.gameStart !== this.props.gameStart) {
+    //         this.setState({ gameStart: this.props.gameStart })
+    //     }
+    // }
+
     handleClick(e) {
-        
-        // e.preventDefault();
         this.setState({ gameStart: e.currentTarget.innerHTML })
     }
 
@@ -54,12 +67,13 @@ class LoggedInForm extends React.Component {
 
         const mapped = timeOptions.map((t, i) => {
             return (
-                <li id={i}>
+                <li key={`btn-time-${i}`}>
                     <NavLink onClick={this.handleClick}
                         className='auth-button' to={{
                             pathname: '/booking/details',
                             aboutProps: {
-                                reservation: this.state.reservation,
+                                reservation: this.props.reservation,
+                                gameStart: t,
                                 gamePlace: this.props.gamePlace,
                                 player: this.props.player,
                                 createReservation: this.props.createReservation,
@@ -85,7 +99,7 @@ class LoggedInForm extends React.Component {
         let buttonForm;
         
         if (this.state.renderTimeOpts) {
-            buttonForm = this.timeOptions(this.state.reservation.gameStart)
+            buttonForm = this.timeOptions(this.props.reservation.gameStart)
         } else {
             buttonForm = <button onClick={this.handleTable}>
                             Find a table
