@@ -3,13 +3,24 @@ import React from 'react';
 class ReservationViewForm extends React.Component {
     constructor(props) {
         super(props)
-        
-        this.state = props.location.aboutProps.reservation;
+
+        this.state = {
+            gameDate: props.reservation.gameDate,
+            gameStart: props.reservation.gameStart,
+            playersNum: props.reservation.playersNum,
+            dndCampaignId: props.reservation.dndCampaignId,
+            gamePlaceId: props.reservation.gamePlaceId,
+            playerId: props.reservation.playerId,
+            confirmation_num: props.reservation.confirmation_num,
+            addInfo: props.reservation.addInfo,
+            renderTimeOpts: false,
+            saved: false
+        }
         this.handleClick = this.handleClick.bind(this);
     }
 
     componentDidMount() {
-        this.setState({ gameStart: this.props.location.aboutProps.gameStart})
+        this.setState({ gameStart: this.props.gameStart })
     }
 
     update(field) {
@@ -18,27 +29,26 @@ class ReservationViewForm extends React.Component {
 
     handleClick(e) {
         e.preventDefault();
-        this.props.location.aboutProps.createReservation(this.state)
+        this.props.editReservation(this.state)
             .then((res) => {
                 return this.props.history.push({
-                pathname: `/book/view/${res.reservation.id}`,
-                // reservation: this.state,
-                // gamePlace: this.props.location.aboutProps.gamePlace,
-                // player: this.props.location.aboutProps.player,
-                // fetchReservation: this.props.fetchReservation
-            })
-        }
-            )
+                    pathname: `/book/view/${res.reservation.id}`,
+                    reservation: this.state,
+                    gamePlace: this.props.gamePlace,
+                    player: this.props.player,
+                })
+            }
+        )
     }
 
     render() {
-        if (!this.props.location.aboutProps.reservation.gameDate) return null;
-        
+        if (!this.props.reservation.gameDate) return null;
+
         return (
             <div className='reservation-completion'>
                 <div className='reservation-completion-form'>
                     <p>You’re almost done!</p>
-                    <h1>{this.props.location.aboutProps.gamePlace.name}</h1>
+                    <h1>{this.props.gamePlace.name}</h1>
                     <ul className='reservation-info'>
                         <i className="far fa-calendar"></i>
                         <li id='1'>{this.state.gameDate}</li>
@@ -48,7 +58,7 @@ class ReservationViewForm extends React.Component {
                         <li id='3'>{this.state.playersNum} people</li>
                     </ul>
                     <h2>Game session details</h2>
-                    <h3>{this.props.location.aboutProps.player.lname} {this.props.location.aboutProps.player.fname}</h3>
+                    <h3>{this.props.player.lname} {this.props.location.aboutProps.player.fname}</h3>
                     <form className='reservation-completion-box'>
                         <select className='phone-codes' defaultValue='USA'>
                             <option value='Canada' className='Canada'>🇨🇦</option>
@@ -61,11 +71,11 @@ class ReservationViewForm extends React.Component {
                             <option value="2">2</option>
                             <option value="3">3</option>
                         </select>
-                        <input type="text" onChange={this.update('phoneNum')}/>
-                        <input type="text" onChange={this.update('email')}/>
+                        <input type="text" onChange={this.update('phoneNum')} />
+                        <input type="text" onChange={this.update('email')} />
                         <textarea className='Additional-info-inp'
-                                onChange={this.update('add_info')}
-                                placeholder='Add a special request (optional)'/>
+                            onChange={this.update('add_info')}
+                            placeholder='Add a special request (optional)' />
                         <button className='auth-button'
                             onClick={this.handleClick}>
                             Complete Reservation

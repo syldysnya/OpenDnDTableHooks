@@ -1,17 +1,26 @@
 import React from 'react';
 import EditForm from './edit_form';
-import EditFormContainer from './edit_form_container';
 import ReservationViewFormConf from './reservation_view_form_conf';
 
 class ReservationItem extends React.Component {
     constructor(props) {
         super(props)
-        this.state = props.reservations;
+    }
+
+
+    componentDidMount() {
+        this.props.fetchAllGamePlaces();
+        this.props.fetchReservation(this.props.match.params.reservationId)
     }
 
     render() {
+        let reservation = this.props.reservations;
+
+        if (!this.props.reservations) return null;
+        
+        
+        debugger
         let gamePlace;
-        let reservation = this.state;
         this.props.gamePlaces.map(gp => {
             if (reservation.gamePlaceId === gp.id) {
                 gamePlace = gp
@@ -20,22 +29,21 @@ class ReservationItem extends React.Component {
         
         let player;
         this.props.players.map(p => {
-            debugger
-            if (reservation.playerId === parseInt(p.id)) {
+            if (reservation && reservation.playerId === parseInt(p.id)) {
                 player = p
             }
         })
 
-        // debugger
         return (
             <div>
                 <ReservationViewFormConf reservation={this.props.reservations}
                                             gamePlace={gamePlace}
                                             player={player} />
-                <EditFormContainer reservation={this.props.reservations}
+                <EditForm reservation={this.props.reservations}
                                     gamePlace={gamePlace}
                                     player={player}
                                     editReservation={this.props.editReservation}
+                                    fetchReservation={this.props.fetchReservation}
                                     formType='Modify'/>
             </div>
         )

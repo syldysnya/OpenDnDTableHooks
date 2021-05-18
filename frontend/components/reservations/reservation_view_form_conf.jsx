@@ -4,6 +4,8 @@ class ReservationViewFormConf extends React.Component {
     
     render() {
         debugger
+        if (!this.props.gamePlace) return null;
+
         return (
             <div className='confirmation-box'>
                 <div className='green-bos-confirmation'>

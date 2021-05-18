@@ -32,7 +32,6 @@ const RES_TIME = [
 class EditForm extends React.Component {
     constructor(props) {
         super(props)
-        debugger
         this.state = {
             gameDate: props.reservation.gameDate,
             gameStart: props.reservation.gameStart,
@@ -45,7 +44,6 @@ class EditForm extends React.Component {
             showed: false
         };
 
-        // this.handleSubmit = this.handleSubmit.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.handleButton = this.handleButton.bind(this);
     }
@@ -57,10 +55,6 @@ class EditForm extends React.Component {
     handleButton() {
         this.setState({ showed: true })
     }
-
-    // handleSubmit(e) {
-    //     this.props.editReservation(this.state);
-    // }
 
     handleClick(e) {
         this.setState({ gameStart: e.currentTarget.innerHTML })
@@ -116,10 +110,13 @@ class EditForm extends React.Component {
                 <li key={`btn-time-${i}`}>
                     <NavLink onClick={this.handleClick}
                         className='auth-button' to={{
-                            pathname: '/booking/details',
+                            pathname: '/booking/details/edit',
                             aboutProps: {
                                 reservation: this.props.reservation,
-                                gameStart: t
+                                gameStart: t,
+                                gamePlace: this.props.gamePlace,
+                                player: this.props.player,
+                                editReservation: this.props.editReservation
                             }
                         }} exact>
                         {t}
