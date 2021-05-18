@@ -5,6 +5,7 @@ import ModalContainer from './modal/modal_container'
 import GamePLaceContainer from './game_places/game_place_container';
 import ReservationViewForm from './reservations/reservation_view_form';
 import ReservationsIndexContainer from './reservations/reservations_index_container'
+// import reservation_item_container from './reservations/reservation_item_container';
 import ReservationItem from './reservations/reservation_item';
 
 const App = () => (

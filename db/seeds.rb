@@ -403,13 +403,13 @@ reserv1 = Reservation.create!(
     players_num: 2,
     dnd_campaign_id: dndcamp1.id,
     game_place_id: gPlace2.id,
-    player_id: player2.id,
+    player_id: player1.id,
     confirmation_num: '45623',
     add_info: 'Ill be with friends',
     canceled: false
 )
 
-reserv1 = Reservation.create!(
+reserv2 = Reservation.create!(
     game_date: '08/01/2021',
     game_start: '4:00 PM',
     players_num: 2,

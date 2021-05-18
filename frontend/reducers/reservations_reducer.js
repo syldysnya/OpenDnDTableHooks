@@ -7,6 +7,7 @@ const reservationsReducer = (state = {}, action) => {
     
     switch (action.type) {
         case RECEIVE_ALL_RESERVATIONS:
+            debugger
             return action.reservations;
         case RECEIVE_RESERVATION:
             return Object.assign({}, state, { [action.reservation.id]: action.reservation })
