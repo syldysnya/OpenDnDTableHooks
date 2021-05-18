@@ -109,7 +109,6 @@ class ReservationCreateForm extends React.Component {
                 {createForm}
             </div>
         )
-        // return this.props.currentPlayer ? ifLoggedIn() : ifLoggedOut()
     }
 };
 

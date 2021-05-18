@@ -17,10 +17,11 @@ class ReservationViewForm extends React.Component {
     };
 
     handleClick(e) {
+        debugger
         e.preventDefault();
         this.props.location.aboutProps.createReservation(this.state)
             .then(this.props.history.push({
-                pathname: '/book/view',
+                pathname: `/book/view/${reservation.id}`,
                 reservation: this.state,
                 gamePlace: this.props.location.aboutProps.gamePlace,
                 player: this.props.location.aboutProps.player,

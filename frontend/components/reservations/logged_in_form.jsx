@@ -26,14 +26,6 @@ class LoggedInForm extends React.Component {
         this.setState({ renderTimeOpts: true })
     }
 
-    // componentDidUpdate(prevProps) {
-    //     if (prevProps.reservation.playersNum !== this.props.playersNum) {
-    //         this.setState({ playersNum: this.props.playersNum })
-    //     } else if (prevProps.reservation.gameStart !== this.props.gameStart) {
-    //         this.setState({ gameStart: this.props.gameStart })
-    //     }
-    // }
-
     handleClick(e) {
         this.setState({ gameStart: e.currentTarget.innerHTML })
     }

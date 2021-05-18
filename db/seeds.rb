@@ -47,22 +47,21 @@ gPlace1 = GamePlace.create!(
     dnd_campaign_id: 3
 )
 
-header1 = open('https://app-opendndtable-seed.s3.amazonaws.com/headers/1_header.jpeg')
+header1 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/headers/1_header.jpeg')
 gPlace1.photo.attach(io: header1, filename: '1_header.jpeg')
 
-avatar1 = open('https://app-opendndtable-seed.s3.amazonaws.com/gpavatars/1_avatar.jpeg')
+avatar1 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gpavatars/1_avatar.jpeg')
 gPlace1.avatar.attach(io: avatar1, filename: '1_avatar.jpeg')
 
-pictures1_1 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_1.jpeg')
-pictures1_2 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_2.jpeg')
-pictures1_3 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_3.jpeg')
-pictures1_4 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_4.jpeg')
-pictures1_5 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_5.jpeg')
-pictures1_6 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_6.jpeg')
-pictures1_7 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_7.jpeg')
-pictures1_8 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_8.jpeg')
-pictures1_9 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_9.jpeg')
-pictures1_10 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_10.jpeg')
+pictures1_1 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_1.jpeg')
+pictures1_2 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_2.jpeg')
+pictures1_3 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_3.jpeg')
+pictures1_4 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_4.jpeg')
+pictures1_5 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_5.jpeg')
+pictures1_6 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_6.jpeg')
+pictures1_7 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_7.jpeg')
+pictures1_8 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_8.jpeg')
+pictures1_9 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_9.jpeg')
 
 gPlace1.pictures.attach(
         {io: pictures1_1, filename: 'img_1.jpeg'},
@@ -73,8 +72,7 @@ gPlace1.pictures.attach(
         {io: pictures1_6, filename: 'img_6.jpeg'},
         {io: pictures1_7, filename: 'img_7.jpeg'},
         {io: pictures1_8, filename: 'img_8.jpeg'},
-        {io: pictures1_9, filename: 'img_9.jpeg'},
-        {io: pictures1_10, filename: 'img_10.jpeg'}
+        {io: pictures1_9, filename: 'img_9.jpeg'}
     )
 
 
@@ -91,22 +89,21 @@ gPlace2 = GamePlace.create!(
     dnd_campaign_id: 1
 )
 
-header2 = open('https://app-opendndtable-seed.s3.amazonaws.com/headers/2_header.jpeg')
+header2 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/headers/2_header.jpeg')
 gPlace2.photo.attach(io: header2, filename: '2_header.jpeg')
 
-avatar2 = open('https://app-opendndtable-seed.s3.amazonaws.com/gpavatars/2_avatar.jpeg')
+avatar2 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gpavatars/2_avatar.jpeg')
 gPlace2.avatar.attach(io: avatar2, filename: '2_avatar.jpeg')
 
-pictures2_11 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_11.jpeg')
-pictures2_12 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_12.jpeg')
-pictures2_13 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_13.jpeg')
-pictures2_14 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_14.jpeg')
-pictures2_15 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_15.jpeg')
-pictures2_16 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_16.jpeg')
-pictures2_17 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_17.jpeg')
-pictures2_18 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_18.jpeg')
-pictures2_19 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_19.jpeg')
-pictures2_20 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_20.jpeg')
+pictures2_11 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_11.jpeg')
+pictures2_12 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_12.jpeg')
+pictures2_13 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_13.jpeg')
+pictures2_14 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_14.jpeg')
+pictures2_15 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_15.jpeg')
+pictures2_16 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_16.jpeg')
+pictures2_17 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_17.jpeg')
+pictures2_18 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_18.jpeg')
+pictures2_19 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_19.jpeg')
 
 gPlace2.pictures.attach(
         {io: pictures2_11, filename: 'img_11.jpeg'},
@@ -117,8 +114,7 @@ gPlace2.pictures.attach(
         {io: pictures2_16, filename: 'img_16.jpeg'},
         {io: pictures2_17, filename: 'img_17.jpeg'},
         {io: pictures2_18, filename: 'img_18.jpeg'},
-        {io: pictures2_19, filename: 'img_19.jpeg'},
-        {io: pictures2_20, filename: 'img_20.jpeg'}
+        {io: pictures2_19, filename: 'img_19.jpeg'}
     )
 
 
@@ -135,22 +131,21 @@ gPlace3 = GamePlace.create!(
     dnd_campaign_id: 2
 )
 
-header3 = open('https://app-opendndtable-seed.s3.amazonaws.com/headers/3_header.jpeg')
+header3 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/headers/3_header.jpeg')
 gPlace3.photo.attach(io: header3, filename: '3_header.jpeg')
 
-avatar3 = open('https://app-opendndtable-seed.s3.amazonaws.com/gpavatars/3_avatar.jpeg')
+avatar3 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gpavatars/3_avatar.jpeg')
 gPlace3.avatar.attach(io: avatar3, filename: '3_avatar.jpeg')
 
-pictures3_21 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_21.jpeg')
-pictures3_22 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_22.jpeg')
-pictures3_23 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_23.jpeg')
-pictures3_24 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_24.jpeg')
-pictures3_25 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_25.jpeg')
-pictures3_26 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_26.jpeg')
-pictures3_27 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_27.jpeg')
-pictures3_28 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_28.jpeg')
-pictures3_29 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_29.jpeg')
-pictures3_30 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_30.jpeg')
+pictures3_21 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_21.jpeg')
+pictures3_22 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_22.jpeg')
+pictures3_23 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_23.jpeg')
+pictures3_24 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_24.jpeg')
+pictures3_25 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_25.jpeg')
+pictures3_26 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_26.jpeg')
+pictures3_27 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_27.jpeg')
+pictures3_28 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_28.jpeg')
+pictures3_29 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_29.jpeg')
 
 gPlace3.pictures.attach(
         {io: pictures3_21, filename: 'img_21.jpeg'},
@@ -161,8 +156,7 @@ gPlace3.pictures.attach(
         {io: pictures3_26, filename: 'img_26.jpeg'},
         {io: pictures3_27, filename: 'img_27.jpeg'},
         {io: pictures3_28, filename: 'img_28.jpeg'},
-        {io: pictures3_29, filename: 'img_29.jpeg'},
-        {io: pictures3_30, filename: 'img_30.jpeg'}
+        {io: pictures3_29, filename: 'img_29.jpeg'}
     )
 
 gPlace4 = GamePlace.create!(
@@ -178,22 +172,21 @@ gPlace4 = GamePlace.create!(
     dnd_campaign_id: 1
 )
 
-header4 = open('https://app-opendndtable-seed.s3.amazonaws.com/headers/4_header.jpeg')
+header4 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/headers/4_header.jpeg')
 gPlace4.photo.attach(io: header4, filename: '4_header.jpeg')
 
-avatar4 = open('https://app-opendndtable-seed.s3.amazonaws.com/gpavatars/4_avatar.jpeg')
+avatar4 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gpavatars/4_avatar.jpeg')
 gPlace4.avatar.attach(io: avatar4, filename: '4_avatar.jpeg')
 
-pictures1_1 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_1.jpeg')
-pictures1_2 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_2.jpeg')
-pictures1_3 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_3.jpeg')
-pictures1_4 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_4.jpeg')
-pictures1_5 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_5.jpeg')
-pictures1_6 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_6.jpeg')
-pictures1_7 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_7.jpeg')
-pictures1_8 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_8.jpeg')
-pictures1_9 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_9.jpeg')
-pictures1_10 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_10.jpeg')
+pictures1_1 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_1.jpeg')
+pictures1_2 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_2.jpeg')
+pictures1_3 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_3.jpeg')
+pictures1_4 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_4.jpeg')
+pictures1_5 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_5.jpeg')
+pictures1_6 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_6.jpeg')
+pictures1_7 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_7.jpeg')
+pictures1_8 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_8.jpeg')
+pictures1_9 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_9.jpeg')
 
 gPlace4.pictures.attach(
         {io: pictures1_1, filename: 'img_1.jpeg'},
@@ -204,8 +197,7 @@ gPlace4.pictures.attach(
         {io: pictures1_6, filename: 'img_6.jpeg'},
         {io: pictures1_7, filename: 'img_7.jpeg'},
         {io: pictures1_8, filename: 'img_8.jpeg'},
-        {io: pictures1_9, filename: 'img_9.jpeg'},
-        {io: pictures1_10, filename: 'img_10.jpeg'}
+        {io: pictures1_9, filename: 'img_9.jpeg'}
     )
 
 gPlace5 = GamePlace.create!(
@@ -221,22 +213,21 @@ gPlace5 = GamePlace.create!(
     dnd_campaign_id: 1
 )
 
-header5 = open('https://app-opendndtable-seed.s3.amazonaws.com/headers/5_header.jpeg')
+header5 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/headers/5_header.jpeg')
 gPlace5.photo.attach(io: header5, filename: '5_header.jpeg')
 
-avatar5 = open('https://app-opendndtable-seed.s3.amazonaws.com/gpavatars/5_avatar.jpeg')
+avatar5 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gpavatars/5_avatar.jpeg')
 gPlace5.avatar.attach(io: avatar5, filename: '5_avatar.jpeg')
 
-pictures3_21 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_21.jpeg')
-pictures3_22 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_22.jpeg')
-pictures3_23 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_23.jpeg')
-pictures3_24 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_24.jpeg')
-pictures3_25 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_25.jpeg')
-pictures3_26 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_26.jpeg')
-pictures3_27 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_27.jpeg')
-pictures3_28 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_28.jpeg')
-pictures3_29 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_29.jpeg')
-pictures3_30 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_30.jpeg')
+pictures3_21 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_21.jpeg')
+pictures3_22 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_22.jpeg')
+pictures3_23 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_23.jpeg')
+pictures3_24 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_24.jpeg')
+pictures3_25 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_25.jpeg')
+pictures3_26 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_26.jpeg')
+pictures3_27 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_27.jpeg')
+pictures3_28 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_28.jpeg')
+pictures3_29 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_29.jpeg')
 
 gPlace5.pictures.attach(
         {io: pictures3_21, filename: 'img_21.jpeg'},
@@ -247,8 +238,7 @@ gPlace5.pictures.attach(
         {io: pictures3_26, filename: 'img_26.jpeg'},
         {io: pictures3_27, filename: 'img_27.jpeg'},
         {io: pictures3_28, filename: 'img_28.jpeg'},
-        {io: pictures3_29, filename: 'img_29.jpeg'},
-        {io: pictures3_30, filename: 'img_30.jpeg'}
+        {io: pictures3_29, filename: 'img_29.jpeg'}
     )
 
 gPlace6 = GamePlace.create!(
@@ -264,22 +254,21 @@ gPlace6 = GamePlace.create!(
     dnd_campaign_id: 1
 )
 
-header6 = open('https://app-opendndtable-seed.s3.amazonaws.com/headers/6_header.jpeg')
+header6 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/headers/6_header.jpeg')
 gPlace6.photo.attach(io: header6, filename: '6_header.jpeg')
 
-avatar6 = open('https://app-opendndtable-seed.s3.amazonaws.com/gpavatars/6_avatar.jpeg')
+avatar6 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gpavatars/6_avatar.jpeg')
 gPlace6.avatar.attach(io: avatar6, filename: '6_avatar.jpeg')
 
-pictures2_11 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_11.jpeg')
-pictures2_12 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_12.jpeg')
-pictures2_13 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_13.jpeg')
-pictures2_14 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_14.jpeg')
-pictures2_15 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_15.jpeg')
-pictures2_16 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_16.jpeg')
-pictures2_17 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_17.jpeg')
-pictures2_18 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_18.jpeg')
-pictures2_19 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_19.jpeg')
-pictures2_20 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_20.jpeg')
+pictures2_11 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_11.jpeg')
+pictures2_12 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_12.jpeg')
+pictures2_13 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_13.jpeg')
+pictures2_14 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_14.jpeg')
+pictures2_15 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_15.jpeg')
+pictures2_16 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_16.jpeg')
+pictures2_17 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_17.jpeg')
+pictures2_18 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_18.jpeg')
+pictures2_19 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_19.jpeg')
 
 gPlace6.pictures.attach(
         {io: pictures2_11, filename: 'img_11.jpeg'},
@@ -290,8 +279,7 @@ gPlace6.pictures.attach(
         {io: pictures2_16, filename: 'img_16.jpeg'},
         {io: pictures2_17, filename: 'img_17.jpeg'},
         {io: pictures2_18, filename: 'img_18.jpeg'},
-        {io: pictures2_19, filename: 'img_19.jpeg'},
-        {io: pictures2_20, filename: 'img_20.jpeg'}
+        {io: pictures2_19, filename: 'img_19.jpeg'}
     )
 
 gPlace7 = GamePlace.create!(
@@ -307,22 +295,22 @@ gPlace7 = GamePlace.create!(
     dnd_campaign_id: 1
 )
 
-header7 = open('https://app-opendndtable-seed.s3.amazonaws.com/headers/7_header.jpeg')
+header7 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/headers/7_header.jpeg')
 gPlace7.photo.attach(io: header7, filename: '7_header.jpeg')
 
-avatar7 = open('https://app-opendndtable-seed.s3.amazonaws.com/gpavatars/7_avatar.jpeg')
+avatar7 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gpavatars/7_avatar.jpeg')
 gPlace7.avatar.attach(io: avatar7, filename: '7_avatar.jpeg')
 
-pictures2_11 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_11.jpeg')
-pictures2_12 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_12.jpeg')
-pictures2_13 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_13.jpeg')
-pictures2_14 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_14.jpeg')
-pictures2_15 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_15.jpeg')
-pictures2_16 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_16.jpeg')
-pictures2_17 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_17.jpeg')
-pictures2_18 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_18.jpeg')
-pictures2_19 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_19.jpeg')
-pictures2_20 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_20.jpeg')
+pictures2_11 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_11.jpeg')
+pictures2_12 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_12.jpeg')
+pictures2_13 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_13.jpeg')
+pictures2_14 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_14.jpeg')
+pictures2_15 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_15.jpeg')
+pictures2_16 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_16.jpeg')
+pictures2_17 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_17.jpeg')
+pictures2_18 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_18.jpeg')
+pictures2_19 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_19.jpeg')
+pictures2_20 = File.open('/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/gallery/img_20.jpeg')
 
 gPlace7.pictures.attach(
         {io: pictures2_11, filename: 'img_11.jpeg'},
@@ -333,8 +321,7 @@ gPlace7.pictures.attach(
         {io: pictures2_16, filename: 'img_16.jpeg'},
         {io: pictures2_17, filename: 'img_17.jpeg'},
         {io: pictures2_18, filename: 'img_18.jpeg'},
-        {io: pictures2_19, filename: 'img_19.jpeg'},
-        {io: pictures2_20, filename: 'img_20.jpeg'}
+        {io: pictures2_19, filename: 'img_19.jpeg'}
     )
 
 

@@ -8,7 +8,7 @@ class ReservationItem extends React.Component {
     render() {
         return (
             <div>
-                {/* <ReservationViewFormConf /> */}
+                <ReservationViewFormConf />
                 <EditFormContainer />
             </div>
         )
