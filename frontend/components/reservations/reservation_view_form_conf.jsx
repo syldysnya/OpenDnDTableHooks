@@ -3,19 +3,19 @@ import React from 'react';
 class ReservationViewFormConf extends React.Component {
     
     render() {
-
+        debugger
         return (
             <div className='confirmation-box'>
                 <div className='green-bos-confirmation'>
                     <h1>Thanks! Your reservation is confirmed.</h1>
-                    <p>Confirmation # {this.props.location.reservation.confirmation_num}</p>
+                    <p>Confirmation # {this.props.reservation.confirmation_num}</p>
                 </div>
                 <div className='res-details'>
-                    <img src={this.props.location.gamePlace.avatarUrl}/>
-                    <h1>{this.props.location.gamePlace.name}</h1>
-                    <span>{this.props.location.reservation.gameDate}</span>
-                    <span>{this.props.location.reservation.gameStart}</span>
-                    <p>{this.props.location.reservation.playersNum} people</p>
+                    <img src={this.props.gamePlace.avatarUrl}/>
+                    <h1>{this.props.gamePlace.name}</h1>
+                    <span>{this.props.reservation.gameDate}</span>
+                    <span>{this.props.reservation.gameStart}</span>
+                    <p>{this.props.reservation.playersNum} people</p>
                     <p>Modify</p>
                     <p>Cancel</p>
                 </div>

@@ -3,7 +3,7 @@ import React from 'react';
 class ReservationViewForm extends React.Component {
     constructor(props) {
         super(props)
-        debugger
+        
         this.state = props.location.aboutProps.reservation;
         this.handleClick = this.handleClick.bind(this);
     }
@@ -12,25 +12,22 @@ class ReservationViewForm extends React.Component {
         this.setState({ gameStart: this.props.location.aboutProps.gameStart})
     }
 
-    componentDidUpdate(prevState) {
-        if (prevState.location.aboutProps.reservation !== this.state ) {
-            this.props.location.aboutProps.createReservation(this.state)
-        }
-    }
-
     update(field) {
         return e => this.setState({ [field]: e.target.value })
     };
 
     handleClick(e) {
-        debugger
         e.preventDefault();
-        history.push({
-                pathname: `/book/view/`,
+        this.props.location.aboutProps.createReservation(this.state)
+            .then((res) => {
+                return this.props.history.push({
+                pathname: `/book/view/${res.reservation.id}`,
                 reservation: this.state,
                 gamePlace: this.props.location.aboutProps.gamePlace,
                 player: this.props.location.aboutProps.player,
-            });
+            })
+        }
+            )
     }
 
     render() {
