@@ -106,6 +106,7 @@ class EditForm extends React.Component {
         }
 
         const mapped = timeOptions.map((t, i) => {
+            debugger
             return (
                 <li key={`btn-time-${i}`}>
                     <NavLink onClick={this.handleClick}

@@ -1,18 +1,18 @@
 import React from 'react';
 
-class ReservationViewForm extends React.Component {
+class ModifyForm extends React.Component {
     constructor(props) {
         super(props)
-
+        debugger
         this.state = {
-            gameDate: props.reservation.gameDate,
-            gameStart: props.reservation.gameStart,
-            playersNum: props.reservation.playersNum,
-            dndCampaignId: props.reservation.dndCampaignId,
-            gamePlaceId: props.reservation.gamePlaceId,
-            playerId: props.reservation.playerId,
-            confirmation_num: props.reservation.confirmation_num,
-            addInfo: props.reservation.addInfo,
+            gameDate: props.location.aboutProps.reservation.gameDate,
+            gameStart: props.location.aboutProps.reservation.gameStart,
+            playersNum: props.location.aboutProps.reservation.playersNum,
+            dndCampaignId: props.location.aboutProps.reservation.dndCampaignId,
+            gamePlaceId: props.location.aboutProps.reservation.gamePlaceId,
+            playerId: props.location.aboutProps.reservation.playerId,
+            confirmation_num: props.location.aboutProps.reservation.confirmation_num,
+            addInfo: props.location.aboutProps.reservation.addInfo,
             renderTimeOpts: false,
             saved: false
         }
@@ -20,7 +20,8 @@ class ReservationViewForm extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({ gameStart: this.props.gameStart })
+        this.setState({
+            gameStart: this.props.location.aboutProps.reservation.gameStart })
     }
 
     update(field) {
@@ -29,26 +30,28 @@ class ReservationViewForm extends React.Component {
 
     handleClick(e) {
         e.preventDefault();
-        this.props.editReservation(this.state)
+        this.props.location.aboutProps.editReservation(this.state)
             .then((res) => {
+                debugger
                 return this.props.history.push({
                     pathname: `/book/view/${res.reservation.id}`,
-                    reservation: this.state,
-                    gamePlace: this.props.gamePlace,
-                    player: this.props.player,
+                    // reservation: this.state,
+                    // gamePlace: this.props.location.aboutProps.gamePlace,
+                    // player: this.props.location.aboutProps.player,
                 })
             }
         )
     }
 
     render() {
-        if (!this.props.reservation.gameDate) return null;
+        if (!this.props.location.aboutProps.reservation.gameDate) return null;
+        const { reservation, gamePlace, player } = this.props.location.aboutProps;
 
         return (
             <div className='reservation-completion'>
                 <div className='reservation-completion-form'>
                     <p>You’re almost done!</p>
-                    <h1>{this.props.gamePlace.name}</h1>
+                    <h1>{gamePlace.name}</h1>
                     <ul className='reservation-info'>
                         <i className="far fa-calendar"></i>
                         <li id='1'>{this.state.gameDate}</li>
@@ -58,7 +61,7 @@ class ReservationViewForm extends React.Component {
                         <li id='3'>{this.state.playersNum} people</li>
                     </ul>
                     <h2>Game session details</h2>
-                    <h3>{this.props.player.lname} {this.props.location.aboutProps.player.fname}</h3>
+                    <h3>{player.lname} {player.fname}</h3>
                     <form className='reservation-completion-box'>
                         <select className='phone-codes' defaultValue='USA'>
                             <option value='Canada' className='Canada'>🇨🇦</option>
@@ -98,4 +101,4 @@ class ReservationViewForm extends React.Component {
     }
 };
 
-export default ReservationViewForm;
+export default ModifyForm;

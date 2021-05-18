@@ -6,6 +6,7 @@ import GamePLaceContainer from './game_places/game_place_container';
 import ReservationViewForm from './reservations/reservation_view_form';
 import ReservationsIndexContainer from './reservations/reservations_index_container';
 import ReservationItemContainer from './reservations/reservation_item_container';
+import ModifyForm from './reservations/modify_form';
 
 const App = () => (
     <div>
@@ -14,6 +15,7 @@ const App = () => (
         <Route exact path='/my/profile/info' component={ReservationsIndexContainer}/>
         <Route exact path='/gameplaces/:gamePlaceId' component={GamePLaceContainer}/>
         <Route exact path='/booking/details' component={ReservationViewForm} />
+        <Route exact path='/booking/details/edit' component={ModifyForm} />
         <Route exact path='/book/view/:reservationId' component={ReservationItemContainer} />
         <Route exact path='/my/profile' component={ReservationsIndexContainer} />
     </div>
