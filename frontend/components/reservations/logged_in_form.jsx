@@ -94,7 +94,7 @@ class LoggedInForm extends React.Component {
         if (this.state.renderTimeOpts) {
             buttonForm = this.timeOptions(this.props.reservation.gameStart)
         } else {
-            buttonForm = <button onClick={this.handleTable}>
+            buttonForm = <button className='auth-button btn-find'onClick={this.handleTable}>
                             Find a table
                         </button>
         }

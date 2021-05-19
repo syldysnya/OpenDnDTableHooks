@@ -81,31 +81,31 @@ class ReservationCreateForm extends React.Component {
         }
 
         return (
-            <div>
-                <h1>Make a reservation</h1>
-                <form className='create-form-box'>
-                    <label className='info-create-form'>
-                        Party Size
-                            <select defaultValue='2'
-                                onChange={this.update('playersNum')}>
+            <div className='reservation-box-new'>
+                <div className='make-res-text'>
+                    <h1>Make a reservation</h1>
+                </div>
+                    <div className='info-create-form'>
+                        <span>Party Size</span>
+                        <select defaultValue='2'
+                            onChange={this.update('playersNum')}>
                             <option key='1'value="1">For 1</option>
                             <option key='2'value="2">For 2</option>
                             <option key='3'value="3">For 3</option>
                             <option key='4'value="4">For 4</option>
                             <option key='5'value="5">For 5</option>
                         </select>
-                    </label>
-                    <label className='info-create-form'>
-                        Date
+                    </div>
+                    <div className='info-create-date'>
+                        <span>Date</span>
                         <div onChange={this.update('gameDate')}>
                             {this.state.gameDate}
                         </div>
-                    </label>
-                    <label className='info-create-form'>
-                        Time
+                    </div>
+                    <div className='info-create-time'>
+                    <span>Time</span>
                         {this.TimePick()}
-                    </label>
-                </form>
+                    </div>
                 {createForm}
             </div>
         )

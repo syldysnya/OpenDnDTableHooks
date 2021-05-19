@@ -26,7 +26,10 @@ class DropdownProfile extends React.Component {
     }
 
     handleDropdownProfile(e) {
-        e.preventDefault();
+        if (e.target.contains(e.relatedTarget)) {
+            return null;
+        }
+
         this.setState({
             visible: !this.state.visible
         })
