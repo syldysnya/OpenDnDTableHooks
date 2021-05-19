@@ -412,3 +412,113 @@ favorites = Favorite.create!(
     game_place_id: gPlace3.id,
     player_id: player3.id
 )
+
+review1 = Review.create!(
+    description: 'Hong Kong Phooey, number one super guy. Hong Kong Phooey, quicker than the human eye. He’s got style, a groovy style, and a car that just won’t stop. When the going gets tough, he’s really rough, with a Hong Kong Phooey chop (Hi-Ya!). Hong Kong Phooey, number one super guy. Hong Kong Phooey, quicker than the human eye. Hong Kong Phooey, he’s fan-riffic!',
+    campaign_rating: 1,
+    service_rating: 3,
+    org_rating: 4,
+    overall_rating: 2.8,
+    dnd_campaign_id: dndcamp1.id,
+    game_place_id: gPlace2.id,
+    player_id: player2.id
+)
+
+review2 = Review.create!(
+    description: 'One for all and all for one, Muskehounds are always ready. One for all and all for one, helping everybody. One for all and all for one, it’s a pretty story. Sharing everything with fun, that’s the way to be. One for all and all for one, Muskehounds are always ready. One for all and all for one, helping everybody. One for all and all for one, can sound pretty corny. If you’ve got a problem chum, think how it could be.',
+    campaign_rating: 5,
+    service_rating: 5,
+    org_rating: 5,
+    overall_rating: 5.0,
+    dnd_campaign_id: dndcamp2.id,
+    game_place_id: gPlace3.id,
+    player_id: player3.id,
+)
+
+review3 = Review.create!(
+    description: 'Barnaby The Bear’s my name, never call me Jack or James, I will sing my way to fame, Barnaby the Bear’s my name. Birds taught me to sing, when they took me to their king, first I had to fly, in the sky so high so high, so high so high so high, so — if you want to sing this way, think of what you’d like to say, add a tune and you will see, just how easy it can be. Treacle pudding, fish and chips, fizzy drinks and liquorice, flowers, rivers, sand and sea, snowflakes and the stars are free.',
+    campaign_rating: 3,
+    service_rating: 3,
+    org_rating: 3,
+    overall_rating: 3.0,
+    dnd_campaign_id: dndcamp1.id,
+    game_place_id: gPlace2.id,
+    player_id: player4.id
+)
+
+review4 = Review.create!(
+    description: 'I never spend much time in school but I taught ladies plenty. It’s true I hire my body out for pay, hey hey. I’ve gotten burned over Cheryl Tiegs, blown up for Raquel Welch. But when I end up in the hay it’s only hay, hey hey. I might jump an open drawbridge, or Tarzan from a vine. ’Cause I’m the unknown stuntman that makes Eastwood look so fine.',
+    campaign_rating: 1, 
+    service_rating: 1,
+    org_rating: 1,
+    overall_rating: 1.0,
+    dnd_campaign_id: dndcamp3.id,
+    game_place_id: gPlace1.id,
+    player_id: player4.id
+)
+
+review5 = Review.create!(
+    description: 'Barnaby The Bear’s my name, never call me Jack or James, I will sing my way to fame, Barnaby the Bear’s my name. Birds taught me to sing, when they took me to their king, first I had to fly, in the sky so high so high, so high so high so high, so — if you want to sing this way, think of what you’d like to say, add a tune and you will see, just how easy it can be. Treacle pudding, fish and chips, fizzy drinks and liquorice, flowers, rivers, sand and sea, snowflakes and the stars are free.',
+    campaign_rating: 5,
+    service_rating: 5,
+    org_rating: 5,
+    overall_rating: 5.0,
+    dnd_campaign_id: dndcamp2.id,
+    game_place_id: gPlace3.id,
+    player_id: player1.id
+)
+
+review6 = Review.create!(
+    description: 'This is my boss, Jonathan Hart, a self-made millionaire, he’s quite a guy. This is Mrs H., she’s gorgeous, she’s one lady who knows how to take care of herself. By the way, my name is Max. I take care of both of them, which ain’t easy, ’cause when they met it was MURDER!',
+    campaign_rating: 4,
+    service_rating: 4, 
+    org_rating: 4,
+    overall_rating: 4.0,
+    dnd_campaign_id: dndcamp1.id,
+    game_place_id: gPlace2.id,
+    player_id: player2.id
+)
+
+review7 = Review.create!(
+    description: 'There’s a voice that keeps on calling me. Down the road, that’s where I’ll always be. Every stop I make, I make a new friend. Can’t stay for long, just turn around and I’m gone again. Maybe tomorrow, I’ll want to settle down, Until tomorrow, I’ll just keep moving on.',
+    campaign_rating: 3,
+    service_rating: 3,
+    org_rating: 3,
+    overall_rating: 3.0,
+    dnd_campaign_id: dndcamp2.id,
+    game_place_id: gPlace3.id,
+    player_id: player3.id
+)
+
+review8 = Review.create!(
+    description: '80 days around the world, we’ll find a pot of gold just sitting where the rainbow’s ending. Time — we’ll fight against the time, and we’ll fly on the white wings of the wind. 80 days around the world, no we won’t say a word before the ship is really back. Round, round, all around the world. Round, all around the world. Round, all around the world. Round, all around the world.',
+    campaign_rating: 5, 
+    service_rating: 5,
+    org_rating: 5,
+    overall_rating: 5.0,
+    dnd_campaign_id: dndcamp1.id,
+    game_place_id: gPlace2.id,
+    player_id: player1.id
+)
+
+review9 = Review.create!(
+    description: 'Mutley, you snickering, floppy eared hound. When courage is needed, you’re never around. Those medals you wear on your moth-eaten chest should be there for bungling at which you are best. So, stop that pigeon, stop that pigeon, stop that pigeon, stop that pigeon, stop that pigeon, stop that pigeon, stop that pigeon. Howwww! Nab him, jab him, tab him, grab him, stop that pigeon now.',
+    campaign_rating: 5, 
+    service_rating: 5,
+    org_rating: 5,
+    overall_rating: 5.0,
+    dnd_campaign_id: dndcamp2.id,
+    game_place_id: gPlace3.id,
+    player_id: player3.id,
+)
+
+review10 = Review.create!(
+    description: 'Barnaby The Bear’s my name, never call me Jack or James, I will sing my way to fame, Barnaby the Bear’s my name. Birds taught me to sing, when they took me to their king, first I had to fly, in the sky so high so high, so high so high so high, so — if you want to sing this way, think of what you’d like to say, add a tune and you will see, just how easy it can be. Treacle pudding, fish and chips, fizzy drinks and liquorice, flowers, rivers, sand and sea, snowflakes and the stars are free.', 
+    campaign_rating: 4,
+    service_rating: 4,
+    org_rating: 4,
+    overall_rating: 4.0,
+    dnd_campaign_id: dndcamp1.id,
+    game_place_id: gPlace2.id,
+    player_id: player2.id
+)

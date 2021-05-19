@@ -1,0 +1,1 @@
+json.extract! review, :id, :description, :campaign_rating, :service_rating, :org_rating, :overall_rating, :dnd_campaign_id, :game_place_id, :player_id
