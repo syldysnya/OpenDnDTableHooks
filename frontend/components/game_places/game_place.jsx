@@ -1,5 +1,6 @@
 import React from 'react';
 import ReservationCreateFormContainer from '../reservations/reservation_create_form_container'
+import ReviewsIndex from '../reviews/reviews_index';
 
 class GamePlace extends React.Component {
     constructor(props) {
@@ -99,6 +100,11 @@ class GamePlace extends React.Component {
                             </div>
                         </div>
                     </div>
+                </div>
+                <div className='reviews-box'>
+                    <ReviewsIndex gamePlace={gamePlace}
+                        currentPlayer={this.props.currentPlayer}
+                        fetchAllReviews={this.props.fetchAllReviews}/>
                 </div>
             </div>
         )

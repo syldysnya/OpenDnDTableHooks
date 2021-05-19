@@ -1,7 +1,7 @@
 class Api::ReviewsController < ApplicationController
 
     def index
-        @reviews = Review.all.select{ |review| review.player_id == current_player.id}
+        @reviews = Review.all
     end
 
     def show 
