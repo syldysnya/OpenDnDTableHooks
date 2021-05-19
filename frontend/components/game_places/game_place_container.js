@@ -9,7 +9,6 @@ const mapSTP = (state, ownProps) => {
     
     return ({
         gamePlace: state.entities.gamePlaces[ownProps.match.params.gamePlaceId],
-        currentPlayer: state.session.currentPlayer
     })
 };
 
@@ -17,7 +16,8 @@ const mapDTP = dispatch => ({
     fetchAllGamePlaces: () => dispatch(fetchAllGamePlaces()),
     fetchGamePlace: gamePlaceId => dispatch(fetchGamePlace(gamePlaceId)),
     openModal: modal => dispatch(openModal(modal)),
-    fetchAllReviews: () => dispatch(fetchAllReviews())
+    fetchAllReviews: () => dispatch(fetchAllReviews()),
+    fetchAllPlayers: () => dispatch()
 })
 
 export default connect(mapSTP, mapDTP)(GamePlace);

@@ -15,7 +15,8 @@ class ReviewsIndex extends React.Component {
             if (this.props.gamePlace.id === rev.gamePlaceId) {
                 return (
                     <div className='review-item'>
-                        <ReviewItem />
+                        <ReviewItem review={rev}
+                            />
                     </div>
                 )
             }

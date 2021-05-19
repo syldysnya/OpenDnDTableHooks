@@ -7,6 +7,7 @@ class Player < ApplicationRecord
     belongs_to :city
     has_many :reservations
     has_many :favorites
+    has_many :reviews
 
     attr_reader :password
     after_initialize :ensure_session_token
