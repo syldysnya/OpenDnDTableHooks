@@ -1,75 +1,75 @@
-.top-nav-bar {
-    background-color: #f1f2f4;
-    padding: 0.9% 0;
-}
+// .top-nav-bar {
+//     background-color: #f1f2f4;
+//     padding: 0.9% 0;
+// }
 
-.list-of-gps {
-    padding: 1% 13%
-}
+// .list-of-gps {
+//     padding: 1% 13%
+// }
 
-.main-page-text {
-    display: flex;
-    flex-direction: row;
-    border-bottom: 1px solid #dadada;
-    margin-bottom: 2%;
-    justify-content: space-between;
-    align-items: baseline;
+// .main-page-text {
+//     display: flex;
+//     flex-direction: row;
+//     border-bottom: 1px solid #dadada;
+//     margin-bottom: 2%;
+//     justify-content: space-between;
+//     align-items: baseline;
 
-    p {
-        font-size: 15px;
-        color: #da3743;
-    }
-}
+//     p {
+//         font-size: 15px;
+//         color: #da3743;
+//     }
+// }
 
-.gp-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    column-gap: 15px;
-    // grid-template-rows: 200px;
-    row-gap: 15px;
-    margin: 0;
+// .gp-list {
+//     display: grid;
+//     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+//     column-gap: 15px;
+//     // grid-template-rows: 200px;
+//     row-gap: 15px;
+//     margin: 0;
     
-    li {
-        border: 1px solid #dadada;
-        border-radius: 3px;
-        padding-bottom: 5px;
+//     li {
+//         border: 1px solid #dadada;
+//         border-radius: 3px;
+//         padding-bottom: 5px;
         
-        img {
-            width: 100%;
-        }
+//         img {
+//             width: 100%;
+//         }
 
-        .li-info {
-            padding: 5px
+//         .li-info {
+//             padding: 5px
 
-        }
+//         }
 
-        .fas {
-            color: #da3743;
-        }
+//         .fas {
+//             color: #da3743;
+//         }
 
-        .li-info:first-child {
-            font-weight: bold;
-            text-decoration: none;
-        }
-    }
+//         .li-info:first-child {
+//             font-weight: bold;
+//             text-decoration: none;
+//         }
+//     }
     
-}
+// }
 
-.home-page-header-frame {
+// .home-page-header-frame {
 
-    width: 100%;
+//     width: 100%;
 
-    .home-page-img {
-        position: relative;
-        width: inherit;
-    }
+//     .home-page-img {
+//         position: relative;
+//         width: inherit;
+//     }
 
-    h1 {
-        position: sticky;
-        font-size: 30px;
-        color: white;
-        padding: 10% 0% 10.7% 0%;
-        text-align: center;
-        margin-top: -23.7%;
-    }
-}
+//     h1 {
+//         position: sticky;
+//         font-size: 30px;
+//         color: white;
+//         padding: 10% 0% 10.7% 0%;
+//         text-align: center;
+//         margin-top: -23.7%;
+//     }
+// }

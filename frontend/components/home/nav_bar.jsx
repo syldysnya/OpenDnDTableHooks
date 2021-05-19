@@ -19,14 +19,16 @@ class NavBar extends React.Component {
         const ifLoggedIn = () => {
             return (
                 <div className='home-nav'>
+                    <div className='home-nav-left'>
+                        <img src="/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/logo.png"/>
+                        <div className='clone-name'>OpenDnDTable</div>
+                    </div>
                     <div className='home-nav-right'></div>
                         <div className='dropdown-page-navbar'>
                             <DropdownProfile
                                 player={this.props.player} 
                                 logout={this.props.logout}/>
                         </div>
-                    <div className='home-nav-left'>
-                    </div>
                 </div >
             )
         };
@@ -34,6 +36,10 @@ class NavBar extends React.Component {
         const notLoggedIn = () => {
             return (
                 <div className='home-nav'>
+                    <div className='home-nav-left'>
+                        <img src="https://app-opendndtable-seed.s3.amazonaws.com/openDnDtable.png" />
+                        <div className='clone-name'>OpenDnDTable</div>
+                    </div>
                     <div className='home-nav-right'>
                         <div className='auth_button'>
                             <button
@@ -47,8 +53,6 @@ class NavBar extends React.Component {
                                 Sign In
                             </button>
                         </div>
-                    </div>
-                    <div className='home-nav-left'>
                     </div>
                 </div>
             )

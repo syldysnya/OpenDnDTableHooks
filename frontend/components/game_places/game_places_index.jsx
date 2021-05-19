@@ -8,33 +8,52 @@ class GamePlacesIndex extends React.Component {
 
     componentDidMount() {
         this.props.fetchAllGamePlaces()
+        this.props.fetchCities()
     }
 
     render() {
         
         if (!this.props) return null;
+        if (!this.props.cities) return null;
 
+        let cities = this.props.cities;
+        debugger
         let mapped = this.props.gamePlaces.map((gPlace, i) => {
             
             return (
-                <li key={`game-place-${i}`}>
+                <div className='game-place-i'>
                     <div className='avatar'>
                         <img src={gPlace.avatarUrl}/>
                     </div>
-                    <NavLink to={`/gameplaces/${gPlace.id}`}>
-                        {gPlace.name}
-                    </NavLink>
-                    <i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i>
-                    <p>[number of reviews</p>
-                    <span>[dnd campaign title]</span>
-                    <span>{gPlace.cityId}</span>
-                </li>
+                    <div className='info-box'>
+                        <div>
+                            <NavLink to={`/gameplaces/${gPlace.id}`}
+                                style={{ textDecoration: 'none' }}>
+                                {gPlace.name}
+                            </NavLink>
+                        </div>
+                        <div>
+                            <i className="fas fa-star"></i>
+                            <i className="fas fa-star"></i>
+                            <i className="fas fa-star"></i>
+                            <i className="fas fa-star"></i>
+                            <i className="fas fa-star"></i>
+                        </div>
+                        <div># of reviews</div>
+                        <div>Campaign title</div>
+                        <div>{cities.map(city => {
+                            if (city.id === gPlace.cityId) {
+                                return city.name
+                            }
+                        })}</div>
+                    </div>
+                </div>
             )
         })
 
         return (
             <div className='list-of-gps'>
-                List of places
+                <span>Book for a game today</span>
                 <div className='gp-list'>
                     {mapped}
                 </div>
