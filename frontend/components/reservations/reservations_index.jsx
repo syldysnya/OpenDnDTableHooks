@@ -3,6 +3,7 @@ import React from 'react';
 class ReservationsIndex extends React.Component {
     constructor(props) {
         super(props)
+        this.state = { showed: false }
     }
 
     componentDidMount() {
@@ -12,26 +13,45 @@ class ReservationsIndex extends React.Component {
     render() {
 
         if (!this.props.reservations) return null;
-        
+
+        let player = this.props.players[this.props.currentPlayer];
+        debugger
+        // if () return null;
+        let gPlaces = this.props.gamePlaces;
+        let gamePlace;
+
         const mapped = this.props.reservations.map((res, i) => {
+            gPlaces.map((gp) => {
+                if (gp.id === res.gamePlaceId) {
+                    gamePlace = gp
+                }
+            })
+            debugger
             return (
-                    <li id={`res-${i}`}>
-                        <p>{res.gameDate}</p>
-                        <p>{res.gameStart}</p>
+                    <div className='res-box-info' id={`res-${i}`}>
+                        <div className='gp-logo'>
+                            {/* {gamePlace.avatarUrl} */}
+                        </div>
+                        <div className='text-info-res'>
+                        <span>{res.gameDate} at {res.gameStart}</span>
+                        </div>
                         <p>{`Table for ${res.playersNum} people`}</p>
-                        <button>View</button>
-                        <button>Modify</button>
-                        <button>Cancel</button>
-                    </li>
+                        <div className='btn-group'>
+                            <button>View</button>
+                            <button>Modify</button>
+                            <button>Cancel</button>
+                        </div>
+                    </div>
             )
         })
         
         return (
             <div className='profile-page'>
-                <div>
-                    
+                <div className='profile-bar'>
+                    {player.lname} {player.fname}
+                    <span>0 points</span>
                 </div>
-                <div>
+                <div className='res-index'>
                     {mapped}
                 </div>
             </div>
