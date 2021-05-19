@@ -1,6 +1,7 @@
 import React from 'react';
 import LoggedOutForm from './logged_out_form';
 import LoggedInForm from './logged_in_form';
+import { Calendar } from 'react-date-range';
 // import Calendar from 'react-calendar';
 
 const RES_TIME = [
@@ -41,14 +42,22 @@ class ReservationCreateForm extends React.Component {
             gamePlaceId: props.reservation.gamePlaceId,
             playerId: 1,
             confirmation_num: randomNum(10000),
-            addInfo: ''
+            addInfo: '',
+            visible: false
         };
 
+        this.showCalendar = this.showCalendar.bind(this)
+        this.updateDate = this.updateDate.bind(this)
     }
 
     update(field) {
+        
         return e => this.setState({ [field]: e.target.value })
     };
+
+    showCalendar() {
+        this.setState({ visible: !this.state.visible })
+    }
 
     TimePick = () => {
         
@@ -62,6 +71,18 @@ class ReservationCreateForm extends React.Component {
                 })}
             </select>
         )
+    }
+
+    updateDate(e) {
+        
+        const arrOfDow = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+        let d = e.getDate();
+        let m = e.getMonth();
+        let dNum = e.getDay()
+        dNum === 0 ? dNum = 6 : dNum -= 1;
+        let dow = arrOfDow[dNum];
+        this.setState({ gameDate: (`${dow}, ${m}/${d}`),
+                            visible: false })
     }
 
     render() {
@@ -79,7 +100,7 @@ class ReservationCreateForm extends React.Component {
                 fetchReservation={this.props.fetchReservation}
             />
         }
-
+        
         return (
             <div className='reservation-box-new'>
                 <div className='make-res-text'>
@@ -98,8 +119,19 @@ class ReservationCreateForm extends React.Component {
                     </div>
                     <div className='info-create-date'>
                         <span>Date</span>
-                        <div onChange={this.update('gameDate')}>
+                        <div className='parent-calendar-box'
+                            onClick={this.showCalendar} tabIndex='0'>
+                            {/* // onBlur={this.showCalendar}> */}
+                            {/* // onChange={this.update('gameDate')}> */}
                             {this.state.gameDate}
+                            <div className='dropdown-calendar'>
+                                {this.state.visible ? (
+                                    <Calendar
+                                        date={new Date()}
+                                        onChange={e => this.updateDate(e)}
+                                    />
+                                ) : null}
+                            </div>
                         </div>
                     </div>
                     <div className='info-create-time'>

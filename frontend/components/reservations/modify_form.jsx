@@ -3,11 +3,11 @@ import React from 'react';
 class ModifyForm extends React.Component {
     constructor(props) {
         super(props)
-        debugger
+        
         this.state = {
             id: props.location.aboutProps.reservation.id,
             gameDate: props.location.aboutProps.reservation.gameDate,
-            gameStart: props.location.aboutProps.reservation.gameStart,
+            gameStart: props.location.aboutProps.gameStart,
             playersNum: props.location.aboutProps.reservation.playersNum,
             dndCampaignId: props.location.aboutProps.reservation.dndCampaignId,
             gamePlaceId: props.location.aboutProps.reservation.gamePlaceId,
@@ -31,10 +31,10 @@ class ModifyForm extends React.Component {
 
     handleClick(e) {
         e.preventDefault();
-        debugger
+        
         this.props.location.aboutProps.editReservation(this.state)
             .then((res) => {
-                debugger
+                
                 return this.props.history.push({
                     pathname: `/book/view/${res.reservation.id}`,
                     
@@ -45,8 +45,8 @@ class ModifyForm extends React.Component {
 
     render() {
         if (!this.props.location.aboutProps.reservation.gameDate) return null;
-        const { reservation, gamePlace, player } = this.props.location.aboutProps;
-
+        const { gamePlace, player } = this.props.location.aboutProps;
+        
         return (
             <div className='reservation-completion'>
                 <div className='reservation-completion-form'>
@@ -56,7 +56,7 @@ class ModifyForm extends React.Component {
                         <i className="far fa-calendar"></i>
                         <li id='1'>{this.state.gameDate}</li>
                         <i className="far fa-clock"></i>
-                        <li id='2'>{this.state.gameStart}</li>
+                        <li id='2'>{this.props.location.aboutProps.gameStart}</li>
                         <i className="far fa-user"></i>
                         <li id='3'>{this.state.playersNum} people</li>
                     </ul>

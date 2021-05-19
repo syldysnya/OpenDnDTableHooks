@@ -17,7 +17,7 @@ class GamePlacesIndex extends React.Component {
         if (!this.props.cities) return null;
 
         let cities = this.props.cities;
-        debugger
+        
         let mapped = this.props.gamePlaces.map((gPlace, i) => {
             
             return (

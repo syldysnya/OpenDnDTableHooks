@@ -1,4 +1,6 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+import CancelReservationForm from './cancel_reservation';
 import EditForm from './edit_form';
 import ReservationViewFormConf from './reservation_view_form_conf';
 
@@ -19,7 +21,7 @@ class ReservationItem extends React.Component {
         if (!this.props.reservations) return null;
         
         
-        debugger
+        
         let gamePlace;
         this.props.gamePlaces.map(gp => {
             if (reservation.gamePlaceId === gp.id) {
@@ -33,18 +35,32 @@ class ReservationItem extends React.Component {
                 player = p
             }
         })
-
+        debugger
         return (
             <div>
                 <ReservationViewFormConf reservation={this.props.reservations}
                                             gamePlace={gamePlace}
-                                            player={player} />
+                                            player={player}
+                                            editReservation={this.props.editReservation} />
                 <EditForm reservation={this.props.reservations}
                                     gamePlace={gamePlace}
                                     player={player}
                                     editReservation={this.props.editReservation}
                                     fetchReservation={this.props.fetchReservation}
                                     formType='Modify'/>
+                <div className='edit-btn'>
+                    <NavLink to={{
+                        pathname: '/book/cancel',
+                        aboutProps: {
+                            reservation: this.props.reservations,
+                            gamePlace: gamePlace,
+                            player: player,
+                            editReservation: this.props.editReservation
+                        }
+                    }}>
+                        Cancel
+                    </NavLink>
+                </div>
             </div>
         )
     }

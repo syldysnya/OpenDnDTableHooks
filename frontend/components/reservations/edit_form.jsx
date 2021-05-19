@@ -65,7 +65,7 @@ class EditForm extends React.Component {
     };
 
     TimePick() {
-        debugger
+        
         return (
             <select onChange={this.update('gameStart')}
                 defaultValue={this.props.reservation.gameStart}>
@@ -90,23 +90,37 @@ class EditForm extends React.Component {
         let btn3;
         let btn4;
         let timeOptions;
-
+        debugger
         if (m === 30) { // 8:30
-            btn1 = ((h - 1).toString() + ':00 ' + splitted[1])
-            btn2 = (splitted[0] + ':15 ' + splitted[1])
-            btn3 = (splitted[0] + ':45 ' + splitted[1])
-            btn4 = ((h + 1).toString() + ':00 ' + splitted[1])
+            btn1 = (h.toString() + ':00 ' + splitted[1])
+            btn2 = (t[0] + ':15 ' + splitted[1])
+            btn3 = (t[0] + ':45 ' + splitted[1])
+            if (t[0] === '11') {
+                debugger
+                splitted[1] === 'PM' ? splitted[1] = 'AM' : splitted[1] = 'PM';
+                btn4 = ((h + 1).toString() + ':00 ' + splitted[1])
+            } else {
+                btn4 = ((h + 1).toString() + ':00 ' + splitted[1])
+            }
+
             timeOptions = [btn1, btn2, curTime, btn3, btn4]
         } else { // 8:00
-            btn1 = ((h - 1).toString() + ':30 ' + splitted[1])
-            btn2 = ((h - 1).toString() + ':45 ' + splitted[1])
+            if (t[0] === '12') {
+                let pod = splitted[1]
+                pod === 'PM' ? pod = 'AM' : pod = 'PM';
+                btn1 = ((h - 1).toString() + ':30 ' + pod)
+                btn2 = ((h - 1).toString() + ':45 ' + pod)  
+            } else {
+                btn1 = ((h - 1).toString() + ':30 ' + splitted[1])
+                btn2 = ((h - 1).toString() + ':45 ' + splitted[1])
+            }
             btn3 = (h.toString() + ':15 ' + splitted[1])
             btn4 = (h.toString() + ':30 ' + splitted[1])
             timeOptions = [btn1, btn2, curTime, btn3, btn4]
         }
 
         const mapped = timeOptions.map((t, i) => {
-            debugger
+            
             return (
                 <li key={`btn-time-${i}`}>
                     <NavLink onClick={this.handleClick}

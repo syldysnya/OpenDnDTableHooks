@@ -15,7 +15,7 @@ class ReservationsIndex extends React.Component {
         if (!this.props.reservations) return null;
 
         let player = this.props.players[this.props.currentPlayer];
-        debugger
+        
         // if () return null;
         let gPlaces = this.props.gamePlaces;
         let gamePlace;
@@ -26,7 +26,7 @@ class ReservationsIndex extends React.Component {
                     gamePlace = gp
                 }
             })
-            debugger
+            
             return (
                     <div className='res-box-info' id={`res-${i}`}>
                         <div className='gp-logo'>

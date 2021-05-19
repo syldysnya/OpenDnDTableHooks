@@ -101,6 +101,14 @@
     }
 }
 
+.parent-calendar-box {
+    position: relative;
+
+    .dropdown-calendar {
+        position: absolute;
+    }
+}
+
 .right-bar-gp-info {
     display: flex;
     border: 1px solid #dadada;

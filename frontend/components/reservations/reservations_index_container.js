@@ -14,7 +14,8 @@ const mapSTP = (state) => {
 };
 
 const mapDTP = dispatch => ({
-    fetchAllReservations: (() => dispatch(fetchAllReservations()))
+    fetchAllReservations: (() => dispatch(fetchAllReservations())),
+    fetchAllGamePlaces: () => dispatch(fetchAllGamePlaces())
 });
 
 export default connect(mapSTP, mapDTP)(ReservationsIndex);

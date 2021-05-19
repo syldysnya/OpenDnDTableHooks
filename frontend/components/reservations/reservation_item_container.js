@@ -7,7 +7,7 @@ import ReservationItem from "./reservation_item";
 
 
 const mapSTP = (state, ownProps) => {
-    debugger
+    
     return ({
         reservations: state.entities.reservations[ownProps.match.params.reservationId],
         gamePlaces: Object.values(state.entities.gamePlaces),
