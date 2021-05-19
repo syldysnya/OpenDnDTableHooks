@@ -16,19 +16,24 @@ class ReservationsIndex extends React.Component {
         const mapped = this.props.reservations.map((res, i) => {
             return (
                     <li id={`res-${i}`}>
-                    <p>{res.gameDate}</p>
-                    <p>{res.gameStart}</p>
-                    <p>{`Table for ${res.playersNum} people`}</p>
-                    <button>View</button>
-                    <button>Modify</button>
-                    <button>Cancel</button>
-                </li>
+                        <p>{res.gameDate}</p>
+                        <p>{res.gameStart}</p>
+                        <p>{`Table for ${res.playersNum} people`}</p>
+                        <button>View</button>
+                        <button>Modify</button>
+                        <button>Cancel</button>
+                    </li>
             )
         })
         
         return (
-            <div>
-                {mapped}
+            <div className='profile-page'>
+                <div>
+                    
+                </div>
+                <div>
+                    {mapped}
+                </div>
             </div>
         )
     }

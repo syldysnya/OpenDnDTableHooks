@@ -40,7 +40,8 @@ class DropdownProfile extends React.Component {
         return (
             <div className='dropdown-profile-content'>
                 <div className='button-profile' tabIndex='0'
-                    onClick={this.handleDropdownProfile}>
+                    onClick={this.handleDropdownProfile}
+                    onBlur={this.handleDropdownProfile}>
                     <i className="fas fa-dice-d20"></i>
                     { this.state.visible ? (
                     <div className='dropdown-profile-open'

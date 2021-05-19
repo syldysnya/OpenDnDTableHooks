@@ -18,46 +18,48 @@ class NavBar extends React.Component {
 
         const ifLoggedIn = () => {
             return (
-                <div className='home-nav'>
-                    <div className='home-nav-left'>
-                        <img src="/Users/syldys/Desktop/bootcamp/OpenDndTable/app/assets/images/logo.png"/>
-                        <div className='clone-name'>OpenDnDTable</div>
-                    </div>
-                    <div className='home-nav-right'></div>
+                    <div className='home-nav-right'>
                         <div className='dropdown-page-navbar'>
                             <DropdownProfile
                                 player={this.props.player} 
                                 logout={this.props.logout}/>
                         </div>
-                </div >
-            )
-        };
+                        <i className="far fa-calendar"></i>
+                        <i className="far fa-bell"></i>
+                        <div className='search-logo'>
+                            <i className="fas fa-search"></i>
+                        </div>
+                    </div >
+                )
+            };
 
         const notLoggedIn = () => {
             return (
-                <div className='home-nav'>
-                    <div className='home-nav-left'>
-                        <img src="https://app-opendndtable-seed.s3.amazonaws.com/openDnDtable.png" />
-                        <div className='clone-name'>OpenDnDTable</div>
-                    </div>
-                    <div className='home-nav-right'>
-                        <div className='auth_button'>
-                            <button
-                                className='btn btn-signup'
-                                onClick={this.handleClick}>
-                                Sign Up
-                            </button>
-                            <button
-                                className='btn btn-login'
-                                onClick={this.handleClick}>
-                                Sign In
-                            </button>
-                        </div>
+                <div className='home-nav-right'>
+                    <div className='auth_button'>
+                        <button
+                            className='btn btn-signup'
+                            onClick={this.handleClick}>
+                            Sign Up
+                        </button>
+                        <button
+                            className='btn btn-login'
+                            onClick={this.handleClick}>
+                            Sign In
+                        </button>
                     </div>
                 </div>
             )
         };
-        return currentPlayer ? ifLoggedIn() : notLoggedIn();
+        return (
+            <div className='home-nav'>
+                <div className='home-nav-left' onClick={() => this.props.history.push('/')}>
+                    <img src='https://app-opendndtable-seed.s3.amazonaws.com/openDnDtable.png' />
+                    <div className='clone-name'>OpenDnDTable</div>
+                </div>
+                {currentPlayer ? ifLoggedIn() : notLoggedIn()}
+            </div>
+        )
 
     }
 };
