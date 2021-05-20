@@ -11,12 +11,12 @@ class CancelReservationForm extends React.Component {
     }
 
     update(field) {
-        debugger
+        
         return e => this.setState({ [field]: true })
     }
 
     handleLink() {
-        debugger
+        
         this.props.location.aboutProps.editReservation(this.state)
             .then((res) => {
             return this.props.history.push({

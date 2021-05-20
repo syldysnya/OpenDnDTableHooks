@@ -12,6 +12,7 @@ class GamePlace extends React.Component {
 
     componentDidMount() {
         this.props.fetchGamePlace(this.props.match.params.gamePlaceId);
+        this.props.fetchAllReviews();
     }
 
     loremIpsumText() {
@@ -34,6 +35,16 @@ class GamePlace extends React.Component {
                 </li>
             )
         })
+
+        if (!this.props.reviews) return null;
+        
+        const reviews_mapped = {};
+        this.props.reviews.map((rev) => {
+            if (this.props.gamePlace.id === rev.gamePlaceId) {
+                reviews_mapped[rev.id] = rev
+            }
+        })
+
         return(
             <div className='gp-body'>
                <div className='gp-header'>
@@ -59,18 +70,6 @@ class GamePlace extends React.Component {
                             <li key='2'>Dnd campaign 2</li>
                             <li key='3'>Dnd campaign 3</li>
                         </div>
-                        <div className='revies-list'>
-                            <ul>
-                                <p key='1'>Review 1</p>
-                                <p key='2'>Review 1</p>
-                                <p key='3'>Review 1</p>
-                                <p key='4'>Review 1</p>
-                                <p key='5'>Review 1</p>
-                                <p key='6'>Review 1</p>
-                                <p key='7'>Review 1</p>
-                                <p key='8'>Review 1</p>
-                            </ul>
-                        </div>
                     </div>
                     <div className='right-gpage'>
                         <div className='reservation-box'>
@@ -87,12 +86,6 @@ class GamePlace extends React.Component {
                                     <p>{gamePlace.closeHour}</p>
                                 </ul>
                             </div>
-                            <div className='dnd-campaign-title-list'>
-                                <i className="fab fa-d-and-d"></i>
-                                <span> dnd titles</span>
-                                <p>dndtitle1, dndtitle2, dndtitle3</p>
-                                
-                            </div>
                             <div className='additional-info-right-bar'>
                                 <i className="fas fa-hat-wizard"></i>
                                 <span> Dress Code</span>
@@ -102,7 +95,8 @@ class GamePlace extends React.Component {
                     </div>
                 </div>
                 <div className='reviews-box'>
-                    <ReviewsIndex gamePlace={gamePlace}
+                    <ReviewsIndex 
+                        reviews={reviews_mapped}
                         currentPlayer={this.props.currentPlayer}
                         fetchAllReviews={this.props.fetchAllReviews}/>
                 </div>

@@ -1,1 +1,1 @@
-json.extract! @player, :id, :email, :fname, :lname, :city_id
+json.partial! 'api/players/player', player: @player

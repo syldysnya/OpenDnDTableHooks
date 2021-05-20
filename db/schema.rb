@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_19_201146) do
+ActiveRecord::Schema.define(version: 2021_05_20_000834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(version: 2021_05_19_201146) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "city_id"
+    t.string "dname"
     t.index ["city_id"], name: "index_players_on_city_id"
     t.index ["email"], name: "index_players_on_email", unique: true
     t.index ["session_token"], name: "index_players_on_session_token", unique: true
@@ -121,6 +122,8 @@ ActiveRecord::Schema.define(version: 2021_05_19_201146) do
     t.string "confirmation_num", null: false
     t.text "add_info"
     t.boolean "canceled", default: false, null: false
+    t.string "plphone"
+    t.string "email"
     t.index ["dnd_campaign_id"], name: "index_reservations_on_dnd_campaign_id"
     t.index ["game_place_id"], name: "index_reservations_on_game_place_id"
     t.index ["player_id"], name: "index_reservations_on_player_id"

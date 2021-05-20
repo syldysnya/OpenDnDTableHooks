@@ -4,33 +4,30 @@ class ReservationsIndex extends React.Component {
     constructor(props) {
         super(props)
         this.state = { showed: false }
-    }
 
+    }
+    
     componentDidMount() {
         this.props.fetchAllReservations();
     }
+
+
 
     render() {
 
         if (!this.props.reservations) return null;
 
         let player = this.props.players[this.props.currentPlayer];
-        
-        // if () return null;
-        let gPlaces = this.props.gamePlaces;
-        let gamePlace;
 
         const mapped = this.props.reservations.map((res, i) => {
-            gPlaces.map((gp) => {
-                if (gp.id === res.gamePlaceId) {
-                    gamePlace = gp
-                }
-            })
-            
+            debugger
             return (
-                    <div className='res-box-info' id={`res-${i}`}>
+                    <div className='res-box-info' key={`res-${i}`}>
                         <div className='gp-logo'>
-                            {/* {gamePlace.avatarUrl} */}
+                            <img src={res.gpAvatar} />
+                        </div>
+                        <div className='gp-name'>
+                            {res.gpName}
                         </div>
                         <div className='text-info-res'>
                         <span>{res.gameDate} at {res.gameStart}</span>

@@ -35,7 +35,7 @@ class ReservationItem extends React.Component {
                 player = p
             }
         })
-        debugger
+        
         return (
             <div>
                 <ReservationViewFormConf reservation={this.props.reservations}

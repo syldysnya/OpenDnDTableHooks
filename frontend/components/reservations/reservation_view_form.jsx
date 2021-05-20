@@ -3,7 +3,7 @@ import React from 'react';
 class ReservationViewForm extends React.Component {
     constructor(props) {
         super(props)
-        
+        debugger
         this.state = props.location.aboutProps.reservation;
         this.handleClick = this.handleClick.bind(this);
     }
@@ -45,12 +45,16 @@ class ReservationViewForm extends React.Component {
                     <h2>Game session details</h2>
                     <h3>{this.props.location.aboutProps.player.lname} {this.props.location.aboutProps.player.fname}</h3>
                     <form className='reservation-completion-box'>
-                        <select className='phone-codes' defaultValue='USA'>
-                            <option value='Canada' className='Canada'>🇨🇦</option>
-                            <option value='Mexico' className='Mexico'>🇲🇽</option>
-                            <option value='Russia' className='Russia'>🇷🇺</option>
-                            <option value='USA' className="USA">🇺🇸</option>
-                        </select>
+                        <div className='player-contacts'>
+                            <select className='phone-codes' defaultValue='USA'>
+                                <option value='Canada' className='Canada'>🇨🇦</option>
+                                <option value='Mexico' className='Mexico'>🇲🇽</option>
+                                <option value='Russia' className='Russia'>🇷🇺</option>
+                                <option value='USA' className="USA">🇺🇸</option>
+                            </select>
+                            <input type="text" onChange={this.update('plphone')}/>
+                            <input type="text" onChange={this.update('email')} value={this.propslocation.aboutProps.player.email}/>
+                        </div>
                         <select className='adventure-type-list'>
                             <option value="1">1</option>
                             <option value="2">2</option>

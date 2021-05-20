@@ -6,28 +6,19 @@ class ReviewsIndex extends React.Component {
         super(props)
     }
 
-    componentDidMount() {
-        this.props.fetchAllReviews()
-    }
-
     render() {
-        const mapped = this.props.reviews.map((rev, i) => {
-            if (this.props.gamePlace.id === rev.gamePlaceId) {
-                return (
-                    <div className='review-item'>
-                        <ReviewItem review={rev}
-                            />
-                    </div>
-                )
-            }
+        
+        const arr = Object.values(this.props.reviews)
+
+        const mapped = arr.map((rev, i) => {
+            return (
+                <div key={i} className='reviews-list'>
+                    <ReviewItem review={rev}/>
+                </div>
+            )
         })
-        // if (!this.props.reviews) return null;
-        debugger
-        return (
-            <div>
-                This is list of reviews
-            </div>
-        )
+        
+        return mapped;
     }
 };
 

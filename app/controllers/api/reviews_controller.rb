@@ -1,12 +1,12 @@
 class Api::ReviewsController < ApplicationController
 
     def index
-        debugger
-        @reviews = Review.all.includes(:players).select{ |review| review.player_id == player.id}
+        @reviews = Review.all
     end
 
     def show 
-        @review = Review.find(params[:id])
+        @review = Review.inludes(:player).find(params[:id])
+        
     end
 
     def create

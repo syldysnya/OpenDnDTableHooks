@@ -41,6 +41,9 @@ class EditForm extends React.Component {
             playerId: props.reservation.playerId,
             confirmation_num: props.reservation.confirmation_num,
             addInfo: props.reservation.addInfo,
+            canceled: props.reservation.canceled,
+            plphone: props.reservation.plphone,
+            email: props.reservation.email,
             showed: false
         };
 
@@ -90,13 +93,13 @@ class EditForm extends React.Component {
         let btn3;
         let btn4;
         let timeOptions;
-        debugger
+        
         if (m === 30) { // 8:30
             btn1 = (h.toString() + ':00 ' + splitted[1])
             btn2 = (t[0] + ':15 ' + splitted[1])
             btn3 = (t[0] + ':45 ' + splitted[1])
             if (t[0] === '11') {
-                debugger
+                
                 splitted[1] === 'PM' ? splitted[1] = 'AM' : splitted[1] = 'PM';
                 btn4 = ((h + 1).toString() + ':00 ' + splitted[1])
             } else {
@@ -171,9 +174,6 @@ class EditForm extends React.Component {
                         <option key='4' value='4'>4 people</option>
                         <option key='5' value='5'>5 people</option>
                     </select>
-                    {/* <select defaultValue={reservation.gameDate}>
-                        <option value="1"><Calendar /></option>
-                    </select> */}
                     <label className='t'>
                         {this.TimePick()}
                     </label>

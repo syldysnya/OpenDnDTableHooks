@@ -24,7 +24,7 @@ class PastReservationItem extends React.Component {
     // }
 
     render() {
-        debugger
+        
         
         const { player, gamePlace } = this.props.location.aboutProps
         return (
