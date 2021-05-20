@@ -53,15 +53,13 @@ class ReservationViewForm extends React.Component {
                                 <option value='USA' className="USA">🇺🇸</option>
                             </select>
                             <input type="text" onChange={this.update('plphone')}/>
-                            <input type="text" onChange={this.update('email')} value={this.propslocation.aboutProps.player.email}/>
+                            <input type="text" onChange={this.update('email')} value={this.props.location.aboutProps.player.email}/>
                         </div>
                         <select className='adventure-type-list'>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                         </select>
-                        <input type="text" onChange={this.update('phoneNum')}/>
-                        <input type="text" onChange={this.update('email')}/>
                         <textarea className='Additional-info-inp'
                                 onChange={this.update('add_info')}
                                 placeholder='Add a special request (optional)'/>

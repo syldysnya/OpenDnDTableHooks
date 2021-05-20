@@ -26,7 +26,8 @@
 
     padding: 0 20% 0 5%;
     display: grid;
-    grid-template-rows: 25% 25% 25% 25%;
+    grid-template-rows: 40% 40%;
+    row-gap: 20%;
 
     .reservation-box-new {
         display: grid;
