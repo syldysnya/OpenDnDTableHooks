@@ -17,7 +17,7 @@ class GamePlace extends React.Component {
 
     loremIpsumText() {
         return (
-            <div>
+            <div className='gp-description'>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </div>
         )
@@ -60,45 +60,36 @@ class GamePlace extends React.Component {
                         </div>
                         <div className='gp-info-box' ref={this.myRef}>
                             <h1>{gamePlace.name}</h1>
-                            {this.loremIpsumText()}
                         </div>
+                        {this.loremIpsumText()}
                         <div className='gp-gallery'>
                             {img_mapped}
                         </div>
-                        <div className='dnd-campaigns-list'>
-                            <li key='1'>Dnd campaign 1</li>
-                            <li key='2'>Dnd campaign 2</li>
-                            <li key='3'>Dnd campaign 3</li>
+                        <div className='reviews-box'>
+                            <ReviewsIndex
+                                reviews={reviews_mapped}
+                                currentPlayer={this.props.currentPlayer}
+                                fetchAllReviews={this.props.fetchAllReviews} />
                         </div>
                     </div>
                     <div className='right-gpage'>
-                        <div className='reservation-box'>
-                            <ReservationCreateFormContainer />
+                        <ReservationCreateFormContainer />
+                        <div className='gp-map'>
+                            <img src='https://app-opendndtable-seed.s3.amazonaws.com/Screen+Shot+2021-05-20+at+1.28.32+AM.png'/>
+                            <p>{gamePlace.address}</p>
                         </div>
-                        <div className='right-bar-gp-info'>
-                            <div className='gp-map'>
-                                [THIS IS A MAP]
-                                <p>{gamePlace.address}</p>
-                            </div>
-                            <div className='hours-info'>
-                                <ul>
-                                    <p>{gamePlace.openHour}</p>
-                                    <p>{gamePlace.closeHour}</p>
-                                </ul>
-                            </div>
-                            <div className='additional-info-right-bar'>
-                                <i className="fas fa-hat-wizard"></i>
-                                <span> Dress Code</span>
-                                <p>Casual Dress</p>
-                            </div>
+                        <div className='hours-info'>
+                            <ul>
+                                <p>{gamePlace.openHour}</p>
+                                <p>{gamePlace.closeHour}</p>
+                            </ul>
+                        </div>
+                        <div className='additional-info-right-bar'>
+                            <i className="fas fa-hat-wizard"></i>
+                            <span> Dress Code</span>
+                            <p>Casual Dress</p>
                         </div>
                     </div>
-                </div>
-                <div className='reviews-box'>
-                    <ReviewsIndex 
-                        reviews={reviews_mapped}
-                        currentPlayer={this.props.currentPlayer}
-                        fetchAllReviews={this.props.fetchAllReviews}/>
                 </div>
             </div>
         )
