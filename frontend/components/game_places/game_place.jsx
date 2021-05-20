@@ -79,14 +79,12 @@ class GamePlace extends React.Component {
                             <p>{gamePlace.address}</p>
                         </div>
                         <div className='hours-info'>
-                            <ul>
-                                <p>{gamePlace.openHour}</p>
-                                <p>{gamePlace.closeHour}</p>
-                            </ul>
-                        </div>
-                        <div className='additional-info-right-bar'>
-                            <i className="fas fa-hat-wizard"></i>
-                            <span> Dress Code</span>
+                            <p>{gamePlace.openHour}</p>
+                            <p>{gamePlace.closeHour}</p>
+                            <span> 
+                                <i className="fas fa-hat-wizard"></i>
+                                 Dress Code
+                            </span>
                             <p>Casual Dress</p>
                         </div>
                     </div>

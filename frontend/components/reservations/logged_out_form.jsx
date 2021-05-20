@@ -14,7 +14,7 @@ class LoggedOutForm extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className='btns-log'>
                 <button onClick={this.handleAuth} className='auth-button'>
                     Sign In
                 </button>

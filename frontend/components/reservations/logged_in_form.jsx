@@ -74,8 +74,8 @@ class LoggedInForm extends React.Component {
 
         const mapped = timeOptions.map((t, i) => {
             return (
-                <li key={`btn-time-${i}`}>
                     <NavLink onClick={this.handleClick}
+                        style={{ textDecoration: 'none' }}
                         className='auth-button' to={{
                             pathname: '/booking/details',
                             aboutProps: {
@@ -90,7 +90,6 @@ class LoggedInForm extends React.Component {
                         }} exact>
                         {t}
                     </NavLink>
-                </li>
             )
         })
 
