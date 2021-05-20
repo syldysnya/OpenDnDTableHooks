@@ -28,20 +28,25 @@ class ReservationViewForm extends React.Component {
 
     render() {
         if (!this.props.location.aboutProps.reservation.gameDate) return null;
-        
+        debugger
         return (
             <div className='reservation-completion'>
                 <div className='reservation-completion-form'>
-                    <p>You’re almost done!</p>
-                    <h1>{this.props.location.aboutProps.gamePlace.name}</h1>
-                    <ul className='reservation-info'>
-                        <i className="far fa-calendar"></i>
-                        <li id='1'>{this.state.gameDate}</li>
-                        <i className="far fa-clock"></i>
-                        <li id='2'>{this.state.gameStart}</li>
-                        <i className="far fa-user"></i>
-                        <li id='3'>{this.state.playersNum} people</li>
-                    </ul>
+                    <div className='almost-done'><p>You’re almost done!</p></div>
+                    <div className='res-info-in-conf'>
+                        <div className='gp-avatar-in-conf'>
+                            <img src={this.props.location.aboutProps.gamePlace.avatarUrl} />
+                        </div>
+                        <h1>{this.props.location.aboutProps.gamePlace.name}</h1>
+                        <ul className='reservation-info'>
+                            <i className="far fa-calendar"></i>
+                            <li id='1'>{this.state.gameDate}</li>
+                            <i className="far fa-clock"></i>
+                            <li id='2'>{this.state.gameStart}</li>
+                            <i className="far fa-user"></i>
+                            <li id='3'>{this.state.playersNum} people</li>
+                        </ul>
+                    </div>
                     <h2>Game session details</h2>
                     <h3>{this.props.location.aboutProps.player.lname} {this.props.location.aboutProps.player.fname}</h3>
                     <form className='reservation-completion-box'>

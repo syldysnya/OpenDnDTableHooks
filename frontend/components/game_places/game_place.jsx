@@ -1,5 +1,6 @@
 import React from 'react';
 import ReservationCreateFormContainer from '../reservations/reservation_create_form_container'
+import CreateFormReview from '../reviews/create_form';
 import ReviewsIndex from '../reviews/reviews_index';
 
 class GamePlace extends React.Component {
@@ -44,7 +45,7 @@ class GamePlace extends React.Component {
                 reviews_mapped[rev.id] = rev
             }
         })
-
+        debugger
         return(
             <div className='gp-body'>
                <div className='gp-header'>
@@ -64,6 +65,12 @@ class GamePlace extends React.Component {
                         {this.loremIpsumText()}
                         <div className='gp-gallery'>
                             {img_mapped}
+                        </div>
+                        <div className='review-submit'>
+                            <CreateFormReview createReview={this.props.createReview}
+                                gamePlaceId={this.props.match.params.gamePlaceId}
+                                currentPlayer={this.props.currentPlayer}
+                                dndCampaignId={this.props.gamePlace.dndCampaignId}/>
                         </div>
                         <div className='reviews-box'>
                             <ReviewsIndex

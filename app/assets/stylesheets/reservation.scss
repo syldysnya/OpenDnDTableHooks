@@ -1,0 +1,15 @@
+.reservation-completion {
+    grid-template-columns: 20% 60% 40%;
+    display: grid;
+}
+
+.reservation-completion-form {
+    grid-column-start: 2;
+}
+
+.right-bar-info {
+    grid-column-start: 2;
+     img {
+         width: 100%;
+     }
+}

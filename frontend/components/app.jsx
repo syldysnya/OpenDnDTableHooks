@@ -10,6 +10,7 @@ import ModifyForm from './reservations/modify_form';
 import NavBarContainer from './home/nav_bar_container';
 import CancelReservationForm from './reservations/cancel_reservation';
 import PastReservationItem from './reservations/past_reservation';
+import CreateFormReview from './reviews/create_form';
 
 const App = () => (
     <div>
@@ -24,6 +25,7 @@ const App = () => (
         <Route exact path='/book/cancel/form' component={PastReservationItem} />
         <Route exact path='/book/view/:reservationId' component={ReservationItemContainer} />
         <Route exact path='/my/profile' component={ReservationsIndexContainer} />
+        <Route exact path='/review/new' component={CreateFormReview} />
     </div>
 );
 

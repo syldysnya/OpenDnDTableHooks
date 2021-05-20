@@ -34,7 +34,8 @@ class ReviewItem extends React.Component {
             <div className='review-item'>
                 <div className='player-info-review'>
                     <div className='avatar-player'>
-                        {nameAbb}
+                        <div className='background-theme'></div>
+                        <div className='nameabb'>{nameAbb}</div>
                     </div>
                     <div className='player-info-name'>
                         {dName}

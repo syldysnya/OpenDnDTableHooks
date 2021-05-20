@@ -12,9 +12,7 @@ class ReviewsIndex extends React.Component {
 
         const mapped = arr.map((rev, i) => {
             return (
-                <div key={i} className='reviews-list'>
-                    <ReviewItem review={rev}/>
-                </div>
+                <ReviewItem review={rev}/>
             )
         })
         
