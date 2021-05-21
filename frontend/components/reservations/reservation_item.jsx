@@ -53,21 +53,21 @@ class ReservationItem extends React.Component {
                                             gamePlace={gamePlace}
                                             player={player}
                                             editReservation={this.props.editReservation} />
-                <div className='btns-again'>                           
                     <div className='modify-btn'
                         onClick={this.handleDropdownProfile}>
-                        {this.state.visible ? (
-                            <EditForm reservation={this.props.reservations}
-                                        gamePlace={gamePlace}
-                                        player={player}
-                                        editReservation={this.props.editReservation}
-                                        fetchReservation={this.props.fetchReservation}
-                                        formType='Modify'/>
-                        ) : null }
                         Modify
                     </div>
+                    {this.state.visible ? (
+                        <EditForm reservation={this.props.reservations}
+                                    gamePlace={gamePlace}
+                                    player={player}
+                                    editReservation={this.props.editReservation}
+                                    fetchReservation={this.props.fetchReservation}
+                                    formType='Modify'/>
+                    ) : null }
                     <div className='edit-btn'>
-                        <NavLink to={{
+                        <NavLink style={{ textDecoration: 'none' }}
+                            to={{
                             pathname: '/book/cancel',
                             aboutProps: {
                                 reservation: this.props.reservations,
@@ -79,7 +79,6 @@ class ReservationItem extends React.Component {
                             Cancel
                         </NavLink>
                     </div>
-                </div>
             </div>
         )
     }

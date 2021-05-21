@@ -417,6 +417,7 @@ input[type="radio"] {
     grid-template-columns: 150px;
     column-gap: 3%;
     padding: 3% 3% 2% 3%;
+    border-bottom: 1px solid #dadada;
     
     div:last-child {
         grid-column-start: 2;
@@ -452,20 +453,33 @@ input[type="radio"] {
     }
 }
 
-.btns-again {
-    display: grid;
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-template-columns: 5% 30% 5% 30%;
-}
-
 .modify-btn {
     grid-column-start: 2;
-    border: 1px solid #dadada;
-    padding: 5%;
+    grid-column-end: 3;
+    cursor: pointer;
+    color: #247f9e;
+    font-weight: bold;
+    padding-left: 15%;
+    position: absolute;
+    top: 320px;
+    left: 350px;
+}
+
+.edit-res-box {
+    grid-column-start: 2;
+
+    width: 500px;
+    height: 400px;
 }
 
 .edit-btn {
-    border: 1px solid #dadada;
-    grid-column-start: 4;
+    // border: 1px solid #dadada;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    cursor: pointer;
+    color: #247f9e;
+    font-weight: bold;
+    position: absolute;
+    top: 320px;
+    left: 750px;
 }

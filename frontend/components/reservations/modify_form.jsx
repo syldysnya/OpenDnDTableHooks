@@ -14,8 +14,6 @@ class ModifyForm extends React.Component {
             playerId: props.location.aboutProps.reservation.playerId,
             confirmation_num: props.location.aboutProps.reservation.confirmation_num,
             addInfo: props.location.aboutProps.reservation.addInfo,
-            renderTimeOpts: false,
-            saved: false
         }
         this.handleClick = this.handleClick.bind(this);
     }
@@ -32,9 +30,9 @@ class ModifyForm extends React.Component {
     handleClick(e) {
         e.preventDefault();
         
+        debugger
         this.props.location.aboutProps.editReservation(this.state)
             .then((res) => {
-                
                 return this.props.history.push({
                     pathname: `/book/view/${res.reservation.id}`,
                     
@@ -61,7 +59,7 @@ class ModifyForm extends React.Component {
                         <li id='3'>{this.state.playersNum} people</li>
                     </ul>
                     <h2>Game session details</h2>
-                    <h3>{player.lname} {player.fname}</h3>
+                    {/* <h3>{player.lname} {player.fname}</h3> */}
                     <form className='reservation-completion-box'>
                         <select className='phone-codes' defaultValue='USA'>
                             <option value='Canada' className='Canada'>🇨🇦</option>

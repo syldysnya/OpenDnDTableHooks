@@ -18,16 +18,16 @@ class Api::ReservationsController < ApplicationController
     end
 
     def update
-        
+        debugger
         @reservation = Reservation.find(params[:id])
 
-        if @reservation.player_id === current_player.id
+        # if @reservation.player_id === current_player.id
             if @reservation.update(reservation_params)
                 render 'api/reservations/show'
             else
                 render @reservation.errors.full_messages, status: 422
             end
-        end
+        # end
 
     end
 

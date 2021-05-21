@@ -34,42 +34,48 @@ class CancelReservationForm extends React.Component {
 
         const { reservation, gamePlace } = this.props.location.aboutProps
         return (
-            <div>
+            <div className='cancel-box'>
                 <div className='cancel-message'>
                     Cancel Your Reservation
                 </div>
-                <div className='colum-name'>
-                    GUESTS
+                <div className='cancel-avatar'>
+                    <img src={gamePlace.avatarUrl} />
                 </div>
-                {reservation.playersNum === 1 ? (
-                    <div className='column-info'>
-                        {reservation.playersNum} person
+                <div className='cancel-info'>
+                    <div className='colum-name'>
+                        <span>GUESTS</span>
+                    {reservation.playersNum === 1 ? (
+                        <div className='column-info'>
+                            {reservation.playersNum} person
+                        </div>
+                    ) : (
+                        <div className='column-info'>
+                            {reservation.playersNum} people
+                        </div>
+                    )}
                     </div>
-                ) : (
+                    <div className='colum-name'>
+                        <span>DATE</span>
                     <div className='column-info'>
-                        {reservation.playersNum} people
+                        {reservation.gameDate}
                     </div>
-                )}
-                <div className='colum-name'>
-                    DATE
+                    </div>
+                    <div className='colum-name'>
+                        <span>TIME</span>
+                    <div className='column-info'>
+                        {reservation.gameStart}
+                    </div>
+                    </div>
+                    <div className='colum-name'>   
+                        <span>GAME PLACE</span>
+                    <div className='column-info'>
+                        <NavLink to={`/gameplaces/${gamePlace.id}`}>
+                            {gamePlace.name}
+                        </NavLink>
+                    </div>
+                    </div>
                 </div>
-                <div className='column-info'>
-                    {reservation.gameDate}
-                </div>
-                <div className='colum-name'>
-                    TIME
-                </div>
-                <div className='column-info'>
-                    {reservation.gameStart}
-                </div>
-                <div className='colum-name'>   
-                    GAME PLACE
-                </div>
-                <div className='column-info'>
-                    <NavLink to={`/gameplaces/${gamePlace.id}`}>
-                        {gamePlace.name}
-                    </NavLink>
-                </div>
+
                 <button className='auth-button' onClick={this.update('canceled')}>
                     Cancel Reservation
                 </button>

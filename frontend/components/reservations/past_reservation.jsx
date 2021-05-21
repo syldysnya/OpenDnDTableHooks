@@ -30,7 +30,7 @@ class PastReservationItem extends React.Component {
         return (
             <div>
                 <div className='canceld-text'>
-                    {player.lname}, your reservation has already been canceled
+                    your reservation has already been canceled
                 </div>
                 <div className='text-1'>
                     You can still make a new reservation, and support {gamePlace.name}.

@@ -60,6 +60,7 @@ class EditForm extends React.Component {
     }
 
     handleClick(e) {
+        debugger
         this.setState({ gameStart: e.currentTarget.innerHTML })
     }
 
@@ -166,17 +167,19 @@ class EditForm extends React.Component {
         return (
             <div className='edit-res-box'>
                     <div className='edit-input'>
-                       <select defaultValue={reservation.playersNum}
-                        onChange={this.update('playersNum')}>
-                        <option key='1' value='1'>1 person</option>
-                        <option key='2' value='2'>2 people</option>
-                        <option key='3' value='3'>3 people</option>
-                        <option key='4' value='4'>4 people</option>
-                        <option key='5' value='5'>5 people</option>
-                    </select>
-                    <label className='t'>
-                        {this.TimePick()}
-                    </label>
+                        <div className='input-time'>
+                            <select defaultValue={reservation.playersNum}
+                                onChange={this.update('playersNum')}>
+                                <option key='1' value='1'>1 person</option>
+                                <option key='2' value='2'>2 people</option>
+                                <option key='3' value='3'>3 people</option>
+                                <option key='4' value='4'>4 people</option>
+                                <option key='5' value='5'>5 people</option>
+                            </select>
+                        </div>
+                        <label className='t'>
+                            {this.TimePick()}
+                        </label>
                     <button className='auth-button' onClick={this.handleButton}>
                         Find a Table
                     </button>
