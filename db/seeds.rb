@@ -47,10 +47,10 @@ gPlace1 = GamePlace.create!(
     dnd_campaign_id: 3
 )
 
-header1 = open('https://app-opendndtable-seed.s3.amazonaws.com//headers/1_header.jpeg')
+header1 = open('https://app-opendndtable-seed.s3.amazonaws.com/headers/1_header.jpeg')
 gPlace1.photo.attach(io: header1, filename: '1_header.jpeg')
 
-avatar1 = open('https://app-opendndtable-seed.s3.amazonaws.com//gpavatars/1_avatar.jpeg')
+avatar1 = open('https://app-opendndtable-seed.s3.amazonaws.com/gpavatars/1_avatar.jpeg')
 gPlace1.avatar.attach(io: avatar1, filename: '1_avatar.jpeg')
 
 pictures1_1 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_1.jpeg')
