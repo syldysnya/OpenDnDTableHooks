@@ -24,9 +24,18 @@ class CreateFormReview extends React.Component {
         e.preventDefault();
         debugger
         this.props.createReview(this.state)
-            .then(this.props.history.push({
-                pathname: `/gameplaces/${this.props.gamePlaceId}`
-            }))
+            .then(() => {
+                this.props.history.push({
+                    pathname: `/gameplaces/${this.props.gamePlaceId}`
+                });
+                this.setState({
+                    description: '',
+                    campaignRating: 0,
+                    serviceRating: 0,
+                    orgRating: 0,
+                    overallRating: 0,
+                });
+        })
     }
 
     update(field) {
@@ -59,6 +68,7 @@ class CreateFormReview extends React.Component {
                     </div>
                     <div className='submit-textarea'>
                         <textarea onChange={this.update('description')}
+                            value={this.state.description}
                             cols="40" rows="5" />
                         <button type="submit">
                             Submit review

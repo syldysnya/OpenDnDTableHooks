@@ -51,6 +51,7 @@ class GamePlace extends React.Component {
                <div className='gp-header'>
                     <img src={gamePlace.photoUrl} />
                </div>
+                
                <div className='gp-page-box'>
                     <div className='left-gpage'>
                         <div className='gp-info-navbar'>
@@ -81,18 +82,21 @@ class GamePlace extends React.Component {
                     </div>
                     <div className='right-gpage'>
                         <ReservationCreateFormContainer />
+                    
                         <div className='gp-map'>
-                            <img src='https://app-opendndtable-seed.s3.amazonaws.com/Screen+Shot+2021-05-20+at+1.28.32+AM.png'/>
-                            <p>{gamePlace.address}</p>
-                        </div>
-                        <div className='hours-info'>
-                            <p>{gamePlace.openHour}</p>
-                            <p>{gamePlace.closeHour}</p>
-                            <span> 
-                                <i className="fas fa-hat-wizard"></i>
-                                 Dress Code
-                            </span>
-                            <p>Casual Dress</p>
+                            <div className='map-box'>
+                                <img src='https://app-opendndtable-seed.s3.amazonaws.com/Screen+Shot+2021-05-20+at+1.28.32+AM.png'/>
+                                <p>{gamePlace.address}</p>
+                            </div>
+                            <div className='hours-info'>
+                                <p>{gamePlace.openHour}</p>
+                                <p>{gamePlace.closeHour}</p>
+                                <span> 
+                                    <i className="fas fa-hat-wizard"></i>
+                                    Dress Code
+                                </span>
+                                <p>Casual Dress</p>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -1,10 +1,24 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 class ReservationViewForm extends React.Component {
     constructor(props) {
         super(props)
         debugger
-        this.state = props.location.aboutProps.reservation;
+        this.state = {
+            gameDate: props.location.aboutProps.reservation.gameDate,
+            gameStart: props.location.aboutProps.reservation.gameStart,
+            playersNum: props.location.aboutProps.reservation.playersNum,
+            dndCampaignId: props.location.aboutProps.reservation.dndCampaignId,
+            gamePlaceId: props.location.aboutProps.reservation.gamePlaceId,
+            playerId: props.location.aboutProps.reservation.playerId,
+            confirmation_num: props.location.aboutProps.reservation.confirmation_num,
+            addInfo: props.location.aboutProps.reservation.addInfo,
+            canceled: props.location.aboutProps.reservation.false,
+            plphone: props.location.aboutProps.reservation.plphone,
+            email: props.location.aboutProps.player.email
+            
+        };
         this.handleClick = this.handleClick.bind(this);
     }
 
@@ -32,39 +46,48 @@ class ReservationViewForm extends React.Component {
         return (
             <div className='reservation-completion'>
                 <div className='reservation-completion-form'>
-                    <div className='almost-done'><p>You’re almost done!</p></div>
+                    <div className='almost-done'>You’re almost done!</div>
                     <div className='res-info-in-conf'>
                         <div className='gp-avatar-in-conf'>
                             <img src={this.props.location.aboutProps.gamePlace.avatarUrl} />
                         </div>
-                        <h1>{this.props.location.aboutProps.gamePlace.name}</h1>
-                        <ul className='reservation-info'>
-                            <i className="far fa-calendar"></i>
-                            <li id='1'>{this.state.gameDate}</li>
-                            <i className="far fa-clock"></i>
-                            <li id='2'>{this.state.gameStart}</li>
-                            <i className="far fa-user"></i>
-                            <li id='3'>{this.state.playersNum} people</li>
-                        </ul>
+                        <div className='reservation-info'>
+                            <div>{this.props.location.aboutProps.gamePlace.name}</div>
+                            <div className='res-info-conf'>
+                                <i className="far fa-calendar"></i>
+                                <div></div>
+                                <li id='1'>{this.state.gameDate}</li>
+                                <i className="far fa-clock"></i>
+                                <div></div>
+                                <li id='2'>{this.state.gameStart}</li>
+                                <i className="far fa-user"></i>
+                                <div></div>
+                                <li id='3'>{this.state.playersNum} people</li>
+                            </div>
+                        </div>
                     </div>
-                    <h2>Game session details</h2>
-                    <h3>{this.props.location.aboutProps.player.lname} {this.props.location.aboutProps.player.fname}</h3>
+                    <div>Game session details</div>
+                    <div>{this.props.location.aboutProps.player.fname} {this.props.location.aboutProps.player.lname} </div>
                     <form className='reservation-completion-box'>
                         <div className='player-contacts'>
-                            <select className='phone-codes' defaultValue='USA'>
-                                <option value='Canada' className='Canada'>🇨🇦</option>
-                                <option value='Mexico' className='Mexico'>🇲🇽</option>
-                                <option value='Russia' className='Russia'>🇷🇺</option>
-                                <option value='USA' className="USA">🇺🇸</option>
-                            </select>
-                            <input type="text" onChange={this.update('plphone')}/>
-                            <input type="text" onChange={this.update('email')} value={this.props.location.aboutProps.player.email}/>
+                            <div>
+                                <select className='phone-codes' defaultValue='USA'>
+                                    <option value='Canada' className='Canada'>🇨🇦</option>
+                                    <option value='Mexico' className='Mexico'>🇲🇽</option>
+                                    <option value='Russia' className='Russia'>🇷🇺</option>
+                                    <option value='USA' className="USA">🇺🇸</option>
+                                </select>
+                                <input type="text" onChange={this.update('plphone')}/>
+                            </div>
+                            <div>
+                                <input type="text" onChange={this.update('email')} value={this.state.email}/>
+                            </div>
                         </div>
-                        <select className='adventure-type-list'>
+                        {/* <select className='adventure-type-list'>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
-                        </select>
+                        </select> */}
                         <textarea className='Additional-info-inp'
                                 onChange={this.update('add_info')}
                                 placeholder='Add a special request (optional)'/>

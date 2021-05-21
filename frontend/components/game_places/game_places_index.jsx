@@ -24,7 +24,6 @@ class GamePlacesIndex extends React.Component {
                 <div className='game-place-i'>
                     <div className='avatar'>
                         <img src={gPlace.avatarUrl}/>
-                            {/* onClick={() => this.props.history.push(`/gameplaces/${gPlace.id}`)}/> */}
                     </div>
                     <div className='info-box'>
                         <div>

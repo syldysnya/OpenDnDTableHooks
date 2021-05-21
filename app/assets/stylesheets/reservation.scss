@@ -1,15 +1,103 @@
 .reservation-completion {
-    grid-template-columns: 20% 60% 40%;
+    grid-template-columns: 20% 40% 5% 20% 5%;
     display: grid;
+    padding-top: 2%;
+    height: 900px;
 }
 
 .reservation-completion-form {
     grid-column-start: 2;
+    display: grid;
+    grid-template-rows: 5% 15% 5% 5% 30%;
+    
+    .almost-done {
+        font-size: 20px;
+        font-weight: bold;
+         p {
+            margin: 0;
+            padding-bottom: 4%;
+         }
+    }
 }
 
 .right-bar-info {
+    grid-column-start: 4;
+    
+    img {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 100%;
+    }
+
+    p {
+        font-size: 90%;
+    }
+}
+
+.res-info-in-conf {
+    display: grid;
+    grid-template-columns: 170px;
+    column-gap: 5%;
+
+    .reservation-info {
+        grid-column-start: 2;
+        padding: 0;
+
+        div:first-child {
+            padding-bottom: 10px;
+            font-size: 150%;
+            font-weight: 550;
+        }
+    }
+    
+    img {
+        width: 100%;
+    }
+
+    .res-info-conf {
+        display: grid;
+        grid-template-columns: 5% 2% 27% 5% 2% 27% 5% 2% 27%;
+        width: 70%;
+    }
+}
+
+.reservation-completion-box {
+    display: grid;
+}
+
+.player-contacts {
+    display: grid;
+    grid-template-columns: 50% 45%;
+    column-gap: 5%;
+
+    div:first-child {
+        display: grid;
+        grid-template-columns: 20% 80%;
+        height: 70%;
+
+        input {
+            border-left: none;
+        }
+    }
+
+    div:last-child {
+        display: grid;
+        height: 70%;
+    }
+}
+
+.view-conf-box {
+    grid-template-columns: 18% 50% 2% 20%;
+    display: grid;
+    grid-template-rows: 77% 10% 5%;
+    display: grid;
+    row-gap: 4%;
+}
+
+.confirmation-box {
     grid-column-start: 2;
-     img {
-         width: 100%;
-     }
+    grid-column-end: 3;
+    height: 300px;
 }

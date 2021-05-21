@@ -14,6 +14,9 @@ class LoggedInForm extends React.Component {
             playerId: props.reservation.playerId,
             confirmation_num: props.reservation.confirmation_num,
             addInfo: props.reservation.addInfo,
+            canceled: props.reservation.false,
+            plphone: props.reservation.plphone,
+            email: props.reservation.email,
             renderTimeOpts: false,
             saved: false
         }

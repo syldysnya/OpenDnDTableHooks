@@ -4,7 +4,8 @@
 
 .gp-page-box {
     display: grid;
-    grid-template-columns: 4fr 400px 100px;
+    // grid-template-columns: 4fr 400px 100px;
+    grid-template-columns: 70% 20% 10%;
 }
 
 .gp-header img {
@@ -22,12 +23,12 @@
     width: 300px;
 }
 
+
 .right-gpage {
 
-    padding: 0 20% 0 5%;
     display: grid;
-    grid-template-rows: 25% 18%;
-    row-gap: 3%;
+    grid-template-rows: 300px 300px;
+    row-gap: 1%;
 
     .reservation-box-new {
         display: grid;
@@ -38,9 +39,9 @@
         border-radius: 2px;
         justify-content: flex-start;
         background-color: white;
-        padding: 6%;
+        padding: 5%;
         box-shadow: 5px 5px 5px rgba(226, 225, 225, 0.9);
-        font-size: 18px;
+        font-size: 100%;
 
         select {
             border: none;
@@ -157,9 +158,18 @@
 }
 
 .gp-map {
+    grid-column-start: 1;
+    grid-column-end: 2;
     display: grid;
-    grid-template-rows: 80%;
-    row-gap: 4%;
+    grid-auto-flow: row;
+    row-gap: 5%;
+    
+    img {
+        width: 100%;
+    }
+}
+
+.map-box {
     border: 1px solid #dadada;
     border-radius: 2px;
     justify-content: flex-start;
@@ -167,9 +177,6 @@
     padding: 2%;
     box-shadow: 5px 5px 5px rgba(226, 225, 225, 0.9);
 
-    img {
-        width: 100%;
-    }
 }
 
 .hours-info {
@@ -214,6 +221,7 @@
     grid-template-rows: 64px 120px 200px 400px 200px;
     grid-template-columns: 25% 70% 5%;
     background: transparent;
+    min-height: 1200px;
 }
 
 .gp-info-navbar {
@@ -241,7 +249,8 @@
     padding: 5% 3%;
     
     h1 {
-        font-size: 40px;
+        // font-size: 40px;
+        font-size: 200%;
         margin: 0;
     }
     // padding: 5% 25% 5% 3%
@@ -301,6 +310,9 @@ input[type="radio"] {
     grid-column-start: 1;
     grid-column-end: 3;
     font-size: 25px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
 }
 
 .review-create-box > form {
@@ -308,14 +320,16 @@ input[type="radio"] {
     grid-column-end: 3;
     grid-row-start: 2;
     display: grid;
-    grid-template-columns: 25% 70%;
-    column-gap: 5%;
+    grid-template-columns: 28% 70%;
+    column-gap: 2%;
+    width: 70%;
     
 
     .submit-textarea {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
+        padding-right: 10%;
 
         button {
             background-color: #da3743;
@@ -331,7 +345,8 @@ input[type="radio"] {
 .rating-box {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: flex-start;
+    width: 90%;
 
 }
 
@@ -363,8 +378,8 @@ input[type="radio"] {
 
     .nameabb {
         position: absolute;
-        top: 25px;
-        left: 46px;
+        top: 17px;
+        left: 45px;
     }
 }
 
@@ -380,6 +395,11 @@ input[type="radio"] {
     display: grid;
     grid-auto-rows: 50px 30px 30px;
     text-align: center;
+    
+}
+
+.player-info-name {
+    padding-top: 10px;
 }
 
 .review-item {
@@ -389,12 +409,63 @@ input[type="radio"] {
 }
 
 .confirmation-box {
-    padding: 5% 10% 0 10%;
-    .res-details {
+    // padding: 5% 10% 0 10%;
+}
 
-        img {
-            width: 100px;
-            height: auto;
+.res-details {
+    display: grid;
+    grid-template-columns: 150px;
+    column-gap: 3%;
+    padding: 3% 3% 2% 3%;
+    
+    div:last-child {
+        grid-column-start: 2;
+        display: flex;
+        flex-direction: column;
+        
+        .gp-name-span {
+            font-size: 120%;
+            font-weight: bold;
+            padding-bottom: 10px;
+        }
+
+        div {
+            padding-bottom: 5px;
         }
     }
+    img {
+        width: 100%;
+    }
+}
+
+.green-bos-confirmation {
+    background-color: #55b68d;
+    padding: 5%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 3px;
+
+    .thanks {
+        font-size: 120%;
+        font-weight: bold;
+    }
+}
+
+.btns-again {
+    display: grid;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-template-columns: 5% 30% 5% 30%;
+}
+
+.modify-btn {
+    grid-column-start: 2;
+    border: 1px solid #dadada;
+    padding: 5%;
+}
+
+.edit-btn {
+    border: 1px solid #dadada;
+    grid-column-start: 4;
 }

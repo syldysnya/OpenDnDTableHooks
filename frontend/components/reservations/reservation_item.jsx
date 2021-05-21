@@ -7,8 +7,19 @@ import ReservationViewFormConf from './reservation_view_form_conf';
 class ReservationItem extends React.Component {
     constructor(props) {
         super(props)
+        this.state = { visible: false }
+        this.handleDropdownProfile = this.handleDropdownProfile.bind(this)
     }
 
+    handleDropdownProfile(e) {
+        // if (e.target.contains(e.relatedTarget)) {
+        //     return null;
+        // }
+
+        this.setState({
+            visible: !this.state.visible
+        })
+    }
 
     componentDidMount() {
         this.props.fetchAllGamePlaces();
@@ -37,29 +48,37 @@ class ReservationItem extends React.Component {
         })
         
         return (
-            <div>
+            <div className='view-conf-box'>
                 <ReservationViewFormConf reservation={this.props.reservations}
                                             gamePlace={gamePlace}
                                             player={player}
                                             editReservation={this.props.editReservation} />
-                <EditForm reservation={this.props.reservations}
-                                    gamePlace={gamePlace}
-                                    player={player}
-                                    editReservation={this.props.editReservation}
-                                    fetchReservation={this.props.fetchReservation}
-                                    formType='Modify'/>
-                <div className='edit-btn'>
-                    <NavLink to={{
-                        pathname: '/book/cancel',
-                        aboutProps: {
-                            reservation: this.props.reservations,
-                            gamePlace: gamePlace,
-                            player: player,
-                            editReservation: this.props.editReservation
-                        }
-                    }}>
-                        Cancel
-                    </NavLink>
+                <div className='btns-again'>                           
+                    <div className='modify-btn'
+                        onClick={this.handleDropdownProfile}>
+                        {this.state.visible ? (
+                            <EditForm reservation={this.props.reservations}
+                                        gamePlace={gamePlace}
+                                        player={player}
+                                        editReservation={this.props.editReservation}
+                                        fetchReservation={this.props.fetchReservation}
+                                        formType='Modify'/>
+                        ) : null }
+                        Modify
+                    </div>
+                    <div className='edit-btn'>
+                        <NavLink to={{
+                            pathname: '/book/cancel',
+                            aboutProps: {
+                                reservation: this.props.reservations,
+                                gamePlace: gamePlace,
+                                player: player,
+                                editReservation: this.props.editReservation
+                            }
+                        }}>
+                            Cancel
+                        </NavLink>
+                    </div>
                 </div>
             </div>
         )
