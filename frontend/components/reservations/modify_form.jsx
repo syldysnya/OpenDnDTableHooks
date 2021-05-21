@@ -30,7 +30,7 @@ class ModifyForm extends React.Component {
     handleClick(e) {
         e.preventDefault();
         
-        debugger
+        
         this.props.location.aboutProps.editReservation(this.state)
             .then((res) => {
                 return this.props.history.push({

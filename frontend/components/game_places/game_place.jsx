@@ -45,7 +45,7 @@ class GamePlace extends React.Component {
                 reviews_mapped[rev.id] = rev
             }
         })
-        debugger
+        
         return(
             <div className='gp-body'>
                <div className='gp-header'>

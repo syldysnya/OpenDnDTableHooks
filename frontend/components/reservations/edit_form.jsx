@@ -60,7 +60,7 @@ class EditForm extends React.Component {
     }
 
     handleClick(e) {
-        debugger
+        
         this.setState({ gameStart: e.currentTarget.innerHTML })
     }
 

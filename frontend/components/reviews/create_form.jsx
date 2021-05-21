@@ -22,7 +22,7 @@ class CreateFormReview extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        debugger
+        
         this.props.createReview(this.state)
             .then(() => {
                 this.props.history.push({

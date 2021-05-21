@@ -18,7 +18,7 @@ class Api::ReservationsController < ApplicationController
     end
 
     def update
-        debugger
+        
         @reservation = Reservation.find(params[:id])
 
         # if @reservation.player_id === current_player.id

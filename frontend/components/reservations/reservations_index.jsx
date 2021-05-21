@@ -20,7 +20,7 @@ class ReservationsIndex extends React.Component {
         let player = this.props.players[this.props.currentPlayer];
 
         const mapped = this.props.reservations.map((res, i) => {
-            debugger
+            
             return (
                     <div className='res-box-info' key={`res-${i}`}>
                         <div className='gp-logo'>

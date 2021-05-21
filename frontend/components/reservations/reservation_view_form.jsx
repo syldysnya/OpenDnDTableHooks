@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 class ReservationViewForm extends React.Component {
     constructor(props) {
         super(props)
-        debugger
+        
         this.state = {
             gameDate: props.location.aboutProps.reservation.gameDate,
             gameStart: props.location.aboutProps.reservation.gameStart,
@@ -42,7 +42,7 @@ class ReservationViewForm extends React.Component {
 
     render() {
         if (!this.props.location.aboutProps.reservation.gameDate) return null;
-        debugger
+        
         return (
             <div className='reservation-completion'>
                 <div className='reservation-completion-form'>
