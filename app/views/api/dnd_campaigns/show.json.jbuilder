@@ -1,0 +1,1 @@
+json.partial! 'api/dnd_campaigns/dnd_campaign', dnd_campaign: @dnd_campaign

@@ -1,0 +1,124 @@
+.home-nav {
+    display: flex;
+    align-items: center;
+    height: 3.5rem;
+    justify-content: space-between;
+    padding: 0 2%;
+    // display: grid;
+    // grid-template-columns: 50% 50%;
+    // height: 3.5rem;
+
+    .home-nav-right {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        
+        i {
+            font-size: 18px;
+            padding: 12%;
+        }
+
+        .search-logo {
+            padding: 0 18%;
+            border-left: 1px solid #dadada;
+        }
+    }
+
+    .home-nav-left {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        cursor: pointer;
+        
+        img {
+            height: 40px;
+        }
+
+        .clone-name {
+            font-weight: bold;
+            padding-left: 2%;
+            font-family: system-ui;
+        }
+    }
+}
+
+.btn {
+    padding: 8px 12px;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+.btn-signup {
+    color: #fff;
+    background-color: #247f9e;
+    margin: 0 8px;
+    border: .0625rem solid #247f9e;
+}
+
+.btn-login {
+    color: #2d333f;
+    background-color: transparent;
+    border: .0625rem solid #d8d9db;
+    margin: 0;
+}
+
+.button-profile{
+    width: 35px;
+    height: 35px;
+    border: 1px solid #d8d9db;
+    border-radius: 100px;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    i {
+        font-size: 20px;
+    }
+}
+
+.fa-user .far{
+    display: flex;
+}
+
+.dropdown-page-navbar {
+    display: flex;
+    position: relative;
+}
+
+.dropdown-profile-content {
+    position: relative;
+}
+
+.dropdown-profile-open {
+    position: absolute;
+    display: flex;
+    width: 250px;
+    top: 55px;
+    border: 1px solid #dadada;
+    background-color: white;
+    right: 100px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    border-radius: 4px;
+    z-index: 10;
+    cursor: pointer;
+
+    p {
+        font-weight: bold;
+        margin: 5% 0;
+    }
+}
+
+.menu-links {
+    padding: 10px 0px;
+    text-decoration: none;
+    color: #2d333f;
+}
+
+.signout-div {
+    cursor: pointer;
+    padding: 10px 0px;
+    color: #da3743;
+}
