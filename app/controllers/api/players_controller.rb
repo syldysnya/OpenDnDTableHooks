@@ -6,7 +6,6 @@ class Api::PlayersController < ApplicationController
 
     def create
         @player = Player.new(player_params)
-        
         if @player.save
             login!(@player)
             render 'api/players/show'

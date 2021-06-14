@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_20_053836) do
+ActiveRecord::Schema.define(version: 2021_05_21_050427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 2021_05_20_053836) do
     t.string "wedsite"
     t.text "description", null: false
     t.integer "city_id", null: false
-    t.integer "dnd_campaign_id", null: false
+    t.integer "dnd_campaign_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["city_id"], name: "index_game_places_on_city_id"
@@ -114,7 +114,7 @@ ActiveRecord::Schema.define(version: 2021_05_20_053836) do
     t.string "game_date", null: false
     t.string "game_start", null: false
     t.integer "players_num", null: false
-    t.integer "dnd_campaign_id", null: false
+    t.integer "dnd_campaign_id"
     t.integer "game_place_id", null: false
     t.integer "player_id", null: false
     t.datetime "created_at", null: false
@@ -135,7 +135,7 @@ ActiveRecord::Schema.define(version: 2021_05_20_053836) do
     t.integer "service_rating", null: false
     t.integer "org_rating", null: false
     t.decimal "overall_rating", null: false
-    t.integer "dnd_campaign_id", null: false
+    t.integer "dnd_campaign_id"
     t.integer "game_place_id", null: false
     t.integer "player_id", null: false
     t.datetime "created_at", null: false

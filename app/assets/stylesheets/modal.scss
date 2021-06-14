@@ -22,7 +22,8 @@
   border-radius: 5px;
   padding: 3% 2.5%;
   background-color: white;
-  position: absolute;
+  position: relative;
+  z-index: 2;
   font-size: 15px;
 }
 
