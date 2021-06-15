@@ -5,6 +5,6 @@ class DndCampaign < ApplicationRecord
 
     # belongs_to :game_place
     has_many :reservations
-    has_many :reviews
+    # has_many :reviews
 
 end

@@ -4,6 +4,7 @@ import GamePlace from './game_places/gp/game_place';
 import Home from './main/home';
 import NavBar from './main/navbar';
 import Modal from './modal/modal';
+import Profile from './profile/profile';
 import ConfirmationCreateForm from './reservations/create_forms/confirmation_create_form';
 import CanceledReservationView from './reservations/edit_form/canceled_reservation_view';
 import CancelReservation from './reservations/edit_form/cancel_reservation_form';
@@ -22,6 +23,7 @@ const App = () => (
         <Route exact path='/book/cancel' component={CancelReservation} />
         <Route exact path='/book/cancel/form' component={CanceledReservationView} />
         <Route exact path='/booking/details/edit' component={EditReservationPage} />
+        <Route exact path='/my/profile' component={Profile} />
     </>
 );
 

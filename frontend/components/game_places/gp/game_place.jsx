@@ -1,17 +1,40 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchGamePlace } from '../../../actions/game_place_actions';
+import { fetchAllReviews } from '../../../actions/review_actions';
 import MainPageCreateForm from '../../reservations/create_forms/main_page_create_form';
+import CreateReviewForm from '../../reviews/create_review_form';
+import ReviewsIndex from '../../reviews/reviews_index';
 
 const GamePlace = () => {
     let gamePlaceParams = useParams();
     const dispatch = useDispatch();
     const gamePlace = useSelector(state => state.entities.gamePlaces.gamePlace);
+    const player = useSelector(state => state.session.currentPlayer);
+    const [loggedIn, setLoggedIn] = useState(false);
+    const [created, setCreated] = useState(false);
+    const reviews = useSelector(state => state.entities.reviews.reviewsAll);
+
+    useEffect(() => {
+        dispatch(fetchAllReviews(gamePlaceParams.gamePlaceId))
+    }, [created])
+
+    useEffect(() => {
+        if (player) {
+            setLoggedIn(true)
+        }
+    }, [])
     
     useEffect(() => {
         dispatch(fetchGamePlace(gamePlaceParams.gamePlaceId))
     }, [])
+
+    let loremIpsumText = (
+        <div className='gp-description'>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+    )
 
     let showGallery;
 
@@ -40,15 +63,15 @@ const GamePlace = () => {
                     <div className='gp-info-box'>
                         <h1>{gamePlace.name}</h1>
                     </div>
-                    {/* {loremIpsumText()} */}
+                        {loremIpsumText}
                     <div className='gp-gallery'>
                         {showGallery}
                     </div>
                     <div className='review-submit'>
-                        {/* <CreateFormReview /> */}
+                        { loggedIn && <CreateReviewForm gamePlace={gamePlace} player={player} setCreated={setCreated} created={created} /> }
                     </div>
                     <div className='reviews-box'>
-                        {/* <ReviewsIndex /> */}
+                        <ReviewsIndex reviews={reviews} />
                     </div>
                 </div>
                 <div className='right-gpage'>

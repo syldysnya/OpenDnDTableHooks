@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { openModal } from '../../../actions/modal_actions';
 
 const AuthButton = () => {
