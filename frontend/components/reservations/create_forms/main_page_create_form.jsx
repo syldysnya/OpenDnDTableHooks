@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Calendar } from 'react-date-range';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import AuthButton from './auth_button';
 import TimePickButtons from './time_pick_buttons';
 
