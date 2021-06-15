@@ -1,11 +1,13 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import * as ModalActions from '../../actions/modal_actions';
 import DropdownMenu from './dropdown_menu';
 
 const NavBar = () => {
     const currentPlayer = useSelector(state => state.session.currentPlayer);
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const handleClick = e => {
         const { value } = e.target;

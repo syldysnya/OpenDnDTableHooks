@@ -324,6 +324,548 @@ gPlace7.pictures.attach(
         {io: pictures2_19, filename: 'img_19.jpeg'}
     )
 
+gPlace8 = GamePlace.create!(
+    name: 'Born To Game',
+    address: '821 N Broad St',
+    phone_num: '3023765750',
+    latitude: 1.00001,
+    longitude: 2.00001,
+    open_hour: '10:00:00',
+    close_hour: '19:00:00',
+    description: 'description 44444',
+    city_id: city1.id,
+    dnd_campaign_id: 1
+)
+
+header8 = open('https://app-opendndtable-seed.s3.amazonaws.com/headers/8_header.jpeg')
+gPlace8.photo.attach(io: header8, filename: '8_header.jpeg')
+
+avatar8 = open('https://app-opendndtable-seed.s3.amazonaws.com/gpavatars/8_avatar.jpeg')
+gPlace8.avatar.attach(io: avatar8, filename: '8_avatar.jpeg')
+
+pictures2_11 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_11.jpeg')
+pictures2_12 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_12.jpeg')
+pictures2_13 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_13.jpeg')
+pictures2_14 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_14.jpeg')
+pictures2_15 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_15.jpeg')
+pictures2_16 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_16.jpeg')
+pictures2_17 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_17.jpeg')
+pictures2_18 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_18.jpeg')
+pictures2_19 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_19.jpeg')
+pictures2_20 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_20.jpeg')
+
+gPlace8.pictures.attach(
+        {io: pictures2_11, filename: 'img_11.jpeg'},
+        {io: pictures2_12, filename: 'img_12.jpeg'},
+        {io: pictures2_13, filename: 'img_13.jpeg'},
+        {io: pictures2_14, filename: 'img_14.jpeg'},
+        {io: pictures2_15, filename: 'img_15.jpeg'},
+        {io: pictures2_16, filename: 'img_16.jpeg'},
+        {io: pictures2_17, filename: 'img_17.jpeg'},
+        {io: pictures2_18, filename: 'img_18.jpeg'},
+        {io: pictures2_19, filename: 'img_19.jpeg'}
+    )
+
+gPlace9 = GamePlace.create!(
+    name: '2nd & Charles',
+    address: '101 Geoffrey Dr',
+    phone_num: '3023765750',
+    latitude: 1.00001,
+    longitude: 2.00001,
+    open_hour: '10:00:00',
+    close_hour: '19:00:00',
+    description: 'description 44444',
+    city_id: city1.id,
+    dnd_campaign_id: 1
+)
+
+header9 = open('https://app-opendndtable-seed.s3.amazonaws.com/headers/9_header.jpeg')
+gPlace9.photo.attach(io: header9, filename: '9_header.jpeg')
+
+avatar9 = open('https://app-opendndtable-seed.s3.amazonaws.com/gpavatars/9_avatar.jpeg')
+gPlace9.avatar.attach(io: avatar9, filename: '9_avatar.jpeg')
+
+pictures2_11 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_11.jpeg')
+pictures2_12 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_12.jpeg')
+pictures2_13 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_13.jpeg')
+pictures2_14 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_14.jpeg')
+pictures2_15 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_15.jpeg')
+pictures2_16 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_16.jpeg')
+pictures2_17 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_17.jpeg')
+pictures2_18 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_18.jpeg')
+pictures2_19 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_19.jpeg')
+pictures2_20 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_20.jpeg')
+
+gPlace9.pictures.attach(
+        {io: pictures2_11, filename: 'img_11.jpeg'},
+        {io: pictures2_12, filename: 'img_12.jpeg'},
+        {io: pictures2_13, filename: 'img_13.jpeg'},
+        {io: pictures2_14, filename: 'img_14.jpeg'},
+        {io: pictures2_15, filename: 'img_15.jpeg'},
+        {io: pictures2_16, filename: 'img_16.jpeg'},
+        {io: pictures2_17, filename: 'img_17.jpeg'},
+        {io: pictures2_18, filename: 'img_18.jpeg'},
+        {io: pictures2_19, filename: 'img_19.jpeg'}
+    )
+
+gPlace10 = GamePlace.create!(
+    name: 'J&L Game',
+    address: '1026 6th Ave',
+    phone_num: '(212) 233-3399',
+    latitude: 1.00001,
+    longitude: 2.00001,
+    open_hour: '11:00:00',
+    close_hour: '20:00:00',
+    description: 'description 44444',
+    city_id: city4.id,
+    dnd_campaign_id: 1
+)
+
+header10 = open('https://app-opendndtable-seed.s3.amazonaws.com/headers/10_header.jpeg')
+gPlace10.photo.attach(io: header10, filename: '9_header.jpeg')
+
+avatar10 = open('https://app-opendndtable-seed.s3.amazonaws.com/gpavatars/10_avatar.jpeg')
+gPlace10.avatar.attach(io: avatar10, filename: '10_avatar.jpeg')
+
+pictures2_11 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_11.jpeg')
+pictures2_12 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_12.jpeg')
+pictures2_13 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_13.jpeg')
+pictures2_14 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_14.jpeg')
+pictures2_15 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_15.jpeg')
+pictures2_16 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_16.jpeg')
+pictures2_17 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_17.jpeg')
+pictures2_18 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_18.jpeg')
+pictures2_19 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_19.jpeg')
+pictures2_20 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_20.jpeg')
+
+gPlace10.pictures.attach(
+        {io: pictures2_11, filename: 'img_11.jpeg'},
+        {io: pictures2_12, filename: 'img_12.jpeg'},
+        {io: pictures2_13, filename: 'img_13.jpeg'},
+        {io: pictures2_14, filename: 'img_14.jpeg'},
+        {io: pictures2_15, filename: 'img_15.jpeg'},
+        {io: pictures2_16, filename: 'img_16.jpeg'},
+        {io: pictures2_17, filename: 'img_17.jpeg'},
+        {io: pictures2_18, filename: 'img_18.jpeg'},
+        {io: pictures2_19, filename: 'img_19.jpeg'}
+    )
+
+gPlace11 = GamePlace.create!(
+    name: 'J&L Game',
+    address: '1026 6th Ave',
+    phone_num: '(212) 233-3399',
+    latitude: 1.00001,
+    longitude: 2.00001,
+    open_hour: '11:00:00',
+    close_hour: '20:00:00',
+    description: 'description 44444',
+    city_id: city4.id,
+    dnd_campaign_id: 1
+)
+
+header11 = open('https://app-opendndtable-seed.s3.amazonaws.com/headers/11_header.jpeg')
+gPlace11.photo.attach(io: header11, filename: '11_header.jpeg')
+
+avatar11 = open('https://app-opendndtable-seed.s3.amazonaws.com/gpavatars/11_avatar.jpeg')
+gPlace11.avatar.attach(io: avatar11, filename: '11_avatar.jpeg')
+
+pictures2_11 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_11.jpeg')
+pictures2_12 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_12.jpeg')
+pictures2_13 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_13.jpeg')
+pictures2_14 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_14.jpeg')
+pictures2_15 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_15.jpeg')
+pictures2_16 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_16.jpeg')
+pictures2_17 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_17.jpeg')
+pictures2_18 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_18.jpeg')
+pictures2_19 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_19.jpeg')
+pictures2_20 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_20.jpeg')
+
+gPlace11.pictures.attach(
+        {io: pictures2_11, filename: 'img_11.jpeg'},
+        {io: pictures2_12, filename: 'img_12.jpeg'},
+        {io: pictures2_13, filename: 'img_13.jpeg'},
+        {io: pictures2_14, filename: 'img_14.jpeg'},
+        {io: pictures2_15, filename: 'img_15.jpeg'},
+        {io: pictures2_16, filename: 'img_16.jpeg'},
+        {io: pictures2_17, filename: 'img_17.jpeg'},
+        {io: pictures2_18, filename: 'img_18.jpeg'},
+        {io: pictures2_19, filename: 'img_19.jpeg'}
+    )
+
+gPlace12 = GamePlace.create!(
+    name: 'The Compleat Strategist',
+    address: '11 E 33rd St',
+    phone_num: '(212) 685-3880',
+    latitude: 1.00001,
+    longitude: 2.00001,
+    open_hour: '10:30:00',
+    close_hour: '18:00:00',
+    description: 'description 44444',
+    city_id: city4.id,
+    dnd_campaign_id: 1
+)
+
+header12 = open('https://app-opendndtable-seed.s3.amazonaws.com/headers/12_header.jpeg')
+gPlace12.photo.attach(io: header12, filename: '12_header.jpeg')
+
+avatar12 = open('https://app-opendndtable-seed.s3.amazonaws.com/gpavatars/12_avatar.jpeg')
+gPlace12.avatar.attach(io: avatar12, filename: '12_avatar.jpeg')
+
+pictures2_11 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_11.jpeg')
+pictures2_12 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_12.jpeg')
+pictures2_13 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_13.jpeg')
+pictures2_14 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_14.jpeg')
+pictures2_15 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_15.jpeg')
+pictures2_16 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_16.jpeg')
+pictures2_17 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_17.jpeg')
+pictures2_18 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_18.jpeg')
+pictures2_19 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_19.jpeg')
+pictures2_20 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_20.jpeg')
+
+gPlace12.pictures.attach(
+        {io: pictures2_11, filename: 'img_11.jpeg'},
+        {io: pictures2_12, filename: 'img_12.jpeg'},
+        {io: pictures2_13, filename: 'img_13.jpeg'},
+        {io: pictures2_14, filename: 'img_14.jpeg'},
+        {io: pictures2_15, filename: 'img_15.jpeg'},
+        {io: pictures2_16, filename: 'img_16.jpeg'},
+        {io: pictures2_17, filename: 'img_17.jpeg'},
+        {io: pictures2_18, filename: 'img_18.jpeg'},
+        {io: pictures2_19, filename: 'img_19.jpeg'}
+    )
+
+gPlace13 = GamePlace.create!(
+    name: 'Retro Kingdom',
+    address: '247 W 16th St',
+    phone_num: '(212) 685-3880',
+    latitude: 1.00001,
+    longitude: 2.00001,
+    open_hour: '11:00:00',
+    close_hour: '19:00:00',
+    description: 'description 44444',
+    city_id: city4.id,
+    dnd_campaign_id: 1
+)
+
+header13 = open('https://app-opendndtable-seed.s3.amazonaws.com/headers/13_header.jpeg')
+gPlace13.photo.attach(io: header13, filename: '13_header.jpeg')
+
+avatar13 = open('https://app-opendndtable-seed.s3.amazonaws.com/gpavatars/13_avatar.jpeg')
+gPlace13.avatar.attach(io: avatar13, filename: '13_avatar.jpeg')
+
+pictures2_11 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_11.jpeg')
+pictures2_12 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_12.jpeg')
+pictures2_13 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_13.jpeg')
+pictures2_14 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_14.jpeg')
+pictures2_15 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_15.jpeg')
+pictures2_16 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_16.jpeg')
+pictures2_17 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_17.jpeg')
+pictures2_18 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_18.jpeg')
+pictures2_19 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_19.jpeg')
+pictures2_20 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_20.jpeg')
+
+gPlace13.pictures.attach(
+        {io: pictures2_11, filename: 'img_11.jpeg'},
+        {io: pictures2_12, filename: 'img_12.jpeg'},
+        {io: pictures2_13, filename: 'img_13.jpeg'},
+        {io: pictures2_14, filename: 'img_14.jpeg'},
+        {io: pictures2_15, filename: 'img_15.jpeg'},
+        {io: pictures2_16, filename: 'img_16.jpeg'},
+        {io: pictures2_17, filename: 'img_17.jpeg'},
+        {io: pictures2_18, filename: 'img_18.jpeg'},
+        {io: pictures2_19, filename: 'img_19.jpeg'}
+    )
+
+gPlace14 = GamePlace.create!(
+    name: 'First Games Publr Network Inc',
+    address: '420 Lexington Ave',
+    phone_num: '(212) 983-0501',
+    latitude: 1.00001,
+    longitude: 2.00001,
+    open_hour: '11:00:00',
+    close_hour: '19:00:00',
+    description: 'description 44444',
+    city_id: city4.id,
+    dnd_campaign_id: 1
+)
+
+header14 = open('https://app-opendndtable-seed.s3.amazonaws.com/headers/14_header.jpeg')
+gPlace14.photo.attach(io: header14, filename: '14_header.jpeg')
+
+avatar14 = open('https://app-opendndtable-seed.s3.amazonaws.com/gpavatars/14_avatar.jpeg')
+gPlace14.avatar.attach(io: avatar14, filename: '14_avatar.jpeg')
+
+pictures2_11 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_11.jpeg')
+pictures2_12 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_12.jpeg')
+pictures2_13 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_13.jpeg')
+pictures2_14 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_14.jpeg')
+pictures2_15 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_15.jpeg')
+pictures2_16 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_16.jpeg')
+pictures2_17 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_17.jpeg')
+pictures2_18 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_18.jpeg')
+pictures2_19 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_19.jpeg')
+pictures2_20 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_20.jpeg')
+
+gPlace14.pictures.attach(
+        {io: pictures2_11, filename: 'img_11.jpeg'},
+        {io: pictures2_12, filename: 'img_12.jpeg'},
+        {io: pictures2_13, filename: 'img_13.jpeg'},
+        {io: pictures2_14, filename: 'img_14.jpeg'},
+        {io: pictures2_15, filename: 'img_15.jpeg'},
+        {io: pictures2_16, filename: 'img_16.jpeg'},
+        {io: pictures2_17, filename: 'img_17.jpeg'},
+        {io: pictures2_18, filename: 'img_18.jpeg'},
+        {io: pictures2_19, filename: 'img_19.jpeg'}
+    )
+
+gPlace15 = GamePlace.create!(
+    name: 'gameloft inc',
+    address: '50 W 23rd St',
+    phone_num: '(212) 993-3000',
+    latitude: 1.00001,
+    longitude: 2.00001,
+    open_hour: '09:00:00',
+    close_hour: '18:00:00',
+    description: 'description 44444',
+    city_id: city4.id,
+    dnd_campaign_id: 1
+)
+
+header15 = open('https://app-opendndtable-seed.s3.amazonaws.com/headers/15_header.jpeg')
+gPlace15.photo.attach(io: header15, filename: '15_header.jpeg')
+
+avatar15 = open('https://app-opendndtable-seed.s3.amazonaws.com/gpavatars/15_avatar.jpeg')
+gPlace15.avatar.attach(io: avatar15, filename: '15_avatar.jpeg')
+
+pictures2_11 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_11.jpeg')
+pictures2_12 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_12.jpeg')
+pictures2_13 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_13.jpeg')
+pictures2_14 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_14.jpeg')
+pictures2_15 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_15.jpeg')
+pictures2_16 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_16.jpeg')
+pictures2_17 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_17.jpeg')
+pictures2_18 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_18.jpeg')
+pictures2_19 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_19.jpeg')
+pictures2_20 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_20.jpeg')
+
+gPlace15.pictures.attach(
+        {io: pictures2_11, filename: 'img_11.jpeg'},
+        {io: pictures2_12, filename: 'img_12.jpeg'},
+        {io: pictures2_13, filename: 'img_13.jpeg'},
+        {io: pictures2_14, filename: 'img_14.jpeg'},
+        {io: pictures2_15, filename: 'img_15.jpeg'},
+        {io: pictures2_16, filename: 'img_16.jpeg'},
+        {io: pictures2_17, filename: 'img_17.jpeg'},
+        {io: pictures2_18, filename: 'img_18.jpeg'},
+        {io: pictures2_19, filename: 'img_19.jpeg'}
+    )
+
+gPlace16 = GamePlace.create!(
+    name: 'Jack Game Store',
+    address: '1400 Broadway',
+    phone_num: '(212) 993-3000',
+    latitude: 1.00001,
+    longitude: 2.00001,
+    open_hour: '00:00:00',
+    close_hour: '24:00:00',
+    description: 'description 44444',
+    city_id: city4.id,
+    dnd_campaign_id: 1
+)
+
+header16 = open('https://app-opendndtable-seed.s3.amazonaws.com/headers/16_header.jpeg')
+gPlace16.photo.attach(io: header16, filename: '16_header.jpeg')
+
+avatar16 = open('https://app-opendndtable-seed.s3.amazonaws.com/gpavatars/16_avatar.jpeg')
+gPlace16.avatar.attach(io: avatar16, filename: '16_avatar.jpeg')
+
+pictures2_11 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_11.jpeg')
+pictures2_12 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_12.jpeg')
+pictures2_13 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_13.jpeg')
+pictures2_14 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_14.jpeg')
+pictures2_15 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_15.jpeg')
+pictures2_16 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_16.jpeg')
+pictures2_17 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_17.jpeg')
+pictures2_18 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_18.jpeg')
+pictures2_19 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_19.jpeg')
+pictures2_20 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_20.jpeg')
+
+gPlace16.pictures.attach(
+        {io: pictures2_11, filename: 'img_11.jpeg'},
+        {io: pictures2_12, filename: 'img_12.jpeg'},
+        {io: pictures2_13, filename: 'img_13.jpeg'},
+        {io: pictures2_14, filename: 'img_14.jpeg'},
+        {io: pictures2_15, filename: 'img_15.jpeg'},
+        {io: pictures2_16, filename: 'img_16.jpeg'},
+        {io: pictures2_17, filename: 'img_17.jpeg'},
+        {io: pictures2_18, filename: 'img_18.jpeg'},
+        {io: pictures2_19, filename: 'img_19.jpeg'}
+    )
+
+gPlace17 = GamePlace.create!(
+    name: 'Game Fixx',
+    address: '3850 Lancaster Ave',
+    phone_num: '(215) 387-4040',
+    latitude: 1.00000,
+    longitude: 2.0000,
+    open_hour: '12:00:00',
+    close_hour: '20:00:00',
+    description: 'desciption2222',
+    city_id: city2.id,
+    dnd_campaign_id: 1
+)
+
+header17 = open('https://app-opendndtable-seed.s3.amazonaws.com/headers/17_header.jpeg')
+gPlace17.photo.attach(io: header17, filename: '17_header.jpeg')
+
+avatar17 = open('https://app-opendndtable-seed.s3.amazonaws.com/gpavatars/17_avatar.jpeg')
+gPlace17.avatar.attach(io: avatar17, filename: '17_avatar.jpeg')
+
+pictures2_11 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_11.jpeg')
+pictures2_12 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_12.jpeg')
+pictures2_13 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_13.jpeg')
+pictures2_14 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_14.jpeg')
+pictures2_15 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_15.jpeg')
+pictures2_16 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_16.jpeg')
+pictures2_17 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_17.jpeg')
+pictures2_18 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_18.jpeg')
+pictures2_19 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_19.jpeg')
+
+gPlace17.pictures.attach(
+        {io: pictures2_11, filename: 'img_11.jpeg'},
+        {io: pictures2_12, filename: 'img_12.jpeg'},
+        {io: pictures2_13, filename: 'img_13.jpeg'},
+        {io: pictures2_14, filename: 'img_14.jpeg'},
+        {io: pictures2_15, filename: 'img_15.jpeg'},
+        {io: pictures2_16, filename: 'img_16.jpeg'},
+        {io: pictures2_17, filename: 'img_17.jpeg'},
+        {io: pictures2_18, filename: 'img_18.jpeg'},
+        {io: pictures2_19, filename: 'img_19.jpeg'}
+    )
+
+gPlace18 = GamePlace.create!(
+    name: 'Winners Corner',
+    address: '2141 P St NW',
+    phone_num: '(202) 750-6113',
+    latitude: 1.00000,
+    longitude: 2.0000,
+    open_hour: '10:00:00',
+    close_hour: '20:00:00',
+    description: 'desciption2222',
+    city_id: city3.id,
+    dnd_campaign_id: 1
+)
+
+header18 = open('https://app-opendndtable-seed.s3.amazonaws.com/headers/18_header.jpeg')
+gPlace18.photo.attach(io: header18, filename: '18_header.jpeg')
+
+avatar18 = open('https://app-opendndtable-seed.s3.amazonaws.com/gpavatars/18_avatar.jpeg')
+gPlace18.avatar.attach(io: avatar18, filename: '18_avatar.jpeg')
+
+pictures2_11 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_11.jpeg')
+pictures2_12 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_12.jpeg')
+pictures2_13 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_13.jpeg')
+pictures2_14 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_14.jpeg')
+pictures2_15 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_15.jpeg')
+pictures2_16 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_16.jpeg')
+pictures2_17 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_17.jpeg')
+pictures2_18 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_18.jpeg')
+pictures2_19 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_19.jpeg')
+
+gPlace18.pictures.attach(
+        {io: pictures2_11, filename: 'img_11.jpeg'},
+        {io: pictures2_12, filename: 'img_12.jpeg'},
+        {io: pictures2_13, filename: 'img_13.jpeg'},
+        {io: pictures2_14, filename: 'img_14.jpeg'},
+        {io: pictures2_15, filename: 'img_15.jpeg'},
+        {io: pictures2_16, filename: 'img_16.jpeg'},
+        {io: pictures2_17, filename: 'img_17.jpeg'},
+        {io: pictures2_18, filename: 'img_18.jpeg'},
+        {io: pictures2_19, filename: 'img_19.jpeg'}
+    )
+
+gPlace19 = GamePlace.create!(
+    name: 'Game Zone',
+    address: '6145 Woodland Ave',
+    phone_num: '(215) 724-1277',
+    latitude: 1.00000,
+    longitude: 2.0000,
+    open_hour: '10:00:00',
+    close_hour: '17:30:00',
+    description: 'desciption2222',
+    city_id: city2.id,
+    dnd_campaign_id: 1
+)
+
+header19 = open('https://app-opendndtable-seed.s3.amazonaws.com/headers/19_header.jpeg')
+gPlace19.photo.attach(io: header19, filename: '19_header.jpeg')
+
+avatar19 = open('https://app-opendndtable-seed.s3.amazonaws.com/gpavatars/19_avatar.jpeg')
+gPlace19.avatar.attach(io: avatar19, filename: '19_avatar.jpeg')
+
+pictures2_11 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_11.jpeg')
+pictures2_12 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_12.jpeg')
+pictures2_13 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_13.jpeg')
+pictures2_14 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_14.jpeg')
+pictures2_15 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_15.jpeg')
+pictures2_16 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_16.jpeg')
+pictures2_17 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_17.jpeg')
+pictures2_18 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_18.jpeg')
+pictures2_19 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_19.jpeg')
+
+gPlace19.pictures.attach(
+        {io: pictures2_11, filename: 'img_11.jpeg'},
+        {io: pictures2_12, filename: 'img_12.jpeg'},
+        {io: pictures2_13, filename: 'img_13.jpeg'},
+        {io: pictures2_14, filename: 'img_14.jpeg'},
+        {io: pictures2_15, filename: 'img_15.jpeg'},
+        {io: pictures2_16, filename: 'img_16.jpeg'},
+        {io: pictures2_17, filename: 'img_17.jpeg'},
+        {io: pictures2_18, filename: 'img_18.jpeg'},
+        {io: pictures2_19, filename: 'img_19.jpeg'}
+    )
+
+gPlace20 = GamePlace.create!(
+    name: 'The Cool Kids Of Dc',
+    address: '4671 Benning Rd SE',
+    phone_num: '(202) 823-6903',
+    latitude: 1.00000,
+    longitude: 2.0000,
+    open_hour: '10:30:00',
+    close_hour: '18:00:00',
+    description: 'desciption2222',
+    city_id: city3.id,
+    dnd_campaign_id: 1
+)
+
+header20 = open('https://app-opendndtable-seed.s3.amazonaws.com/headers/20_header.jpeg')
+gPlace20.photo.attach(io: header20, filename: '20_header.jpeg')
+
+avatar20 = open('https://app-opendndtable-seed.s3.amazonaws.com/gpavatars/20_avatar.jpeg')
+gPlace20.avatar.attach(io: avatar20, filename: '20_avatar.jpeg')
+
+pictures2_11 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_11.jpeg')
+pictures2_12 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_12.jpeg')
+pictures2_13 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_13.jpeg')
+pictures2_14 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_14.jpeg')
+pictures2_15 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_15.jpeg')
+pictures2_16 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_16.jpeg')
+pictures2_17 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_17.jpeg')
+pictures2_18 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_18.jpeg')
+pictures2_19 = open('https://app-opendndtable-seed.s3.amazonaws.com/images/gallery/img_19.jpeg')
+
+gPlace20.pictures.attach(
+        {io: pictures2_11, filename: 'img_11.jpeg'},
+        {io: pictures2_12, filename: 'img_12.jpeg'},
+        {io: pictures2_13, filename: 'img_13.jpeg'},
+        {io: pictures2_14, filename: 'img_14.jpeg'},
+        {io: pictures2_15, filename: 'img_15.jpeg'},
+        {io: pictures2_16, filename: 'img_16.jpeg'},
+        {io: pictures2_17, filename: 'img_17.jpeg'},
+        {io: pictures2_18, filename: 'img_18.jpeg'},
+        {io: pictures2_19, filename: 'img_19.jpeg'}
+    )
+
 
 player1 = Player.create!(
     email: 'sykh@mail.com',
