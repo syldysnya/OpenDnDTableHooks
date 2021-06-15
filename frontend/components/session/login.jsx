@@ -19,7 +19,7 @@ const Login = () => {
     }, [errors])
 
     useEffect(() => {
-        debugger
+        
         return () => {
             dispatch(receiveErrors([]))
         }

@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Calendar } from 'react-date-range';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import AuthButton from './auth_button';
 import TimePickButtons from './time_pick_buttons';
 
-const RES_TIME = [
+export const RES_TIME = [
     "12:00 AM", "12:30 AM",
     "1:00 AM", "1:30 AM",
     "2:00 AM", "2:30 AM",
@@ -35,37 +35,31 @@ const RES_TIME = [
 const MainPageCreateForm = (props) => {
 
     const currentPlayer =  useSelector(state => state.session.currentPlayer);
-    const history = useHistory();
+    const [loggedIn, setLoggedIn] = useState(false)
     const currentDateFull = new Date();
     const currentDate = currentDateFull.toDateString().replace(' 2021', '');
     const randomNum = Math.floor(Math.random() * 10000);
-    
+
     const [reservation, setReservation] = useState({
         gameDate: currentDate,
         gameStart: '8:00 PM',
         playersNum: 2,
-        dndCampaignId: 1,
-        gamePlaceId: props.gamePlace.id,
+        gamePlaceId: '',
         playerId: 1,
         confirmation_num: randomNum,
-        addInfo: ''
+        add_info: '',
+        canceled: false,
+        plphone: '',
+        email: '',
+        dndCampaignId: ''
     });
-
     const [visible, setVisible] = useState(false);
 
     const {
         gameDate,
-        gameStart,
-        playersNum,
-        dndCampaignId,
-        gamePlaceId,
-        playerId,
-        confirmation_num,
-        addInfo
     } = reservation;
 
     const updateInfo = (e) => {
-        debugger
         setReservation({ ...reservation, [e.target.id]: e.target.value })
     };
 
@@ -90,7 +84,7 @@ const MainPageCreateForm = (props) => {
     if (!currentPlayer) {
         createForm = <AuthButton />
     } else {
-        createForm = <TimePickButtons reservation={reservation} />
+        createForm = <TimePickButtons reservation={reservation} gamePlace={props.gamePlace} formType='MainPage'/>
     }
 
     return (
@@ -114,9 +108,8 @@ const MainPageCreateForm = (props) => {
                     <span>Date</span>
                     <div className='parent-calendar-box'
                         id='gameDate'
-                        onClick={showCalendar} tabIndex='0'>
-                        {/* // onBlur={this.showCalendar}> */}
-                        {/* // onChange={this.update('gameDate')}> */}
+                        onClick={showCalendar} tabIndex='0'
+                        >
                         {gameDate}
                         <div className='dropdown-calendar'>
                             {visible && (

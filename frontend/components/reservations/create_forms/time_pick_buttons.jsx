@@ -1,11 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 const TimePickButtons = (props) => {
 
     const {gameStart} = props.reservation;
     const [visibleButton, setVisibleButton] = useState(false);
-    const [reservation, setReservation] = useState(props.reservation)
+    const [reservation, setReservation] = useState(props.reservation);
+    const gamePlace = useSelector(state => state.entities.gamePlaces.gamePlace)
+
+    useEffect(() => {
+        if (props.formType === 'ViewPage') {
+            setVisibleButton(true)
+        }
+    }, [])
+
+    useEffect(() => {
+        setReservation({...reservation, gamePlaceId: gamePlace.id})
+    }, [gamePlace])
 
     const handleClick = (e) => {
         setReservation({...reservation, gameStart: e.currentTarget.innerHTML})
@@ -52,19 +64,34 @@ const TimePickButtons = (props) => {
         }
 
         let mapped = timeOptions.map((t, i) => {
-            return (
-                <NavLink onClick={handleClick}
-                    key={`timePick-${i}`}
-                    style={{ textDecoration: 'none' }}
-                    className='auth-button' to={{
-                        pathname: '/booking/details',
-                        state: {reservation: reservation}
-                    }} exact>
-                    {t}
-                </NavLink>
-            )
+
+            if (props.formType === 'MainPage') {
+                return (
+                    <NavLink 
+                        key={`timePick-${i}`}
+                        style={{ textDecoration: 'none' }}
+                        className='auth-button' to={{
+                            pathname: '/booking/details',
+                            state: {reservation: props.reservation, gamePlace: gamePlace, gameStart: t}
+                        }} exact>
+                        {t}
+                    </NavLink>
+                )
+            } else {
+                return (
+                    <li key={`btn-time-${i}`}>
+                        <NavLink key={`timePick-${i}`}
+                            className='auth-button' to={{
+                                pathname: '/booking/details/edit',
+                                state: {reservation: props.reservation, gamePlace: gamePlace, gameStart: t}
+                            }} exact>
+                            {t}
+                        </NavLink>
+                    </li>
+                )
+            }
         })
-        debugger
+        
         return (
             <div className='time-buttons'>
                 {mapped}

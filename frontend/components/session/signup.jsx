@@ -35,7 +35,7 @@ const Signup = () => {
     }, []);
 
     const handleErrors = e => {
-        debugger
+        
         if (errored) return errors.filter(error => error.includes(field))
     }
 
@@ -51,7 +51,7 @@ const Signup = () => {
     }
 
     const handleSubmit = e => {
-        debugger
+        
         dispatch(signup(user))
     }
 

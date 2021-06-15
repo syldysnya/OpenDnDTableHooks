@@ -1,16 +1,19 @@
-import { REQUEST_PLAYER } from "../actions/player_actions";
 import { RECEIVE_ALL_RESERVATIONS, RECEIVE_RESERVATION } from "../actions/reservation_actions";
 
+const initialState = {
+    reservationsAll: [],
+    reservation: []
+} 
 
-const reservationsReducer = (state = {}, action) => {
+const reservationsReducer = (state = initialState, action) => {
     Object.freeze(state);
     
     switch (action.type) {
         case RECEIVE_ALL_RESERVATIONS:
             
-            return action.reservations;
+            return {...state, reservationsAll: action.reservations};
         case RECEIVE_RESERVATION:
-            return Object.assign({}, state, { [action.reservation.id]: action.reservation })
+            return {...state, reservation: action.reservation };
         default:
             return state;
     }

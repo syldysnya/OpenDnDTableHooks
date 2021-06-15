@@ -5,6 +5,6 @@ class Reservation < ApplicationRecord
 
     belongs_to :player
     belongs_to :game_place
-    belongs_to :dnd_campaign
+    # belongs_to :dnd_campaign
     
 end
