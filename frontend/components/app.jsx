@@ -10,6 +10,8 @@ import CanceledReservationView from './reservations/edit_form/canceled_reservati
 import CancelReservation from './reservations/edit_form/cancel_reservation_form';
 import EditReservationPage from './reservations/edit_form/edit_reservation_page';
 import ReservationView from './reservations/view_form/reservation_view';
+import SearchBar from './search/search_bar';
+import SearchPage from './search/search_page';
 
 
 const App = () => (
@@ -17,6 +19,7 @@ const App = () => (
         <Modal />
         <Route path='/' component={NavBar} />
         <Route exact path='/' component={Home} />
+        <Route exact path='/' component={SearchBar} />
         <Route exact path='/gameplaces/:gamePlaceId' component={GamePlace}/>
         <Route exact path='/booking/details' component={ConfirmationCreateForm} />
         <Route exact path='/book/view/:reservationId' component={ReservationView} />
@@ -24,6 +27,7 @@ const App = () => (
         <Route exact path='/book/cancel/form' component={CanceledReservationView} />
         <Route exact path='/booking/details/edit' component={EditReservationPage} />
         <Route exact path='/my/profile' component={Profile} />
+        <Route exact path='/search' component={SearchPage} />
     </>
 );
 

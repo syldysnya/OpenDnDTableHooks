@@ -34,7 +34,6 @@ export const RES_TIME = [
 const MainPageCreateForm = (props) => {
 
     const currentPlayer =  useSelector(state => state.session.currentPlayer);
-    const [loggedIn, setLoggedIn] = useState(false)
     const currentDateFull = new Date();
     const currentDate = currentDateFull.toDateString().replace(' 2021', '');
     const randomNum = Math.floor(Math.random() * 10000);
