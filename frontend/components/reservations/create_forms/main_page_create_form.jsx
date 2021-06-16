@@ -109,14 +109,15 @@ const MainPageCreateForm = (props) => {
                         onClick={showCalendar} tabIndex='0'
                         >
                         {gameDate}
-                        <div className='dropdown-calendar'>
-                            {visible && (
-                                <Calendar
-                                    date={new Date()}
-                                    onChange={e => updateDate(e)}
-                                />
-                            )}
-                        </div>
+                    </div>
+                    <div className='dropdown-calendar'>
+                        {visible && (
+                            <Calendar
+                                date={new Date()}
+                                onChange={e => updateDate(e)}
+                                minDate={new Date()}
+                            />
+                        )}
                     </div>
                 </div>
                 <div className='info-create-time' value='gameStart'>
