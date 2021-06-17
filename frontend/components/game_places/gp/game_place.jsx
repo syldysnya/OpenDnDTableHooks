@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchGamePlace } from '../../../actions/game_place_actions';
 import { fetchAllReviews } from '../../../actions/review_actions';
+import GamePlaceMap from '../../map/game_place_map';
 import MainPageCreateForm from '../../reservations/create_forms/main_page_create_form';
 import CreateReviewForm from '../../reviews/create_review_form';
 import ReviewsIndex from '../../reviews/reviews_index';
@@ -29,12 +30,6 @@ const GamePlace = () => {
     useEffect(() => {
         dispatch(fetchGamePlace(gamePlaceParams.gamePlaceId))
     }, [])
-
-    let loremIpsumText = (
-        <div className='gp-description'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </div>
-    )
 
     let showGallery;
 
@@ -63,7 +58,9 @@ const GamePlace = () => {
                     <div className='gp-info-box'>
                         <h1>{gamePlace.name}</h1>
                     </div>
-                        {loremIpsumText}
+                    <div className='gp-description'>
+                        {gamePlace.description}
+                    </div>
                     <div className='gp-gallery'>
                         {showGallery}
                     </div>
@@ -76,11 +73,9 @@ const GamePlace = () => {
                 </div>
                 <div className='right-gpage'>
                     <MainPageCreateForm gamePlace={gamePlace} />
-                    {/* <ReservationCreateFormContainer /> */}
-                
                     <div className='gp-map'>
                         <div className='map-box'>
-                            <img src='https://app-opendndtable-seed.s3.amazonaws.com/Screen+Shot+2021-05-20+at+1.28.32+AM.png'/>
+                            <GamePlaceMap gamePlace={gamePlace}/>
                             <p>{gamePlace.address}</p>
                         </div>
                         <div className='hours-info'>

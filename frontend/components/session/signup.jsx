@@ -16,43 +16,76 @@ const Signup = () => {
     });
 
     const errors = useSelector(state => state.errors.session);
-    const [errored, setErrors] = useState(false);
+    const [erroredFName, setFnameErr] = useState(false);
+    const [erroredLName, setLnameErr] = useState(false);
+    const [erroredEmail, setEmailErr] = useState(false);
+    const [erroredPassword, setPassErr] = useState(false);
+    const [erroredConfPass, setConfPassErr] = useState(false);
+    const [erroredCity, setCityErr] = useState(false);
     const cities = useSelector(state => Object.values(state.entities.cities.citiesAll));
     const isSignedIn = useSelector(state => state.session.isSignedIn);
     const dispatch = useDispatch();
 
     useEffect(() => {
-    }, [errors, console.log(errors)]);
+        if (isSignedIn) {
+            dispatch(hideModal())
+        }
+    }, [isSignedIn])
 
-    // useEffect(() => {
-    //     return () => {
-    //         dispatch(receiveErrors([]))
-    //     }
-    // }, [user]);
+    useEffect(() => {
+        errors.map(err => {
+            if (err.includes('Lname')) {
+                setLnameErr(true)
+            } else if (err.includes('Fname')) {
+                setFnameErr(true)
+            } else if (err.includes('Email')) {
+                setEmailErr(true)
+            } else if (err.includes('Password')) {
+                setPassErr(true)
+            } else if (err.includes('City')) {
+                setCityErr(true)
+            }
+        })
+    }, [errors]);
+
+    useEffect(() => {}, [erroredCity, erroredConfPass, erroredEmail, erroredFName, erroredLName, erroredPassword])
 
     useEffect(() => {
         dispatch(fetchCities())
     }, []);
 
-    const handleErrors = e => {
-        
-        if (errored) return errors.filter(error => error.includes(field))
-    }
-
     const handleInputCity = e => {
-        
+        debugger
         const idx = parseInt(e.target.value);
-        setUser({ ...user, city_id: idx })
+        setUser({ ...user, city_id: idx });
+        setCityErr(false);
     }
 
     const handleInput = e => {
         const { name, value } = e.target;
         setUser(user => ({ ...user, [name]: value }))
+
+        if (name === 'fname') {
+            setFnameErr(false)
+        } else if (name === 'lname') {
+            setLnameErr(false)
+        } else if (name === 'email') {
+            setEmailErr(false)
+        } else if (name === 'password') {
+            setPassErr(false)
+        } else if (name === 'confirmPassword') {
+            setConfPassErr(false)
+        }
     }
 
     const handleSubmit = e => {
-        
-        dispatch(signup(user))
+        e.preventDefault();
+
+        if (user.password !== user.confirmPassword) {
+            setConfPassErr(true)
+        } else {
+            dispatch(signup(user))
+        }
     }
 
     const demoSubmit = () => {
@@ -86,7 +119,7 @@ const Signup = () => {
                             <li className='auth-error'
                                 key='fname-error'
                                 value='Fname'>
-                                    {errored ? handleErrors : null}
+                                {erroredFName && ("First name can't be blank")}
                             </li>
                         </label>
                         <label htmlFor="lname-login">
@@ -101,7 +134,7 @@ const Signup = () => {
                             <li className='auth-error'
                                 key='lname-error'
                                 value='Lname'>
-                                {/* {handleErrors} */}
+                                {erroredLName && ("Last name can't be blank")}
                             </li>
                         </label>
                         <label htmlFor="email-login">
@@ -116,7 +149,7 @@ const Signup = () => {
                             <li className='auth-error'
                                 key='email-error'
                                 value='Email'>
-                                {/* {handleErrors} */}
+                                {erroredEmail && ("Email can't be blank")}
                             </li>
                         </label>
                         <label htmlFor="password-login">
@@ -131,7 +164,7 @@ const Signup = () => {
                             <li className='auth-error'
                                 key='password-error'
                                 value='Password'>
-                                {/* {handleErrors} */}
+                                {erroredPassword && ("Password is too short (minimum is 8 characters)")}
                             </li>
                         </label>
                         <label htmlFor="password-login2">
@@ -146,15 +179,16 @@ const Signup = () => {
                             <li className='auth-error'
                                 key='password-error'
                                 value='Password'>
-                                {/* {handleErrors} */}
+                                {erroredConfPass && ("Password doesn't match")}
                             </li>
                         </label>
                         <label htmlFor="city-login">
                             <select onChange={handleInputCity}
-                                className='modal-input'>
-                                <option disabled defaultValue='Primary city'>Primary city*</option>
+                                className='modal-input'
+                                defaultValue='Primary city*'>
+                                <option disabled>Primary city*</option>
                                 {cities.map((city, i) => (
-                                    <option key={`city-${i}`} value={i}>
+                                    <option key={`city-${i}`} value={city.id}>
                                         {city.name}
                                     </option>
                                 ))}
@@ -163,7 +197,7 @@ const Signup = () => {
                         <li className='auth-error'
                             key='city-error'
                             value='City'>
-                            {/* {handleErrors} */}
+                            {erroredCity && ("City must exist")}
                         </li>
                         <button type="button"
                             className='auth-button'

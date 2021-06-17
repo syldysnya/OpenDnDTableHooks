@@ -1,63 +1,36 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllGamePlaces } from '../../../actions/game_place_actions';
 import { fetchCities } from '../../../actions/city_actions';
-import { NavLink } from 'react-router-dom';
+import AllGamePlaces from './all_game_places';
+import NewYorkPlaces from './new_york_places';
+import PhillyPlaces from './philly_places';
+import NewarkPlaces from './newark_places';
+import WashingtonPlaces from './washington_places';
 
 const GamePlacesAll = () => {
 
     const gamePlaces = useSelector(state => state.entities.gamePlaces);
     const cities = useSelector(state => Object.values(state.entities.cities.citiesAll));
     const dispatch = useDispatch();
-    
-    useEffect(() => {
-        dispatch(fetchCities());
-    }, []);
+    const [fetched, setFetched] = useState(false);
     
     useEffect(() => {
         dispatch(fetchAllGamePlaces())
+            .then(setFetched(true))
     }, []);
 
-    let mapped = Object.values(gamePlaces.gamePlacesAll).map((gPlace, i) => {
-        return (
-            <div className='game-place-i' key={`game-place-${i}`}>
-                <div className='avatar'>
-                    <img src={gPlace.avatarUrl}/>
-                </div>
-                <div className='info-box'>
-                    <div>
-                        <NavLink to={{
-                            pathname: `/gameplaces/${gPlace.id}`
-                            }}
-                            style={{ textDecoration: 'none' }}>
-                            {gPlace.name}
-                        </NavLink>
-                    </div>
-                    <div>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                    </div>
-                    <div># of reviews</div>
-                    <div>Campaign title</div>
-                    <div>{cities.map(city => {
-                        if (city.id === gPlace.cityId) {
-                            return city.name
-                        }
-                    })}</div>
-                </div>
-            </div>
-        )
-    })
-
+    useEffect(() => {
+        dispatch(fetchCities());
+    }, [fetched]);
+    
     return (
-        <div className='list-of-gps'>
-            <span>Book for a game today</span>
-            <div className='gp-list'>
-                {mapped}
-            </div>
+        <div>
+            <AllGamePlaces gamePlaces={gamePlaces} cities={cities} />
+            <NewYorkPlaces gamePlaces={gamePlaces} cities={cities} />
+            <PhillyPlaces gamePlaces={gamePlaces} cities={cities} />
+            <NewarkPlaces gamePlaces={gamePlaces} cities={cities} />
+            <WashingtonPlaces gamePlaces={gamePlaces} cities={cities} />
         </div>
     );
 };
