@@ -7,6 +7,10 @@ html {
     background-color: $grey-color;
 }
 
+#root {
+    position: relative;
+}
+
 body {
     margin: 0 auto;
     margin-top: 3vh;

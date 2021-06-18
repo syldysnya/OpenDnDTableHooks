@@ -93,7 +93,7 @@ const SearchPage = (props) => {
     }
 
     return (
-        <div>
+        <div className='search-results-page'>
             <div className='nav-bar-search'>
                 <SearchBarSearchPage reservation={reservation}
                                     handleInput={handleInput}
@@ -101,15 +101,20 @@ const SearchPage = (props) => {
                                     setReservation={setReservation}
                                     handleClick={handleClick} />
             </div>
-            <div className='left-bar-search'>
-                <SearchFilter cities={cities}
-                            handleCheckBox={handleCheckBox}/>
-            </div>
-            <div className='right-bar-search'>
-                <SearchResults  searchResults={searchResults}
-                                filterResults={filterResults}
-                                cities={cities}
-                                gamePlaces={gamePlaces}/>
+            <div className="search-grid">
+                <div className='left-bar-search'>
+                <div className="map-page">
+
+                </div>
+                    <SearchFilter cities={cities}
+                                handleCheckBox={handleCheckBox}/>
+                </div>
+                <div className='right-bar-search'>
+                    <SearchResults  searchResults={searchResults}
+                                    filterResults={filterResults}
+                                    cities={cities}
+                                    gamePlaces={gamePlaces}/>
+                </div>
             </div>
         </div>
     );

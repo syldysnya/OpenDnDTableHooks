@@ -9,6 +9,7 @@ const Home = () => {
             {/* <NavBarContainer /> */}
             <div className='home-page-header-frame'>
                 <img className='home-page-img' src="https://app-opendndtable-seed.s3.amazonaws.com/Tiamat_2560x1600_0.jpeg"/>
+                <div className="grey-background"></div>
             </div>
             <div className='main-page'>
                 <GamePlacesAll />
