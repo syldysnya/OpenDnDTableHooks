@@ -25,13 +25,13 @@ const GamePlacesAll = () => {
     }, [fetched]);
     
     return (
-        <div>
+        <>
             <AllGamePlaces gamePlaces={gamePlaces} cities={cities} />
             <NewYorkPlaces gamePlaces={gamePlaces} cities={cities} />
             <PhillyPlaces gamePlaces={gamePlaces} cities={cities} />
             <NewarkPlaces gamePlaces={gamePlaces} cities={cities} />
             <WashingtonPlaces gamePlaces={gamePlaces} cities={cities} />
-        </div>
+        </>
     );
 };
 
