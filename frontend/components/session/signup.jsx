@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCities } from '../../actions/city_actions';
-import { hideModal } from '../../actions/modal_actions';
-import { login, receiveErrors, signup } from '../../actions/session_actions';
+import { hideModal, openModal } from '../../actions/modal_actions';
+import { login, signup } from '../../actions/session_actions';
 
 const Signup = () => {
     
@@ -97,6 +97,11 @@ const Signup = () => {
         dispatch(login(demoUser))
             .then(dispatch(hideModal()))
             .catch(() => setErrored(true))
+    }
+
+    const handleModal = e => {
+        e.preventDefault();
+        dispatch(openModal('Sign In'))
     }
 
     return (
@@ -211,7 +216,14 @@ const Signup = () => {
                             className='auth-button demouser-button'
                             onClick={demoSubmit}>
                             Continue with <span>DemoUser</span>
-                    </button>
+                        </button>
+                    </div>
+                    <div>
+                        <span id='span-for-new'>Have an account?</span>
+                        <div className='btn-sign-in-login' value='Sign Up'
+                            onClick={handleModal}> 
+                            Sign In
+                        </div>
                     </div>
                 </div>
             </div>

@@ -343,3 +343,42 @@ body {
         }
     }   
 }
+
+.footer-background {
+    width: 100%;
+    background-color: #2d333f;
+    color: white;
+
+    a {
+        color: inherit;
+        text-decoration: inherit;
+    }
+
+    ul {
+        padding: 0;
+    }
+
+    li {
+        padding-top: 5px;
+    }
+
+    .footer-main {
+        padding: 5% 10%;
+        display: grid;
+        grid-template-columns: 20% 25% 30% 24%;
+        column-gap: 2%;
+
+        .discover-links li {
+            cursor: pointer;
+
+            a {
+                display: grid;
+                grid-template-columns: 15% 85%;
+            }
+        }
+
+        div > span {
+            font-weight: bold;
+        }
+    }
+}

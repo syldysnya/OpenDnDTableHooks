@@ -40,8 +40,7 @@ const Login = () => {
 
     const handleModal = e => {
         e.preventDefault();
-
-        dispatch(openModal(e.target.value))
+        dispatch(openModal('Sign Up'))
     }
 
     const demoSubmit = () => {
