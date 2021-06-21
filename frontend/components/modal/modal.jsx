@@ -29,10 +29,9 @@ const Modal = () => {
 
     return (
         <>
-            <div className='modal-background'>
+            <div className='modal-background' onClick={handleModal}>
                 <div className='modal-content' onClick={e => e.stopPropagation()}>
                     { modalForm }
-                    <button onClick={handleModal}>x</button>
                 </div>
             </div>
         </>

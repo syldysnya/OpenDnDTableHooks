@@ -111,7 +111,7 @@ const SearchResults = (props) => {
         
         if (filter === 'newest') {
             newMap = mappedArr.sort((a, b) => a.id > b.id ? -1 : 1 )
-            setFiltered(newMap  )
+            setFiltered(newMap)
             setSorted(true)
         } else {
             newMap = mappedArr;
