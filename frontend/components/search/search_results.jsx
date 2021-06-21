@@ -5,28 +5,25 @@ import TimePickButtons from '../reservations/create_forms/time_pick_buttons';
 
 const SearchResults = (props) => {
     
-    const {searchResults, cities, filterResults, gamePlaces} = props;
-    const [filtered, setFiltered] = useState('');
-    const [sorted, setSorted] = useState(false);
+    const {searchResults, cities, filterResults, gamePlaces, reservation} = props;
 
     let mapped;
     let mappedArr;
-
-    useEffect(() => {}, [sorted])
 
     if (filterResults) {
         mappedArr = searchResults;
         mapped = filterResults.map((gp, i) => {
             return (
-                <div key={`filtered-gplaces-${i}`}>
+                <div className='result-item'
+                    key={`filtered-gplaces-${i}`}>
                     <div className='avatar'>
                         <img src={gp.avatarUrl}/>
                     </div>
-                    <div>
+                    <div className='link-place'>
                         <NavLink to={{
                             pathname: `/gameplaces/${gp.id}`
                             }}
-                            style={{ textDecoration: 'none' }}>
+                            style={{ textDecoration: 'none', color: '#247f9e' }}>
                             {gp.name}
                         </NavLink>
                     </div>
@@ -36,7 +33,7 @@ const SearchResults = (props) => {
                             }
                         })}
                     </div>
-                    {/* <TimePickButtons /> */}
+                    <TimePickButtons reservation={reservation} formType='ViewPage'/>
                 </div>
             )
         })
@@ -50,11 +47,11 @@ const SearchResults = (props) => {
                         <img src={gp.avatarUrl}/>
                     </div>
                     <div className="result-item-info">
-                        <div>
+                        <div className='link-place'>
                             <NavLink to={{
                                 pathname: `/gameplaces/${gp.id}`
                                 }}
-                                style={{ textDecoration: 'none' }}>
+                                style={{ textDecoration: 'none', color: '#247f9e' }}>
                                 {gp.name}
                             </NavLink>
                         </div>
@@ -65,7 +62,7 @@ const SearchResults = (props) => {
                             })}
                         </div>
                         <div className="time-pick-buttons">
-                            {/* <TimePickButtons /> */}
+                            <TimePickButtons reservation={reservation} formType='ViewPage'/>
                         </div>
                     </div>
                 </div>
@@ -81,11 +78,11 @@ const SearchResults = (props) => {
                                     <img src={gp.avatarUrl}/>
                                 </div>
                                 <div className="result-item-info">
-                                    <div>
+                                    <div className='link-place'>
                                         <NavLink to={{
                                             pathname: `/gameplaces/${gp.id}`
                                             }}
-                                            style={{ textDecoration: 'none' }}>
+                                            style={{ textDecoration: 'none', color: '#247f9e' }}>
                                             {gp.name}
                                         </NavLink>
                                     </div>
@@ -96,7 +93,7 @@ const SearchResults = (props) => {
                                         })}
                                     </div>
                                     <div className="time-pick-buttons">
-                                        {/* <TimePickButtons /> */}
+                                        <TimePickButtons reservation={reservation} formType='ViewPage'/>
                                     </div>
                                 </div>
                             </div>
@@ -105,66 +102,21 @@ const SearchResults = (props) => {
                 )   
     }
 
-    const sortResults = e => {
-        let filter = e.target.value;
-        let newMap;
-        
-        if (filter === 'newest') {
-            newMap = mappedArr.sort((a, b) => a.id > b.id ? -1 : 1 )
-            setFiltered(newMap)
-            setSorted(true)
-        } else {
-            newMap = mappedArr;
-            setSorted(false)
-        }
-
-    }
-
-    if (filtered) {
-        mapped = filtered.map((gp, i) => {
-            return (
-                <div className='result-item'
-                    key={`filtered-gplaces-${i}`}>
-                    <div className='avatar'>
-                        <img src={gp.avatarUrl}/>
-                    </div>
-                    <div className="result-item-info">
-                        <div>
-                            <NavLink to={{
-                                pathname: `/gameplaces/${gp.id}`
-                                }}
-                                style={{ textDecoration: 'none' }}>
-                                {gp.name}
-                            </NavLink>
-                        </div>
-                        <div>{cities.map(city => {
-                            if (city.id === gp.cityId) {
-                                return city.name
-                                }
-                            })}
-                        </div>
-                        <div className="time-pick-buttons">
-                            {/* <TimePickButtons /> */}
-                        </div>
-                    </div>
-                </div>
-            )
-        })
-    }
-
     return (
         <div className="search-results-list">
-            <div className="results-sort">
-                <div className="number-of-places">
-                    {mapped.length} game places available
-                </div>
+            <div className="number-of-places">
+                {mapped.length} game places available
+            </div>
+            {/* <div className="results-sort">
                 <select className="sort-results" onChange={sortResults}>
                     <option defaultValue="featured">Featured</option>
                     <option value="highest">Highest Rated</option>
                     <option value="newest">Newest</option>
                 </select>
+            </div> */}
+            <div className="list-places">
+                {mapped}
             </div>
-            {mapped}
         </div>
     );
 };

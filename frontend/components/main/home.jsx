@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import GamePlacesAll from '../game_places/gp_list/game_places_all';
-import Footer from './footer';
 
 const Home = () => {
     
@@ -13,7 +12,6 @@ const Home = () => {
             <div className='main-page'>
                 <GamePlacesAll />
             </div>
-            <Footer />
         </div>
     );
 };

@@ -1,3 +1,5 @@
+@import 'body';
+
 .modal-background {
   position: fixed;
   display: flex;
@@ -12,7 +14,7 @@
 }
 
 .auth-error {
-  color: #da3743;
+  color: $red-color;
   padding-top: 1%;
   font-size: 15px;
 }
@@ -30,7 +32,7 @@
   display: flex;
   justify-content: flex-start;
   padding-top: 3%;
-  border-bottom: 1px solid #dadada;
+  border-bottom: 1px solid $grey-color;
   
   h1 {
     font-size: 22px;
@@ -45,7 +47,7 @@
   margin-bottom: 5px;
   padding: 8px;
   box-sizing: border-box;
-  border: 1px solid #dadada;
+  border: 1px solid $grey-color;
   border-radius: 5px;
 }
 
@@ -57,8 +59,8 @@
   margin-bottom: 5px;
   padding: 8px;
   box-sizing: border-box;
-  background-color: #da3743;
-  border: 1px solid #da3743;
+  background-color: $red-color;
+  border: 1px solid $red-color;
   border-radius: 5px;
   color: white;
   font-size: 17px;
@@ -97,6 +99,6 @@
 .btn-sign-in-login {
   display: inline;
   font-weight: bold;
-  color: #da3743;
+  color: $red-color;
   cursor: pointer;
 }

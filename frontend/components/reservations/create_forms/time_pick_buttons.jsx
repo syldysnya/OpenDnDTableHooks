@@ -81,6 +81,7 @@ const TimePickButtons = (props) => {
                 return (
                     <li key={`btn-time-${i}`}>
                         <NavLink key={`timePick-${i}`}
+                            style={{ textDecoration: 'none' }}
                             className='auth-button' to={{
                                 pathname: '/booking/details/edit',
                                 state: {reservation: props.reservation, gamePlace: gamePlace, gameStart: t}

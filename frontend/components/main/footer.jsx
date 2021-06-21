@@ -11,13 +11,13 @@ const Footer = () => {
                     </span>
                     <ul className="discover-links">
                         <li key='linkedin' >
-                            <a href="https://www.linkedin.com/in/syldysvkhomushku/" target='_blank'><i class="fab fa-linkedin" ></i>LinkedIn</a>
+                            <a href="https://www.linkedin.com/in/syldysvkhomushku/" target='_blank'><i className="fab fa-linkedin" ></i>LinkedIn</a>
                         </li>
                         <li key='angel' >
-                            <a href="https://angel.co/u/syldysnya" target='_blank'><i class="fab fa-angellist"></i>AngelList</a>
+                            <a href="https://angel.co/u/syldysnya" target='_blank'><i className="fab fa-angellist"></i>AngelList</a>
                         </li>
                         <li key='github' >
-                            <a href="#" target='_blank'><i class="fas fa-dragon"></i>Personal Site</a>
+                            <a href="#" target='_blank'><i className="fas fa-dragon"></i>Personal Site</a>
                         </li>
                     </ul>
                 </div>
@@ -42,7 +42,7 @@ const Footer = () => {
                         <li key='2'>Member of a chess club for 5 years</li>
                         <li key='3'>Play baseball (2nd base/SS) and softball</li>
                         <li key='4'>3D-sculptor</li>
-                        <li key='4'>Love DnD</li>
+                        <li key='5'>Love DnD</li>
                     </ul>
                 </div>
                 <div className="more-projects">

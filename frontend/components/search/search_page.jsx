@@ -36,6 +36,12 @@ const SearchPage = (props) => {
     }, [])
 
     useEffect(() => {
+        if (props.location.aboutProps) {
+            setReservation(props.location.aboutProps.reservation)
+        }
+    }, [])
+
+    useEffect(() => {
         dispatch(fetchAllGamePlaces())
     }, []);
 
@@ -113,7 +119,8 @@ const SearchPage = (props) => {
                     <SearchResults  searchResults={searchResults}
                                     filterResults={filterResults}
                                     cities={cities}
-                                    gamePlaces={gamePlaces}/>
+                                    gamePlaces={gamePlaces}
+                                    reservation={reservation}/>
                 </div>
             </div>
         </div>

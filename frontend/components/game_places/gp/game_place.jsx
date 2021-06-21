@@ -31,15 +31,26 @@ const GamePlace = () => {
         dispatch(fetchGamePlace(gamePlaceParams.gamePlaceId))
     }, [])
 
-    let showGallery;
+    let showBigGallery;
+    let showSmallGallery;
 
     if (gamePlace.pictureUrls) {
-        showGallery = gamePlace.pictureUrls.map((pic, i) => (
+        let bigArr = gamePlace.pictureUrls.filter((pic, i) => i < 3)
+        let smArr = gamePlace.pictureUrls.filter((pic, i) => i >= 3)
+
+        showBigGallery = bigArr.map((pic, i) => (
+            <li className='gallery-pic' key={`gallery-pic-${i}`}>
+                <img src={pic} />
+            </li>
+        ))
+
+        showSmallGallery = smArr.map((pic, i) => (
             <li className='gallery-pic' key={`gallery-pic-${i}`}>
                 <img src={pic} />
             </li>
         ))
     }
+
 
     return (
         <div className='gp-body'>
@@ -62,7 +73,8 @@ const GamePlace = () => {
                         {gamePlace.description}
                     </div>
                     <div className='gp-gallery'>
-                        {showGallery}
+                        <div className="large-pics">{showBigGallery}</div>
+                        <div className="small-pics">{showSmallGallery}</div>
                     </div>
                     <div className='review-submit'>
                         { loggedIn && <CreateReviewForm gamePlace={gamePlace} player={player} setCreated={setCreated} created={created} /> }

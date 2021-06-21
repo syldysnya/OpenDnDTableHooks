@@ -1,8 +1,10 @@
+@import 'body';
+
 .profile-page {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-auto-rows: auto;
-    background-color: #f7f7f7;
+    background-color: $white-grey;
     row-gap: 2%;
 }
 
@@ -11,8 +13,8 @@
     display: flex;
     flex-direction: column;
     background-color: white;
-    border-top: 1px solid #f7f7f7;
-    border-bottom: 1px solid #f7f7f7;
+    border-top: 1px solid $white-grey;
+    border-bottom: 1px solid $white-grey;
     grid-column-start: 1;
     grid-column-end: 6;
     font-size: 25px;
@@ -41,8 +43,8 @@
     grid-column-end: 6;
     grid-row-start: 2;
     background-color: white;
-    border-top: 1px solid #f7f7f7;
-    border-bottom: 1px solid #f7f7f7;
+    border-top: 1px solid $white-grey;
+    border-bottom: 1px solid $white-grey;
 }
 
 .text-up {
@@ -62,8 +64,8 @@
         display: grid;
         grid-template-columns: 3% 20% 95%;
         column-gap: 3%;
-        border-top: 1px solid #f7f7f7;
-        border-bottom: 1px solid #f7f7f7;
+        border-top: 1px solid $white-grey;
+        border-bottom: 1px solid $white-grey;
         padding: 2% 3;
         background-color: white;
 

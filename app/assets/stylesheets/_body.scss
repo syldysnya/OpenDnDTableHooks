@@ -4,6 +4,8 @@ $small-size: 750px;
 $primary-font: system-ui;
 $grey-color: #dadada;
 $red-color: #da3743;
+$blue-color: #247f9e;
+$white-grey: #f7f7f7;
 
 * {
     box-sizing: border-box;
@@ -145,7 +147,7 @@ body {
     position: absolute;
     left: 50%;
     margin-left: -50vh;
-    top: 8%;
+    top: 6%;
     height: 13vh;
     width: 100vh;
     display: flex;
@@ -303,9 +305,27 @@ body {
     grid-template-columns: 22% 75%;
     column-gap: 3%;
 
+    .left-bar-search {
+        display: flex;
+        flex-direction: column;
+
+        .filter-cities-title {
+            font-weight: 500;
+            padding: 15px 0;
+
+            i {
+                padding-right: 5px;
+            }
+        }
+
+        input[type='checkbox'] {
+            display: inline-block;
+        }
+    }
+
     .right-bar-search {
         display: grid;
-        grid-template-rows: 20% auto;
+        grid-template-rows: 5% auto;
         row-gap: 3%;
         width: 100%;
 
@@ -313,8 +333,44 @@ body {
         .search-results-list {
             width: 100%;
             display: grid;
-            grid-auto-rows: 30vh;
+            grid-template-rows: 40px auto;
             height: auto;
+
+            .number-of-places {
+                padding: 15px 0;
+                font-weight: 500;
+            }
+
+            .list-places {
+                display: grid;
+                grid-auto-rows: 30vh;
+            }
+
+            .result-item-info {
+                display: grid;
+                grid-template-rows: 25px 35px 50px;
+                row-gap: 5px;
+
+                .link-place {
+                    color: $blue-color;
+                    font-weight: 700;
+                    font-size: 18px;
+                }
+
+                .time-pick-buttons .time-buttons {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+                    color: white;
+                    font-weight: 700;
+                    
+                }
+            }
+
+            .auth-button {
+                padding: 8px 19px;
+                text-decoration: none;
+            }
 
             .result-item {
                 width: 100%;

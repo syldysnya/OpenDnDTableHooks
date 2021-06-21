@@ -19,11 +19,15 @@ const SearchFilter = (props) => {
     })
 
     return (
-        <div>
+        <>
+            <div className="filter-cities-title">
+                <i className="fas fa-map-marker-alt"></i>
+                Location:
+            </div>
             <div className="filter-by-city">
                 {mappedCities}
             </div>
-        </div>
+        </>
     );
 };
 

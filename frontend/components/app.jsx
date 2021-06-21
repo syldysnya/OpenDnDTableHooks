@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import GamePlace from './game_places/gp/game_place';
+import Footer from './main/footer';
 import Home from './main/home';
 import NavBar from './main/navbar';
 import Modal from './modal/modal';
@@ -28,6 +29,7 @@ const App = () => (
         <Route exact path='/booking/details/edit' component={EditReservationPage} />
         <Route exact path='/my/profile' component={Profile} />
         <Route exact path='/search' component={SearchPage} />
+        <Route path='/' component={Footer} />
     </>
 );
 
