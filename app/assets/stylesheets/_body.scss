@@ -319,7 +319,8 @@ body {
             .result-item {
                 width: 100%;
                 display: grid;
-                grid-template-columns: 30% 70%;
+                grid-template-columns: 30% 78%;
+                column-gap: 2%;
                 padding: 2vh 0;
                 height: 100%;
                 position: relative;
