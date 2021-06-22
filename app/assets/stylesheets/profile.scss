@@ -3,9 +3,7 @@
 .profile-page {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-auto-rows: auto;
     background-color: $white-grey;
-    row-gap: 2%;
 }
 
 .profile-bar {
@@ -40,11 +38,47 @@
 
 .upcoming-reses {
     grid-column-start: 2;
-    grid-column-end: 6;
+    grid-column-end: 5;
     grid-row-start: 2;
     background-color: white;
     border-top: 1px solid $white-grey;
     border-bottom: 1px solid $white-grey;
+    margin: 30px 0;
+    box-shadow: 0px 2px 0px $grey-color;
+    border-radius: 5px;
+}
+
+.past-reses {
+    grid-column-start: 2;
+    grid-column-end: 5;
+    background-color: white;
+    border-top: 1px solid $white-grey;
+    border-bottom: 1px solid $white-grey;
+    margin-bottom: 30px;
+    box-shadow: 0px 2px 0px $grey-color;
+    border-radius: 5px;
+
+    .btn-group {
+        display: flex;
+        flex-direction: column;
+
+        div {
+            padding: 3px 0;
+            font-size: 14px;
+        }
+
+        .save-fav {
+            display: flex;
+            padding-left: 15px;
+            color: $red-color;
+            font-weight: 500;
+            align-items: center;
+
+            i {
+                padding-right: 10px;
+            }
+        }
+    }
 }
 
 .text-up {
@@ -62,26 +96,37 @@
 
     .res-box-info {
         display: grid;
-        grid-template-columns: 3% 20% 95%;
-        column-gap: 3%;
-        border-top: 1px solid $white-grey;
-        border-bottom: 1px solid $white-grey;
+        grid-template-columns: 60px 100px auto;
+        column-gap: 20px;
+        border-top: 1.5px solid $white-grey;
+        border-bottom: 1.5px solid $white-grey;
         padding: 2% 3;
         background-color: white;
 
         .gp-logo {
             grid-column-start: 2;
-            padding: 10% 0;
+            height: 100%;
+            overflow: hidden;
+            border-radius: 5px;
+            display: flex;
+            padding: 12px 0 40px 0;
 
             img {
                 width: 100%;
+                object-fit: cover;
+                border-radius: 5px;
             }
+        }
+
+        .table {
+            font-size: 14px;
         }
 
         .gp-name {
             display: flex;
             flex-direction: column;
-            padding: 3% 0;
+            padding: 12px 0 40px 0;
+            font-weight: 500;
 
             span {
                 padding-bottom: 1%;
@@ -104,10 +149,11 @@
         .btn-group {
             display: flex;
             grid-column-start: 2;
+            font-size: 14px;
             
             button {
+                font-weight: 500;
                 color: #247f9e;
-                // padding: 5% 5% 5% 0;
                 border: none;
                 background: none;
             }

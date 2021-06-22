@@ -13,11 +13,13 @@ const PastReservations = (props) => {
                     <div className='gp-name'>
                         <span>{gpName}</span>
                         <span>{gameDate} at {gameStart}</span>
-                        <span>{`Table for ${playersNum} people`}</span>
                         <div className='btn-group'>
-                            <button>View</button>
-                            <button>Modify</button>
-                            <button>Cancel</button>
+                            <div className="status-canceled">Cancelled</div>
+                            <div className="numplayers-inf">{`Table for ${playersNum} people`}</div>
+                            <div className="save-fav">
+                                <i class="far fa-bookmark"></i>
+                                <div>Save this restaurant</div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -14,7 +14,7 @@ const UpcomingReservations = (props) => {
                     <div className='gp-name'>
                         <span>{gpName}</span>
                         <span>{gameDate} at {gameStart}</span>
-                        <span>{`Table for ${playersNum} people`}</span>
+                        <span className='table'>{`Table for ${playersNum} people`}</span>
                         <div className='btn-group'>
                             <button>View</button>
                             <button>Modify</button>

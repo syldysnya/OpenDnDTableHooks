@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../actions/session_actions';
+import { NavLink } from 'react-router-dom';
 
 const DropdownMenu = () => {
 
@@ -20,6 +21,10 @@ const DropdownMenu = () => {
         dispatch(logout())
     }
 
+    const handleLink = e => {
+        setVisible(!visible)
+    }
+
     return (
         <div className='dropdown-profile-content'>
             <div className='button-profile' tabIndex='0'
@@ -31,12 +36,9 @@ const DropdownMenu = () => {
                     onClick={e => e.stopPropagation()}>
                     <p>Hello, {currentPlayer.lname}!</p>
                     <div className='break-auth'></div>
-                    {/* <Link className='menu-links' to='/my/profile/info'>My Profile</Link>
-                    <Link className='menu-links' to='/my/profile/info'>My Dining History</Link>
-                    <Link className='menu-links' to='/my/favorites'>My Saved Game Places</Link> */}
-                    My profile
-                    My dinign history
-                    My saved
+                    <NavLink className='menu-links' to='/my/profile' onClick={handleLink}>My Profile</NavLink>
+                    <NavLink className='menu-links' to='/my/profile' onClick={handleLink}>My Dining History</NavLink>
+                    <NavLink className='menu-links' to='/my/favorites' onClick={handleLink}>My Saved Game Places</NavLink>
                     <div className='signout-div'
                         onClick={handleClick}>
                         Sign out
