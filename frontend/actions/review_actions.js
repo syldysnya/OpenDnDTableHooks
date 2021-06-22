@@ -3,6 +3,7 @@ import * as ApiUtil from '../util/review_util';
 export const RECEIVE_ALL_REVIEWS = 'RECEIVE_ALL_REVIEWS';
 export const RECEIVE_REVIEW = 'RECEIVE_REVIEW';
 export const REMOVE_REVIEW = 'REMOVE_REVIEW';
+export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 
 const receiveAllReviews = reviews => ({
     type: RECEIVE_ALL_REVIEWS,
@@ -19,6 +20,11 @@ const removeReview = reviewId => ({
     reviewId
 })
 
+const receiveErrors = errors => ({
+    type: RECEIVE_ERRORS,
+    errors
+})
+
 export const fetchAllReviews = (id) => dispatch => {
     return ApiUtil.fetchAllReviews(id)
         .then(reviews => dispatch(receiveAllReviews(reviews)))
@@ -31,15 +37,18 @@ export const fecthReview = reviewId => dispatch => (
 
 export const createReview = review => dispatch => (
     ApiUtil.createReview(review)
-        .then(review => dispatch(receiveReview(review)))
+        .then(review => dispatch(receiveReview(review)),
+        err => dispatch(receiveErrors(err)))
 )
 
 export const editReview = review => dispatch => (
     ApiUtil.editReview(review)
-        .then(review => dispatch(receiveReview(review)))
+        .then(review => dispatch(receiveReview(review)),
+        err => dispatch(receiveErrors(err)))
 );
 
 export const deleteReview = reviewId => dispatch => (
     ApiUtil.deleteReview(reviewId)
-        .then(() => dispatch(removeReview(reviewId)))
+        .then(() => dispatch(removeReview(reviewId)),
+        err => dispatch(receiveErrors(err)))
 )

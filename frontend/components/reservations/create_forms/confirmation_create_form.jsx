@@ -13,6 +13,10 @@ const ConfirmationCreateForm = (props) => {
     const history = useHistory();
     const [created, setCreated] = useState(false);
     const {fname, lname} = player;
+    const [time, setTimer] = useState(300);
+    const [mins, setMins] = useState('');
+    const [secs, setSecs] = useState('');
+    const [formatted, setFormatted] = useState('5:00');
 
     const {
         gameDate,
@@ -27,7 +31,30 @@ const ConfirmationCreateForm = (props) => {
         canceled
     } = reservation;
 
-    console.log(reservation)
+    useEffect(() => {
+        
+        setMins(Math.floor(time / 60) % 60)
+        setSecs(Math.floor(time % 60));
+
+    }, [time])
+
+    useEffect(() => {
+        if (!time) return;
+
+        const countdown = setInterval(() => {
+            setTimer(time - 1)
+        }, 1000)
+
+        return () => clearInterval(countdown)
+    }, [time])
+
+    useEffect(() => {
+        if (secs < 10) {
+            setFormatted(`${mins}:0${secs}`)
+        } else {
+            setFormatted(`${mins}:${secs}`)
+        }
+    }, [mins, secs])
 
     useEffect(() => {
         setReservation({...reservation, gameStart: location.state.gameStart, email: player.email, gamePlaceId: gamePlace.id})
@@ -66,6 +93,17 @@ const ConfirmationCreateForm = (props) => {
                             <li id='3'>{playersNum} people</li>
                         </div>
                     </div>
+                </div>
+                <div className="countdown" id="countdown">
+                    {time ?  (
+                        <div className="countdown-message">
+                            We're holding this table for you for {formatted} minutes
+                        </div>
+                    ) : (
+                        <div className="countdown-over-mess">
+                            You can still try to complete your reservation, but this table may no longer be available.
+                        </div>
+                    )}
                 </div>
                 <div>Game session details</div>
                 <div>{fname} {lname} </div>

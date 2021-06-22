@@ -1,8 +1,9 @@
-import { RECEIVE_ALL_REVIEWS, RECEIVE_REVIEW, REMOVE_REVIEW } from "../actions/review_actions";
+import { RECEIVE_ALL_REVIEWS, RECEIVE_ERRORS, RECEIVE_REVIEW, REMOVE_REVIEW } from "../actions/review_actions";
 
 const initialState = {
     reviewsAll: [],
-    review: []
+    review: [],
+    errors: []
 } 
 
 const reservationsReducer = (state = initialState, action) => {
@@ -17,6 +18,8 @@ const reservationsReducer = (state = initialState, action) => {
             const nextState = {...state};
             delete nextState.reviewsAll[action.review.id];
             return nextState;
+        case RECEIVE_ERRORS:
+            return {...state, errors: action.errors.responseJSON };
         default:
             return state;
     }

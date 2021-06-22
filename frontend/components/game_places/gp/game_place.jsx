@@ -16,6 +16,7 @@ const GamePlace = () => {
     const [loggedIn, setLoggedIn] = useState(false);
     const [created, setCreated] = useState(false);
     const reviews = useSelector(state => state.entities.reviews.reviewsAll);
+    const revErrors = useSelector(state => state.entities.reviews.errors);
 
     useEffect(() => {
         dispatch(fetchAllReviews(gamePlaceParams.gamePlaceId))
@@ -76,9 +77,9 @@ const GamePlace = () => {
                         <div className="large-pics">{showBigGallery}</div>
                         <div className="small-pics">{showSmallGallery}</div>
                     </div>
-                    <div className='review-submit'>
-                        { loggedIn && <CreateReviewForm gamePlace={gamePlace} player={player} setCreated={setCreated} created={created} /> }
-                    </div>
+                    {/* <div className='review-submit'>
+                        { loggedIn && <CreateReviewForm gamePlace={gamePlace} player={player} setCreated={setCreated} created={created} revErrors={revErrors} /> }
+                    </div> */}
                     <div className='reviews-box'>
                         <ReviewsIndex reviews={reviews} />
                     </div>
