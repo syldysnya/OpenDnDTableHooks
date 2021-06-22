@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import { fetchAllReservations } from '../../actions/reservation_actions';
 import PastReservations from '../reservations/player_reservations/past_reservations';
 import UpcomingReservations from '../reservations/player_reservations/upcoming_reservations';
@@ -9,6 +10,24 @@ const Profile = () => {
     const reservations = useSelector(state => state.entities.reservations.reservationsAll);
     const player = useSelector(state => state.session.currentPlayer)
     const dispatch = useDispatch();
+    const location = useLocation();
+    const [visibleRes, setVisibleRes] = useState(false);
+    const [visibleAcc, setVisibleAcc] = useState(false);
+
+    useEffect(() => {
+        if (location.pathname === '/my/profile') {
+            setVisibleRes(true)
+
+            let res = document.getElementById("reservations-lb");
+            res.classList.add('active')
+        } else if (location.pathname === '/my/favorites') {
+            setVisibleAcc(true)
+
+            let res = document.getElementById("saved-lb");
+            res.classList.add('active')
+        }
+        
+    }, [])
 
     useEffect(() => {
         dispatch(fetchAllReservations())
@@ -25,9 +44,9 @@ const Profile = () => {
                     <span>0 points</span>
                 </div>
                 <div className='profile-left-bar'>
-                    <div>Reservations</div>
-                    <div>Saved Places</div>
-                    <div>Account Details</div>
+                    <div id='reservations-lb'>Reservations</div>
+                    <div id='saved-lb'>Saved Places</div>
+                    <div id='account-lb'>Account Details</div>
                 </div>
                 <div className='upcoming-reses'>
                     <div className='text-up'>Upcoming reservations</div>

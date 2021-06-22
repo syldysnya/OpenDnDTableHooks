@@ -29,7 +29,7 @@ const App = () => (
         <Route exact path='/book/cancel' component={CancelReservation} />
         <Route exact path='/book/cancel/form' component={CanceledReservationView} />
         <Route exact path='/booking/:gamePlaceId/:reservationId/modify' component={EditReservationPage} />
-        <Route exact path='/my/profile' component={Profile} />
+        <Route path='/my' component={Profile} />
         <Route exact path='/search' component={SearchPage} />
         <Route path='/' component={Footer} />
     </>
