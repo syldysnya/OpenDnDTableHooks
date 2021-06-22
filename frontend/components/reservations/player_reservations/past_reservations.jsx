@@ -17,7 +17,7 @@ const PastReservations = (props) => {
                             <div className="status-canceled">Cancelled</div>
                             <div className="numplayers-inf">{`Table for ${playersNum} people`}</div>
                             <div className="save-fav">
-                                <i class="far fa-bookmark"></i>
+                                <i className="far fa-bookmark"></i>
                                 <div>Save this restaurant</div>
                             </div>
                         </div>
