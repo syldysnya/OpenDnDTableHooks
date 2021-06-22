@@ -368,9 +368,10 @@
 }
 
 .reservation-edit-parent {
-    grid-template-columns: 400px 600px ;
+    grid-template-columns: 400px 600px;
     display: grid;
     padding-top: 2%;
+
 
     .almost-done {
         font-size: 18px;
@@ -378,8 +379,24 @@
     
     .reservation-completion-form {
         display: grid;
-        grid-template-rows: 40px 120px 120px 50px;
+        grid-template-rows: 40px 120px 120px auto;
         padding: 0;
+    }
+
+    .time-buttons {
+        width: 100%;
+        height: 80px;
+        display: grid;
+        grid-template-columns: repeat(5, 119px);
+        align-items: center;
+
+        li {
+            .auth-button {
+                margin: 0;
+                width: 100%;
+                padding: 8px 25px;
+            }
+        }
     }
 
     .res-info-in-conf {
@@ -453,5 +470,22 @@
                 }
             }
         }
+    }
+}
+
+.canceled-box {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 300px;
+
+    .canceled-text {
+        font-size: 30px;
+        font-weight: 600;
+    }
+
+    .text-1 {
+        font-size: 20px;
+        font-weight: 500;
+        padding-top: 40px;
     }
 }

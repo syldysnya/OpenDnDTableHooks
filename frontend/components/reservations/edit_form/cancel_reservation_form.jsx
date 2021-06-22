@@ -5,31 +5,32 @@ import { editReservation } from '../../../actions/reservation_actions';
 import { NavLink } from 'react-router-dom';
 
 const CancelReservation = (props) => {
-
+    
     const location = useLocation();
     const {reservation, gamePlace} = location.state;
     const {avatarUrl, name, id} = gamePlace;
     const {playersNum, gameDate, gameStart} = reservation;
-    const [reservationInfo, setReservation] = useState(reservation);
+    const [reservationInfo, setReservation] = useState(location.state.reservation);
     const dispatch = useDispatch();
     const history = useHistory();
 
     const updateInfo = (e) => {
-        setReservation({ ...reservationInfo, [e.target.id]: e.target.value })
+        setReservation({ ...reservationInfo, canceled: true })
     };
 
     useEffect(() => {
-        if (canceled) {
-            dispatch(editReservation(reservationInfo))
-                .then(() => history.push({
+        if (reservationInfo.canceled) {
+            history.push({
                     pathname: `/book/cancel/form`,
                     aboutProps: {
                         reservation: reservation,
-                        gamePlace: gamePlace
+                        gamePlace: gamePlace,
+                        canceled: reservationInfo.canceled
                     }
-                }))
+                })
+            }
         }
-    }, [reservation])
+    )
 
     return (
         <div className='cancel-box'>

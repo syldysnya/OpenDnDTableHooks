@@ -5,6 +5,7 @@ import { fetchGamePlace } from '../../../actions/game_place_actions';
 import { createReservation, editReservation, fetchReservation } from '../../../actions/reservation_actions';
 import { RES_TIME } from '../create_forms/main_page_create_form';
 import { Calendar } from 'react-date-range';
+import TimePickButtons from '../create_forms/time_pick_buttons';
 
 const EditReservationPage = (props) => {
     const params = useParams();
@@ -46,6 +47,12 @@ const EditReservationPage = (props) => {
 
     const handleButton = e => {
         setVisibleTime(true)
+    }
+
+    const updateDate = (e) => {
+        let newDate = e.toDateString().replace(' 2021', '');
+        setReservation({ ...reservation, gameDate: newDate })
+        setVisible(false)
     }
 
     const {gameDate, gameStart, playersNum} = reservation;
@@ -123,6 +130,7 @@ const EditReservationPage = (props) => {
                         />
                     )}
                 </div>
+                {visibleTime && <TimePickButtons reservation={reservation} gamePlace={gamePlace} formType='ViewPage'/>}
                 {/* <form className='reservation-completion-box'>
                     <select className='phone-codes' defaultValue='USA'>
                         <option value='Canada' className='Canada'>🇨🇦</option>

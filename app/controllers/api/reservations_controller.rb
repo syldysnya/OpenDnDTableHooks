@@ -18,9 +18,8 @@ class Api::ReservationsController < ApplicationController
     end
 
     def update
-        
         @reservation = Reservation.find(params[:id])
-        
+
         # if @reservation.player_id === current_player.id
             if @reservation.update(reservation_params)
                 render 'api/reservations/show'

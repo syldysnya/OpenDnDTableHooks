@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import { openModal } from '../../../actions/modal_actions';
-import { createReservation } from '../../../actions/reservation_actions';
+import { createReservation, editReservation } from '../../../actions/reservation_actions';
 
-const ConfirmationCreateForm = () => {
+const ConfirmationModifyForm = () => {
 
     const player = useSelector(state => state.session.currentPlayer);
     const location = useLocation();
@@ -17,12 +17,6 @@ const ConfirmationCreateForm = () => {
     const [mins, setMins] = useState('');
     const [secs, setSecs] = useState('');
     const [formatted, setFormatted] = useState('5:00');
-
-    const {
-        gameDate,
-        gameStart,
-        playersNum
-    } = reservation;
 
     useEffect(() => {
         
@@ -59,8 +53,7 @@ const ConfirmationCreateForm = () => {
 
     const handleClick = (e) => {
         e.preventDefault();
-        debugger
-        dispatch(createReservation(reservation))
+        dispatch(editReservation(reservation))
             .then(res => history.push(`/book/view/${res.reservation.id}`))
     }
 
@@ -71,7 +64,7 @@ const ConfirmationCreateForm = () => {
     return (
         <div className='reservation-completion'>
             <div className='reservation-completion-form'>
-                <div className='almost-done'>You’re almost done!</div>
+                <div className='almost-done'>Modify your reservation</div>
                 <div className='res-info-in-conf'>
                     <div className='gp-avatar-in-conf'>
                         <img src={gamePlace.avatarUrl} />
@@ -81,13 +74,13 @@ const ConfirmationCreateForm = () => {
                         <div className='res-info-conf'>
                             <i className="far fa-calendar"></i>
                             <div></div>
-                            <li id='1'>{gameDate}</li>
+                            <li id='1'>{reservation.gameDate}</li>
                             <i className="far fa-clock"></i>
                             <div></div>
-                            <li id='2'>{gameStart}</li>
+                            <li id='2'>{reservation.gameStart}</li>
                             <i className="far fa-user"></i>
                             <div></div>
-                            <li id='3'>{playersNum} people</li>
+                            <li id='3'>{reservation.playersNum} people</li>
                         </div>
                     </div>
                 </div>
@@ -162,4 +155,4 @@ const ConfirmationCreateForm = () => {
     );
 };
 
-export default ConfirmationCreateForm;
+export default ConfirmationModifyForm;
