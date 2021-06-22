@@ -3,13 +3,16 @@ import {
     RECEIVE_CURRENT_PLAYER
 } from "../actions/session_actions";
 
+const initialState = {
+    player: []
+}
 
-const playersReducer = (state = {}, action) => {
+const playersReducer = (state = [], action) => {
     Object.freeze(state);
     
     switch (action.type) {
         case REQUEST_PLAYER:
-            return Object.assign({}, state, { [action.player.id]: action.player });
+            return action.player;
         default:
             return state;   
     }

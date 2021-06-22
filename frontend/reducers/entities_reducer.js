@@ -7,7 +7,7 @@ import reviewsReducer from './reviews_reducer';
 
 
 const entitiesReducer = combineReducers({
-    players: playersReducer,
+    player: playersReducer,
     gamePlaces: gamePlacesReducer,
     cities: citiesReducer,
     reservations: reservationsReducer,

@@ -7,21 +7,27 @@ const ReservationViewDetails = (props) => {
     return (
         <div className='confirmation-box'>
             <div className='green-bos-confirmation'>
-                <span className='thanks'>Thanks! Your reservation is confirmed.</span>
-                <span>Confirmation # {confirmationNum}</span>
+                <i className="fas fa-check-circle"></i>
+                <div>
+                    <span className='thanks'>Thanks! Your reservation is confirmed.</span>
+                    <span>Confirmation # {confirmationNum}</span>
+                </div>
             </div>
             <div className='res-details'>
                 <div>
                     <img src={avatarUrl}/>
                 </div>
-                <div>
+                <div className='gp-info-res'>
                     <span className='gp-name-span'>
                         {name}</span>
-                    <div>
+                    <div className='gp-info-down'>
+                        <i className="far fa-calendar"></i>
                         <span>{gameDate}</span>
+                        <i className="far fa-clock"></i>
                         <span>{gameStart}</span>
+                        <i className="far fa-user"></i>
+                        <span>{playersNum} people</span>
                     </div>
-                    <span>{playersNum} people</span>
                 </div>
             </div>
         </div>

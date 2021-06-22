@@ -482,9 +482,8 @@ input[type="radio"] {
     grid-template-columns: 150px;
     column-gap: 3%;
     padding: 3% 3% 2% 3%;
-    border-bottom: 1px solid $grey-color;
     
-    div:last-child {
+    .gp-info-res {
         grid-column-start: 2;
         display: flex;
         flex-direction: column;
@@ -499,18 +498,36 @@ input[type="radio"] {
             padding-bottom: 5px;
         }
     }
+
+    .gp-info-down {
+        display: grid;
+        grid-template-columns: 15px 120px 15px 100px 15px 100px;
+        column-gap: 7px;
+        width: 400px;
+        font-weight: 500;
+    }
+
     img {
         width: 100%;
     }
 }
 
 .green-bos-confirmation {
-    background-color: #55b68d;
+    background-color: $light-green;
     padding: 5%;
-    color: white;
     display: flex;
-    flex-direction: column;
     border-radius: 3px;
+
+    i {
+        color: #39a25e;
+        font-size: 40px;
+        padding-right: 15px;
+    }
+
+    div {
+        display: flex;
+        flex-direction: column;
+    }
 
     .thanks {
         font-size: 120%;
@@ -519,15 +536,15 @@ input[type="radio"] {
 }
 
 .modify-btn {
-    grid-column-start: 2;
-    grid-column-end: 3;
     cursor: pointer;
-    color: $blue-color;
+    color: $red-color;
     font-weight: bold;
-    padding-left: 15%;
-    position: absolute;
-    top: 320px;
-    left: 350px;
+    padding-right: 10px;
+    border-right: 1px solid $grey-color;
+
+    a {
+        color: $red-color;
+    }
 }
 
 .edit-res-box {
@@ -538,12 +555,13 @@ input[type="radio"] {
 }
 
 .edit-btn {
-    grid-column-start: 3;
-    grid-column-end: 4;
     cursor: pointer;
-    color: $blue-color;
+    color: $red-color;
     font-weight: bold;
-    position: absolute;
-    top: 320px;
-    left: 750px;
+    padding-left: 10px;
+
+    a {
+        color: $red-color;
+    }
 }
+

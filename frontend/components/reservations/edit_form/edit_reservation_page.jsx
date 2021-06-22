@@ -1,17 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useLocation } from 'react-router-dom';
-import { createReservation } from '../../../actions/reservation_actions';
+import { useHistory, useLocation, useParams } from 'react-router-dom';
+import { fetchGamePlace } from '../../../actions/game_place_actions';
+import { createReservation, fetchReservation } from '../../../actions/reservation_actions';
 
-const EditReservationPage = () => {
-
+const EditReservationPage = (props) => {
+    const params = useParams();
     const player = useSelector(state => state.session.currentPlayer);
-    const location = useLocation();
-    const {gameDate, gameStart, playersNum, email, plphone} = location.state.reservation;
-    const gamePlace = location.state.gamePlace;
-    const [reservation, setReservation] = useState(location.state.reservation);
+    const [reservation, setReservation] = useState('');
+    const [gamePlace, setGamePlace] = useState('');
     const dispatch = useDispatch();
     const history = useHistory();
+
+    useEffect(() => {
+        dispatch(fetchReservation(params.reservationId))
+            .then(res => setReservation(res.reservation))
+        dispatch(fetchGamePlace(params.gamePlaceId))
+            .then(res => setGamePlace(res.gamePlace))
+    }, [])
 
     const updateInfo = (e) => {
         setReservation({ ...reservation, [e.target.id]: e.target.value })
@@ -24,10 +30,12 @@ const EditReservationPage = () => {
             .then(res => history.push(`/book/view/${res.reservation.id}`))
     }
 
+    const {gameDate, gameStart, }
+
     return (
         <div className='reservation-completion'>
             <div className='reservation-completion-form'>
-                <p>You’re almost done!</p>
+                <p>Your current reservation</p>
                 <h1>{gamePlace.name}</h1>
                 <ul className='reservation-info'>
                     <i className="far fa-calendar"></i>
@@ -37,8 +45,6 @@ const EditReservationPage = () => {
                     <i className="far fa-user"></i>
                     <li id='3'>{playersNum} people</li>
                 </ul>
-                <h2>Game session details</h2>
-                <h3>{player.lname} {player.fname}</h3>
                 <form className='reservation-completion-box'>
                     <select className='phone-codes' defaultValue='USA'>
                         <option value='Canada' className='Canada'>🇨🇦</option>

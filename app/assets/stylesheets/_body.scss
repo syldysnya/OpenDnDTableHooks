@@ -6,6 +6,9 @@ $grey-color: #dadada;
 $red-color: #da3743;
 $blue-color: #247f9e;
 $white-grey: #f7f7f7;
+$light-blue: #eef8fb;
+$light-red: #fceeef;
+$light-green: #f0faf3;
 
 * {
     box-sizing: border-box;
@@ -22,6 +25,7 @@ body {
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid $grey-color;
+    background-color: white;
 
     .home-nav-right {
         display: flex;

@@ -1,5 +1,7 @@
+@import 'body';
+
 .reservation-completion {
-    grid-template-columns: 20% 40% 5% 20% 5%;
+    grid-template-columns: 200px 600px 50px 300px 100px;
     display: grid;
     padding-top: 2%;
     height: 900px;
@@ -8,7 +10,9 @@
 .reservation-completion-form {
     grid-column-start: 2;
     display: grid;
-    grid-template-rows: 5% 15% 5% 5% 30%;
+    grid-template-rows: 40px 160px 40px 20px 90px 20px 40px 40px 250px;
+    align-items: center;
+    padding-left: 5px;
     
     .almost-done {
         font-size: 20px;
@@ -48,7 +52,7 @@
         div:first-child {
             padding-bottom: 10px;
             font-size: 150%;
-            font-weight: 550;
+            font-weight: 600;
         }
     }
     
@@ -58,13 +62,15 @@
 
     .res-info-conf {
         display: grid;
-        grid-template-columns: 5% 2% 27% 5% 2% 27% 5% 2% 27%;
+        grid-template-columns: 15px 7px 120px 15px 7px 100px 15px 7px 100px;
         width: 70%;
+        font-weight: 500;
     }
 }
 
 .reservation-completion-box {
     display: grid;
+    height: 100%;
 }
 
 .player-contacts {
@@ -89,11 +95,114 @@
 }
 
 .view-conf-box {
-    grid-template-columns: 18% 8% 42% 2% 20%;
+    grid-template-columns: 300px 600px 60px 260px;
     display: grid;
-    grid-template-rows: 300px;
+    grid-template-rows: 300px 330px;
+    row-gap: 25px;
+    margin: 50px 0 80px 0;
+    background-color: transparent;
+}
+
+.user-info-box {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    height: 200px;
+    border: 1px solid $grey-color;
+    box-shadow: 0px 2px 5px $grey-color;
+    padding: 25px;
     display: grid;
-    row-gap: 4%;
+    grid-template-rows: 40px 40px 35px 35px;
+    font-weight: 500;
+    background-color: white;
+
+    .u-name span {
+        font-size: 23px;
+    }
+
+    .joined-info{
+        padding-left: 25px;
+    }
+
+    i {
+        font-size: 20px;
+        padding-right: 10px;
+    }
+}
+
+.conf-box-parent {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    width: 100%;
+    height: 100%;
+    border: 1px solid $grey-color;
+    box-shadow: 0px 2px 5px $grey-color;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: white;
+}
+
+.what-to-know {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    padding: 30px 30px 0 30px;
+    border: 1px solid $grey-color;
+    box-shadow: 0px 2px 5px $grey-color;
+    background-color: white;
+
+    .res-add-info-edit textarea {
+        width: 100%;
+        height: 60px;
+    }
+
+    .auth-button {
+        width: 80px;
+        height: 30px;
+        position: relative;
+        left: 440px;
+        bottom: 50px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .what-to-know-i {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    h1 {
+        font-weight: 500;
+        font-size: 20px;
+    }
+}
+
+@keyframes textareaAnimation {
+    0% {
+        height: 60px;
+    }
+    100% {
+        height: 100px;
+    }
+}
+
+@keyframes textareaBack {
+    0% {
+        height: 100px;
+    }
+    100% {
+        height: 60px;
+    }
+}
+
+.buttons-res-view {
+    display: flex;
+    height: 100px;
+    align-items: center;
+    padding-left: 20px; 
 }
 
 .edit-input {
@@ -140,9 +249,8 @@
 
 
 .confirmation-box {
-    grid-column-start: 2;
-    grid-column-end: 4;
-    height: 300px;
+    height: 100%;
+    width: 100%;
 }
 
 .cancel-box {
@@ -188,3 +296,73 @@
     }
 }
 
+.countdown {
+    width: 100%;
+    height: 100%;
+    
+}
+
+.countdown-message {
+    display: flex;
+    align-items: center;
+    background-color: $light-blue;
+    padding-left: 5px;
+    width: 100%;
+    height: 100%;
+
+    span:first-child {
+        padding: 0 6px;
+    }
+    
+    span:last-child {
+        font-weight: 600;
+    }
+}
+
+.countdown-over-mess {
+    background-color: $light-red;
+    height: 100%;
+    padding-left: 5px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.game-session-details {
+    font-weight: 500;
+}
+
+.user-info-res {
+    width: 100%;
+    display: flex;
+
+    div:first-child {
+        font-weight: 500;
+    }
+
+    .modal {
+        color: $red-color;
+        cursor: pointer;
+    }
+}
+
+.reserv-points {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    span {
+        font-size: 14px;
+    }
+
+    span:first-child {
+        font-size: 26px;
+        font-weight: 600;
+        padding: 15px 0;
+    }
+}
+
+.grid-line {
+    border-bottom: 1px solid $grey-color;
+    width: 100%;
+}

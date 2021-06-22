@@ -11,9 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const { id } = currentPlayer;
         const preloadedState = {
             entities: {
-                players: {
-                    [id]: currentPlayer
-                }
+                player: currentPlayer
             },
             session: { currentPlayer: currentPlayer }
         };

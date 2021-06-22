@@ -26,7 +26,7 @@ const App = () => (
         <Route exact path='/book/view/:reservationId' component={ReservationView} />
         <Route exact path='/book/cancel' component={CancelReservation} />
         <Route exact path='/book/cancel/form' component={CanceledReservationView} />
-        <Route exact path='/booking/details/edit' component={EditReservationPage} />
+        <Route exact path='/booking/:gamePlaceId/:reservationId/modify' component={EditReservationPage} />
         <Route exact path='/my/profile' component={Profile} />
         <Route exact path='/search' component={SearchPage} />
         <Route path='/' component={Footer} />

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
+import { openModal } from '../../../actions/modal_actions';
 import { createReservation } from '../../../actions/reservation_actions';
 
 const ConfirmationCreateForm = (props) => {
@@ -62,6 +63,10 @@ const ConfirmationCreateForm = (props) => {
         dispatch(createReservation(reservation))
             .then(res => history.push(`/book/view/${res.reservation.id}`))
     }
+
+    const handleModal = () => {
+        dispatch(openModal('Sign In'))
+    }
     
     return (
         <div className='reservation-completion'>
@@ -89,7 +94,8 @@ const ConfirmationCreateForm = (props) => {
                 <div className="countdown" id="countdown">
                     {time ?  (
                         <div className="countdown-message">
-                            We're holding this table for you for {formatted} minutes
+                            <span>We're holding this table for you for </span>
+                            <span> {formatted} minutes</span>
                         </div>
                     ) : (
                         <div className="countdown-over-mess">
@@ -97,10 +103,19 @@ const ConfirmationCreateForm = (props) => {
                         </div>
                     )}
                 </div>
-                <div>Game session details</div>
-                <div>{fname} {lname}</div>
-                <div className="open-modal-login">
-                    <span onClick={handleModal}>(Not {fname}?)</span>
+                <div className="grid-line"></div>
+                <div className="reserv-points">
+                    <span>Reservation points coming soon!</span>
+                    <span>Receive points for dining rewards, KAYAK hotel savings, and more</span>
+                </div>
+                <div className="grid-line"></div>
+                <div className='game-session-details'>Game session details</div>
+                <div className="user-info-res">
+                    <div>{fname} {lname} (
+                        {/* <div className="open-modal-login"> */}
+                            <span className='modal' onClick={handleModal}>Not {fname}?</span>
+                        {/* </div> */}
+                    )</div>
                 </div>
                 <form className='reservation-completion-box'>
                     <div className='player-contacts'>
