@@ -11,7 +11,6 @@ const ConfirmationCreateForm = (props) => {
     const {gamePlace} = location.state;
     const dispatch = useDispatch();
     const history = useHistory();
-    const [created, setCreated] = useState(false);
     const {fname, lname} = player;
     const [time, setTimer] = useState(300);
     const [mins, setMins] = useState('');
@@ -21,14 +20,7 @@ const ConfirmationCreateForm = (props) => {
     const {
         gameDate,
         gameStart,
-        playersNum,
-        dndCampaignId,
-        gamePlaceId,
-        playerId,
-        confirmation_num,
-        email,
-        plphone,
-        canceled
+        playersNum
     } = reservation;
 
     useEffect(() => {
@@ -57,7 +49,7 @@ const ConfirmationCreateForm = (props) => {
     }, [mins, secs])
 
     useEffect(() => {
-        setReservation({...reservation, gameStart: location.state.gameStart, email: player.email, gamePlaceId: gamePlace.id})
+        setReservation({...reservation, gameStart: location.state.gameStart, email: player.email, gamePlaceId: gamePlace.id })
     }, [])
 
     const updateInfo = (e) => {
@@ -66,7 +58,7 @@ const ConfirmationCreateForm = (props) => {
 
     const handleClick = (e) => {
         e.preventDefault();
-
+        debugger
         dispatch(createReservation(reservation))
             .then(res => history.push(`/book/view/${res.reservation.id}`))
     }
@@ -106,7 +98,10 @@ const ConfirmationCreateForm = (props) => {
                     )}
                 </div>
                 <div>Game session details</div>
-                <div>{fname} {lname} </div>
+                <div>{fname} {lname}</div>
+                <div className="open-modal-login">
+                    <span onClick={handleModal}>(Not {fname}?)</span>
+                </div>
                 <form className='reservation-completion-box'>
                     <div className='player-contacts'>
                         <div>

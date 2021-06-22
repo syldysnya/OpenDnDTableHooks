@@ -43,7 +43,7 @@ const MainPageCreateForm = (props) => {
         gameStart: '8:00 PM',
         playersNum: 2,
         gamePlaceId: '',
-        playerId: 1,
+        playerId: currentPlayer.id,
         confirmation_num: randomNum,
         add_info: '',
         canceled: false,
