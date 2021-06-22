@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation, useParams } from 'react-router-dom';
 import { fetchGamePlace } from '../../../actions/game_place_actions';
-import { createReservation, fetchReservation } from '../../../actions/reservation_actions';
+import { createReservation, editReservation, fetchReservation } from '../../../actions/reservation_actions';
+import { RES_TIME } from '../create_forms/main_page_create_form';
+import { Calendar } from 'react-date-range';
 
 const EditReservationPage = (props) => {
     const params = useParams();
@@ -11,6 +13,8 @@ const EditReservationPage = (props) => {
     const [gamePlace, setGamePlace] = useState('');
     const dispatch = useDispatch();
     const history = useHistory();
+    const [visible, setVisible] = useState(false);
+    const [visibleTime, setVisibleTime] = useState(false);
 
     useEffect(() => {
         dispatch(fetchReservation(params.reservationId))
@@ -26,26 +30,100 @@ const EditReservationPage = (props) => {
     const handleClick = (e) => {
         e.preventDefault();
 
-        dispatch(createReservation(reservation))
+        dispatch(editReservation(reservation))
             .then(res => history.push(`/book/view/${res.reservation.id}`))
     }
 
-    const {gameDate, gameStart, }
+    const showCalendar = () => {
+        setVisible(!visible)
+    }
+
+    const timePick = RES_TIME.map(t => {
+        return (
+            <option key={t} value={t}>{t}</option>
+        )
+    })
+
+    const handleButton = e => {
+        setVisibleTime(true)
+    }
+
+    const {gameDate, gameStart, playersNum} = reservation;
 
     return (
-        <div className='reservation-completion'>
+        <div className='reservation-edit-parent'>
             <div className='reservation-completion-form'>
-                <p>Your current reservation</p>
-                <h1>{gamePlace.name}</h1>
-                <ul className='reservation-info'>
-                    <i className="far fa-calendar"></i>
-                    <li id='1'>{gameDate}</li>
-                    <i className="far fa-clock"></i>
-                    <li id='2'>{gameStart}</li>
-                    <i className="far fa-user"></i>
-                    <li id='3'>{playersNum} people</li>
-                </ul>
-                <form className='reservation-completion-box'>
+            <div className='almost-done'>Your current reservation</div>
+                <div className='res-info-in-conf'>
+                    <div className='gp-avatar-in-edit'>
+                        <img src={gamePlace.avatarUrl} />
+                    </div>
+                    <div className='reservation-info'>
+                        <div>{gamePlace.name}</div>
+                        <div className='res-info-conf'>
+                            <i className="far fa-calendar"></i>
+                            <div></div>
+                            <li id='1'>{gameDate}</li>
+                            <i className="far fa-clock"></i>
+                            <div></div>
+                            <li id='2'>{gameStart}</li>
+                            <i className="far fa-user"></i>
+                            <div></div>
+                            <li id='3'>{playersNum} people</li>
+                        </div>
+                    </div>
+                </div>
+                <div className="modify-reservation-info">
+                    <div className="modify-text">Modify your reservation</div>
+                    <div className="modify-inputs">
+                        <div className='info'>
+                            <div className='info-create-date'>
+                                <i className="far fa-calendar"></i>
+                                <div className='parent-calendar-box'
+                                    id='gameDate'
+                                    onClick={showCalendar} tabIndex='0'
+                                    >
+                                    <span>{gameDate}</span>
+                                </div>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div className='info-create-time' value='gameStart'>
+                                <i className="far fa-clock"></i>
+                                <select onChange={updateInfo} 
+                                    id='gameStart'
+                                    defaultValue='8:00 PM'>
+                                    {timePick}
+                                </select>
+                            </div>
+                            <div className='info-create-form'>
+                                <i className="far fa-user"></i>
+                                <select defaultValue='2'
+                                    id='playersNum'
+                                    onChange={updateInfo}>
+                                    <option key='1'value="1">For 1</option>
+                                    <option key='2'value="2">For 2</option>
+                                    <option key='3'value="3">For 3</option>
+                                    <option key='4'value="4">For 4</option>
+                                    <option key='5'value="5">For 5</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button className='auth-button'
+                            onClick={handleButton}>
+                            Find a new table
+                        </button>
+                    </div>
+                </div>
+                <div className='dropdown-calendar' onMouseLeave={showCalendar}>
+                    {visible && (
+                        <Calendar
+                            date={new Date()}
+                            onChange={e => updateDate(e)}
+                            minDate={new Date()}
+                        />
+                    )}
+                </div>
+                {/* <form className='reservation-completion-box'>
                     <select className='phone-codes' defaultValue='USA'>
                         <option value='Canada' className='Canada'>🇨🇦</option>
                         <option value='Mexico' className='Mexico'>🇲🇽</option>
@@ -67,9 +145,9 @@ const EditReservationPage = (props) => {
                         onClick={handleClick}>
                         Complete Reservation
                     </button>
-                </form>
+                </form> */}
             </div>
-            <div className='right-bar-info'>
+            {/* <div className='right-bar-info'>
                 <h1>What to know before you go</h1>
                 <p>Important dining information
                 We have a 15 minute grace period. Please call us if you are running later than 15 minutes after your reservation time.
@@ -79,7 +157,7 @@ const EditReservationPage = (props) => {
                 <p>
                     Keep in mind, you won’t collect points for this reservation unless you choose to below.
                 </p>
-            </div>
+            </div> */}
         </div>
     );
 };
