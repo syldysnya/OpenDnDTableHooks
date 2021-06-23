@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     end
     resources :dnd_campaigns, only: [:index, :show]
     resources :reservations, only: [:index, :show, :create, :update, :destroy]
-    resources :favorites, only: [:index, :create, :destroy]
+    resources :favorites, only: [:index, :show, :create, :destroy]
     resource :session, only: [:create, :destroy]
     resources :reviews, only: [:show, :create, :update, :destroy]
   end

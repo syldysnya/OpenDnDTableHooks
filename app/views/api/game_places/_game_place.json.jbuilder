@@ -25,3 +25,4 @@ sorted.each do |num|
 end
 json.all_ratings_nums obj
 json.all_length sorted.length
+json.favorites game_place.favorites

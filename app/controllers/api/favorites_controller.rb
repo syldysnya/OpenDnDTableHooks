@@ -4,9 +4,12 @@ class Api::FavoritesController < ApplicationController
         @favorites = Favorite.where(player_id: current_player.id)
     end
 
+    def show 
+        @favorite = Favorite.find(params[:id])
+    end
+
     def create
-        @favorite.create!(favorite_params)
-        render :index
+        @favorite = Favorite.create!(favorite_params)
     end
 
     def destroy

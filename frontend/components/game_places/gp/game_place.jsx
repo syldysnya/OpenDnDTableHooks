@@ -9,6 +9,8 @@ import CreateReviewForm from '../../reviews/create_review_form';
 import ReviewsIndex from '../../reviews/reviews_index';
 import RatingsBox from '../../stars/ratings_box';
 import StarsShow from '../../stars/stars_show';
+import Favorites from '../../favorites/favorites';
+import { fetchPlayer } from '../../../actions/player_actions';
 
 const GamePlace = () => {
     let gamePlaceParams = useParams();
@@ -23,9 +25,11 @@ const GamePlace = () => {
     const totalOrg = (orgRating / lengthRat).toFixed(1);
     const totalCamp = (campRating / lengthRat).toFixed(1);
     const [fetched, setFetched] = useState(false);
+    const [playerInfo, setPlayerInfo] = useState('');
 
     useEffect(() => {
         dispatch(fetchAllReviews(gamePlaceParams.gamePlaceId))
+        dispatch(fetchPlayer(player.id)).then(res => setPlayerInfo(res.player))
     }, [])
 
     useEffect(() => {
@@ -71,6 +75,7 @@ const GamePlace = () => {
 
     return (
         <div className='gp-body'>
+            <Favorites gamePlace={gamePlace} player={playerInfo}/>
             <div className='gp-header'>
                 <img src={gamePlace.photoUrl} />
             </div>

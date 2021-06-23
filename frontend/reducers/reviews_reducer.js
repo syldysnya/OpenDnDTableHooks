@@ -6,7 +6,7 @@ const initialState = {
     errors: []
 } 
 
-const reservationsReducer = (state = initialState, action) => {
+const reviewsReducer = (state = initialState, action) => {
     Object.freeze(state);
 
     switch (action.type) {
@@ -25,4 +25,4 @@ const reservationsReducer = (state = initialState, action) => {
     }
 }
 
-export default reservationsReducer;
+export default reviewsReducer;
