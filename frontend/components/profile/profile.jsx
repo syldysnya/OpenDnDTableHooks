@@ -1,27 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useLocation } from 'react-router-dom';
-import { fetchPlayer } from '../../actions/player_actions';
+import { useLocation } from 'react-router-dom';
 import { fetchAllReservations } from '../../actions/reservation_actions';
 import PastReservations from '../reservations/player_reservations/past_reservations';
 import UpcomingReservations from '../reservations/player_reservations/upcoming_reservations';
-import { NavLink } from 'react-router-dom';
+import EditProfile from './edit_profile';
+import { fetchCities } from '../../actions/city_actions';
+import { fetchPlayer } from '../../actions/player_actions';
 
 const Profile = () => {
 
     const reservations = useSelector(state => state.entities.reservations.reservationsAll);
-    const player = useSelector(state => state.session.currentPlayer)
+    const player = useSelector(state => state.session.currentPlayer);
     const dispatch = useDispatch();
     const location = useLocation();
-    const [visibleRes, setVisibleRes] = useState(true);
+    const [visibleRes, setVisibleRes] = useState(false);
     const [visibleFav, setVisibleFav] = useState(false);
     const [visibleAcc, setVisibleAcc] = useState(false);
-    const [plInfo, setPlInfo] = useState('');
-    const history = useHistory();
+
+    useEffect(() => {
+        dispatch(fetchCities())
+    }, []);
 
     useEffect(() => {
         dispatch(fetchPlayer(player.id))
-            .then(res => setPlInfo(res.player))
+    }, [])
+
+    useEffect(() => {
+        if (location.pathname === '/my/profile') {
+            setVisibleRes(true)
+        } else if (location.pathname === '/my/favorites') {
+            setVisibleFav(true)
+        }
     }, [])
 
     useEffect(() => {
@@ -71,7 +81,7 @@ const Profile = () => {
         <>
         <div className='profile-page'>
                 <div className='profile-bar'>
-                    {player.lname} {player.fname}
+                    {player.fname} {player.lname}
                     <span>0 points</span>
                 </div>
                 <div className='profile-left-bar'>
@@ -84,25 +94,18 @@ const Profile = () => {
                         <div className='upcoming-reses'>
                             <div className='text-up'>Upcoming reservations</div>
                             <div className='res-index'>
-                                <UpcomingReservations reservations={upcoming}/>
+                                <UpcomingReservations reservations={upcoming} player={player}/>
                             </div>
                         </div>
                         <div className='past-reses'>
                             <div className='text-up'>Past reservations</div>
                             <div className='res-index'>
-                                <PastReservations reservations={past}/>
+                                <PastReservations reservations={past} currentPlayer={player}/>
                             </div>
                         </div>
                     </>
                 )}
-                {visibleAcc && (
-                    <div className='upcoming-reses'>
-                        <div className='text-up'>About me</div>
-                        <div className='res-index'>
-                            
-                        </div>
-                    </div>
-                )}
+                {visibleAcc && <EditProfile curPlayer={player}/>}
                 {visibleFav && (
                     <div className='upcoming-reses'>
                         <div className='text-up'>Saved Restaurants</div>

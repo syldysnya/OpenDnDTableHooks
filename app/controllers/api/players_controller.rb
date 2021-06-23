@@ -15,9 +15,9 @@ class Api::PlayersController < ApplicationController
     end
 
     def update
-        @player = Player.find(player_params)
+        @player = Player.find(params[:id])
 
-        if @player.update(player_params)
+        if @player.update!(player_params)
             render 'api/players/show'
         else
             render json: @player.errors.full_messages, status: 422

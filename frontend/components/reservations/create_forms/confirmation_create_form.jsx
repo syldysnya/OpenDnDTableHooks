@@ -4,12 +4,28 @@ import { useHistory, useLocation } from 'react-router-dom';
 import { openModal } from '../../../actions/modal_actions';
 import { createReservation } from '../../../actions/reservation_actions';
 
-const ConfirmationCreateForm = () => {
+const ConfirmationCreateForm = (props) => {
 
     const player = useSelector(state => state.session.currentPlayer);
     const location = useLocation();
-    const [reservation, setReservation] = useState(location.state.reservation);
+    const randomNum = Math.floor(Math.random() * 10000);
+    const currentDateFull = new Date();
     const {gamePlace} = location.state;
+    const currentDate = currentDateFull.toDateString().replace(' 2021', '');
+    const [reservation, setReservation] = useState({
+        gameDate: currentDate,
+        gameStart: location.state.gameStart,
+        playersNum: 2,
+        gamePlaceId: gamePlace.id,
+        playerId: player.id,
+        confirmation_num: randomNum,
+        add_info: '',
+        canceled: false,
+        plphone: '',
+        email: player.email,
+        dndCampaignId: ''
+    });
+
     const dispatch = useDispatch();
     const history = useHistory();
     const {fname, lname} = player;
@@ -17,6 +33,8 @@ const ConfirmationCreateForm = () => {
     const [mins, setMins] = useState('');
     const [secs, setSecs] = useState('');
     const [formatted, setFormatted] = useState('5:00');
+
+    console.log(player)
 
     const {
         gameDate,
@@ -49,8 +67,15 @@ const ConfirmationCreateForm = () => {
         }
     }, [mins, secs])
 
+    // useEffect(() => {
+    //     setReservation({...reservation, gameStart: location.state.gameStart, email: player.email, gamePlaceId: gamePlace.id, playerId: player.id })
+    // }, [])
+
     useEffect(() => {
-        setReservation({...reservation, gameStart: location.state.gameStart, email: player.email, gamePlaceId: gamePlace.id })
+        if (props.location.state.reservation) {
+            const {gameDate, gameStart, playersNum} = props.location.state.reservation;
+            setReservation({...reservation, gameDate: gameDate, gameStart: gameStart, playersNum: playersNum})
+        }
     }, [])
 
     const updateInfo = (e) => {
@@ -59,7 +84,6 @@ const ConfirmationCreateForm = () => {
 
     const handleClick = (e) => {
         e.preventDefault();
-        debugger
         dispatch(createReservation(reservation))
             .then(res => history.push(`/book/view/${res.reservation.id}`))
     }

@@ -40,7 +40,7 @@ const Footer = () => {
                     <ul className="about-list">
                         <li key='1'>Bilingual (Russian and English)</li>
                         <li key='2'>Member of a chess club for 5 years</li>
-                        <li key='3'>Play baseball (2nd base/SS) and softball</li>
+                        <li key='3'>Play baseball and softball</li>
                         <li key='4'>3D-sculptor</li>
                         <li key='5'>Love DnD</li>
                     </ul>

@@ -60,6 +60,7 @@
     border-radius: 5px;
 }
 
+
 .past-reses {
     grid-column-start: 3;
     grid-column-end: 4;
@@ -69,9 +70,37 @@
     margin-bottom: 30px;
     box-shadow: 0px 2px 0px $grey-color;
     border-radius: 5px;
+    
+    h2 {
+        font-size: 15px;
+    }
 
-    .res-index .res-box-info .gp-logo {
+    .red-text {
+        display: flex;
+        align-items: center;
+    }
+
+    .write-review {
+        display: flex;
+        align-items: center;
+    }
+
+    .res-index .res-box-info {
+        display: grid;
+        grid-template-columns: 25px 100px auto;
+        grid-template-rows: 100px auto;
+    }
+
+    .gp-name {
+        grid-column-start: 3;
+        grid-row-start: 1;
+        grid-row-end: 3;
+    }
+    
+    .gp-logo {
         grid-column-start: 2;
+        grid-row-start: 1;
+        grid-row-end: 2;
         height: 100%;
         overflow: hidden;
         border-radius: 5px;
@@ -136,7 +165,7 @@
             overflow: hidden;
             border-radius: 5px;
             display: flex;
-            padding: 12px 0 40px 0;
+            padding: 12px 0 45px 0;
 
             img {
                 width: 100%;
@@ -178,11 +207,13 @@
             grid-column-start: 2;
             font-size: 14px;
             
-            button {
+            a {
                 font-weight: 500;
                 color: #247f9e;
                 border: none;
                 background: none;
+                padding-right: 10px;
+                padding-top: 5px;
             }
         }
     }

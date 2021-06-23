@@ -3,14 +3,14 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 const TimePickButtons = (props) => {
-
     const {gameStart} = props.reservation;
+    const {gamePlace} = props;
     const [visibleButton, setVisibleButton] = useState(false);
     const [reservation, setReservation] = useState(props.reservation);
-    const gamePlace = useSelector(state => state.entities.gamePlaces.gamePlace)
-
+    // const gamePlace = useSelector(state => state.entities.gamePlaces.gamePlace)
+    
     useEffect(() => {
-        if (props.formType === 'ViewPage') {
+        if (props.formType === 'ViewPage' || props.formType ==='SearchPage') {
             setVisibleButton(true)
         }
     }, [])
@@ -65,7 +65,7 @@ const TimePickButtons = (props) => {
 
         let mapped = timeOptions.map((t, i) => {
 
-            if (props.formType === 'MainPage') {
+            if (props.formType === 'MainPage' || props.formType ==='SearchPage') {
                 return (
                     <NavLink 
                         key={`timePick-${i}`}

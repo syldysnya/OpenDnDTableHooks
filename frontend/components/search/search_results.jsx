@@ -33,7 +33,7 @@ const SearchResults = (props) => {
                             }
                         })}
                     </div>
-                    <TimePickButtons reservation={reservation} formType='ViewPage'/>
+                    <TimePickButtons reservation={reservation} gamePlace={gp} formType='SearchPage'/>
                 </div>
             )
         })
@@ -62,7 +62,7 @@ const SearchResults = (props) => {
                             })}
                         </div>
                         <div className="time-pick-buttons">
-                            <TimePickButtons reservation={reservation} formType='ViewPage'/>
+                            <TimePickButtons reservation={reservation} gamePlace={gp} formType='SearchPage'/>
                         </div>
                     </div>
                 </div>
@@ -93,7 +93,7 @@ const SearchResults = (props) => {
                                         })}
                                     </div>
                                     <div className="time-pick-buttons">
-                                        <TimePickButtons reservation={reservation} formType='ViewPage'/>
+                                        <TimePickButtons reservation={reservation} gamePlace={gp} formType='SearchPage'/>
                                     </div>
                                 </div>
                             </div>

@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { createReview, fetchAllReviews } from '../../actions/review_actions';
-import StarsForm from './stars_form';
+import StarsForm from '../stars/stars_form';
 
 const CreateReviewForm = (props) => {
 
-    const {player, gamePlace, created, setCreated, revErrors} = props;
+    const {player, gamePlaceId} = props;
     const dispatch = useDispatch();
     const [errDescription, setErrDescription] = useState('');
     const [errService, setErrService] = useState('');
     const [errOrg, setErrOrg] = useState('');
     const [errCampaign, setErrCampaign] = useState('');
+    const revErrors = useSelector(state => state.entities.reviews.errors);
 
     const [review, setReview] = useState({
         description: '',
@@ -19,14 +20,14 @@ const CreateReviewForm = (props) => {
         orgRating: '',
         overallRating: '',
         dndCampaign_id: '',
-        gamePlaceId: gamePlace.id,
+        gamePlaceId: gamePlaceId,
         playerId: player.id
     });
 
-    const {campaignRating, orgRating, overallRating, serviceRating, description} = review;
+    const {campaignRating, orgRating, serviceRating, description} = review;
 
     useEffect(() => {
-        setReview({ ...review, gamePlaceId: gamePlace.id })
+        setReview({ ...review, gamePlaceId: gamePlaceId })
     }, [])
 
     useEffect(() => {
@@ -72,9 +73,6 @@ const CreateReviewForm = (props) => {
 
     return (
         <div className='review-create-box'>
-            <div className='create-a-review'>
-                Leave a review
-            </div>
             <form onSubmit={handleSubmit}>
                 <div className='rating-box'>
                     <div>Campaign</div>
@@ -106,11 +104,11 @@ const CreateReviewForm = (props) => {
                     )}
                 </div>
                 <div className='submit-textarea'>
-                    {created && (
+                    {/* {created && (
                         <div className="success-text-review">
                             Thank you for your review!
                         </div>
-                    )}
+                    )} */}
                     <textarea onChange={updateInfo}
                         id='description'
                         value={description}

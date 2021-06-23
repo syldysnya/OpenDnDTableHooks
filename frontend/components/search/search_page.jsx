@@ -37,7 +37,8 @@ const SearchPage = (props) => {
 
     useEffect(() => {
         if (props.location.aboutProps) {
-            setReservation(props.location.aboutProps.reservation)
+            const {gameDate, gameStart, playersNum} = props.location.aboutProps.reservation;
+            setReservation({gameDate: gameDate, gameStart: gameStart, playersNum: playersNum})
         }
     }, [])
 
@@ -75,7 +76,6 @@ const SearchPage = (props) => {
         }
 
         let filtered;
-        debugger
         if (checkBoxInp) {
             filtered = checkBoxArray.filter(gp => gp.cityId === parseInt(checkBoxInp))
         } else {
@@ -94,7 +94,6 @@ const SearchPage = (props) => {
 
     const handleCheckBox = e => {
         e.preventDefault();
-        debugger
         setCheckBoxInp(e.target.id)
     }
 

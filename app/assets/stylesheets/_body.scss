@@ -148,6 +148,59 @@ body {
     }
 }
 
+.stars-outer {
+    position: relative;
+    display: inline-block;
+}
+
+.stars-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+}
+
+.stars-outer::before {
+    content: '\f005 \f005 \f005 \f005 \f005';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: #d2d1d1;
+}
+
+.stars-inner::before {
+    content: '\f005 \f005 \f005 \f005 \f005';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: $red-color;
+}
+
+.rating-lines {
+    width: 100px;
+    height: 120px;
+}
+
+.rat-outer {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 15px;
+    border: 1px solid $grey-color;
+    background-color: transparent;
+}
+
+.rat-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    background-color: $red-color;
+    width: 0%;
+    height: 100%;
+}
+
 .search-box-main {
     position: absolute;
     left: 50%;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import StarsShow from '../../stars/stars_show';
 
 const NewarkPlaces = (props) => {
     const {gamePlaces, cities} = props;
@@ -8,6 +9,8 @@ const NewarkPlaces = (props) => {
     let newarkPlaces = Object.values(gamePlaces.gamePlacesAll).filter(gp => gp.cityId === newark[0].id);
 
     let mapped = newarkPlaces.map((gPlace, i) => {
+        let rating = gPlace.rating;
+        
         return (
             <div className='game-place-i' key={`game-place-${i}`}>
                 <div className='avatar'>
@@ -23,19 +26,15 @@ const NewarkPlaces = (props) => {
                         </NavLink>
                     </div>
                     <div>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
+                        <StarsShow stars={rating} lengthRat={gPlace.lengthRat}/>
                     </div>
-                    <div># of reviews</div>
-                    <div>Campaign title</div>
+                    {gPlace.reviews.length === 1 ? (<div>{gPlace.reviews.length} review</div>) : (<div>{gPlace.reviews.length} reviews</div>)}
                     <div>{cities.map(city => {
                         if (city.id === gPlace.cityId) {
                             return city.name
                         }
                     })}</div>
+                    {gPlace.reservations.length === 1 ? (<div>Booked {gPlace.reservations.length} time today</div>) : (<div>Booked {gPlace.reservations.length} times today</div>)}
                 </div>
             </div>
         )

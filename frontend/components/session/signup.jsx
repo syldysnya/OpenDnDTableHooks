@@ -55,7 +55,6 @@ const Signup = () => {
     }, []);
 
     const handleInputCity = e => {
-        debugger
         const idx = parseInt(e.target.value);
         setUser({ ...user, city_id: idx });
         setCityErr(false);

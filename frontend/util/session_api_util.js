@@ -22,6 +22,14 @@ export const logout = player => (
     })
 );
 
+export const updatePlayer = player => (
+    $.ajax({
+        method: 'PATCH',
+        url: `/api/players/${player.id}`,
+        data: { player }
+    })
+)
+
 export const fetchCities = () => (
     $.ajax({
         method: "GET",

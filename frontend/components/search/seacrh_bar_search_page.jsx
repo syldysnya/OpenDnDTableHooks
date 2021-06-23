@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { RES_TIME } from '../reservations/create_forms/main_page_create_form';
 import { Calendar } from 'react-date-range';
 
@@ -44,13 +44,13 @@ const SearchBarSearchPage = (props) => {
                         <i className="far fa-clock"></i>
                         <select onChange={updateInfo} 
                             id='gameStart'
-                            defaultValue='8:00 PM'>
+                            defaultValue={reservation.gameStart}>
                             {timePick}
                         </select>
                     </div>
                     <div className='info-create-form'>
                         <i className="far fa-user"></i>
-                        <select defaultValue='2'
+                        <select defaultValue={reservation.playersNum}
                             id='playersNum'
                             onChange={updateInfo}>
                             <option key='1'value="1">For 1</option>

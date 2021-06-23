@@ -262,6 +262,8 @@
     font-size: 16px;
     font-weight: 550;
     height: 50px; 
+    position: sticky;
+    top: 0;
 }
 
 .gp-info-box {
@@ -433,9 +435,20 @@ input[type="radio"] {
 }
 
 .review-box {
+    width: 100%;
+    height: 100%;
     grid-column-start: 2;
-    display: grid;
-    grid-template-rows: 30px 30px;
+}
+
+@keyframes writeBoxAnimation {
+    0% {
+        width: 0;
+        height: 0;
+    }
+    100% {
+        width: 100%;
+        height: 100%;
+    }
 }
 
 .avatar-player {
@@ -445,8 +458,8 @@ input[type="radio"] {
 
     .nameabb {
         position: absolute;
-        top: 35%;
-        left: 20%;
+        top: 18px;
+        left: 12px;
         color: white;
     }
 }
@@ -459,12 +472,12 @@ input[type="radio"] {
 }
 
 .player-info-review {
-    position: absolute;
     display: grid;
-    grid-auto-rows: 50px 30px 30px;
+    grid-auto-rows: 50px 40px 30px;
     justify-items: center;
     font-weight: 500;
-    font-size: 15px;
+    font-size: 13px;
+    text-align: center;
 }
 
 .player-info-name {
@@ -473,7 +486,7 @@ input[type="radio"] {
 
 .review-item {
     display: grid;
-    grid-template-columns: 100px;
+    grid-template-columns: 100px auto;
     column-gap: 50px;
 }
 
