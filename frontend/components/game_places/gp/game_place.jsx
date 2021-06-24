@@ -64,7 +64,7 @@ const GamePlace = () => {
     }
 
     const handleScroll = e => {
-        debugger
+        
         let key = e.target.id;
         let part = document.getElementById(`${key}-id`)
 
@@ -83,32 +83,40 @@ const GamePlace = () => {
             <div className='gp-page-box'>
                 <div className='left-gpage'>
                     <div className='gp-info-navbar'>
-                        <li id='overview' onClick={handleScroll}>Overview</li>
-                        <li id='photos' onClick={handleScroll}>Photos</li>
-                        <li id='reviews' onClick={handleScroll}>Reviews</li>
+                        <div>
+                            <li id='overview' onClick={handleScroll}>Overview</li>
+                            <li id='photos' onClick={handleScroll}>Photos</li>
+                            <li id='reviews' onClick={handleScroll}>Reviews</li>
+                        </div>
                     </div>
                     <div className='gp-info-box'>
                         <h1>{gamePlace.name}</h1>
                     </div>
                     <div className="rating-box">
-                        {fetched && <StarsShow stars={rating} lengthRat={lengthRat}/>}
-                        {lengthRat ? (
-                            <>
-                                <div>{total}</div>
-                                <i className="far fa-comment-alt"></i>
-                                {lengthRat === 1 ? (<div>1 review</div>) : (<div>{lengthRat} reviews</div>)}
-                            </>
-                        ) : (
-                            <div>No reviews yet</div>
-                        )}
-
+                        <div className="rating-list">
+                            {fetched && <StarsShow stars={rating} lengthRat={lengthRat}/>}
+                            {lengthRat ? (
+                                <>
+                                    <div>{total}</div>
+                                    <div><i className="far fa-comment-alt"></i></div>
+                                    {lengthRat === 1 ? (<div>1 review</div>) : (<div>{lengthRat} reviews</div>)}
+                                </>
+                            ) : (
+                                <div>No reviews yet</div>
+                            )}
+                        </div>
                     </div>
                     <div className='gp-description' id='overview-id'>
-                        {gamePlace.description}
+                        <div>
+                            {gamePlace.description}
+                        </div>
                     </div>
                     <div className='gp-gallery' id='photos-id'>
-                        <div className="large-pics">{showBigGallery}</div>
-                        <div className="small-pics">{showSmallGallery}</div>
+                        <div className="gallery-title">9 Photos</div>
+                        <div className="gallery-list">
+                            <div className="large-pics">{showBigGallery}</div>
+                            <div className="small-pics">{showSmallGallery}</div>
+                        </div>
                     </div>
                     <div className='review-info-box' id='reviews-id'>
                         {lengthRat > 0 && (
@@ -124,22 +132,22 @@ const GamePlace = () => {
                                         <span>
                                             Reviews can only be made by diners who have eaten at this restaurant
                                         </span>
-                                        <div>
+                                        <div className='rating-inreview'>
                                             {fetched && <StarsShow stars={rating} lengthRat={lengthRat}/>}
                                             {lengthRat > 0 && (<div>{total}</div>)}
                                             <span>based on recent ratings</span>
                                         </div>
-                                        <div>
+                                        <div className='rating-cols'>
                                             <div>
-                                                <span>{totalServ}</span>
+                                                <p>{totalServ}</p>
                                                 <span>Service</span>
                                             </div>
                                             <div>
-                                                <span>{totalOrg}</span>
-                                                <span>Organization</span>
+                                                <p>{totalOrg}</p>
+                                                <span>Planning</span>
                                             </div>
                                             <div>
-                                                <span>{totalCamp}</span>
+                                                <p>{totalCamp}</p>
                                                 <span>Campaign</span>
                                             </div>
                                         </div>

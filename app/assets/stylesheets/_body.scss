@@ -176,61 +176,6 @@ body {
     color: $red-color;
 }
 
-.fav-outer {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-}
-
-.fav-inner {
-    position: absolute;
-    top: 0;
-    left: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    width: 0;
-}
-
-.fav-outer::before {
-    content: '\f02e';
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 100;
-    color: $red-color;
-}
-
-.fav-inner::before {
-    content: '\f02e';
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
-    width: 0;
-    color: $red-color;
-}
-
-.rating-lines {
-    width: 100px;
-    height: 120px;
-}
-
-.rat-outer {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-    height: 15px;
-    border: 1px solid $grey-color;
-    background-color: transparent;
-}
-
-.rat-inner {
-    position: absolute;
-    top: 0;
-    left: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    background-color: $red-color;
-    width: 0%;
-    height: 100%;
-}
-
 .search-box-main {
     position: absolute;
     left: 50%;

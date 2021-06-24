@@ -69,7 +69,7 @@ const ReservationView = () => {
     };
 
     const handleClick = (e) => {
-        debugger
+        
         dispatch(editReservation(reservation))
         textarea.value = '';
         textarea.style.animation = 'textareaBack 1s forwards';

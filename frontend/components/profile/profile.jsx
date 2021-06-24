@@ -38,7 +38,7 @@ const Profile = () => {
         let res = document.getElementById("reservations-lb");
         let acc = document.getElementById("account-lb");
         let fav = document.getElementById("saved-lb");
-        debugger
+        
         if (visibleRes) {
             res.classList.add('active');
             acc.classList.remove('active');

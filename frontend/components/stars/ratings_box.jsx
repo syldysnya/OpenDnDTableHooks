@@ -22,28 +22,32 @@ const RatingsBox = (props) => {
     }, [])
 
     return (
-        <div className="rating-lines">
+        <>
+            <div className="rat-left">
                 <span>5</span>
-            <div className='rat-outer'>
-                <div className="rat-inner five" ref={fiveRef}></div>
-            </div>
                 <span>4</span>
-            <div className='rat-outer' >
-                <div className="rat-inner four" ref={fourRef}></div>
-            </div>
                 <span>3</span>
-            <div className='rat-outer' >
-                <div className="rat-inner three" ref={threeRef}></div>
-            </div>
                 <span>2</span>
-            <div className='rat-outer' >
-                <div className="rat-inner two" ref={twoRef}></div>
-            </div>
                 <span>1</span>
-            <div className='rat-outer' >
-                <div className="rat-inner one" ref={oneRef}></div>
             </div>
-        </div>
+            <div className="rat-right">
+                <div className='rat-outer'>
+                    <div className="rat-inner five" ref={fiveRef}></div>
+                </div>
+                <div className='rat-outer' >
+                    <div className="rat-inner four" ref={fourRef}></div>
+                </div>
+                <div className='rat-outer' >
+                    <div className="rat-inner three" ref={threeRef}></div>
+                </div>
+                <div className='rat-outer' >
+                    <div className="rat-inner two" ref={twoRef}></div>
+                </div>
+                <div className='rat-outer' >
+                    <div className="rat-inner one" ref={oneRef}></div>
+                </div>
+            </div>
+        </>
     );
 };
 
