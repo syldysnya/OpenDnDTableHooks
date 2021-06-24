@@ -89,7 +89,7 @@ const GamePlace = () => {
                             <li id='reviews' onClick={handleScroll}>Reviews</li>
                         </div>
                     </div>
-                    <div className='gp-info-box'>
+                    <div className='gp-info-box' id='overview-id'>
                         <h1>{gamePlace.name}</h1>
                     </div>
                     <div className="rating-box">
@@ -106,7 +106,7 @@ const GamePlace = () => {
                             )}
                         </div>
                     </div>
-                    <div className='gp-description' id='overview-id'>
+                    <div className='gp-description'>
                         <div>
                             {gamePlace.description}
                         </div>
