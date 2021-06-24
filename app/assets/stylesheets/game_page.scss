@@ -465,7 +465,7 @@ input[type="radio"] {
 
 .gallery-pic {
     display: block;
-    padding: 5px;
+    padding: 1px;
 }
 
 .large-pics {
@@ -663,6 +663,22 @@ input[type="radio"] {
     width: 100%;
     height: 100%;
     grid-column-start: 2;
+    overflow: hidden;
+    
+    .stars-outer {
+        padding-bottom: 6px;
+    }
+
+    span {
+        color: $red-color;
+        padding-right: 5px;
+    }
+
+    .ratings-list {
+        padding-bottom: 10px;
+        font-weight: 600;
+        font-size: 14px;
+    }
 }
 
 @keyframes writeBoxAnimation {
@@ -698,11 +714,27 @@ input[type="radio"] {
 
 .player-info-review {
     display: grid;
-    grid-auto-rows: 50px 40px 30px;
+    grid-auto-rows: 50px 30px 20px 20px;
     justify-items: center;
     font-weight: 500;
     font-size: 13px;
     text-align: center;
+    align-items: flex-start;
+
+    .player-reviews-num {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+
+        div {
+            display: flex;
+            align-items: center;
+        }
+
+        i {
+            padding-right: 5px;
+        }
+    }
 }
 
 .player-info-name {

@@ -1,10 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import StarsShow from '../stars/stars_show';
 
 const ReviewItem = (props) => {
 
     const review = props.review;
     const city = review.playerCity[0];
+    console.log(props)
     
     let nameAbb;
     let dName;
@@ -27,6 +29,8 @@ const ReviewItem = (props) => {
         }).join('')
     }
 
+    const rating = review.serviceRating + review.orgRating + review.campaignRating;
+
     return (
         <div className='review-item'>
             <div className='player-info-review'>
@@ -40,10 +44,23 @@ const ReviewItem = (props) => {
                 <div className='player-info-city'>
                     {city.name}
                 </div>
+                <div className="player-reviews-num">
+                    <i class="far fa-comment-alt"></i>
+                    <div>
+                        {review.playerReviews.length === 1 ? (
+                            <div>1 review</div>
+                        ) : (<div>{review.playerReviews.length} reviews</div>)}
+                    </div>
+                </div>
             </div>
             <div className='review-box'>
-                <div>{review.overallRating} stars</div>
-                <div>Organization {review.orgRating} · Service {review.serviceRating} · Campaign {review.campaignRating}</div>
+                <StarsShow stars={rating} lengthRat={3}/>
+                <div className='ratings-list'>
+                    Overall <span>{Math.round(review.overallRating)}</span>
+                    · Service <span>{review.serviceRating}</span>
+                    · Planning <span>{review.orgRating}</span>
+                    · Campaign <span>{review.campaignRating}</span>
+                    </div>
                 <div>{review.description}</div>
             </div>
         </div>
