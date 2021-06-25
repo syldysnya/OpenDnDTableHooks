@@ -16,6 +16,7 @@ export const fecthFavorite = favId => (
 
 export const createFavorite = favorite => {
     favorite = convertToSnakeCase(favorite);
+    
     return $.ajax({
         method: 'POST',
         url: '/api/favorites',
@@ -23,9 +24,8 @@ export const createFavorite = favorite => {
     })
 };
 
-export const deleteReview = favId => {
-    fav = convertToSnakeCase(fav);
-
+export const deleteFavorite = favId => {
+    
     return $.ajax({
         method: 'DELETE',
         url: `/api/favorites/${favId}`

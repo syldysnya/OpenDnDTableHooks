@@ -10,10 +10,11 @@ const receiveAllFavs = favorites => ({
     favorites
 });
 
-const receiveFav = favorite => ({
+const receiveFav = favorite => {
+    return ({
     type: RECEIVE_FAVORITE,
     favorite
-});
+})};
 
 const removeFav = favoriteId => ({
     type: REMOVE_FAVORITE,
@@ -37,12 +38,13 @@ export const fecthFav = favoriteId => dispatch => (
 
 export const createFav = favorite => dispatch => (
     ApiUtil.createFavorite(favorite)
-        .then(favorite => dispatch(receiveFav(favorite)),
-        err => dispatch(receiveErrors(err)))
+        .then(favorite => dispatch(receiveFav(favorite)))
 )
 
-export const deleteFav = favoriteId => dispatch => (
+export const deleteFav = favoriteId => dispatch => {
+    
+    return (
     ApiUtil.deleteFavorite(favoriteId)
         .then(() => dispatch(removeFav(favoriteId)),
         err => dispatch(receiveErrors(err)))
-)
+)}

@@ -2,7 +2,7 @@ import { RECEIVE_ALL_FAVORITES, RECEIVE_ERRORS, RECEIVE_FAVORITE, REMOVE_FAVORIT
 
 const initialState = {
     favoritesAll: [],
-    favorite: [],
+    favorite: {},
     errors: []
 } 
 
@@ -11,12 +11,13 @@ const favoritesReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case RECEIVE_ALL_FAVORITES:
-            return  {...state, favoritesAll: Object.values(action.favorites) };
+            return  {...state, favoritesAll: action.favorites };
         case RECEIVE_FAVORITE:
+            
             return {...state, favorite: action.favorite };
         case REMOVE_FAVORITE:
             const nextState = {...state};
-            delete nextState.favoritesAll[action.favorite.id];
+            delete nextState.favoritesAll[action.favoriteId];
             return nextState;
         case RECEIVE_ERRORS:
             return {...state, errors: action.errors.responseJSON };

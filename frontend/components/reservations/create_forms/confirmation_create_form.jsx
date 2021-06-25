@@ -34,8 +34,6 @@ const ConfirmationCreateForm = (props) => {
     const [secs, setSecs] = useState('');
     const [formatted, setFormatted] = useState('5:00');
 
-    console.log(player)
-
     const {
         gameDate,
         gameStart,

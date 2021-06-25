@@ -92,7 +92,7 @@ const EditReservationPage = (props) => {
                                     >
                                     <span>{gameDate}</span>
                                 </div>
-                                <i class="fas fa-chevron-down"></i>
+                                <i className="fas fa-chevron-down"></i>
                             </div>
                             <div className='info-create-time' value='gameStart'>
                                 <i className="far fa-clock"></i>

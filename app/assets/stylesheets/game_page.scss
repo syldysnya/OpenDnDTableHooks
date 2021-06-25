@@ -23,12 +23,15 @@
     border-radius: 2px;
 }
 
+.favorites-box:hover {
+    border: 2px solid $red-color;
+}
+
 .fav-outer {
     position: relative;
     display: inline-block;
     cursor: pointer;
     display: flex;
-    justify-content: space-evenly;
     font-weight: 500;
 }
 
@@ -54,6 +57,10 @@
     font-weight: 900;
     width: 0;
     color: $red-color;
+}
+
+.fav-text {
+    padding-left: 5px;
 }
 
 .gp-page-box {
@@ -260,6 +267,46 @@
     justify-content: flex-start;
     background-color: white;
     padding: 6%;
+    font-size: 14px;
+
+    .hours {
+        padding: 10px 0;
+        
+        .title {
+            display: flex;
+            font-weight: 500;
+
+            i {
+                padding-right: 5px;
+             }
+        }
+
+        .details {
+            padding-left: 15px;
+            
+            p {
+                padding: 5px 5px 5px 5px;
+            }
+        }
+        
+    }
+
+    .dresscode {
+        padding: 10px 0;
+
+        i {
+            padding-right: 5px;
+        }
+
+        p {
+            padding-left: 20px;
+            padding-top: 5px;
+        }
+    }
+
+    p {
+        margin: 0;
+    }
 }
 
 .parent-calendar-box {
@@ -295,7 +342,7 @@
     position: relative;
     top: 14px;
     display: grid;
-    grid-template-rows: 39px 90px 55px 200px 450px auto;
+    grid-template-rows: 39px 90px 55px 150px 450px auto;
     background: transparent;
     padding-right: 20px;
     padding-left: 200px;
@@ -400,10 +447,11 @@
     width: 99%;
     height: 100%;
     font-size: 16px;
+    overflow: hidden;
     
     div {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         height: 100%;
     }
 }

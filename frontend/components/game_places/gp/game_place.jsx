@@ -171,13 +171,22 @@ const GamePlace = () => {
                             <p>{gamePlace.address}</p>
                         </div>
                         <div className='hours-info'>
-                            <p>{gamePlace.openHour}</p>
-                            <p>{gamePlace.closeHour}</p>
-                            <span> 
-                                <i className="fas fa-hat-wizard"></i>
-                                Dress Code
-                            </span>
-                            <p>Casual Dress</p>
+                            <div className="hours">
+                                <div className="title">
+                                    <i className="far fa-clock"></i>
+                                    <p>Hours of operation</p>
+                                </div>
+                                <div className='details'>
+                                    <p>{gamePlace.openHour} - {gamePlace.closeHour}</p>
+                                </div>
+                            </div>
+                            <div className="dresscode">
+                                <span> 
+                                    <i className="fas fa-hat-wizard"></i>
+                                    Dress Code
+                                </span>
+                                <p>Casual Dress</p>
+                            </div>
                         </div>
                     </div>
                 </div>

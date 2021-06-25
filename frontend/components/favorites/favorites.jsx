@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { createFav, deleteFav } from '../../actions/favorite_actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { createFav, deleteFav, fecthFav, fetchAllFavs } from '../../actions/favorite_actions';
 
 const Favorites = (props) => {
     const { player, gamePlace } = props;
@@ -8,43 +8,57 @@ const Favorites = (props) => {
     const [saved, setSaved] = useState(false);
     const [favId, setFavId] = useState('');
     const dispatch = useDispatch();
+    const favorites = useSelector(state => state.entities.favorites.favoritesAll)
+    const favorite = useSelector(state => state.entities.favorites.favorite)
+    const [fetched, setFetched] = useState(false);
+
+    useEffect(() => {
+        dispatch(fetchAllFavs())
+        setFetched(true)
+    }, [favId])
+
+    useEffect(() => {
+        if (favId) {
+            dispatch(fecthFav(favId.id))
+        }
+    }, [favId])
+    
+    useEffect(() => {
+        debugger
+        if (favId) {
+            favRef.current.style.width = '100%'
+        } else {
+            favRef.current.style.width = '0%';
+        }
+    }, [favId])
+
 
     useEffect(() => {
         let gp = gamePlace.favorites;
-        let pl = player.favorites
-
-        if (gp && pl) {
+        if (gp && favorites) {
+            let list = Object.values(favorites).map(f => f.gamePlaceId)
+            
             for (let i = 0; i < gp.length; i++) {
-                if (pl.includes(gp[i])) {
-                    debugger
+                if (list.includes(gp[i].game_place_id)) {
                     setFavId(gp[i])
-                    setSaved(true)
                 }
             }
         }
 
-    }, [player, gamePlace])
-
-    useEffect(() => {
-        console.log(saved)
-        if (saved) {
-            favRef.current.style.width = '100%';
-        } else {
-            favRef.current.style.width = '0%';
-        }
-    })
+    }, [gamePlace, fetched, favId])
 
     const handleSave = e => {
         e.preventDefault();
 
-        if (saved) {
-            dispatch(deleteFav(favId)).then(() => setSaved(false))
+        if (favId) {
+            dispatch(deleteFav(favId.id)).then(() => setFavId(''))
         } else {
+            
             let fav = {
                 gamePlaceId: gamePlace.id,
                 playerId: player.id
             }
-            dispatch(createFav(fav)).then(() => setSaved(true))
+            dispatch(createFav(fav)).then((res) => setFavId(res.favorite))
         }
     }
 
@@ -52,7 +66,7 @@ const Favorites = (props) => {
         <div className='favorites-box'>
             <div className="fav-outer" onClick={handleSave}>
                 <div className="fav-inner" ref={favRef}></div>
-                {saved ? (<div className="fav-text">Place saved</div>) : (<div className="fav-text">Save this place</div>)}
+                {favId ? (<div className="fav-text">Place saved</div>) : (<div className="fav-text">Save this place</div>)}
             </div>
         </div>  
     );

@@ -9,15 +9,21 @@ class Api::FavoritesController < ApplicationController
     end
 
     def create
-        @favorite = Favorite.create!(favorite_params)
+        @favorite = Favorite.new(favorite_params)
+
+        if @favorite.save!
+            render :show
+        else
+            render json: @favorite.errors.full_messages, status: 422
+        end
     end
 
     def destroy
         @favorite = Favorite.find(params[:id])
 
         if current_player.id === @favorite.player_id
-            if @favorite.destroy
-                render :index
+            if @favorite.destroy!
+                render json: :show, status: 204
             else
                 render json: ['Something went wrong'], status: 422
             end

@@ -6,7 +6,6 @@ const ReviewItem = (props) => {
 
     const review = props.review;
     const city = review.playerCity[0];
-    console.log(props)
     
     let nameAbb;
     let dName;
@@ -45,7 +44,7 @@ const ReviewItem = (props) => {
                     {city.name}
                 </div>
                 <div className="player-reviews-num">
-                    <i class="far fa-comment-alt"></i>
+                    <i className="far fa-comment-alt"></i>
                     <div>
                         {review.playerReviews.length === 1 ? (
                             <div>1 review</div>
