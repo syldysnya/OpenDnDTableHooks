@@ -17,7 +17,7 @@ const PhillyPlaces = (props) => {
                     <img src={gPlace.avatarUrl}/>
                 </div>
                 <div className='info-box'>
-                    <div>
+                    <div className='title'>
                         <NavLink to={{
                             pathname: `/gameplaces/${gPlace.id}`
                             }}
@@ -25,16 +25,19 @@ const PhillyPlaces = (props) => {
                             {gPlace.name}
                         </NavLink>
                     </div>
-                    <div>
+                    <div className='rating'>
                         <StarsShow stars={rating} lengthRat={gPlace.lengthRat}/>
+                        {gPlace.reviews.length === 1 ? (<div>{gPlace.reviews.length} review</div>) : (<div>{gPlace.reviews.length} reviews</div>)}
                     </div>
-                    {gPlace.reviews.length === 1 ? (<div>{gPlace.reviews.length} review</div>) : (<div>{gPlace.reviews.length} reviews</div>)}
-                    <div>{cities.map(city => {
+                    <div className='city'>{cities.map(city => {
                         if (city.id === gPlace.cityId) {
                             return city.name
                         }
                     })}</div>
-                    {gPlace.reservations.length === 1 ? (<div>Booked {gPlace.reservations.length} time today</div>) : (<div>Booked {gPlace.reservations.length} times today</div>)}
+                    <div className="booked-icon">
+                        <i class="fas fa-chart-line"></i>
+                        {gPlace.reservations.length === 1 ? (<div className='booked' >Booked {gPlace.reservations.length} time today</div>) : (<div className='booked'>Booked {gPlace.reservations.length} times today</div>)}
+                    </div>
                 </div>
             </div>
         )

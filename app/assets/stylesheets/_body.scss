@@ -123,6 +123,7 @@ body {
                 border: 1px solid $grey-color;
                 display: inline-block;
                 margin: 6px;
+                max-width: 235px;
                 
                 .avatar img {
                     width: 100%;
@@ -139,15 +140,61 @@ body {
                     grid-row-start: 2;
                     position: relative;
                     height: inherit;
-                    display: flex;
-                    padding-left: 5%;
-                    flex-direction: column;
-                    justify-content: space-around;
+                    display: grid;
+                    grid-template-rows: repeat(4, 23px);
+                    padding-left: 15px;
+                    overflow: hidden;
+                    width: 94%;
+                    
+                    .title {
+                        height: 23px;
+                        width: 150%;
+                        position: relative;
+                        left: 0;
+                        top: 0;
+                    }
+
+                    .city {
+                        font-size: 14px;
+                    }
+
+                    .rating {
+                        display: flex;
+
+                        .stars-outer {
+                            padding-right: 5px;
+                        }
+
+                        div {
+                            font-weight: 600;
+                            font-size: 14px;
+                        }
+                    }
+
+                    .booked {
+                        font-weight: 700;
+                        padding-left: 5px;
+                    }
+
+                    .booked-icon {
+                        display: flex;
+                        align-items: center;
+
+                        i {
+                            color: black;
+                        }
+
+                        div {
+                            font-size: 12px;
+                        }
+                    }
                 }
             
                 .info-box div:first-child {
                     font-weight: bold;
                 }
+
+
 
             }
         
