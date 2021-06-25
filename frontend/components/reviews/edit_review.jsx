@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createReview, fetchAllReviews } from '../../actions/review_actions';
-import StarsForm from '../stars/stars_form';
+import { editReview } from '../../actions/review_actions';
 
-const CreateReviewForm = (props) => {
+const EditReview = () => {
 
-    const {player, gamePlaceId, res} = props;
+    const {player, gamePlaceId, review} = props;
     const dispatch = useDispatch();
     const [errDescription, setErrDescription] = useState('');
     const [errService, setErrService] = useState('');
@@ -13,22 +12,12 @@ const CreateReviewForm = (props) => {
     const [errCampaign, setErrCampaign] = useState('');
     const revErrors = useSelector(state => state.entities.reviews.errors);
 
-    const [review, setReview] = useState({
-        description: '',
-        campaignRating: '',
-        serviceRating: '',
-        orgRating: '',
-        overallRating: '',
-        dndCampaign_id: '',
-        gamePlaceId: gamePlaceId,
-        playerId: player.id,
-        reservationId: res.id
-    });
+    const [reviewNew, setReview] = useState('');
 
     const {campaignRating, orgRating, serviceRating, description} = review;
 
     useEffect(() => {
-        setReview({ ...review, gamePlaceId: gamePlaceId })
+        setReview({review})
     }, [])
 
     useEffect(() => {
@@ -62,19 +51,12 @@ const CreateReviewForm = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        dispatch(createReview(review))
-            .then(setReview({
-                description: '',
-                campaignRating: 0,
-                serviceRating: 0,
-                orgRating: 0,
-                overallRating: 0,
-            }))
+        dispatch(editReview(review))
     }
 
     return (
         <div className='review-create-box'>
-            <form onSubmit={handleSubmit}>
+            {/* <form onSubmit={handleSubmit}>
                 <div className='rating-box'>
                     <div>Campaign</div>
                     <StarsForm rating={campaignRating}
@@ -110,7 +92,7 @@ const CreateReviewForm = (props) => {
                             Thank you for your review!
                         </div>
                     )} */}
-                    <textarea onChange={updateInfo}
+                    {/* <textarea onChange={updateInfo}
                         id='description'
                         value={description}
                         cols="40" rows="5" />
@@ -120,12 +102,12 @@ const CreateReviewForm = (props) => {
                         </div>
                     )}
                     <button type="submit">
-                        Submit review
+                        Edit review
                     </button>
                 </div>
-            </form>
+            </form> */}
         </div>
     );
 };
 
-export default CreateReviewForm;
+export default EditReview;

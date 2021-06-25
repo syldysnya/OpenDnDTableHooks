@@ -7,14 +7,12 @@ Rails.application.routes.draw do
     resources :players, only: [:show, :create, :update]
     resources :cities, only: [:index, :show]
     resources :game_places, only: [:index]
-    resources :game_places, only: [:show] do 
-      resources :reviews, only: [:index]
-    end
+    resources :game_places, only: [:show]
     resources :dnd_campaigns, only: [:index, :show]
     resources :reservations, only: [:index, :show, :create, :update, :destroy]
     resources :favorites, only: [:index, :show, :create, :destroy]
     resource :session, only: [:create, :destroy]
-    resources :reviews, only: [:show, :create, :update, :destroy]
+    resources :reviews, only: [:index, :show, :create, :update, :destroy]
   end
 
 end

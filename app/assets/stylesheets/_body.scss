@@ -130,6 +130,7 @@ body {
                     padding-bottom: 5%;
                     width: 234px;
                     min-height: 132px;
+                    cursor: pointer;
                 }
 
                 i {
@@ -152,6 +153,11 @@ body {
                         position: relative;
                         left: 0;
                         top: 0;
+
+                        a {
+                            color: black;
+                            cursor: pointer;
+                        }
                     }
 
                     .city {

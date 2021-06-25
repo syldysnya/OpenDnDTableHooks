@@ -1,9 +1,10 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import StarsShow from '../../stars/stars_show';
 
 const PhillyPlaces = (props) => {
     const {gamePlaces, cities} = props;
+    const history = useHistory();
 
     let philly = cities.filter(city => city.name === 'Philadelphia');
     let phillyPlaces = Object.values(gamePlaces.gamePlacesAll).filter(gp => gp.cityId === philly[0].id);
@@ -14,7 +15,7 @@ const PhillyPlaces = (props) => {
         return (
             <div className='game-place-i' key={`game-place-${i}`}>
                 <div className='avatar'>
-                    <img src={gPlace.avatarUrl}/>
+                    <img onClick={() => history.push(`/gameplaces/${gPlace.id}`)} src={gPlace.avatarUrl}/>
                 </div>
                 <div className='info-box'>
                     <div className='title'>

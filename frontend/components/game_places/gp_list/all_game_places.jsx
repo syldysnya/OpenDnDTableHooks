@@ -1,10 +1,11 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import StarsShow from '../../stars/stars_show';
 
 const AllGamePlaces = (props) => {
 
     const {gamePlaces, cities} = props;
+    const history = useHistory();
 
     let mapped = Object.values(gamePlaces.gamePlacesAll).map((gPlace, i) => {
         let rating = gPlace.rating;
@@ -12,7 +13,7 @@ const AllGamePlaces = (props) => {
         return (
             <div className='game-place-i' key={`game-place-${i}`}>
                 <div className='avatar'>
-                    <img src={gPlace.avatarUrl}/>
+                    <img onClick={() => history.push(`/gameplaces/${gPlace.id}`)} src={gPlace.avatarUrl}/>
                 </div>
                 <div className='info-box'>
                     <div className='title'>

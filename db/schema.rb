@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_23_185546) do
+ActiveRecord::Schema.define(version: 2021_06_25_035134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -142,9 +142,11 @@ ActiveRecord::Schema.define(version: 2021_06_23_185546) do
     t.integer "player_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "reservation_id", null: false
     t.index ["dnd_campaign_id"], name: "index_reviews_on_dnd_campaign_id"
     t.index ["game_place_id"], name: "index_reviews_on_game_place_id"
     t.index ["player_id"], name: "index_reviews_on_player_id"
+    t.index ["reservation_id", "player_id"], name: "index_reviews_on_reservation_id_and_player_id", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

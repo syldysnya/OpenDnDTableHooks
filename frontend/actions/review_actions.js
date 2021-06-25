@@ -25,8 +25,8 @@ const receiveErrors = errors => ({
     errors
 })
 
-export const fetchAllReviews = (id) => dispatch => {
-    return ApiUtil.fetchAllReviews(id)
+export const fetchAllReviews = () => dispatch => {
+    return ApiUtil.fetchAllReviews()
         .then(reviews => dispatch(receiveAllReviews(reviews)))
 };
 

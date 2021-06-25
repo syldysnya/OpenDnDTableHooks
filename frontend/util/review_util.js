@@ -1,9 +1,9 @@
 import { convertToSnakeCase } from "./reservations_util";
 
-export const fetchAllReviews = (id) => (
+export const fetchAllReviews = () => (
     $.ajax({
         method: 'GET',
-        url: `/api/game_places/${id}/reviews`
+        url: '/api/reviews'
     })
 );
 

@@ -1,8 +1,8 @@
 import { RECEIVE_ALL_REVIEWS, RECEIVE_ERRORS, RECEIVE_REVIEW, REMOVE_REVIEW } from "../actions/review_actions";
 
 const initialState = {
-    reviewsAll: [],
-    review: [],
+    reviewsAll: {},
+    review: {},
     errors: []
 } 
 
@@ -11,7 +11,7 @@ const reviewsReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case RECEIVE_ALL_REVIEWS:
-            return  {...state, reviewsAll: Object.values(action.reviews) };
+            return  {...state, reviewsAll: action.reviews };
         case RECEIVE_REVIEW:
             return {...state, review: action.review };
         case REMOVE_REVIEW:

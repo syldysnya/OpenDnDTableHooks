@@ -2,7 +2,7 @@ class Api::ReviewsController < ApplicationController
 
     def index
         
-        @reviews = Review.where(game_place_id: params[:game_place_id])
+        @reviews = Review.where(player_id: current_player.id)
     end
 
     def show 
@@ -56,7 +56,8 @@ class Api::ReviewsController < ApplicationController
                 :overall_rating,
                 :dnd_campaign_id,
                 :game_place_id,
-                :player_id
+                :player_id,
+                :reservation_id
             )
     end
 

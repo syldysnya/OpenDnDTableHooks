@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import CreateReviewForm from '../../reviews/create_review_form';
+import EditReview from '../../reviews/edit_review';
 
 const PlayerReservationItem = (props) => {
-    const {gpAvatar, gpName, gameDate, gameStart, playersNum, gamePlaceId} = props.res;
-    const {i, currentPlayer} = props;   
-    let noReviews;
+    const {i, currentPlayer, review, res} = props;   
+    const {gpAvatar, gpName, gameDate, gameStart, playersNum, gamePlaceId} = res;
     const [writeBox, setWriteBox] = useState(false);
+    const [editBox, setEditBox] = useState(false);
 
     useEffect(() => {
         let rev = document.getElementById('write-review')
@@ -19,6 +21,13 @@ const PlayerReservationItem = (props) => {
 
     const handleWrite = e => {
         setWriteBox(!writeBox)
+    }
+
+    const handleEdit = e => {
+        setEditBox(!editBox)
+    }
+
+    const handleDelete = e => {
     }
 
     return (
@@ -39,17 +48,32 @@ const PlayerReservationItem = (props) => {
                                 <div>Save this restaurant</div>
                             </div>
                             <div className="write-review">
-                                <i className="far fa-comment-alt"></i>
-                                <h2 onClick={handleWrite}>
-                                    Write a review
-                                </h2>
+                                {!review && (<div className="write-text">
+                                    <i className="far fa-comment-alt"></i>
+                                    <h2 onClick={handleWrite}>
+                                        Write a review
+                                    </h2>
+                                </div>)}
+                                {review && (<div className="edit-text">
+                                    <i className="far fa-comment-alt"></i>
+                                    <h2  onClick={handleEdit}>
+                                        Edit a review
+                                    </h2>
+                                </div>)}
+                                {review && (<div className="delete-text">
+                                    <i className="far fa-comment-alt"></i>
+                                    <h2  onClick={handleDelete}>
+                                        Delete a review
+                                    </h2>
+                                </div>)}
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="name-info-review" id='write-review'>
                     <div className="review-box-user">
-                        {writeBox && (<CreateReviewForm player={currentPlayer} gamePlaceId={gamePlaceId} />)}
+                        {writeBox && <CreateReviewForm player={currentPlayer} gamePlaceId={gamePlaceId} res={res}/>}
+                        {editBox && <EditReview player={currentPlayer} gamePlaceId={gamePlaceId} />}
                     </div>
                 </div>
             </div>
