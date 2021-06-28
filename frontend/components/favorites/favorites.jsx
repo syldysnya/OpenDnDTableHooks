@@ -13,8 +13,10 @@ const Favorites = (props) => {
     const [fetched, setFetched] = useState(false);
 
     useEffect(() => {
-        dispatch(fetchAllFavs())
-        setFetched(true)
+        if (player) {
+            dispatch(fetchAllFavs())
+            setFetched(true)
+        }
     }, [favId])
 
     useEffect(() => {
@@ -24,7 +26,7 @@ const Favorites = (props) => {
     }, [favId])
     
     useEffect(() => {
-        debugger
+        
         if (favId) {
             favRef.current.style.width = '100%'
         } else {

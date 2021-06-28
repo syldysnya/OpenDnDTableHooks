@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 const TimePickButtons = (props) => {
     const {gameStart} = props.reservation;
+    const currentPlayer =  useSelector(state => state.session.currentPlayer);
     const {gamePlace} = props;
     const [visibleButton, setVisibleButton] = useState(false);
     const [reservation, setReservation] = useState(props.reservation);
@@ -16,7 +17,7 @@ const TimePickButtons = (props) => {
     }, [])
 
     useEffect(() => {
-        setReservation({...reservation, gamePlaceId: gamePlace.id})
+        setReservation({...reservation, gamePlaceId: gamePlace.id, playerId: currentPlayer.id})
     }, [gamePlace])
 
     const handleClick = (e) => {

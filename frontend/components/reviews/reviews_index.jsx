@@ -16,7 +16,7 @@ const ReviewsIndex = (props) => {
     //     dispatch(fetchAllReviews(gamePlaceId))
     // }, [])
 
-    let mapped = reviews.map((rev, i) => {
+    let mapped = Object.values(reviews).map((rev, i) => {
         return (
             <ReviewItem review={rev} key={`review-${i}`}/>
         )

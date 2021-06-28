@@ -35,15 +35,20 @@ const MainPageCreateForm = (props) => {
 
     const currentPlayer =  useSelector(state => state.session.currentPlayer);
     const currentDateFull = new Date();
-    const currentDate = currentDateFull.toDateString().replace(' 2021', '');
+    const currentDate = currentDateFull.toString().split(' ');
+    const defaultDate = currentDate[0] + ' ' + currentDate[1] + ' ' + currentDate[2];
+    const defaultYear = currentDate[3];
+    const defaultGMT = currentDate[5];
     const randomNum = Math.floor(Math.random() * 10000);
 
     const [reservation, setReservation] = useState({
-        gameDate: currentDate,
+        gameDate: defaultDate,
+        resYear: defaultYear,
+        gmt: defaultGMT,
         gameStart: '8:00 PM',
         playersNum: 2,
         gamePlaceId: '',
-        playerId: currentPlayer.id,
+        playerId: '',
         confirmation_num: randomNum,
         add_info: '',
         canceled: false,
@@ -66,9 +71,24 @@ const MainPageCreateForm = (props) => {
     }
 
     const timePick = RES_TIME.map(t => {
+        const {gameDate, resYear, gmt} = reservation;
+        const validDate = gameDate + ' ' + resYear + ' ' + t + ' ' +  gmt
+        const openDate = gameDate + ' ' + resYear + ' ' + props.gamePlace.openHour + ' ' +  gmt
+        const closeDate = gameDate + ' ' + resYear + ' ' + props.gamePlace.closeHour + ' ' +  gmt
+        const a = Date.parse(validDate);
+        const o = Date.parse(openDate);
+        const c = Date.parse(closeDate);
+        const b = Date.parse(new Date());
+
+        if (a > b && a > o && a < c) {
             return (
                 <option key={t} value={t}>{t}</option>
             )
+        } else {
+            return (
+                <option disabled style={{color: '#87878769'}} key={t} value={t}>{t}</option>
+            )
+        }
         })
 
     const updateDate = (e) => {

@@ -37,7 +37,7 @@ const NewYorkPlaces = (props) => {
                         }
                     })}</div>
                     <div className="booked-icon">
-                        <i class="fas fa-chart-line"></i>
+                        <i className="fas fa-chart-line"></i>
                         {gPlace.reservations.length === 1 ? (<div className='booked' >Booked {gPlace.reservations.length} time today</div>) : (<div className='booked'>Booked {gPlace.reservations.length} times today</div>)}
                     </div>
                 </div>

@@ -58,7 +58,9 @@ class Api::ReservationsController < ApplicationController
                 :add_info,
                 :canceled,
                 :plphone,
-                :email
+                :email,
+                :res_year,
+                :gmt
             )
     end
 end

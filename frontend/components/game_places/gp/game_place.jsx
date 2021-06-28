@@ -28,13 +28,13 @@ const GamePlace = () => {
     const [playerInfo, setPlayerInfo] = useState('');
 
     useEffect(() => {
-        dispatch(fetchAllReviews(gamePlaceParams.gamePlaceId))
-        dispatch(fetchPlayer(player.id)).then(res => setPlayerInfo(res.player))
+        dispatch(fetchAllReviews())
     }, [])
-
+    
     useEffect(() => {
         if (player) {
             setLoggedIn(true)
+            dispatch(fetchPlayer(player.id)).then(res => setPlayerInfo(res.player))
         }
     }, [])
     

@@ -10,8 +10,10 @@ const gamePlacesReducer = (state=initialState, action) => {
     
     switch (action.type) {
         case RECEIVE_GAME_PLACES:
+            
             return {...state, gamePlacesAll: action.gamePlaces}
         case RECEIVE_GAME_PLACE:
+            
             return { ...state, gamePlace: action.gamePlace };
         default:
             return state;

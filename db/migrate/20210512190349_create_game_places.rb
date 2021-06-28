@@ -8,6 +8,7 @@ class CreateGamePlaces < ActiveRecord::Migration[5.2]
       t.decimal :longitude, null: false
       t.datetime :open_hour, null: false
       t.datetime :close_hour, null: false
+      t.string :gmt, null: false
       t.string :wedsite
       t.text :description, null: false
       t.integer :city_id, null: false

@@ -45,7 +45,7 @@ const Login = () => {
 
     const demoSubmit = () => {
         const demoUser = {
-            email: 'sykh@mail.com',
+            email: 'demo@mail.com',
             password: '12345678'
         };
 

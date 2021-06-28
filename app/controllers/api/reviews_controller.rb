@@ -1,8 +1,7 @@
 class Api::ReviewsController < ApplicationController
 
     def index
-        
-        @reviews = Review.where(player_id: current_player.id)
+        @reviews = Review.all
     end
 
     def show 

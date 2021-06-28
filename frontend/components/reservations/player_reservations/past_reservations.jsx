@@ -17,10 +17,12 @@ const PastReservations = (props) => {
     const mapped = reservations.map((res, i) => {
         const {gamePlaceId} = res;
         let review = {}
+        let playerReviews = {}
         if (reviews) {
-            review = Object.values(reviews).filter(rev => rev.gamePlaceId === gamePlaceId);
+            playerReviews = Object.values(reviews).filter(rev => rev.playerId === currentPlayer.id)
+            review = playerReviews.filter(rev => rev.gamePlaceId === gamePlaceId);
         }
-        debugger
+        
         if (review) {
             return <PlayerReservationItem res={res} i={i} currentPlayer={currentPlayer} review={review}/>
         }
