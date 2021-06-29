@@ -21,6 +21,10 @@ const AllGamePlaces = (props) => {
 
     let mapped = Object.values(gamePlaces.gamePlacesAll).map((gPlace, i) => {
         let rating = gPlace.rating;
+        
+        if (!rating && gPlace.campRating) {
+            rating = (gPlace.campRating + gPlace.servRating + gPlace.orgRating) / 3.0
+        }
 
         return (
             <div className='game-place-i' key={`game-place-${i}`}>

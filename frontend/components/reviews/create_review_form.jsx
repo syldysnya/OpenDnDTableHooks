@@ -73,9 +73,9 @@ const CreateReviewForm = (props) => {
     }
 
     return (
-        <div className='review-create-box'>
-            <form onSubmit={handleSubmit}>
-                <div className='rating-box'>
+        <div className='review-create-box-profile'>
+            {/* <form onSubmit={handleSubmit}> */}
+                <div className='rating-box-profile'>
                     <div>Campaign</div>
                     <StarsForm rating={campaignRating}
                             ratingType='campaignRating'
@@ -113,17 +113,17 @@ const CreateReviewForm = (props) => {
                     <textarea onChange={updateInfo}
                         id='description'
                         value={description}
-                        cols="40" rows="5" />
+                        cols="35" rows="5" />
                     {errDescription && (
                         <div className="err-item">
                             Can't sudmit empty review
                         </div>
                     )}
-                    <button type="submit">
+                    <button className='auth-button' type="button" onClick={handleSubmit}>
                         Submit review
                     </button>
                 </div>
-            </form>
+            {/* </form> */}
         </div>
     );
 };

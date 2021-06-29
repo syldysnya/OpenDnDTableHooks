@@ -60,6 +60,21 @@
     border-radius: 5px;
 }
 
+.review-create-box-profile {
+    display: grid;
+    grid-template-columns: 30% 50%;
+    column-gap: 2%;
+    height: 100%;
+
+    .auth-button {
+        width: 150px;
+        height: 30px;
+        padding: 0;
+        margin: 0 auto;
+        font-size: 14px;
+        font-weight: 500;
+    }
+}
 
 .past-reses {
     grid-column-start: 3;
@@ -75,7 +90,20 @@
         font-size: 15px;
     }
 
+    .info-past {
+        display: flex;
+        flex-direction: column;
+        
+        div {
+            font-size: 15px;
+            font-weight: 500;
+            padding-bottom: 5px;
+            margin: 0;
+        }
+    }
+
     .red-text {
+        height: 35px;
         display: flex;
         align-items: center;
     }
@@ -83,6 +111,26 @@
     .write-review {
         display: flex;
         align-items: center;
+
+        .write-text {
+            display: flex;
+            padding-left: 15px;
+            color: #da3743;
+            font-weight: 500;
+            align-items: center;
+            cursor: pointer;
+
+            h2 {
+                padding: 3px 0;
+                font-size: 14px;
+                font-weight: 500;
+            }
+
+            i {
+                padding-right: 10px;
+            }
+        }
+
     }
 
     .res-index .res-box-info {
@@ -108,7 +156,7 @@
         padding: 12px 0 70px 0;
 
         img {
-            width: 100%;
+            height: 100px;
             object-fit: cover;
             border-radius: 5px;
         }

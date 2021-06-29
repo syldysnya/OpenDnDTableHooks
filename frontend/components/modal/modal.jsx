@@ -16,11 +16,9 @@ const Modal = (props) => {
 
     const handleModal = e => {
         e.preventDefault();
-        debugger
         dispatch(ModalActions.hideModal())
     }
     
-    debugger
     switch (modal) {
         case 'Sign In':
             modalForm = <Login />

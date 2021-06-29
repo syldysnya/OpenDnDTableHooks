@@ -27,7 +27,7 @@ const GamePlace = () => {
     const totalCamp = (campRating / lengthRat).toFixed(1);
     const [fetched, setFetched] = useState(false);
     const [playerInfo, setPlayerInfo] = useState('');
-
+    
     useEffect(() => {
         dispatch(fetchAllReviews())
     }, [])

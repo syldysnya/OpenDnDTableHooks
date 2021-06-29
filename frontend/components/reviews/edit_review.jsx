@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { editReview } from '../../actions/review_actions';
 
-const EditReview = () => {
+const EditReview = (props) => {
 
     const {player, gamePlaceId, review} = props;
     const dispatch = useDispatch();
@@ -14,50 +14,51 @@ const EditReview = () => {
 
     const [reviewNew, setReview] = useState('');
 
-    const {campaignRating, orgRating, serviceRating, description} = review;
+    // const {campaignRating, orgRating, serviceRating, description} = review;
+
 
     useEffect(() => {
         setReview({review})
     }, [])
 
-    useEffect(() => {
-        revErrors.forEach(err => {
-            if (err.includes('Description')) {
-                setErrDescription(err)
-            } else if (err.includes('Org')) {
-                setErrOrg(err)
-            } else if (err.includes('Service')) {
-                setErrService(err)
-            } else if (err.includes('Campaign')) {
-                setErrCampaign(err)
-            }
-        })
-    }, [revErrors])
+    // useEffect(() => {
+    //     revErrors.forEach(err => {
+    //         if (err.includes('Description')) {
+    //             setErrDescription(err)
+    //         } else if (err.includes('Org')) {
+    //             setErrOrg(err)
+    //         } else if (err.includes('Service')) {
+    //             setErrService(err)
+    //         } else if (err.includes('Campaign')) {
+    //             setErrCampaign(err)
+    //         }
+    //     })
+    // }, [revErrors])
 
-    const updateInfo = (e) => {
-        setReview({ ...review, [e.target.id]: e.target.value });
-        setErrDescription('');
-    };
+    // const updateInfo = (e) => {
+    //     setReview({ ...review, [e.target.id]: e.target.value });
+    //     setErrDescription('');
+    // };
 
-    const update = (e) => {
-        setReview({ ...review, [e.currentTarget.id]: e.currentTarget.value,
-            overallRating: ((parseInt(serviceRating) + parseInt(orgRating) + parseInt(campaignRating)) / 3)
-        })
-        setErrCampaign('');
-        setErrOrg('');
-        setErrService('');
-    }
+    // const update = (e) => {
+    //     setReview({ ...review, [e.currentTarget.id]: e.currentTarget.value,
+    //         overallRating: ((parseInt(serviceRating) + parseInt(orgRating) + parseInt(campaignRating)) / 3)
+    //     })
+    //     setErrCampaign('');
+    //     setErrOrg('');
+    //     setErrService('');
+    // }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
 
-        dispatch(editReview(review))
-    }
+    //     dispatch(editReview(review))
+    // }
 
     return (
         <div className='review-create-box'>
             {/* <form onSubmit={handleSubmit}>
-                <div className='rating-box'>
+                <div className='rating-box-profile'>
                     <div>Campaign</div>
                     <StarsForm rating={campaignRating}
                             ratingType='campaignRating'
