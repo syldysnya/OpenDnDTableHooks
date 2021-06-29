@@ -57,15 +57,15 @@ const AllGamePlaces = (props) => {
     return (
         <div className='list-of-gps'>
             <span>Book for a game today</span>
-            <button onClick={scrollToLeft} ref={refLeft} className='scroll-right'>
+            {/* <button onClick={scrollToLeft} ref={refLeft} className='scroll-right'>
                 <i className="fas fa-chevron-left"></i>
-            </button> 
+            </button>  */}
             <div className='gp-list'>
                 {mapped}
             </div>
-            <button onClick={scrollToRight} ref={refRight} className='scroll-left'>
+            {/* <button onClick={scrollToRight} ref={refRight} className='scroll-left'>
                 <i className="fas fa-chevron-right"></i>
-            </button>
+            </button> */}
         </div>
     );
 };

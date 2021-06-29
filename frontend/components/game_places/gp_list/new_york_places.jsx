@@ -52,15 +52,15 @@ const NewYorkPlaces = (props) => {
     return (
         <div className='list-of-gps'>
             <span>Book a table in New York</span>
-            <button onClick={() => scroll(20)} ref={ref} className='scroll-right'>
+            {/* <button onClick={() => scroll(20)} ref={ref} className='scroll-right'>
                 <i className="fas fa-chevron-left"></i>
-            </button> 
+            </button>  */}
             <div className='gp-list'>
                 {mapped}
             </div>
-            <button onClick={() => scroll(20)} ref={ref} className='scroll-left'>
+            {/* <button onClick={() => scroll(20)} ref={ref} className='scroll-left'>
                 <i className="fas fa-chevron-right"></i>
-            </button>
+            </button> */}
         </div>
     );
 };

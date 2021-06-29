@@ -76,8 +76,7 @@ const ConfirmationCreateForm = (props) => {
 
     useEffect(() => {
         if (props.location.state.reservation) {
-            console.log(props.location.state.reservation)
-            const {gameDate, gameStart, playersNum, resYear, gmt} = props.location.state.reservation;
+            const {gameDate, playersNum, resYear, gmt} = props.location.state.reservation;
             setReservation({...reservation, gameDate: gameDate, gameStart: props.location.state.gameStart, playersNum: playersNum, resYear: resYear, gmt: gmt})
         }
     }, [])
@@ -88,7 +87,6 @@ const ConfirmationCreateForm = (props) => {
 
     const handleClick = (e) => {
         e.preventDefault();
-        debugger
         dispatch(createReservation(reservation))
             .then(res => history.push(`/book/view/${res.reservation.id}`))
     }

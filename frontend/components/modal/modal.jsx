@@ -4,20 +4,23 @@ import Login from '../session/login';
 import Signup from '../session/signup';
 import * as ModalActions from '../../actions/modal_actions';
 import SearchBarModal from '../search/search_bar_modal';
+import PictureModal from './picture_modal';
 
-const Modal = () => {
-
-    const modal = useSelector(state => state.ui.modal);
+const Modal = (props) => {
+    const modal = useSelector(state => state.ui.modal.modal);
+    const imgModal = useSelector(state => state.ui.modal)
     const dispatch = useDispatch();
     let modalForm;
     let searchModal;
+    let picModal;
 
     const handleModal = e => {
         e.preventDefault();
-
+        debugger
         dispatch(ModalActions.hideModal())
     }
-
+    
+    debugger
     switch (modal) {
         case 'Sign In':
             modalForm = <Login />
@@ -27,6 +30,9 @@ const Modal = () => {
             break
         case 'Search':
             searchModal = <SearchBarModal />
+            break
+        case 'Gallery':
+            picModal = <PictureModal path={imgModal.path} />
             break
         default:
             return null
@@ -40,6 +46,9 @@ const Modal = () => {
                 </div>)}
                 {searchModal && (<div className='modal-content-search' onClick={e => e.stopPropagation()}>
                     { searchModal }
+                </div>)}
+                {picModal && (<div className='pic-content-search' onClick={e => e.stopPropagation()}>
+                    { picModal }
                 </div>)}
             </div>
         </>

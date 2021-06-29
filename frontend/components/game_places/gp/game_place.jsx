@@ -11,6 +11,7 @@ import RatingsBox from '../../stars/ratings_box';
 import StarsShow from '../../stars/stars_show';
 import Favorites from '../../favorites/favorites';
 import { fetchPlayer } from '../../../actions/player_actions';
+import { openModal } from '../../../actions/modal_actions';
 
 const GamePlace = () => {
     let gamePlaceParams = useParams();
@@ -43,6 +44,10 @@ const GamePlace = () => {
             .then(res => setFetched(true))
     }, [])
 
+    const handlePicModal = e => {
+        dispatch(openModal(`Gallery:${e.target.id}`))
+    }
+
     let showBigGallery;
     let showSmallGallery;
 
@@ -52,13 +57,13 @@ const GamePlace = () => {
 
         showBigGallery = bigArr.map((pic, i) => (
             <li className='gallery-pic' key={`gallery-pic-${i}`}>
-                <img src={pic} />
+                <img src={pic} id={pic} onClick={handlePicModal}/>
             </li>
         ))
 
         showSmallGallery = smArr.map((pic, i) => (
             <li className='gallery-pic' key={`gallery-pic-${i}`}>
-                <img src={pic} />
+                <img src={pic} id={pic} onClick={handlePicModal}/>
             </li>
         ))
     }

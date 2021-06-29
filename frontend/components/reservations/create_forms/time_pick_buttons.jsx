@@ -8,7 +8,6 @@ const TimePickButtons = (props) => {
     const {gamePlace} = props;
     const [visibleButton, setVisibleButton] = useState(false);
     const [reservation, setReservation] = useState(props.reservation);
-    // const gamePlace = useSelector(state => state.entities.gamePlaces.gamePlace)
     
     useEffect(() => {
         if (props.formType === 'ViewPage' || props.formType ==='SearchPage') {
@@ -19,12 +18,41 @@ const TimePickButtons = (props) => {
     useEffect(() => {
         setReservation({...reservation, gamePlaceId: gamePlace.id, playerId: currentPlayer.id})
     }, [gamePlace])
-
-    const handleClick = (e) => {
-        setReservation({...reservation, gameStart: e.currentTarget.innerHTML})
-    }
     
     const timeOptions = (curTime) => {
+        const {gameDate, resYear, gmt} = reservation;
+        const currentDateFull = new Date();
+        // const w = currentDateFull.setHours(22)
+        const currentDate = currentDateFull.toString().split(' ');
+        let currentTime = parseInt(currentDate[4]) + 2;
+
+        if (currentTime < 12 || currentTime > 24) {
+            currentTime = currentTime % 12
+        }
+
+        const validDate = gameDate + ' ' + resYear + ' ' + curTime + ' ' +  gmt
+        const openDate = gameDate + ' ' + resYear + ' ' + gamePlace.openHour + ' ' +  gmt
+        const closeDate = gameDate + ' ' + resYear + ' ' + gamePlace.closeHour + ' ' +  gmt
+        const a = Date.parse(validDate);
+        const o = Date.parse(openDate);
+        const c = Date.parse(closeDate);
+        const b = Date.parse(new Date());
+
+        if ( a < b && a >= o && a < c) {
+            debugger
+            if (currentTime > 12) {
+                currentTime = currentTime % 12;
+                curTime = `${currentTime}` + ':00 PM'
+            } else if (currentTime === 12) {
+                curTime = '12:00 PM'
+            } else if (currentTime === 24) {
+                curTime = '12:00 AM'
+            } else {
+                curTime = `${currentTime}` + ':00 AM'
+            }
+        } else if (a < o || a >= c) {
+            curTime = gamePlace.openHour
+        }
     
         let splitted = curTime.split(' ');
         let t = splitted[0].split(':');
@@ -56,8 +84,13 @@ const TimePickButtons = (props) => {
                 btn1 = ((h - 1).toString() + ':30 ' + pod)
                 btn2 = ((h - 1).toString() + ':45 ' + pod)
             } else {
-                btn1 = ((h - 1).toString() + ':30 ' + splitted[1])
-                btn2 = ((h - 1).toString() + ':45 ' + splitted[1])
+                if (h === 1) {
+                    btn1 = '12:30 ' + splitted[1]
+                    btn2 = '12:45 ' + splitted[1]
+                } else {
+                    btn1 = ((h - 1).toString() + ':30 ' + splitted[1])
+                    btn2 = ((h - 1).toString() + ':45 ' + splitted[1])
+                }
             }
             btn3 = (h.toString() + ':15 ' + splitted[1])
             btn4 = (h.toString() + ':30 ' + splitted[1])

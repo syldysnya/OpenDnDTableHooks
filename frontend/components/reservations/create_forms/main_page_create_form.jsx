@@ -71,24 +71,9 @@ const MainPageCreateForm = (props) => {
     }
 
     const timePick = RES_TIME.map(t => {
-        const {gameDate, resYear, gmt} = reservation;
-        const validDate = gameDate + ' ' + resYear + ' ' + t + ' ' +  gmt
-        const openDate = gameDate + ' ' + resYear + ' ' + props.gamePlace.openHour + ' ' +  gmt
-        const closeDate = gameDate + ' ' + resYear + ' ' + props.gamePlace.closeHour + ' ' +  gmt
-        const a = Date.parse(validDate);
-        const o = Date.parse(openDate);
-        const c = Date.parse(closeDate);
-        const b = Date.parse(new Date());
-
-        if (a > b && a > o && a < c) {
             return (
                 <option key={t} value={t}>{t}</option>
             )
-        } else {
-            return (
-                <option disabled style={{color: '#87878769'}} key={t} value={t}>{t}</option>
-            )
-        }
         })
 
     const updateDate = (e) => {

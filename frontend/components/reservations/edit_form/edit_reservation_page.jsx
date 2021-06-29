@@ -50,8 +50,12 @@ const EditReservationPage = (props) => {
     }
 
     const updateDate = (e) => {
-        let newDate = e.toDateString().replace(' 2021', '');
-        setReservation({ ...reservation, gameDate: newDate })
+        const newDateFull = e;
+        const newDate = newDateFull.toString().split(' ');
+        const gameDate = newDate[0] + ' ' + newDate[1] + ' ' + newDate[2];
+        const resYear = newDate[3];
+        const gmt = newDate[5];
+        setReservation({ ...reservation, gameDate: gameDate, resYear: resYear, gmt: gmt })
         setVisible(false)
     }
 
@@ -131,41 +135,7 @@ const EditReservationPage = (props) => {
                     )}
                 </div>
                 {visibleTime && <TimePickButtons reservation={reservation} gamePlace={gamePlace} formType='ViewPage'/>}
-                {/* <form className='reservation-completion-box'>
-                    <select className='phone-codes' defaultValue='USA'>
-                        <option value='Canada' className='Canada'>🇨🇦</option>
-                        <option value='Mexico' className='Mexico'>🇲🇽</option>
-                        <option value='Russia' className='Russia'>🇷🇺</option>
-                        <option value='USA' className="USA">🇺🇸</option>
-                    </select>
-                    <select className='adventure-type-list'>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-                    <input type="text" id='plphone' value={email} onChange={updateInfo} />
-                    <input type="text" id='email' value={plphone} onChange={updateInfo} />
-                    <textarea className='Additional-info-inp'
-                        id='add_info'
-                        onChange={updateInfo}
-                        placeholder='Add a special request (optional)' />
-                    <button className='auth-button'
-                        onClick={handleClick}>
-                        Complete Reservation
-                    </button>
-                </form> */}
             </div>
-            {/* <div className='right-bar-info'>
-                <h1>What to know before you go</h1>
-                <p>Important dining information
-                We have a 15 minute grace period. Please call us if you are running later than 15 minutes after your reservation time.
-                Your table will be reserved for 2 hours for parties of up to 4; and 2 hours 15 minutes for parties of 5+.
-                </p>
-                <h1>Points</h1>
-                <p>
-                    Keep in mind, you won’t collect points for this reservation unless you choose to below.
-                </p>
-            </div> */}
         </div>
     );
 };
