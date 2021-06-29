@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import * as ModalActions from '../../actions/modal_actions';
 import DropdownMenu from './dropdown_menu';
+import NotificationMenu from './notification';
+import UpComMenu from './up_res_menu';
 
 const NavBar = () => {
     const currentPlayer = useSelector(state => state.session.currentPlayer);
@@ -21,7 +23,7 @@ const NavBar = () => {
     }
 
     return (
-        <div className='home-nav'>
+        <div className='home-nav' >
         <div className='home-nav-left' onClick={() => history.push('/')}>
             <img src='https://app-opendndtable-seed.s3.amazonaws.com/openDnDtable.png' />
             <div className='clone-name'>OpenDnDTable</div>
@@ -31,8 +33,12 @@ const NavBar = () => {
             <div className='dropdown-page-navbar'>
                 <DropdownMenu />
             </div>
-            <i className="far fa-calendar"></i>
-            <i className="far fa-bell"></i>
+            <div className="upcom-page-navbar">
+                <UpComMenu />
+            </div>
+            <div className="notif-page-navbar">
+                <NotificationMenu />
+            </div>
             <div className='search-logo' onClick={handleModal}>
                 <i className="fas fa-search"></i>
             </div>

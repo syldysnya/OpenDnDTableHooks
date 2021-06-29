@@ -3,16 +3,28 @@ import { useDispatch } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import { editReservation } from '../../../actions/reservation_actions';
 import { NavLink } from 'react-router-dom';
+import { fetchGamePlace } from '../../../actions/game_place_actions';
 
 const CancelReservation = (props) => {
     
     const location = useLocation();
-    const {reservation, gamePlace} = location.state;
+    const {reservation} = location.state;
+    const [gamePlace, setGamePlace] = useState('');
     const {avatarUrl, name, id} = gamePlace;
     const {playersNum, gameDate, gameStart} = reservation;
     const [reservationInfo, setReservation] = useState(location.state.reservation);
     const dispatch = useDispatch();
     const history = useHistory();
+    console.log(gamePlace)
+
+    useEffect(() => {
+        if (location.state.gamePlace) {
+            setGamePlace(location.state.gamePlace)
+        } else {
+            dispatch(fetchGamePlace(location.state.gamePlaceId))
+                .then(res => setGamePlace(res.gamePlace))
+        }
+    })
 
     const updateInfo = (e) => {
         setReservation({ ...reservationInfo, canceled: true })

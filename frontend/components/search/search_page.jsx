@@ -111,7 +111,7 @@ const SearchPage = (props) => {
         }
 
         filtered.forEach(num => {
-            debugger
+            
             let tag = document.getElementById(num)
             tag.classList.remove('checked')
         })

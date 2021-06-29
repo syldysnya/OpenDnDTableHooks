@@ -1,46 +1,4 @@
-// .home-nav {
-//     display: flex;
-//     align-items: center;
-//     height: 3.5rem;
-//     justify-content: space-between;
-//     padding: 0 2%;
-//     // display: grid;
-//     // grid-template-columns: 50% 50%;
-//     // height: 3.5rem;
-
-//     .home-nav-right {
-//         display: flex;
-//         align-items: center;
-//         justify-content: flex-end;
-        
-//         i {
-//             font-size: 18px;
-//             padding: 12%;
-//         }
-
-//         .search-logo {
-//             padding: 0 18%;
-//             border-left: 1px solid #dadada;
-//         }
-//     }
-
-//     .home-nav-left {
-//         display: flex;
-//         flex-direction: row;
-//         align-items: center;
-//         cursor: pointer;
-        
-//         img {
-//             height: 40px;
-//         }
-
-//         .clone-name {
-//             font-weight: bold;
-//             padding-left: 2%;
-//             font-family: system-ui;
-//         }
-//     }
-// }
+@import 'body';
 
 .btn {
     padding: 8px 12px;
@@ -111,6 +69,228 @@
     }
 }
 
+.upres-menu {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    i {
+        font-size: 18px;
+    }
+}
+
+.cancel-up > a{
+    font-weight: 500;
+    color: $red-color;
+    font-size: 14px;
+    
+}
+
+.cancel-up {
+    padding-top: 8px;
+}
+
+.crud-links {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    padding-top: 8px;
+
+    i {
+        font-size: 5px;
+        padding-right: 8px;
+        color: $grey-color;
+    }
+    
+    a {
+        color: $blue-color;
+        font-weight: 500;
+        padding-right: 8px;
+    }
+}
+
+.upcom-page-navbar {
+    display: flex;
+    position: relative;
+    z-index: 1;
+}
+
+.upcom-profile-menu {
+    position: relative;
+}
+
+
+.upcome-all-res {
+    font-weight: 500;
+    font-size: 14px;
+    padding-top: 15px;
+
+    a {
+        color: $red-color;
+    }
+}
+
+.upcom-menu-box {
+    position: absolute;
+    display: grid;
+    grid-template-rows: 30px auto 30px;
+    width: 250px;
+    top: 42px;
+    border: 1px solid #dadada;
+    background-color: white;
+    right: 0px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    border-radius: 4px;
+    z-index: 10;
+    cursor: pointer;
+
+    .upcom-title {
+        font-weight: 600;
+    }
+
+    p {
+        font-weight: bold;
+        margin: 5% 0;
+    }
+}
+
+.upcome-box {
+    display: grid;
+    grid-template-columns: 35px auto;
+    grid-template-rows: 35px auto;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $grey-color;
+    
+
+    .upcome-info {
+        grid-column-start: 2;
+        grid-row-start: 1;
+        grid-row-end: 3;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .gp-name-span-up {
+        padding: 8px 10px 0 13px;
+        font-weight: 500;
+        font-size: 14px;
+        
+    }
+
+    .gp-info-down-up {
+        padding-left: 10px;
+        padding-top: 5px;
+        font-weight: 500;
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+
+        div {
+            padding: 2px;
+        }
+        
+        i {
+            padding-right: 5px;
+         }
+    }
+
+    .upcom-icon {
+        border-radius: 100%;
+        background-color: #2d333f;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        i {
+            font-size: 15px;
+        }
+    }
+}
+
+.not-profile-menu {
+    position: relative;
+}
+
+.not-menu {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    i {
+        font-size: 18px;
+    }
+}
+
+.not-menu-box {
+    position: absolute;
+    display: grid;
+    grid-template-rows: 30px auto 30px;
+    width: 250px;
+    top: 42px;
+    border: 1px solid #dadada;
+    background-color: white;
+    right: 0px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    border-radius: 4px;
+    z-index: 10;
+    cursor: pointer;
+
+    .not-title {
+        font-weight: 600;
+    }
+
+    p {
+        font-weight: bold;
+        margin: 5% 0;
+    }
+}
+
+.not-box {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $grey-color;
+    
+    p {
+        font-weight: 400;
+    }
+
+    a {
+        text-decoration: none;
+        color: $red-color;
+        font-weight: 500;
+    }
+    
+    .red {
+        color: $red-color;
+        font-weight: 500;
+    }
+
+    .blue {
+        color: $blue-color;
+        font-weight: 500;
+    }
+}
+
+.not-all-res {
+    font-weight: 500;
+    font-size: 14px;
+    padding-top: 15px;
+    color: $blue-color;
+}
+
 .menu-links {
     padding: 10px 0px;
     text-decoration: none;
@@ -121,4 +301,9 @@
     cursor: pointer;
     padding: 10px 0px;
     color: #da3743;
+}
+
+.gp-info-down > i {
+    padding: 0;
+    padding: 0;
 }

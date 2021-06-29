@@ -39,7 +39,7 @@ const TimePickButtons = (props) => {
         const b = Date.parse(new Date());
 
         if ( a < b && a >= o && a < c) {
-            debugger
+            
             if (currentTime > 12) {
                 currentTime = currentTime % 12;
                 curTime = `${currentTime}` + ':00 PM'

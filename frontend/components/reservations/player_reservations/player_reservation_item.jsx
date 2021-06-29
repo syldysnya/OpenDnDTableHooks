@@ -22,7 +22,7 @@ const PlayerReservationItem = (props) => {
     }, [writeBox])
 
     useEffect(() => {
-        debugger
+        
         if (review.length === 0) {
             setWriteBox(true)
         } else {
@@ -31,7 +31,7 @@ const PlayerReservationItem = (props) => {
     }, [])
 
     const handleWrite = e => {
-        debugger
+        
         setOpenWriteBox(!openWriteBox)
     }
 

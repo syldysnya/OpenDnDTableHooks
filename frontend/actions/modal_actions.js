@@ -3,7 +3,7 @@ export const CLOSE_MODAL = 'CLOSE_MODAL';
 
 export const openModal = modal => {
     let newModal = modal.split(':');
-    debugger
+    
     return ({
         type: SHOW_MODAL,
         modal: newModal[0],
@@ -12,7 +12,7 @@ export const openModal = modal => {
 };
 
 export const hideModal = () => {
-    debugger
+    
     return ({
         type: CLOSE_MODAL
     });

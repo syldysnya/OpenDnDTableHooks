@@ -94,7 +94,7 @@ const CreateReviewForm = (props) => {
                             Please, rate
                         </div>
                     )}
-                    <div>Organization</div>
+                    <div>Planning</div>
                     <StarsForm rating={orgRating}
                             ratingType='orgRating'
                             update={update}/>
