@@ -1,22 +1,24 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const GamePlaceMap = (props) => {
 
     const {gamePlace} = props;
     const mapRef = useRef();
+    const history = useHistory();
     let map;
     
     useEffect(() => {
 
         if (!Array.isArray(gamePlace)) {
             const mapOptions = {
-                center: { lat: parseInt(gamePlace.latitude), lng: parseInt(gamePlace.longitude) },
-                zoom: 13
+                center: { lat: parseFloat(gamePlace.latitude), lng: parseFloat(gamePlace.longitude) },
+                zoom: 10
             };
 
             map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-            const gamePlacePos = { lat: parseInt(gamePlace.latitude), lng: parseInt(gamePlace.longitude) };
+            const gamePlacePos = { lat: parseFloat(gamePlace.latitude), lng: parseFloat(gamePlace.longitude) };
             const marker = new google.maps.Marker({
                 position: gamePlacePos,
                 map: map,

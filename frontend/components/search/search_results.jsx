@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import TimePickButtons from '../reservations/create_forms/time_pick_buttons';
+import StarsShow from '../stars/stars_show';
 
 const SearchResults = (props) => {
     
@@ -19,21 +20,26 @@ const SearchResults = (props) => {
                     <div className='avatar'>
                         <img src={gp.avatarUrl}/>
                     </div>
-                    <div className='link-place'>
-                        <NavLink to={{
-                            pathname: `/gameplaces/${gp.id}`
-                            }}
-                            style={{ textDecoration: 'none', color: '#247f9e' }}>
-                            {gp.name}
-                        </NavLink>
+                    <div className="result-item-info">
+                        <div className='link-place'>
+                            <NavLink to={{
+                                pathname: `/gameplaces/${gp.id}`
+                                }}
+                                style={{ textDecoration: 'none', color: '#247f9e' }}>
+                                {gp.name}
+                            </NavLink>
+                        </div>
+                        <StarsShow stars={gp.rating} lengthRat={gp.lengthRat} />
+                        <div>{cities.map(city => {
+                            if (city.id === gp.cityId) {
+                                return city.name
+                                }
+                            })}
+                        </div>
+                        <div className="time-pick-buttons">
+                            <TimePickButtons reservation={reservation} gamePlace={gp} formType='SearchPage'/>
+                        </div>
                     </div>
-                    <div>{cities.map(city => {
-                        if (city.id === gp.cityId) {
-                            return city.name
-                            }
-                        })}
-                    </div>
-                    <TimePickButtons reservation={reservation} gamePlace={gp} formType='SearchPage'/>
                 </div>
             )
         })
@@ -55,6 +61,7 @@ const SearchResults = (props) => {
                                 {gp.name}
                             </NavLink>
                         </div>
+                        <StarsShow stars={gp.rating} lengthRat={gp.lengthRat} />
                         <div>{cities.map(city => {
                             if (city.id === gp.cityId) {
                                 return city.name
@@ -81,11 +88,12 @@ const SearchResults = (props) => {
                                     <div className='link-place'>
                                         <NavLink to={{
                                             pathname: `/gameplaces/${gp.id}`
-                                            }}
+                                        }}
                                             style={{ textDecoration: 'none', color: '#247f9e' }}>
                                             {gp.name}
                                         </NavLink>
                                     </div>
+                                    <StarsShow stars={gp.rating} lengthRat={gp.lengthRat} />
                                     <div>{cities.map(city => {
                                         if (city.id === gp.cityId) {
                                             return city.name
@@ -107,13 +115,6 @@ const SearchResults = (props) => {
             <div className="number-of-places">
                 {mapped.length} game places available
             </div>
-            {/* <div className="results-sort">
-                <select className="sort-results" onChange={sortResults}>
-                    <option defaultValue="featured">Featured</option>
-                    <option value="highest">Highest Rated</option>
-                    <option value="newest">Newest</option>
-                </select>
-            </div> */}
             <div className="list-places">
                 {mapped}
             </div>

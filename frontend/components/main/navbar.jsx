@@ -15,6 +15,11 @@ const NavBar = () => {
         dispatch(ModalActions.openModal(value))
     }
 
+    const handleModal = (e) => {
+        e.preventDefault();
+        dispatch(ModalActions.openModal('Search'))
+    }
+
     return (
         <div className='home-nav'>
         <div className='home-nav-left' onClick={() => history.push('/')}>
@@ -28,7 +33,7 @@ const NavBar = () => {
             </div>
             <i className="far fa-calendar"></i>
             <i className="far fa-bell"></i>
-            <div className='search-logo'>
+            <div className='search-logo' onClick={handleModal}>
                 <i className="fas fa-search"></i>
             </div>
         </div >

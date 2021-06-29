@@ -92,8 +92,12 @@ const MainPageCreateForm = (props) => {
         })
 
     const updateDate = (e) => {
-        let newDate = e.toDateString().replace(' 2021', '');
-        setReservation({ ...reservation, gameDate: newDate })
+        const newDateFull = e;
+        const newDate = newDateFull.toString().split(' ');
+        const gameDate = newDate[0] + ' ' + newDate[1] + ' ' + newDate[2];
+        const resYear = newDate[3];
+        const gmt = newDate[5];
+        setReservation({ ...reservation, gameDate: gameDate, resYear: resYear, gmt: gmt })
         setVisible(false)
     }
 

@@ -15,7 +15,7 @@
     position: absolute;
     top: 40px;
     right: 40px;
-    z-index: 3;
+    z-index: 2;
     width: 220px;
     height: 50px;
     padding: 15px 35px;
@@ -410,7 +410,7 @@
     align-items: center;
 
     div {
-        padding-right: 8px;
+        margin-right: 8px;
         font-weight: 500;
     }
 }

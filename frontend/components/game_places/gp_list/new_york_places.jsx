@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import StarsShow from '../../stars/stars_show';
 
@@ -6,9 +6,13 @@ const NewYorkPlaces = (props) => {
 
     const {gamePlaces, cities} = props;
     const history = useHistory();
-
+    const ref = useRef();
+    
     let newyork = cities.filter(city => city.name === 'New York');
     let newyorkPlaces = Object.values(gamePlaces.gamePlacesAll).filter(gp => gp.cityId === newyork[0].id);
+    const scroll = (scrollOffset) => {
+        ref.current.scrollLeft += scrollOffset;
+    }
 
     let mapped = newyorkPlaces.map((gPlace, i) => {
         let rating = gPlace.rating;
@@ -48,9 +52,15 @@ const NewYorkPlaces = (props) => {
     return (
         <div className='list-of-gps'>
             <span>Book a table in New York</span>
+            <button onClick={() => scroll(20)} ref={ref} className='scroll-right'>
+                <i className="fas fa-chevron-left"></i>
+            </button> 
             <div className='gp-list'>
                 {mapped}
             </div>
+            <button onClick={() => scroll(20)} ref={ref} className='scroll-left'>
+                <i className="fas fa-chevron-right"></i>
+            </button>
         </div>
     );
 };

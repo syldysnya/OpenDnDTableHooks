@@ -10,10 +10,13 @@ const ConfirmationCreateForm = (props) => {
     const location = useLocation();
     const randomNum = Math.floor(Math.random() * 10000);
     const currentDateFull = new Date();
+    const currentDate = currentDateFull.toString().split(' ');
+    const defaultDate = currentDate[0] + ' ' + currentDate[1] + ' ' + currentDate[2];
+    const defaultYear = currentDate[3];
+    const defaultGMT = currentDate[5];
     const {gamePlace} = location.state;
-    const currentDate = currentDateFull.toDateString().replace(' 2021', '');
     const [reservation, setReservation] = useState({
-        gameDate: currentDate,
+        gameDate: defaultDate,
         gameStart: location.state.gameStart,
         playersNum: 2,
         gamePlaceId: gamePlace.id,
@@ -23,7 +26,9 @@ const ConfirmationCreateForm = (props) => {
         canceled: false,
         plphone: '',
         email: player.email,
-        dndCampaignId: ''
+        dndCampaignId: '',
+        resYear: defaultYear,
+        gmt: defaultGMT
     });
 
     const dispatch = useDispatch();
@@ -71,8 +76,9 @@ const ConfirmationCreateForm = (props) => {
 
     useEffect(() => {
         if (props.location.state.reservation) {
-            const {gameDate, gameStart, playersNum} = props.location.state.reservation;
-            setReservation({...reservation, gameDate: gameDate, gameStart: gameStart, playersNum: playersNum})
+            console.log(props.location.state.reservation)
+            const {gameDate, gameStart, playersNum, resYear, gmt} = props.location.state.reservation;
+            setReservation({...reservation, gameDate: gameDate, gameStart: props.location.state.gameStart, playersNum: playersNum, resYear: resYear, gmt: gmt})
         }
     }, [])
 
@@ -82,6 +88,7 @@ const ConfirmationCreateForm = (props) => {
 
     const handleClick = (e) => {
         e.preventDefault();
+        debugger
         dispatch(createReservation(reservation))
             .then(res => history.push(`/book/view/${res.reservation.id}`))
     }

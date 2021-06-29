@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import StarsShow from '../../stars/stars_show';
 
@@ -6,6 +6,18 @@ const AllGamePlaces = (props) => {
 
     const {gamePlaces, cities} = props;
     const history = useHistory();
+    const refLeft = useRef();
+    const refRight = useRef();
+    const [scrolled, setScrolled] = useState();
+
+    const scrollToLeft = () => {
+        refLeft.current.scrollLeft = 200;
+        setScrolled(true)
+    }
+
+    const scrollToRight = () => {
+        ref.current.scrollLeft += scrollOffset;
+    }
 
     let mapped = Object.values(gamePlaces.gamePlacesAll).map((gPlace, i) => {
         let rating = gPlace.rating;
@@ -45,9 +57,15 @@ const AllGamePlaces = (props) => {
     return (
         <div className='list-of-gps'>
             <span>Book for a game today</span>
+            <button onClick={scrollToLeft} ref={refLeft} className='scroll-right'>
+                <i className="fas fa-chevron-left"></i>
+            </button> 
             <div className='gp-list'>
                 {mapped}
             </div>
+            <button onClick={scrollToRight} ref={refRight} className='scroll-left'>
+                <i className="fas fa-chevron-right"></i>
+            </button>
         </div>
     );
 };

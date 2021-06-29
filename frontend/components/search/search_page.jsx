@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import SearchResults from './search_results';
 import { fetchCities } from '../../actions/city_actions';
@@ -18,6 +18,7 @@ const SearchPage = (props) => {
     const [checkBoxInp, setCheckBoxInp] = useState('');
     const [searchResults, SetSearchResults] = useState(searchInp);
     const [filterResults, SetFilterResults] = useState(checkBoxInp);
+    const checkRef = useRef();
 
     const [reservation, setReservation] = useState({
         gameDate: currentDate,
@@ -94,7 +95,27 @@ const SearchPage = (props) => {
 
     const handleCheckBox = e => {
         e.preventDefault();
-        setCheckBoxInp(e.target.id)
+        let ele = e.currentTarget.id
+        let check = document.getElementById(ele)
+        let filtered = ['1', '2', '3', '4'].filter(id => id !== ele)
+
+        if (checkBoxInp && checkBoxInp !== ele) {
+            setCheckBoxInp(ele)
+            check.classList.add('checked')
+        } else if (checkBoxInp && checkBoxInp === ele) {
+            setCheckBoxInp('')
+            check.classList.remove('checked')
+        } else {
+            setCheckBoxInp(ele)
+            check.classList.add('checked')
+        }
+
+        filtered.forEach(num => {
+            debugger
+            let tag = document.getElementById(num)
+            tag.classList.remove('checked')
+        })
+        // checkRef.current.checked = 'true'
     }
 
     return (
@@ -112,7 +133,8 @@ const SearchPage = (props) => {
 
                 </div>
                     <SearchFilter cities={cities}
-                                handleCheckBox={handleCheckBox}/>
+                                handleCheckBox={handleCheckBox}
+                                checkRef={checkRef}/>
                 </div>
                 <div className='right-bar-search'>
                     <SearchResults  searchResults={searchResults}
