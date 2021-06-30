@@ -6,13 +6,9 @@ const NewYorkPlaces = (props) => {
 
     const {gamePlaces, cities} = props;
     const history = useHistory();
-    const ref = useRef();
     
     let newyork = cities.filter(city => city.name === 'New York');
     let newyorkPlaces = Object.values(gamePlaces.gamePlacesAll).filter(gp => gp.cityId === newyork[0].id);
-    const scroll = (scrollOffset) => {
-        ref.current.scrollLeft += scrollOffset;
-    }
 
     let mapped = newyorkPlaces.map((gPlace, i) => {
         let rating = gPlace.rating;
@@ -49,19 +45,26 @@ const NewYorkPlaces = (props) => {
         )
     })
 
+    const scroll = e => {
+        let listGP = document.getElementById('scroll-ny');
+        listGP.scrollLeft += parseInt(e.target.id)
+    }
+
     return (
-        <div className='list-of-gps'>
-            <span>Book a table in New York</span>
-            {/* <button onClick={() => scroll(20)} ref={ref} className='scroll-right'>
-                <i className="fas fa-chevron-left"></i>
-            </button>  */}
-            <div className='gp-list'>
-                {mapped}
+        <>
+            <div className='list-of-gps'>
+                <span>Book a table in New York</span>
+                <div className='gp-list' id='scroll-ny'>
+                    {mapped}
+                </div>
             </div>
-            {/* <button onClick={() => scroll(20)} ref={ref} className='scroll-left'>
-                <i className="fas fa-chevron-right"></i>
-            </button> */}
-        </div>
+            <div className='scroll-buttons'>
+                <button className='scroll-left' onClick={scroll} id='-800'>❮
+                </button>
+                <button className='scroll-right' onClick={scroll} id='800'>❯
+                </button> 
+            </div>
+        </>
     );
 };
 
