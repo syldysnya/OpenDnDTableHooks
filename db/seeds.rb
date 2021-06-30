@@ -936,7 +936,7 @@ res1_2 = Reservation.create!(
     canceled: false,
     confirmation_num: 5101,
     email: "demo@mail.com",
-    game_date: "Tue Jun 29",
+    game_date: "Fri Nov 19",
     game_place_id: gPlace2.id,
     game_start: "8:15 PM",
     gmt: "GMT-0400",
@@ -949,7 +949,7 @@ res1_3 = Reservation.create!(
     canceled: false,
     confirmation_num: 4269,
     email: "demo@mail.com",
-    game_date: "Tue Jun 29",
+    game_date: "Sun Oct 31",
     game_place_id: gPlace3.id,
     game_start: "7:45 PM",
     gmt: "GMT-0400",
@@ -971,6 +971,47 @@ res1_4 = Reservation.create!(
     res_year: "2021"
 )
 
+res1_5 = Reservation.create!(
+    game_date: "Wed Jun 30",
+    game_start: "7:30 PM",
+    players_num: 5
+    dnd_campaign_id: nil,
+    game_place_id: gPlace11.id,
+    player_id: player1.id,
+    confirmation_num: "60",
+    canceled: false, 
+    email: "demo@mail.com",
+    res_year: "2021",
+    gmt: "GMT-0400"
+)
+
+res1_6 = Reservation.create!(
+    game_date: "Wed Jun 30",
+    game_start: "8:30 PM",
+    players_num: 2,
+    dnd_campaign_id: nil,
+    game_place_id: gPlace14.id,
+    player_id: player1.id, 
+    confirmation_num: "9397", 
+    canceled: true,
+    email: "demo@mail.com",
+    res_year: "2021",
+    gmt: "GMT-0400"
+)
+
+res1_7 = Reservation.create!(
+    game_date: "Fri Dec 31",
+    game_start: "8:15 PM",
+    players_num: 2,
+    dnd_campaign_id: nil,
+    game_place_id: gPlace6.id,
+    player_id: player1.id,
+    confirmation_num: "9739",
+    canceled: false,
+    email: "demo@mail.com",
+    res_year: "2021",
+    gmt: "GMT-0500"
+)
 
 dndcamp1 = DndCampaign.create!(
     title: "The Order of the Phoenix",

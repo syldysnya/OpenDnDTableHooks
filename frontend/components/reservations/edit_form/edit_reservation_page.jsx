@@ -99,7 +99,6 @@ const EditReservationPage = (props) => {
                                 <i className="fas fa-chevron-down"></i>
                             </div>
                             <div className='info-create-time' value='gameStart'>
-                                <i className="far fa-clock"></i>
                                 <select onChange={updateInfo} 
                                     id='gameStart'
                                     defaultValue='8:00 PM'>
@@ -107,7 +106,6 @@ const EditReservationPage = (props) => {
                                 </select>
                             </div>
                             <div className='info-create-form'>
-                                <i className="far fa-user"></i>
                                 <select defaultValue='2'
                                     id='playersNum'
                                     onChange={updateInfo}>
@@ -125,15 +123,16 @@ const EditReservationPage = (props) => {
                         </button>
                     </div>
                 </div>
-                <div className='dropdown-calendar' onMouseLeave={showCalendar}>
-                    {visible && (
+                {visible && (
+                    <div className='dropdown-calendar edit' onMouseLeave={showCalendar}>
                         <Calendar
                             date={new Date()}
                             onChange={e => updateDate(e)}
                             minDate={new Date()}
+                            maxDate={new Date('12-31-2021')}
                         />
-                    )}
-                </div>
+                    </div>
+                )}
                 {visibleTime && <TimePickButtons reservation={reservation} gamePlace={gamePlace} formType='ViewPage'/>}
             </div>
         </div>

@@ -45,7 +45,7 @@ const WashingtonPlaces = (props) => {
     })
 
     return (
-        <div className='list-of-gps'>
+        <div className='list-of-gps' id='last-list'>
             <span>Book a table in Washington</span>
             <div className='gp-list'>
                 {mapped}

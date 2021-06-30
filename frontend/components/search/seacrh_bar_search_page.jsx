@@ -49,14 +49,12 @@ const SearchBarSearchPage = (props) => {
                         </div>
                     </div>
                     <div className='info-create-time' value='gameStart'>
-                        <i className="far fa-clock"></i>
                         <select onChange={updateInfo} 
                             id='gameStart'>
                             {timePick}
                         </select>
                     </div>
                     <div className='info-create-form'>
-                        <i className="far fa-user"></i>
                         <select id='playersNum' value={playersNum}
                             onChange={updateInfo}>
                             <option key='1' value='1'>For 1</option>
@@ -84,6 +82,7 @@ const SearchBarSearchPage = (props) => {
                         date={new Date()}
                         onChange={e => updateDate(e)}
                         minDate={new Date()}
+                        maxDate={new Date('12-31-2021')}
                     />
                 )}
             </div>

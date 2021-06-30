@@ -48,7 +48,8 @@ const AllGamePlaces = (props) => {
 
     const scroll = e => {
         let listGP = document.getElementById('scroll-all');
-        listGP.scrollLeft += parseInt(e.target.id)
+        listGP.scrollLeft += parseInt(e.target.id);
+        console.log(listGP.offsetWidth)
     }
 
     return (

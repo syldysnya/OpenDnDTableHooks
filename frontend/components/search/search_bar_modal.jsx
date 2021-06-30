@@ -116,6 +116,7 @@ const SearchBarModal = () => {
                         date={new Date()}
                         onChange={e => updateDate(e)}
                         minDate={new Date()}
+                        maxDate={new Date('12-31-2021')}
                     />
                 )}
             </div>

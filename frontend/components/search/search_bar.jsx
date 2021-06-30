@@ -76,19 +76,19 @@ const SearchBar = () => {
                             onClick={showCalendar} tabIndex='0'
                             >
                             <span>{reservation.gameDate}</span>
+                            <i className="fas fa-chevron-down"></i>
                         </div>
-                        <i className="fas fa-chevron-down"></i>
                     </div>
                     <div className='info-create-time' value='gameStart'>
-                        <i className="far fa-clock"></i>
                         <select onChange={updateInfo} 
                             id='gameStart'
                             defaultValue='8:00 PM'>
+                            {/* <i className="fas fa-chevron-down"></i> */}
                             {timePick}
                         </select>
                     </div>
                     <div className='info-create-form'>
-                        <i className="far fa-user"></i>
+                        {/* <i className="far fa-user"></i> */}
                         <select defaultValue='2'
                             id='playersNum'
                             onChange={updateInfo}>
@@ -112,15 +112,15 @@ const SearchBar = () => {
                     Let's go
                 </button>
             </div>
-            <div className='dropdown-calendar' onMouseLeave={showCalendar}>
-                {visible && (
+            {visible && (
+                <div className='dropdown-calendar' onMouseLeave={showCalendar}>
                     <Calendar
                         date={new Date()}
                         onChange={e => updateDate(e)}
                         minDate={new Date()}
+                        maxDate={new Date('12-31-2021')}
                     />
-                )}
-            </div>
+            </div>)}
         </div>
     );
 };

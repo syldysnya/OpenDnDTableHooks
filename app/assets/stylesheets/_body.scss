@@ -10,6 +10,10 @@ $light-blue: #eef8fb;
 $light-red: #fceeef;
 $light-green: #f0faf3;
 $yellow-color: #fdaf08;
+$user: url('https://app-opendndtable-seed.s3.amazonaws.com/user.svg');
+$arrow-down: url('https://app-opendndtable-seed.s3.amazonaws.com/arrowdown.svg');
+$clock: url('https://app-opendndtable-seed.s3.amazonaws.com/clock.png');
+$search: url('https://app-opendndtable-seed.s3.amazonaws.com/search.svg');
 
 * {
     box-sizing: border-box;
@@ -61,26 +65,6 @@ body {
             padding-left: 2%;
             font-family: system-ui;
         }
-    }
-}
-
-.home-page-header-frame {
-    height: 400px;
-    overflow: hidden;
-    object-fit: cover;
-    position: relative;
-    
-    .home-page-img {
-        height: 100%;
-    }
-    
-    .grey-background {
-        background-color: #552c2f85;
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
     }
 }
 
@@ -275,37 +259,50 @@ body {
     
 }
 
+.home-page-header-frame {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://app-opendndtable-seed.s3.amazonaws.com/Tiamat_2560x1600_0.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 400px;
+    object-fit: cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .search-box-main {
-    position: absolute;
-    left: 50%;
-    margin-left: -50vh;
-    top: 6%;
-    height: 13vh;
-    width: 100vh;
+    width: 900px;
     display: flex;
     flex-direction: column;
+    align-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .search-text-main {
     color: white;
-    font-size: 5vh;
+    height: 80px;
+    font-size: 45px;
+    padding: 18px 0;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
 }
 
 .search {
-    margin-top: 18px;
     display: grid;
     grid-template-columns: 48% 32% 17%;
     column-gap: 1.5%;
     width: 100%;
     justify-content: space-between;
-    height: 90%;
-    z-index: 0;
+    height: 50px;
 }
 
 .search-reserv-info {
     display: grid;
-    grid-template-columns: 40% 30% 30%;
+    grid-template-columns: 40% 32% 28%;;
     margin-right: 10px;
     width: 100%;
     background-color: white;
@@ -314,58 +311,81 @@ body {
     font-weight: 500;
     font-size: 100%;
 
-    .info-create-form {
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
+}
 
-        select {
-            border: none;
-            position: relative;
-            top: 0;
-            width: 70%;
-            height: 100%;
-            text-align: right;
-        }
-    }
+.info-create-form {
+    align-items: center;
+    width: 100%;
+    height: 100%;
 
-    .info-create-time {
-        border-right: 0.5px solid $grey-color;
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-
-        select {
-            border: none;
-            position: relative;
-            top: 0;
-            width: 70%;
-            height: 100%;
-            text-align: right;
-        }
-    }
-
-    .info-create-date {
-        border-right: 0.5px solid $grey-color;
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-
-        .fa-chevron-down {
-            font-size: 12px;
-        }
-
-        .parent-calendar-box {
-            border: none;
-            display: flex;
-            align-items: center;
-            width: 70%;
-            height: 100%;
-            padding-left: 1vh;
-        }
-
+    select {
+        -webkit-appearance: none;
+        background-image: $user, $arrow-down;
+        background-repeat: no-repeat, no-repeat;
+        background-size: 18px 18px, 17px 17px;
+        background-position: 12px, 90px;
+        border: none;
+        position: relative;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        text-align-last: center;
+        font-weight: 600;
+        border-radius: 5px;
     }
 }
+
+.info-create-time {
+    border-right: 0.5px solid $grey-color;
+    display: grid;
+    grid-template-columns: 100% 1%;
+    
+    select {
+        -webkit-appearance: none;
+        background-image: $clock, $arrow-down;
+        background-repeat: no-repeat, no-repeat;
+        background-size: 18px 18px, 17px 17px;
+        background-position: 12px, 108px;
+        border: none;
+        position: relative;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        text-align-last: center;
+        font-weight: 600;
+    }
+}
+
+.info-create-date {
+    border-right: 0.5px solid $grey-color;
+    display: grid;
+    grid-template-columns: 25px auto;
+    column-gap: 5px;
+    align-items: center;
+    padding: 10px;
+
+    .fa-calendar {
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+    }
+
+}
+
+
+.fa-chevron-down {
+    font-size: 13px;
+    padding-left: 10px;
+    position: relative;
+    top: 2px;
+}
+
+.info-create-time > .fa-chevron-down {
+    position: relative; 
+    padding: 0;
+    top: 18px;
+    left: -18px;
+} 
 
 .search-input {
     margin-right: 10px;
@@ -403,9 +423,14 @@ body {
 
 .dropdown-calendar {
     position: absolute;
-    top: 87%;
-    left: 0%;
-    border: 0.5px solid $grey-color;
+    top: 240px;
+}
+
+.dropdown-calendar.edit {
+    position: absolute;
+    top: 325px;
+    border: 1px solid $grey-color;
+    border-radius: 5px;
 }
 
 .search-results-page {
@@ -583,6 +608,10 @@ body {
     }
 }
 
+#last-list {
+    margin-bottom: 50px;
+}
+
 .footer-background {
     width: 100%;
     background-color: #2d333f;
@@ -628,6 +657,7 @@ body {
 }
 
 .scroll-right {
+    cursor: pointer;
     position: absolute;
     top: 0;
     left: 98%;
@@ -645,6 +675,7 @@ body {
 }
 
 .scroll-left {
+    cursor: pointer;
     position: relative;
     top: 0;
     left: -15px;

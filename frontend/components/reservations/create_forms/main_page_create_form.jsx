@@ -99,7 +99,7 @@ const MainPageCreateForm = (props) => {
             <div className='make-res-text'>
                 <h1>Make a reservation</h1>
             </div>
-                <div className='info-create-form'>
+                <div className='info-create-form-main'>
                     <span>Party Size</span>
                     <select defaultValue='2'
                         id='playersNum'
@@ -111,7 +111,7 @@ const MainPageCreateForm = (props) => {
                         <option key='5'value="5">For 5</option>
                     </select>
                 </div>
-                <div className='info-create-date'>
+                <div className='info-create-date-main'>
                     <span>Date</span>
                     <div className='parent-calendar-box'
                         id='gameDate'
@@ -125,11 +125,12 @@ const MainPageCreateForm = (props) => {
                                 date={new Date()}
                                 onChange={e => updateDate(e)}
                                 minDate={new Date()}
+                                maxDate={new Date('12-31-2021')}
                             />
                         )}
                     </div>
                 </div>
-                <div className='info-create-time' value='gameStart'>
+                <div className='info-create-time-main' value='gameStart'>
                     <span>Time</span>
                     <select onChange={updateInfo} 
                         id='gameStart'

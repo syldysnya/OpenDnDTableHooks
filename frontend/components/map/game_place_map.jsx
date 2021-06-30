@@ -5,7 +5,6 @@ const GamePlaceMap = (props) => {
 
     const {gamePlace} = props;
     const mapRef = useRef();
-    const history = useHistory();
     let map;
     
     useEffect(() => {
@@ -26,8 +25,12 @@ const GamePlaceMap = (props) => {
         }
     })
 
+    const openMap = e => {
+        window.open(`https://maps.google.com?q=${gamePlace.latitude},${gamePlace.longitude}`)
+    }
+
     return (
-            <div ref={mapRef} className='map' id='map'>
+            <div ref={mapRef} className='map' id='map' onClick={openMap}>
                 Map
             </div>
     );

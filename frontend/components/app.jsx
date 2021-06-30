@@ -24,7 +24,6 @@ const App = () => {
             <Modal />
             <Route path='/' component={NavBar} />
             <Route exact path='/' component={Home} />
-            <Route exact path='/' component={SearchBar} />
             <Route exact path='/gameplaces/:gamePlaceId' component={GamePlace}/>
             <Route exact path='/booking/details' component={ConfirmationCreateForm} />
             <Route exact path='/booking/details/edit' component={ConfirmationModifyForm} />

@@ -137,7 +137,7 @@
         
     }
 
-    .info-create-form {
+    .info-create-form-main {
         grid-column-start: 1;
         grid-column-end: 3;
         grid-row-start: 2;
@@ -150,7 +150,7 @@
         
     }
 
-    .info-create-date {
+    .info-create-date-main {
         grid-column-start: 1;
         grid-column-end: 2;
         grid-row-start: 4;
@@ -163,7 +163,7 @@
 
     }
 
-    .info-create-time {
+    .info-create-time-main {
         grid-column-start: 2;
         grid-column-end: 3;
         grid-row-start: 4;
@@ -508,6 +508,7 @@ input[type="radio"] {
         overflow: hidden;
         display: flex;
         justify-content: center;
+        cursor: pointer;
 
         img {
             width: 100%;
