@@ -34,14 +34,13 @@ body {
     background-color: white;
 
     .home-nav-right {
-        display: grid;
+        display: flex;
         align-items: center;
-        grid-template-columns: 35px 35px 35px 50px;
         margin-right: 3vh;
         
 
         .search-logo {
-            padding: 0 18%;
+            padding: 0 10px;
             border-left: 1px solid #dadada;
         }
     }

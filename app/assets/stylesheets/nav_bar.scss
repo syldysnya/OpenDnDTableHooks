@@ -76,6 +76,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-left: 5px;
 
     i {
         font-size: 18px;
@@ -222,7 +223,7 @@
     height: 35px;
     font-size: 16px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
 
     i {
@@ -233,7 +234,7 @@
 .not-menu-box {
     position: absolute;
     display: grid;
-    grid-template-rows: 30px auto 30px;
+    grid-template-rows: 30px auto 10px;
     width: 250px;
     top: 42px;
     border: 1px solid #dadada;

@@ -5,10 +5,13 @@ export const LOGOUT_CURRENT_PLAYER = 'LOGOUT_CURRENT_PLAYER';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const REMOVE_ERRORS = 'REMOVE_ERRORS';
 
-export const receiveErrors = errors => ({
-    type: RECEIVE_ERRORS,
-    errors
-});
+export const receiveErrors = errors => {
+    
+    return ({
+        type: RECEIVE_ERRORS,
+        errors
+    })
+};
 
 const receiveCurrentPlayer = player => ({
     type: RECEIVE_CURRENT_PLAYER,

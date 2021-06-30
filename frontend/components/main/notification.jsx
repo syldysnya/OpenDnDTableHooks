@@ -12,15 +12,6 @@ const NotificationMenu = () => {
         setVisible(!visible)
     }
 
-    const handleScroll = e => {
-        
-        window.scroll({
-            top: document.body.offsetHeight,
-            left: 0, 
-            behavior: 'smooth',
-        });
-    }
-
     return (
         <div className="not-profile-menu" tabIndex='0'
             onClick={handleDropdownMenu}
@@ -53,9 +44,6 @@ const NotificationMenu = () => {
                             <span className="blue">  Rails/PostgreSQL</span> on the backend.
                         </span>
                     </p>
-                </div>
-                <div className="not-all-res" onClick={handleScroll} id='about'>
-                    More about me
                 </div>
             </div>)}
         </div>

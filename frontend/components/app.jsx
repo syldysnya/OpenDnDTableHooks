@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Route } from 'react-router-dom';
 import GamePlace from './game_places/gp/game_place';
 import Footer from './main/footer';
@@ -16,24 +17,27 @@ import SearchBar from './search/search_bar';
 import SearchPage from './search/search_page';
 
 
-const App = () => (
-    <>
-        <Modal />
-        <Route path='/' component={NavBar} />
-        <Route exact path='/' component={Home} />
-        <Route exact path='/' component={SearchBar} />
-        <Route exact path='/gameplaces/:gamePlaceId' component={GamePlace}/>
-        <Route exact path='/booking/details' component={ConfirmationCreateForm} />
-        <Route exact path='/booking/details/edit' component={ConfirmationModifyForm} />
-        <Route exact path='/book/view/:reservationId' component={ReservationView} />
-        <Route exact path='/book/cancel' component={CancelReservation} />
-        <Route exact path='/book/cancel/form' component={CanceledReservationView} />
-        <Route exact path='/booking/:gamePlaceId/:reservationId/modify' component={EditReservationPage} />
-        <Route path='/my' component={Profile} />
-        <Route exact path='/search' component={SearchPage} />
-        <Route path='/' component={Footer} />
-    </>
-);
+const App = () => {
+
+    return (
+        <>
+            <Modal />
+            <Route path='/' component={NavBar} />
+            <Route exact path='/' component={Home} />
+            <Route exact path='/' component={SearchBar} />
+            <Route exact path='/gameplaces/:gamePlaceId' component={GamePlace}/>
+            <Route exact path='/booking/details' component={ConfirmationCreateForm} />
+            <Route exact path='/booking/details/edit' component={ConfirmationModifyForm} />
+            <Route exact path='/book/view/:reservationId' component={ReservationView} />
+            <Route exact path='/book/cancel' component={CancelReservation} />
+            <Route exact path='/book/cancel/form' component={CanceledReservationView} />
+            <Route exact path='/booking/:gamePlaceId/:reservationId/modify' component={EditReservationPage} />
+            <Route path='/my' component={Profile} />
+            <Route exact path='/search' component={SearchPage} />
+            <Route path='/' component={Footer} />
+        </>
+    );
+}
 
 export default App;
 

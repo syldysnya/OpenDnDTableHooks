@@ -19,6 +19,7 @@ const reviewsReducer = (state = initialState, action) => {
             delete nextState.reviewsAll[action.review.id];
             return nextState;
         case RECEIVE_ERRORS:
+            
             return {...state, errors: action.errors.responseJSON };
         default:
             return state;

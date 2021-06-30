@@ -919,6 +919,59 @@ player4 = Player.create!(
     city_id: city4.id
 )
 
+res1_1 = Reservation.create!(
+    canceled: true,
+    confirmation_num: 6125,
+    email: "demo@mail.com",
+    game_date: "Thu Jul 01",
+    game_place_id: gPlace2.id,
+    game_start: "6:15 PM",
+    gmt: "GMT-0400",
+    player_id: player1.id,
+    players_num: 4,
+    res_year: "2021"
+)
+
+res1_2 = Reservation.create!(
+    canceled: false,
+    confirmation_num: 5101,
+    email: "demo@mail.com",
+    game_date: "Tue Jun 29",
+    game_place_id: gPlace2.id,
+    game_start: "8:15 PM",
+    gmt: "GMT-0400",
+    player_id: player1.id,
+    players_num: 2,
+    res_year: "2021"
+)
+
+res1_3 = Reservation.create!(
+    canceled: false,
+    confirmation_num: 4269,
+    email: "demo@mail.com",
+    game_date: "Tue Jun 29",
+    game_place_id: gPlace3.id,
+    game_start: "7:45 PM",
+    gmt: "GMT-0400",
+    player_id: player1.id,
+    players_num: 2,
+    res_year: "2021"
+)
+
+res1_4 = Reservation.create!(
+    canceled: false,
+    confirmation_num: 5753,
+    email: "demo@mail.com",
+    game_date: "Wed Dec 29",
+    game_place_id: gPlace4.id,
+    game_start: "9:15 PM",
+    gmt: "GMT-0500",
+    player_id: player1.id,
+    players_num: 2,
+    res_year: "2021"
+)
+
+
 dndcamp1 = DndCampaign.create!(
     title: "The Order of the Phoenix",
     adventure_type: 'dungeon crawling',

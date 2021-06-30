@@ -48,7 +48,7 @@ const Signup = () => {
         })
     }, [errors]);
 
-    useEffect(() => {}, [erroredCity, erroredConfPass, erroredEmail, erroredFName, erroredLName, erroredPassword])
+    useEffect(() => {}, [erroredCity, erroredConfPass, erroredEmail, erroredFName, erroredLName, erroredPassword, user])
 
     useEffect(() => {
         dispatch(fetchCities())
@@ -75,6 +75,8 @@ const Signup = () => {
         } else if (name === 'confirmPassword') {
             setConfPassErr(false)
         }
+
+        setErrored(false)
     }
 
     const handleSubmit = e => {

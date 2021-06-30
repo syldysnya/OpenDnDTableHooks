@@ -8,16 +8,18 @@ const Favorites = (props) => {
     const [saved, setSaved] = useState(false);
     const [favId, setFavId] = useState('');
     const dispatch = useDispatch();
-    const favorites = useSelector(state => state.entities.favorites.favoritesAll)
-    const favorite = useSelector(state => state.entities.favorites.favorite)
+    const favorites = useSelector(state => state.entities.favorites.favoritesAll);
+    const favorite = useSelector(state => state.entities.favorites.favorite);
     const [fetched, setFetched] = useState(false);
+
+    useEffect(() => {}, [favorites, favorite])
 
     useEffect(() => {
         if (player) {
             dispatch(fetchAllFavs())
             setFetched(true)
         }
-    }, [favId])
+    }, [])
 
     useEffect(() => {
         if (favId) {

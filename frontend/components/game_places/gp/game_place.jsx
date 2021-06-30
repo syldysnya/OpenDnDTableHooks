@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { fetchGamePlace } from '../../../actions/game_place_actions';
 import { fetchAllReviews } from '../../../actions/review_actions';
 import GamePlaceMap from '../../map/game_place_map';
@@ -12,6 +12,7 @@ import StarsShow from '../../stars/stars_show';
 import Favorites from '../../favorites/favorites';
 import { fetchPlayer } from '../../../actions/player_actions';
 import { openModal } from '../../../actions/modal_actions';
+import { fetchAllFavs } from '../../../actions/favorite_actions';
 
 const GamePlace = () => {
     let gamePlaceParams = useParams();
@@ -27,6 +28,23 @@ const GamePlace = () => {
     const totalCamp = (campRating / lengthRat).toFixed(1);
     const [fetched, setFetched] = useState(false);
     const [playerInfo, setPlayerInfo] = useState('');
+    const [favs, setFavs] = useState('');
+    const loading = useSelector(state => state.ui.loading);
+
+    useEffect(() => {
+        if (player) {
+            dispatch(fetchAllFavs())
+                .then(res => setFavs(res.favorites))
+        } else {
+            setFavs('')
+        }
+    }, [loading])
+
+    useEffect(() => {
+        if (player) {
+            setLoggedIn(true)
+        }
+    }, [player])
     
     useEffect(() => {
         dispatch(fetchAllReviews())

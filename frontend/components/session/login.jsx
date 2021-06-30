@@ -12,7 +12,9 @@ const Login = () => {
     const {email, password} = user;
     
     const errors = useSelector(state => state.errors.session);
-    const isSignedIn = useSelector(state => state.session.isSignedIn)
+    const isSignedIn = useSelector(state => state.session.isSignedIn);
+    const [errored, setErrored] = useState(false)
+    
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -25,9 +27,16 @@ const Login = () => {
         }
     }, [user])
 
+    useEffect(() => {
+        if (errors) {
+            setErrored(true)
+        }
+    }, [errors])
+
     const handleInput = e => {
         const { name, value } = e.target;
         setUser(user => ({ ...user, [name]: value }))
+        setErrored(false)
     }
 
     const handleSubmit = e => {
@@ -76,12 +85,6 @@ const Login = () => {
                             value={email}
                             onChange={handleInput}
                         />
-                        <li className='auth-error' key='fname-error'>
-                            {errors.length > 0  && (
-                                "Wrong credentials"
-                                ) 
-                            }
-                        </li>
                     </label>
                     <label htmlFor="password-login">
                         <input
@@ -95,7 +98,7 @@ const Login = () => {
                         />
                         {errors.length > 0 && (
                             <li className='auth-error' key='fname-error'>
-                                Wrong credentials
+                                {errors}
                             </li>
                         ) }
                     </label>

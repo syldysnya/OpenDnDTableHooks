@@ -34,7 +34,7 @@ const DropdownMenu = () => {
                 { visible ? (
                 <div className='dropdown-profile-open'
                     onClick={e => e.stopPropagation()}>
-                    <p>Hello, {currentPlayer.lname}!</p>
+                    <p>Hello, {currentPlayer.fname}!</p>
                     <div className='break-auth'></div>
                     <NavLink className='menu-links' to='/my/profile' onClick={handleLink}>My Profile</NavLink>
                     <NavLink className='menu-links' to='/my/profile' onClick={handleLink}>My Dining History</NavLink>

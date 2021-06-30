@@ -8,7 +8,7 @@ class Api::SessionsController < ApplicationController
         )
         
         if @player.nil?
-            render json: ['Wrong credentials'], status: 401
+            render json: ['Invalid username/email'], status: 401
         else
             login!(@player)
             render 'api/players/show'
