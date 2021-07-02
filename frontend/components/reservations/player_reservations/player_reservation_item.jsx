@@ -5,7 +5,7 @@ import EditReview from '../../reviews/edit_review';
 
 const PlayerReservationItem = (props) => {
     const {i, currentPlayer, review, res} = props;   
-    const {gpAvatar, gpName, gameDate, gameStart, playersNum, gamePlaceId} = res;
+    const {gpAvatar, gpName, gameDate, gameStart, playersNum, gamePlaceId, canceled} = res;
     const [writeBox, setWriteBox] = useState(false);
     const [editBox, setEditBox] = useState(false);
     const [openWriteBox, setOpenWriteBox] = useState(false);
@@ -54,7 +54,7 @@ const PlayerReservationItem = (props) => {
                         <div>{gameDate} at {gameStart}</div>
                     </div>
                     <div className='btn-group'>
-                        <div className="status-canceled">Cancelled</div>
+                        {!canceled && (<div className="status-canceled">Cancelled</div>)}
                         <div className="numplayers-inf">{`Table for ${playersNum} people`}</div>
                         <div className="red-text">
                             <div className="save-fav">
@@ -62,19 +62,19 @@ const PlayerReservationItem = (props) => {
                                 <div>Save this restaurant</div>
                             </div>
                             <div className="write-review">
-                                {writeBox && (<div className="write-text">
+                                {writeBox && canceled && (<div className="write-text">
                                     <i className="far fa-comment-alt"></i>
                                     <h2 onClick={handleWrite}>
                                         Write a review
                                     </h2>
                                 </div>)}
-                                {editBox && (<div className="edit-text">
+                                {editBox && !canceled (<div className="edit-text">
                                     <i className="far fa-comment-alt"></i>
                                     <h2  onClick={handleEdit}>
                                         Edit a review
                                     </h2>
                                 </div>)}
-                                {editBox && (<div className="delete-text">
+                                {editBox && !canceled (<div className="delete-text">
                                     <i className="far fa-comment-alt"></i>
                                     <h2  onClick={handleDelete}>
                                         Delete a review

@@ -17,7 +17,11 @@ const Profile = () => {
     const [visibleRes, setVisibleRes] = useState(false);
     const [visibleFav, setVisibleFav] = useState(false);
     const [visibleAcc, setVisibleAcc] = useState(false);
-
+    const [upcoming, setUpcoming] = useState([]);
+    const [pastRes, setPastRes] = useState([]);
+    const currentDate = new Date();
+    const current = Date.parse(currentDate);
+    
     useEffect(() => {
         dispatch(fetchCities())
     }, []);
@@ -33,7 +37,7 @@ const Profile = () => {
             setVisibleFav(true)
         }
     }, [])
-
+    
     useEffect(() => {
         let res = document.getElementById("reservations-lb");
         let acc = document.getElementById("account-lb");
@@ -74,8 +78,29 @@ const Profile = () => {
         dispatch(fetchAllReservations())
     }, [])
 
-    let upcoming = Object.values(reservations).filter(reservation => reservation.canceled === false);
-    let past = Object.values(reservations).filter(reservation => reservation.canceled === true);
+    useEffect(() => {
+        let upres = [];
+        let past = [];
+    
+        Object.values(reservations).filter(reservation => {
+            let dateFull = new Date(`${reservation.gameDate} ${reservation.resYear} ${reservation.gameStart} ${reservation.gmt}`);
+            let resDate = Date.parse(dateFull) 
+    
+            if (reservation.canceled === true) {
+                past.push(reservation)
+            } else if (current > resDate) {
+                past.push(reservation)
+            } else {
+                upres.push(reservation)
+            }
+        });
+
+        setUpcoming(upres);
+        setPastRes(past);
+
+    }, [reservations])
+
+
 
     return (
         <>
@@ -100,7 +125,7 @@ const Profile = () => {
                         <div className='past-reses'>
                             <div className='text-up'>Past reservations</div>
                             <div className='res-index'>
-                                <PastReservations reservations={past} currentPlayer={player}/>
+                                <PastReservations reservations={pastRes} currentPlayer={player}/>
                             </div>
                         </div>
                     </>

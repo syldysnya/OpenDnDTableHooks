@@ -17,6 +17,9 @@ const Footer = () => {
                             <a href="https://angel.co/u/syldysnya" target='_blank'><i className="fab fa-angellist"></i>AngelList</a>
                         </li>
                         <li key='github' >
+                            <a href="https://github.com/syldysnya" target='_blank'><i className="fas fa-dragon"></i>Github</a>
+                        </li>
+                        <li key='github' >
                             <a href="#" target='_blank'><i className="fas fa-dragon"></i>Personal Site</a>
                         </li>
                     </ul>
@@ -34,7 +37,7 @@ const Footer = () => {
                         <li key='css'>Sass/CSS/HTML</li>
                         <li key='amazon'>Amazon S3</li>
                     </ul>
-                </div>
+                </div> 
                 <div className="about-me">
                     <span className="about-me-title">ABOUT ME</span>
                     <ul className="about-list">
