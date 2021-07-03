@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useParams } from 'react-router-dom';
 import { fetchGamePlace } from '../../../actions/game_place_actions';
@@ -15,11 +15,10 @@ import { openModal } from '../../../actions/modal_actions';
 import { fetchAllFavs } from '../../../actions/favorite_actions';
 
 const GamePlace = () => {
-    let gamePlaceParams = useParams();
+    let params = useParams();
     const dispatch = useDispatch();
     const gamePlace = useSelector(state => state.entities.gamePlaces.gamePlace);
     const player = useSelector(state => state.session.currentPlayer);
-    const [loggedIn, setLoggedIn] = useState(false);
     const reviews = useSelector(state => state.entities.reviews.reviewsAll);
     const {rating, servRating, orgRating, campRating, lengthRat, allRatingsNums, allLength} = gamePlace;
     const total = (rating / lengthRat).toFixed(1);
@@ -28,40 +27,40 @@ const GamePlace = () => {
     const totalCamp = (campRating / lengthRat).toFixed(1);
     const [fetched, setFetched] = useState(false);
     const [playerInfo, setPlayerInfo] = useState('');
-    const [favs, setFavs] = useState('');
-    const loading = useSelector(state => state.ui.loading);
+    const [fav, setFav] = useState('');
+    const favRef = useRef(null);
 
     useEffect(() => {
         if (player) {
-            dispatch(fetchAllFavs())
-                .then(res => setFavs(res.favorites))
-        } else {
-            setFavs('')
-        }
-    }, [loading])
-
-    useEffect(() => {
-        if (player) {
-            setLoggedIn(true)
-        }
-    }, [player])
-    
-    useEffect(() => {
-        dispatch(fetchAllReviews())
-    }, [])
-    
-    useEffect(() => {
-        if (player) {
-            setLoggedIn(true)
             dispatch(fetchPlayer(player.id)).then(res => setPlayerInfo(res.player))
         }
     }, [])
-    
+
     useEffect(() => {
-        dispatch(fetchGamePlace(gamePlaceParams.gamePlaceId))
-            .then(res => setFetched(true))
+        dispatch(fetchGamePlace(params.gamePlaceId))
+            .then(() => setFetched(true))
     }, [])
 
+    useEffect(() => {
+        dispatch(fetchAllFavs())
+            .then(res => {
+                let filtered = Object.values(res.favorites).filter(fav => fav.gamePlaceId === parseInt(params.gamePlaceId));
+                setFav(filtered[0])
+            })
+    }, [])
+
+    useEffect(() => {
+        dispatch(fetchAllReviews())
+    }, [])
+
+    useEffect(() => {
+        if (fav) {
+            favRef.current.style.width = '100%'
+        } else {
+            favRef.current.style.width = '0%';
+        }
+    }, [fav])
+    
     const handlePicModal = e => {
         dispatch(openModal(`Gallery:${e.target.id}`))
     }
@@ -98,7 +97,7 @@ const GamePlace = () => {
 
     return (
         <div className='gp-body'>
-            <Favorites gamePlace={gamePlace} player={playerInfo}/>
+            <Favorites gamePlaceId={gamePlace.id} playerId={player.id} fav={fav} setFav={setFav} favRef={favRef}/>
             <div className='gp-header'>
                 <img src={gamePlace.photoUrl} />
             </div>

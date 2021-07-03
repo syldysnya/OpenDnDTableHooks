@@ -15,9 +15,9 @@ const CreateReviewForm = (props) => {
 
     const [review, setReview] = useState({
         description: '',
-        campaignRating: '',
-        serviceRating: '',
-        orgRating: '',
+        campaignRating: 0,
+        serviceRating: 0,
+        orgRating: 0,
         overallRating: '',
         dndCampaign_id: '',
         gamePlaceId: gamePlaceId,
@@ -51,9 +51,7 @@ const CreateReviewForm = (props) => {
     };
 
     const update = (e) => {
-        setReview({ ...review, [e.currentTarget.id]: e.currentTarget.value,
-            overallRating: ((parseInt(serviceRating) + parseInt(orgRating) + parseInt(campaignRating)) / 3)
-        })
+        setReview({ ...review, [e.currentTarget.id]: e.currentTarget.value})
         setErrCampaign('');
         setErrOrg('');
         setErrService('');
@@ -62,7 +60,10 @@ const CreateReviewForm = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        dispatch(createReview(review))
+        let overall = ((parseInt(serviceRating) + parseInt(orgRating) + parseInt(campaignRating)) / 3);
+        console.log(overall)
+        debugger
+        dispatch(createReview({...review, overallRating: overall}))
             .then(setReview({
                 description: '',
                 campaignRating: 0,

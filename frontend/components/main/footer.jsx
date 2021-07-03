@@ -19,7 +19,7 @@ const Footer = () => {
                         <li key='github' >
                             <a href="https://github.com/syldysnya" target='_blank'><i className="fas fa-dragon"></i>Github</a>
                         </li>
-                        <li key='github' >
+                        <li key='portfolio' >
                             <a href="#" target='_blank'><i className="fas fa-dragon"></i>Personal Site</a>
                         </li>
                     </ul>

@@ -7,7 +7,6 @@ import { fetchAllReviews } from '../../../actions/review_actions';
 
 const PastReservations = (props) => {
     const {reservations, currentPlayer} = props;
-    const reviews = useSelector(state => state.entities.reviews.reviewsAll);
     const dispatch = useDispatch();
     
     useEffect(() => {
@@ -15,17 +14,15 @@ const PastReservations = (props) => {
     }, [])
     
     const mapped = reservations.map((res, i) => {
-        const {gamePlaceId} = res;
+        const {reviews} = res;
         let review = {}
         let playerReviews = {}
         if (reviews) {
-            playerReviews = Object.values(reviews).filter(rev => rev.playerId === currentPlayer.id)
-            review = playerReviews.filter(rev => rev.gamePlaceId === gamePlaceId);
+            playerReviews = Object.values(reviews).filter(rev => rev.player_id === parseInt(currentPlayer.id));
+            review = playerReviews[0];
         }
         
-        if (review) {
-            return <PlayerReservationItem res={res} i={i} currentPlayer={currentPlayer} review={review}/>
-        }
+        return <PlayerReservationItem res={res} i={i} currentPlayer={currentPlayer} review={review}/>
     })
 
     return mapped

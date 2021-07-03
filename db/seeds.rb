@@ -920,7 +920,7 @@ player4 = Player.create!(
 )
 
 res1_1 = Reservation.create!(
-    canceled: true,
+    canceled: false,
     confirmation_num: 6125,
     email: "demo@mail.com",
     game_date: "Thu Jul 01",
@@ -1040,145 +1040,49 @@ dndcamp3 = DndCampaign.create!(
     game_place_id: gPlace1.id
 )
 
-# reserv1 = Reservation.create!(
-#     game_date: "Sun Jun 27",
-#     game_start: "3:00 PM",
-#     players_num: 4,
-#     dnd_campaign_id: '',
-#     game_place_id: gPlace4.id,
-#     player_id: player1.id,
-#     confirmation_num: '9525',
-#     add_info: 'Ill be with friends',
-#     canceled: false
-#     email: "demo@mail.com"
-#     plphone: ""
-# )
+fav1_1 = Favorite.create!(
+    player_id: player1.id,
+    game_place_id: gPlace3.id
+);
 
-# reserv2 = Reservation.create!(
-#     game_date: '08/01/2021',
-#     game_start: '4:00 PM',
-#     players_num: 2,
-#     dnd_campaign_id: dndcamp2.id,
-#     game_place_id: gPlace3.id,
-#     player_id: player1.id,
-#     confirmation_num: '12345',
-#     add_info: 'Ill be with friends',
-#     canceled: false
-# )
+fav1_2 = Favorite.create!(
+    player_id: player1.id,
+    game_place_id: gPlace11.id
+);
 
-# favorites = Favorite.create!(
-#     game_place_id: gPlace3.id,
-#     player_id: player3.id
-# )
+fav1_3 = Favorite.create!(
+    player_id: player1.id,
+    game_place_id: gPlace5.id
+);
 
-# review1 = Review.create!(
-#     description: 'Good place to play!',
-#     campaign_rating: 5,
-#     service_rating: 4, 
-#     org_rating: 4,
-#     overall_rating: 4.3,
-#     dnd_campaign_id: dndcamp1.id,
-#     game_place_id: gPlace1.id,
-#     player_id: player1.id,
-#     reservation_id: reserv1
-# )
+fav1_4 = Favorite.create!(
+    player_id: player1.id,
+    game_place_id: gPlace1.id
+);
 
-# review2 = Review.create!(
-#     description: 'Service could be better',
-#     campaign_rating: 5,
-#     service_rating: 2,
-#     org_rating: 5,
-#     overall_rating: 4.0,
-#     dnd_campaign_id: dndcamp2.id,
-#     game_place_id: gPlace1.id,
-#     player_id: player1.id,
-#     reservation_id: 
-# )
+fav1_5 = Favorite.create!(
+    player_id: player1.id,
+    game_place_id: gPlace15.id
+);
 
-# review3 = Review.create!(
-#     description: 'Barnaby The Bear’s my name, never call me Jack or James, I will sing my way to fame, Barnaby the Bear’s my name. Birds taught me to sing, when they took me to their king, first I had to fly, in the sky so high so high, so high so high so high, so — if you want to sing this way, think of what you’d like to say, add a tune and you will see, just how easy it can be. Treacle pudding, fish and chips, fizzy drinks and liquorice, flowers, rivers, sand and sea, snowflakes and the stars are free.',
-#     campaign_rating: 3,
-#     service_rating: 3,
-#     org_rating: 3,
-#     overall_rating: 3.0,
-#     dnd_campaign_id: dndcamp1.id,
-#     game_place_id: gPlace2.id,
-#     player_id: player4.id
-# )
+rev1_1 = Review.create!(
+    description: "Had fun with friends",
+    campaign_rating: 5,
+    service_rating: 3,
+    org_rating: 5,
+    overall_rating: 4.3,
+    game_place_id: gPlace2.id,
+    player_id: player1.id,
+    reservation_id: res1_1.id
+);
 
-# review4 = Review.create!(
-#     description: 'I never spend much time in school but I taught ladies plenty. It’s true I hire my body out for pay, hey hey. I’ve gotten burned over Cheryl Tiegs, blown up for Raquel Welch. But when I end up in the hay it’s only hay, hey hey. I might jump an open drawbridge, or Tarzan from a vine. ’Cause I’m the unknown stuntman that makes Eastwood look so fine.',
-#     campaign_rating: 1, 
-#     service_rating: 1,
-#     org_rating: 1,
-#     overall_rating: 1.0,
-#     dnd_campaign_id: dndcamp3.id,
-#     game_place_id: gPlace1.id,
-#     player_id: player4.id
-# )
-
-# review5 = Review.create!(
-#     description: 'Barnaby The Bear’s my name, never call me Jack or James, I will sing my way to fame, Barnaby the Bear’s my name. Birds taught me to sing, when they took me to their king, first I had to fly, in the sky so high so high, so high so high so high, so — if you want to sing this way, think of what you’d like to say, add a tune and you will see, just how easy it can be. Treacle pudding, fish and chips, fizzy drinks and liquorice, flowers, rivers, sand and sea, snowflakes and the stars are free.',
-#     campaign_rating: 5,
-#     service_rating: 5,
-#     org_rating: 5,
-#     overall_rating: 5.0,
-#     dnd_campaign_id: dndcamp2.id,
-#     game_place_id: gPlace3.id,
-#     player_id: player1.id
-# )
-
-# review6 = Review.create!(
-#     description: 'This is my boss, Jonathan Hart, a self-made millionaire, he’s quite a guy. This is Mrs H., she’s gorgeous, she’s one lady who knows how to take care of herself. By the way, my name is Max. I take care of both of them, which ain’t easy, ’cause when they met it was MURDER!',
-#     campaign_rating: 4,
-#     service_rating: 4, 
-#     org_rating: 4,
-#     overall_rating: 4.0,
-#     dnd_campaign_id: dndcamp1.id,
-#     game_place_id: gPlace2.id,
-#     player_id: player2.id
-# )
-
-# review7 = Review.create!(
-#     description: 'There’s a voice that keeps on calling me. Down the road, that’s where I’ll always be. Every stop I make, I make a new friend. Can’t stay for long, just turn around and I’m gone again. Maybe tomorrow, I’ll want to settle down, Until tomorrow, I’ll just keep moving on.',
-#     campaign_rating: 3,
-#     service_rating: 3,
-#     org_rating: 3,
-#     overall_rating: 3.0,
-#     dnd_campaign_id: dndcamp2.id,
-#     game_place_id: gPlace3.id,
-#     player_id: player3.id
-# )
-
-# review8 = Review.create!(
-#     description: '80 days around the world, we’ll find a pot of gold just sitting where the rainbow’s ending. Time — we’ll fight against the time, and we’ll fly on the white wings of the wind. 80 days around the world, no we won’t say a word before the ship is really back. Round, round, all around the world. Round, all around the world. Round, all around the world. Round, all around the world.',
-#     campaign_rating: 5, 
-#     service_rating: 5,
-#     org_rating: 5,
-#     overall_rating: 5.0,
-#     dnd_campaign_id: dndcamp1.id,
-#     game_place_id: gPlace2.id,
-#     player_id: player1.id
-# )
-
-# review9 = Review.create!(
-#     description: 'Mutley, you snickering, floppy eared hound. When courage is needed, you’re never around. Those medals you wear on your moth-eaten chest should be there for bungling at which you are best. So, stop that pigeon, stop that pigeon, stop that pigeon, stop that pigeon, stop that pigeon, stop that pigeon, stop that pigeon. Howwww! Nab him, jab him, tab him, grab him, stop that pigeon now.',
-#     campaign_rating: 5, 
-#     service_rating: 5,
-#     org_rating: 5,
-#     overall_rating: 5.0,
-#     dnd_campaign_id: dndcamp2.id,
-#     game_place_id: gPlace3.id,
-#     player_id: player3.id,
-# )
-
-# review10 = Review.create!(
-#     description: 'Barnaby The Bear’s my name, never call me Jack or James, I will sing my way to fame, Barnaby the Bear’s my name. Birds taught me to sing, when they took me to their king, first I had to fly, in the sky so high so high, so high so high so high, so — if you want to sing this way, think of what you’d like to say, add a tune and you will see, just how easy it can be. Treacle pudding, fish and chips, fizzy drinks and liquorice, flowers, rivers, sand and sea, snowflakes and the stars are free.', 
-#     campaign_rating: 4,
-#     service_rating: 4,
-#     org_rating: 4,
-#     overall_rating: 4.0,
-#     dnd_campaign_id: dndcamp1.id,
-#     game_place_id: gPlace2.id,
-#     player_id: player2.id
-# )
+rev1_2 = Review.create!(
+    description: "Can't wait to come back!",
+    campaign_rating: 5,
+    service_rating: 5,
+    org_rating: 4,
+    overall_rating: 4.6,
+    game_place_id: gPlace11.id,
+    player_id: player1.id,
+    reservation_id: res1_5.id
+);
