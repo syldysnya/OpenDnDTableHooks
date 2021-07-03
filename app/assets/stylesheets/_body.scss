@@ -45,7 +45,7 @@ body {
 
         .search-logo {
             padding: 0 10px;
-            border-left: 1px solid #dadada;
+            padding-left: 20px;
         }
     }
 
@@ -245,14 +245,6 @@ body {
         display: flex;
         justify-content: center;
     }
-
-    .search {
-        margin-top: 0;
-
-        .button {
-            font-weight: 500;
-        }
-    }
     
     .search-reserv-info, .search-input {
         border: 1px solid $grey-color;
@@ -275,12 +267,14 @@ body {
 
 .search-box-main {
     width: 900px;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 80px 50px auto;
     align-content: center;
     align-items: center;
     overflow: hidden;
     min-width: 600px;
+    position: absolute;
+    top: 120px;
 }
 
 .search-text-main {
@@ -290,6 +284,7 @@ body {
     padding: 18px 0;
     display: flex;
     align-items: center;
+    justify-content: center;
     font-weight: 700;
 }
 
@@ -424,8 +419,10 @@ body {
 }
 
 .dropdown-calendar {
-    position: absolute;
-    top: 240px;
+    position: relative;
+    top: -16px;
+    z-index: 1;
+    grid-row-start: 3;
 }
 
 .dropdown-calendar.edit {
@@ -441,18 +438,19 @@ body {
     .nav-bar-search {
         margin-top: 30px;
         background-image: url('https://app-opendndtable-seed.s3.amazonaws.com/dtp-desktop-efc049.png');
-        height: 9vh;
+        height: 80px;
         
         .search-search-page {
             display: grid;
             grid-template-columns: 48% 32% 17%;
             column-gap: 1.5%;
             position: relative;
-            left: 50%;
-            margin-left: -50vh;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
             top: 20%;
-            height: 55%;
-            width: 100vh;
+            height: 50px;
+            width: 900px;
         }
     }
 }

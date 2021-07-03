@@ -56,9 +56,9 @@ const AllGamePlaces = (props) => {
                 </div>
             </div>
             <div className='scroll-buttons'>
-                <button className='scroll-left' onClick={scroll} id='-400'>❮
+                <button className='scroll-left' onClick={scroll} id='-500'>❮
                 </button>
-                <button className='scroll-right' onClick={scroll} id='400'>❯
+                <button className='scroll-right' onClick={scroll} id='500'>❯
                 </button> 
             </div>
         </>

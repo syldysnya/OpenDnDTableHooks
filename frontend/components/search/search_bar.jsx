@@ -66,6 +66,10 @@ const SearchBar = () => {
         setVisible(false)
     }
 
+    const hideCalendar = e => {
+        setVisible(false)
+    }
+
     const handleClick = e => {
         e.preventDefault();
 
@@ -99,16 +103,14 @@ const SearchBar = () => {
                             <i className="fas fa-chevron-down"></i>
                         </div>
                     </div>
-                    <div className='info-create-time' value='gameStart'>
+                    <div className='info-create-time' value='gameStart' onClick={hideCalendar}>
                         <select onChange={updateInfo} 
                             id='gameStart'
                             defaultValue='8:00 PM'>
-                            {/* <i className="fas fa-chevron-down"></i> */}
                             {timePick}
                         </select>
                     </div>
-                    <div className='info-create-form'>
-                        {/* <i className="far fa-user"></i> */}
+                    <div className='info-create-form' onClick={hideCalendar}>
                         <select defaultValue='2'
                             id='playersNum'
                             onChange={updateInfo}>
@@ -120,7 +122,7 @@ const SearchBar = () => {
                         </select>
                     </div>
                 </div>
-                <div className="search-input">
+                <div className="search-input" onClick={hideCalendar}>
                     <i className="fas fa-search"></i>
                     <input type="search" 
                         name="search-bar"

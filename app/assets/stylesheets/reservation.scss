@@ -95,7 +95,7 @@
 }
 
 .view-conf-box {
-    grid-template-columns: 300px 600px 60px 260px;
+    grid-template-columns: minmax(40px, 20%) 600px minmax(30px, 60px) 250px minmax(40px, 15%);
     display: grid;
     grid-template-rows: 300px 330px;
     row-gap: 25px;

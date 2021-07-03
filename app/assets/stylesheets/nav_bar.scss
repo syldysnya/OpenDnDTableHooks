@@ -116,7 +116,7 @@
 .upcom-page-navbar {
     display: flex;
     position: relative;
-    z-index: 1;
+    z-index: 3;
 }
 
 .upcom-profile-menu {
@@ -216,6 +216,8 @@
 
 .not-profile-menu {
     position: relative;
+    padding-right: 15px;
+    border-right: 1.5px solid $grey-color;
 }
 
 .not-menu {

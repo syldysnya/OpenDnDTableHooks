@@ -11,10 +11,6 @@ const DropdownMenu = () => {
     const dispatch = useDispatch();
 
     const handleDropdownMenu = e => {
-        if (e.target.contains(e.relatedTarget)) {
-            return null;
-        }
-
         setVisible(!visible)
     }
 
@@ -26,14 +22,18 @@ const DropdownMenu = () => {
         setVisible(!visible)
     }
 
+    const hideMenu = e => {
+        setVisible(false)
+    }
+
     return (
         <div className='dropdown-profile-content'>
             <div className='button-profile' tabIndex='0'
                 onClick={handleDropdownMenu}
-                onBlur={handleDropdownMenu}>
+                >
                 <i className="fas fa-dice-d20"></i>
                 { visible ? (
-                <div className='dropdown-profile-open'
+                <div className='dropdown-profile-open' onBlur={hideMenu}
                     onClick={e => e.stopPropagation()}>
                     <p>Hello, {currentPlayer.fname}!</p>
                     <div className='break-auth'></div>

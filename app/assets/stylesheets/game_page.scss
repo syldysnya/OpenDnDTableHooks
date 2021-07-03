@@ -60,7 +60,7 @@
 }
 
 .fav-text {
-    padding-left: 5px;
+    padding-left: 10px;
 }
 
 .save-fav > .favorites-box {
@@ -89,7 +89,7 @@
 }
 .gp-page-box {
     display: grid;
-    grid-template-columns: 15% minmax(600px, 800px) 20px 300px auto;
+    grid-template-columns: minmax(50px, 15%) minmax(500px, 800px) 20px 300px minmax(50px, 15%);
 }
 
 .gp-header {

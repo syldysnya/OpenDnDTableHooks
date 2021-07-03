@@ -12,15 +12,7 @@ const UpComMenu = () => {
     const [visible, setVisible] = useState(false);
     const [listRes, setListRes] = useState();
     let list;
-
-    const handleDropdownMenu = e => {
-        if (e.target.contains(e.relatedTarget)) {
-            return null;
-        }
-
-        setVisible(!visible)
-    }
-
+    
     useEffect(() => {
         if (reservations) {
             list = Object.values({...reservations}).filter(res => res.canceled === false)
@@ -28,71 +20,76 @@ const UpComMenu = () => {
         }
     }, [visible])
 
+    const handleDropdownMenu = e => {
+        setVisible(!visible)
+    }
+
+    const hideMenu = e => {
+        setVisible(false)
+    }
+
     return (
-        <div className="upcom-profile-menu" tabIndex='0'
-            onClick={handleDropdownMenu}
-            onBlur={handleDropdownMenu}>
-            <div className='upres-menu' >
+        <div className="upcom-profile-menu">
+            <div className='upres-menu'  tabIndex='1'
+                onClick={handleDropdownMenu}>
                 <i className="far fa-calendar"></i>
             </div>
             {visible && (<div className="upcom-menu-box">
                 <div className="upcom-title">
                     Upcoming reservations
                 </div>
-                <div className="upcome-box">
-                        {listRes ? (
-                            <>
-                                <div className="upcom-icon">
-                                    <i className="fas fa-store-alt"></i>
+                {listRes ? (
+                    <div className="upcome-box" onBlur={hideMenu}>
+                        <div className="upcom-icon">
+                            <i className="fas fa-store-alt"></i>
+                        </div>
+                        <div className="upcome-info">
+                            <span className='gp-name-span-up'>
+                                {listRes.gpName}
+                            </span>
+                            <div className='gp-info-down-up'>
+                                <div>
+                                    <i className="far fa-calendar"></i>
+                                    <span>{listRes.gameDate}</span>
                                 </div>
-                                <div className="upcome-info">
-                                    <span className='gp-name-span-up'>
-                                        {listRes.gpName}
-                                    </span>
-                                    <div className='gp-info-down-up'>
-                                        <div>
-                                            <i className="far fa-calendar"></i>
-                                            <span>{listRes.gameDate}</span>
-                                        </div>
-                                        <div>
-                                            <i className="far fa-clock"></i>
-                                            <span>{listRes.gameStart}</span>
-                                        </div>
-                                        <div>
-                                            <i className="far fa-user"></i>
-                                            <span>{listRes.playersNum} people</span>
-                                        </div>
-                                    </div>
-                                    <div className="crud-links">
-                                        <NavLink style={{ textDecoration: 'none' }} to={`/book/view/${listRes.id}`}>
-                                            View
-                                        </NavLink>
-                                        <i className="fas fa-circle"></i>
-                                        <NavLink style={{ textDecoration: 'none' }} to={`/book/view/${listRes.id}`}>
-                                            Modify
-                                        </NavLink>
-                                    </div>
-                                    <div className="cancel-up">
-                                        <NavLink style={{ textDecoration: 'none' }}
-                                            to={{
-                                                pathname: '/book/cancel',
-                                                state: {
-                                                    reservation: listRes,
-                                                    gamePlaceId: listRes.gamePlaceId,
-                                                    currentPlayer: player
-                                                }
-                                            }}>
-                                            Cancel
-                                        </NavLink>
-                                    </div>
+                                <div>
+                                    <i className="far fa-clock"></i>
+                                    <span>{listRes.gameStart}</span>
                                 </div>
-                            </>
-                        ) : (
-                            <div className="no-upcom">
-                                No upcoming reservations
+                                <div>
+                                    <i className="far fa-user"></i>
+                                    <span>{listRes.playersNum} people</span>
+                                </div>
                             </div>
-                        )}
-                </div>
+                            <div className="crud-links" onClick={hideMenu}>
+                                <NavLink style={{ textDecoration: 'none' }} to={`/book/view/${listRes.id}`}>
+                                    View
+                                </NavLink>
+                                <i className="fas fa-circle"></i>
+                                <NavLink style={{ textDecoration: 'none' }} to={`/book/view/${listRes.id}`}>
+                                    Modify
+                                </NavLink>
+                            </div>
+                            <div className="cancel-up">
+                                <NavLink style={{ textDecoration: 'none' }}
+                                    to={{
+                                        pathname: '/book/cancel',
+                                        state: {
+                                            reservation: listRes,
+                                            gamePlaceId: listRes.gamePlaceId,
+                                            currentPlayer: player
+                                        }
+                                    }}>
+                                    Cancel
+                                </NavLink>
+                            </div>
+                        </div>
+                    </div>
+                ) : (
+                    <div className="no-upcom">
+                        No upcoming reservations
+                    </div>
+                )}
                 <div className="upcome-all-res">
                     <NavLink to={'/my/profile'} style={{ textDecoration: 'none' }} onClick={handleDropdownMenu}>
                             View all reservations

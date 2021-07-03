@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import * as ModalActions from '../../actions/modal_actions';
+import { fetchAllReservations } from '../../actions/reservation_actions';
 import DropdownMenu from './dropdown_menu';
 import NotificationMenu from './notification';
 import UpComMenu from './up_res_menu';
@@ -10,6 +11,10 @@ const NavBar = () => {
     const currentPlayer = useSelector(state => state.session.currentPlayer);
     const dispatch = useDispatch();
     const history = useHistory();
+
+    useEffect(() => {
+        dispatch(fetchAllReservations())
+    }, [])
 
     const handleClick = e => {
         const { value } = e.target;
