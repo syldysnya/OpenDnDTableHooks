@@ -42,11 +42,13 @@ const GamePlace = () => {
     }, [])
 
     useEffect(() => {
-        dispatch(fetchAllFavs())
+        if (player) {
+            dispatch(fetchAllFavs())
             .then(res => {
                 let filtered = Object.values(res.favorites).filter(fav => fav.gamePlaceId === parseInt(params.gamePlaceId));
                 setFav(filtered[0])
             })
+        }
     }, [])
 
     useEffect(() => {
@@ -97,7 +99,9 @@ const GamePlace = () => {
 
     return (
         <div className='gp-body'>
-            <Favorites gamePlaceId={gamePlace.id} playerId={player.id} fav={fav} setFav={setFav} favRef={favRef}/>
+            {player ? (<Favorites gamePlaceId={params.gamePlaceId} playerId={player.id} fav={fav} setFav={setFav} favRef={favRef}/>) : (
+                <Favorites gamePlaceId={params.gamePlaceId} fav={fav} setFav={setFav} favRef={favRef}/>
+            )}
             <div className='gp-header'>
                 <img src={gamePlace.photoUrl} />
             </div>

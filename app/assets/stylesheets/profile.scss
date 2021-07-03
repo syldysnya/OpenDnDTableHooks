@@ -62,7 +62,7 @@
 
 .review-create-box-profile {
     display: grid;
-    grid-template-columns: 30% 50%;
+    grid-template-columns: 30% auto;
     column-gap: 2%;
     height: 100%;
 
@@ -288,6 +288,8 @@
     border: 1px solid $grey-color;
     border-radius: 5px;
     padding: 10px;
+    max-width: 500px;
+    min-width: 400px;
 
     p {
         color: rgb(156, 155, 155);

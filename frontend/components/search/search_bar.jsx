@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { Calendar } from 'react-date-range';
 import { RES_TIME } from '../reservations/create_forms/main_page_create_form';
@@ -21,6 +21,26 @@ const SearchBar = () => {
     });
 
     const [visible, setVisible] = useState(false);
+
+    useEffect(() => {
+        let searchBox = document.getElementById('search-box-main');
+        
+        if (window.innerWidth <= 1000) {
+            searchBox.classList.add('resized')      
+        } else {
+            searchBox.classList.remove('resized') 
+        }
+
+        const handleResize = () => {
+            if (window.innerWidth <= 1000) {
+                searchBox.classList.add('resized') 
+            } else {
+                searchBox.classList.remove('resized') 
+            }
+        }
+      
+        window.addEventListener('resize', handleResize)
+    }, [])
 
     const handleSearch = e => {
         setSearchInput(e.target.value)
@@ -63,7 +83,7 @@ const SearchBar = () => {
     }
 
     return (
-        <div className="search-box-main">
+        <div className="search-box-main" id='search-box-main'>
             <div className="search-text-main">
                 Find your table for DnD sessions
             </div>

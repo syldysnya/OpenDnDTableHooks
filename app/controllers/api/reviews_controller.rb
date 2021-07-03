@@ -46,6 +46,7 @@ class Api::ReviewsController < ApplicationController
     private
 
     def review_params
+        debugger
         params.require(:review)
             .permit(
                 :description,

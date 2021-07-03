@@ -27,7 +27,7 @@ const PlayerReservationItem = (props) => {
     }, [favs])  
 
     useEffect(() => {
-        let revArr = Object.values({...reviews}).filter(rev => rev.gamePlaceId === gamePlaceId);
+        let revArr = Object.values({...reviews}).filter(rev => rev.gamePlaceId === gamePlaceId && rev.playerId === parseInt(currentPlayer.id));
         setReview(revArr[0])
     }, [reviews])
 

@@ -8,29 +8,25 @@ const AllGamePlaces = (props) => {
     const history = useHistory();
 
     let mapped = Object.values({...gamePlaces.gamePlacesAll}).map((gPlace, i) => {
-        let rating = gPlace.rating;
-        // console.log(gPlace)
-        if (!rating && gPlace.campRating) {
-            rating = (gPlace.campRating + gPlace.servRating + gPlace.orgRating) / 3.0
-        }
+        let {rating, id, avatarUrl, name, reviews, lengthRat, reservations} = gPlace;
 
         return (
             <div className='game-place-i' key={`game-place-${i}`}>
                 <div className='avatar'>
-                    <img onClick={() => history.push(`/gameplaces/${gPlace.id}`)} src={gPlace.avatarUrl}/>
+                    <img onClick={() => history.push(`/gameplaces/${id}`)} src={avatarUrl}/>
                 </div>
                 <div className='info-box'>
                     <div className='title'>
                         <NavLink to={{
-                            pathname: `/gameplaces/${gPlace.id}`
+                            pathname: `/gameplaces/${id}`
                             }}
                             style={{ textDecoration: 'none' }}>
-                            {gPlace.name}
+                            {name}
                         </NavLink>
                     </div>
                     <div className='rating'>
-                        <StarsShow stars={rating} lengthRat={gPlace.lengthRat}/>
-                        {gPlace.reviews.length === 1 ? (<div>{gPlace.reviews.length} review</div>) : (<div>{gPlace.reviews.length} reviews</div>)}
+                        <StarsShow stars={rating} lengthRat={lengthRat}/>
+                        {reviews.length === 1 ? (<div>{reviews.length} review</div>) : (<div>{reviews.length} reviews</div>)}
                     </div>
                     <div className='city'>{cities.map(city => {
                         if (city.id === gPlace.cityId) {
@@ -39,7 +35,7 @@ const AllGamePlaces = (props) => {
                     })}</div>
                     <div className="booked-icon">
                         <i className="fas fa-chart-line"></i>
-                        {gPlace.reservations.length === 1 ? (<div className='booked' >Booked {gPlace.reservations.length} time today</div>) : (<div className='booked'>Booked {gPlace.reservations.length} times today</div>)}
+                        {reservations.length === 1 ? (<div className='booked' >Booked {reservations.length} time today</div>) : (<div className='booked'>Booked {reservations.length} times today</div>)}
                     </div>
                 </div>
             </div>
@@ -49,7 +45,6 @@ const AllGamePlaces = (props) => {
     const scroll = e => {
         let listGP = document.getElementById('scroll-all');
         listGP.scrollLeft += parseInt(e.target.id);
-        console.log(listGP.offsetWidth)
     }
 
     return (
@@ -61,9 +56,9 @@ const AllGamePlaces = (props) => {
                 </div>
             </div>
             <div className='scroll-buttons'>
-                <button className='scroll-left' onClick={scroll} id='-800'>❮
+                <button className='scroll-left' onClick={scroll} id='-400'>❮
                 </button>
-                <button className='scroll-right' onClick={scroll} id='800'>❯
+                <button className='scroll-right' onClick={scroll} id='400'>❯
                 </button> 
             </div>
         </>

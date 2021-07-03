@@ -1,13 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import StarsShow from '../../stars/stars_show';
 
 const NewarkPlaces = (props) => {
     const {gamePlaces, cities} = props;
     const history = useHistory();
-
     let newark = cities.filter(city => city.name === 'Newark');
     let newarkPlaces = Object.values({...gamePlaces.gamePlacesAll}).filter(gp => gp.cityId === newark[0].id);
+    const [visible, setVisible] = useState(false);
+
+    useEffect(() => {
+        if (window.innerWidth <= 1200) {
+            setVisible(true)
+        } else {
+            setVisible(false)
+        }
+
+        const handleResize = () => {
+            if (window.innerWidth <= 1200) {
+                setVisible(true)
+            } else {
+                setVisible(false)
+            }
+        }
+      
+        window.addEventListener('resize', handleResize)
+    }, [])
 
     let mapped = newarkPlaces.map((gPlace, i) => {
         let rating = gPlace.rating;
@@ -44,13 +62,26 @@ const NewarkPlaces = (props) => {
         )
     })
 
+    const scroll = e => {
+        let listGP = document.getElementById('scroll-nw');
+        listGP.scrollLeft += parseInt(e.target.id)
+    }
+
     return (
-        <div className='list-of-gps'>
-            <span>Book a table in Newark</span>
-            <div className='gp-list'>
-                {mapped}
+        <>
+            <div className='list-of-gps'>
+                <span>Book a table in Newark</span>
+                <div className='gp-list' id='scroll-nw'>
+                    {mapped}
+                </div>
             </div>
-        </div>
+            {visible && (<div className='scroll-buttons'>
+                <button className='scroll-left' onClick={scroll} id='-400'>❮
+                </button>
+                <button className='scroll-right' onClick={scroll} id='400'>❯
+                </button> 
+            </div>)}
+        </>
     );
 };
 

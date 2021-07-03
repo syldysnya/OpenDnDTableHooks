@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch} from 'react-redux';
 import { createFav, deleteFav } from '../../actions/favorite_actions';
+import { openModal } from '../../actions/modal_actions';
 
 const Favorites = (props) => {
     const { playerId, fav, setFav, favRef, gamePlaceId } = props;
@@ -8,9 +9,12 @@ const Favorites = (props) => {
 
     const handleSave = e => {
         e.preventDefault();
+        console.log(fav)
 
         if (fav) {
             dispatch(deleteFav(fav.id)).then(() => setFav(''))
+        } else if (!fav && !playerId) {
+            dispatch(openModal('Sign In'))
         } else {
             let newFav = {
                 gamePlaceId: gamePlaceId,

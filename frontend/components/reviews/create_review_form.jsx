@@ -61,8 +61,8 @@ const CreateReviewForm = (props) => {
         e.preventDefault();
 
         let overall = ((parseInt(serviceRating) + parseInt(orgRating) + parseInt(campaignRating)) / 3);
-        console.log(review)
-        dispatch(createReview({...review, overallRating: overall}))
+        debugger
+        dispatch(createReview({...review, overallRating: overall.toFixed(1)}))
             .then(setReview({
                 description: '',
                 campaignRating: 0,

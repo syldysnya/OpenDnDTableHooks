@@ -919,7 +919,7 @@ player4 = Player.create!(
     city_id: city4.id
 )
 
-res1_1 = Reservation.create!(
+res1 = Reservation.create!(
     canceled: false,
     confirmation_num: 6125,
     email: "demo@mail.com",
@@ -932,7 +932,7 @@ res1_1 = Reservation.create!(
     res_year: "2021"
 )
 
-res1_2 = Reservation.create!(
+res2 = Reservation.create!(
     canceled: false,
     confirmation_num: 5101,
     email: "demo@mail.com",
@@ -945,7 +945,7 @@ res1_2 = Reservation.create!(
     res_year: "2021"
 )
 
-res1_3 = Reservation.create!(
+res3 = Reservation.create!(
     canceled: false,
     confirmation_num: 4269,
     email: "demo@mail.com",
@@ -958,7 +958,7 @@ res1_3 = Reservation.create!(
     res_year: "2021"
 )
 
-res1_4 = Reservation.create!(
+res4 = Reservation.create!(
     canceled: false,
     confirmation_num: 5753,
     email: "demo@mail.com",
@@ -971,11 +971,10 @@ res1_4 = Reservation.create!(
     res_year: "2021"
 )
 
-res1_5 = Reservation.create!(
+res5 = Reservation.create!(
     game_date: "Wed Jun 30",
     game_start: "7:30 PM",
-    players_num: 5
-    dnd_campaign_id: nil,
+    players_num: 5,
     game_place_id: gPlace11.id,
     player_id: player1.id,
     confirmation_num: "60",
@@ -985,11 +984,10 @@ res1_5 = Reservation.create!(
     gmt: "GMT-0400"
 )
 
-res1_6 = Reservation.create!(
+res6 = Reservation.create!(
     game_date: "Wed Jun 30",
     game_start: "8:30 PM",
     players_num: 2,
-    dnd_campaign_id: nil,
     game_place_id: gPlace14.id,
     player_id: player1.id, 
     confirmation_num: "9397", 
@@ -999,11 +997,10 @@ res1_6 = Reservation.create!(
     gmt: "GMT-0400"
 )
 
-res1_7 = Reservation.create!(
+res7 = Reservation.create!(
     game_date: "Fri Dec 31",
     game_start: "8:15 PM",
     players_num: 2,
-    dnd_campaign_id: nil,
     game_place_id: gPlace6.id,
     player_id: player1.id,
     confirmation_num: "9739",
@@ -1013,11 +1010,10 @@ res1_7 = Reservation.create!(
     gmt: "GMT-0500"
 )
 
-res1_8 = Reservation.create!(
+res8 = Reservation.create!(
     game_date: "Fri Jul 02",
     game_start: "7:30 PM",
     players_num: 2,
-    dnd_campaign_id: nil,
     game_place_id: gPlace1.id,
     player_id: player1.id,
     confirmation_num: "6936",
@@ -1027,7 +1023,7 @@ res1_8 = Reservation.create!(
     gmt: "GMT-0400"
 )
 
-res1_9 = Reservation.create!(
+res9 = Reservation.create!(
     game_date: "Sat Jun 12",
     game_start: "3:45 PM",
     players_num: 2,
@@ -1040,7 +1036,7 @@ res1_9 = Reservation.create!(
     gmt: "GMT-0400"
 )
 
-res2_1 = Reservation.create!(
+res10 = Reservation.create!(
     game_date: "Mon May 03",
     game_start: "2:30 PM",
     players_num: 2,
@@ -1053,7 +1049,7 @@ res2_1 = Reservation.create!(
     gmt: "GMT-0400"
 )
 
-res2_2 = Reservation.create!(
+res11 = Reservation.create!(
     game_date: "Tue May 18",
     game_start: "4:15 PM",
     players_num: 2,
@@ -1066,7 +1062,7 @@ res2_2 = Reservation.create!(
     gmt: "GMT-0400"
 )
 
-res2_3 = Reservation.create!(
+res12 = Reservation.create!(
     game_date: "Tue Apr 20",
     game_start: "1:45 PM",
     players_num: 2,
@@ -1079,7 +1075,7 @@ res2_3 = Reservation.create!(
     gmt: "GMT-0400"
 )
 
-res2_4 = Reservation.create!(
+res13 = Reservation.create!(
     game_date: "Sat Mar 20",
     game_start: "5:30 PM",
     players_num: 5,
@@ -1092,7 +1088,7 @@ res2_4 = Reservation.create!(
     gmt: "GMT-0400"
 )
 
-res2_5 = Reservation.create!(
+res14 = Reservation.create!(
     game_date: "Tue Jun 15",
     game_start: "8:00 PM",
     players_num: 2,
@@ -1105,7 +1101,7 @@ res2_5 = Reservation.create!(
     gmt: "GMT-0400"
 )
 
-res2_6 = Reservation.create!(
+res15 = Reservation.create!(
     game_date: "Tue Jun 15",
     game_start: "8:00 PM",
     players_num: 2,
@@ -1118,7 +1114,7 @@ res2_6 = Reservation.create!(
     gmt: "GMT-0400"
 )
 
-res2_7 = Reservation.create!(
+res16 = Reservation.create!(
     game_date: "Tue Jun 15",
     game_start: "8:00 PM",
     players_num: 2,
@@ -1131,7 +1127,7 @@ res2_7 = Reservation.create!(
     gmt: "GMT-0400"
 )
 
-res2_8 = Reservation.create!(
+res17 = Reservation.create!(
     game_date: "Tue Jun 15",
     game_start: "8:00 PM",
     players_num: 2,
@@ -1144,7 +1140,7 @@ res2_8 = Reservation.create!(
     gmt: "GMT-0400"
 )
 
-res2_9 = Reservation.create!(
+res18 = Reservation.create!(
     game_date: "Tue Jun 15",
     game_start: "8:00 PM",
     players_num: 2,
@@ -1157,7 +1153,7 @@ res2_9 = Reservation.create!(
     gmt: "GMT-0400"
 )
 
-res2_10 = Reservation.create!(
+res19 = Reservation.create!(
     game_date: "Tue Jun 15",
     game_start: "8:00 PM",
     players_num: 2,
@@ -1197,32 +1193,32 @@ dndcamp3 = DndCampaign.create!(
     game_place_id: gPlace1.id
 )
 
-fav1_1 = Favorite.create!(
+fav1 = Favorite.create!(
     player_id: player1.id,
     game_place_id: gPlace3.id
 );
 
-fav1_2 = Favorite.create!(
+fav2 = Favorite.create!(
     player_id: player1.id,
     game_place_id: gPlace11.id
 );
 
-fav1_3 = Favorite.create!(
+fav3 = Favorite.create!(
     player_id: player1.id,
     game_place_id: gPlace5.id
 );
 
-fav1_4 = Favorite.create!(
+fav4 = Favorite.create!(
     player_id: player1.id,
     game_place_id: gPlace1.id
 );
 
-fav1_5 = Favorite.create!(
+fav5 = Favorite.create!(
     player_id: player1.id,
     game_place_id: gPlace15.id
 );
 
-rev1_1 = Review.create!(
+rev1 = Review.create!(
     description: "Had fun with friends",
     campaign_rating: 5,
     service_rating: 3,
@@ -1230,10 +1226,10 @@ rev1_1 = Review.create!(
     overall_rating: 4.3,
     game_place_id: gPlace2.id,
     player_id: player1.id,
-    reservation_id: res1_1.id
+    reservation_id: res1.id
 );
 
-rev1_2 = Review.create!(
+rev2 = Review.create!(
     description: "Can't wait to come back!",
     campaign_rating: 5,
     service_rating: 5,
@@ -1241,5 +1237,115 @@ rev1_2 = Review.create!(
     overall_rating: 4.6,
     game_place_id: gPlace11.id,
     player_id: player1.id,
-    reservation_id: res1_5.id
+    reservation_id: res5.id
 );
+
+rev3 = Review.create!(
+    description: "Good place",
+    campaign_rating: 4,
+    service_rating: 4,
+    org_rating: 4,
+    overall_rating: 4.1,
+    game_place_id: gPlace2.id,
+    player_id: player2.id,
+    reservation_id: res10.id
+)
+
+rev4 = Review.create!(
+    description: "Enjoyed it, will come back again!",
+    campaign_rating: 5,
+    service_rating: 5,
+    org_rating: 4,
+    overall_rating: 4.6,
+    game_place_id: gPlace17.id,
+    player_id: player2.id,
+    reservation_id: res11.id
+)
+
+rev5 = Review.create!(
+    description: "Like the story, but it was too short!",
+    campaign_rating: 5,
+    service_rating: 4,
+    org_rating: 3,
+    overall_rating: 4.1,
+    game_place_id: gPlace19.id,
+    player_id: player2.id,
+    reservation_id: res12.id
+)
+
+rev6 = Review.create!(
+    description: "I love this place",
+    campaign_rating: 5,
+    service_rating: 5,
+    org_rating: 5,
+    overall_rating: 5.0,
+    game_place_id: gPlace1.id,
+    player_id: player2.id,
+    reservation_id: res13.id
+)
+
+rev7 = Review.create!(
+    description: "It was fine",
+    campaign_rating: 3,
+    service_rating: 3,
+    org_rating: 3,
+    overall_rating: 3.0,
+    game_place_id: gPlace4.id,
+    player_id: player2.id,
+    reservation_id: res14.id
+)
+
+rev8 = Review.create!(
+    description: "Stuff is great",
+    campaign_rating: 4,
+    service_rating: 5,
+    org_rating: 3,
+    overall_rating: 4.0,
+    game_place_id: gPlace8.id,
+    player_id: player2.id,
+    reservation_id: res15.id
+)
+
+rev9 = Review.create!(
+    description: "Kinda expensive",
+    campaign_rating: 3,
+    service_rating: 2,
+    org_rating: 3,
+    overall_rating: 2.6,
+    game_place_id: gPlace9.id,
+    player_id: player2.id, 
+    reservation_id: res16.id
+)
+
+rev10 = Review.create!(
+    description: "Loved it",
+    campaign_rating: 5,
+    service_rating: 5,
+    org_rating: 4,
+    overall_rating: 4.6,
+    game_place_id: gPlace3.id,
+    player_id: player2.id,
+    reservation_id: res17.id
+)
+
+rev11 = Review.create!(
+    description: "Enjoyed the game",
+    campaign_rating: 5,
+    service_rating: 4,
+    org_rating: 5,
+    overall_rating: 4.6,
+    game_place_id: gPlace18.id,
+    player_id: player2.id,
+    reservation_id: res18.id
+)
+
+rev12 = Review.create!(
+    description: "Was hard to find",
+    campaign_rating: 5,
+    service_rating: 2,
+    org_rating: 5,
+    overall_rating: 4.0,
+    game_place_id: gPlace20.id,
+    player_id: player2.id,
+    reservation_id: res19.id
+)

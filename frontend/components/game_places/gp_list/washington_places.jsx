@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import StarsShow from '../../stars/stars_show';
 
@@ -8,6 +8,25 @@ const WashingtonPlaces = (props) => {
 
     let washington = cities.filter(city => city.name === 'Washington');
     let washingtonPlaces = Object.values({...gamePlaces.gamePlacesAll}).filter(gp => gp.cityId === washington[0].id);
+    const [visible, setVisible] = useState(false);
+
+    useEffect(() => {
+        if (window.innerWidth <= 920) {
+            setVisible(true)
+        } else {
+            setVisible(false)
+        }
+
+        const handleResize = () => {
+            if (window.innerWidth <= 920) {
+                setVisible(true)
+            } else {
+                setVisible(false)
+            }
+        }
+      
+        window.addEventListener('resize', handleResize)
+    }, [])
 
     let mapped = washingtonPlaces.map((gPlace, i) => {
         let rating = gPlace.rating;
@@ -44,13 +63,26 @@ const WashingtonPlaces = (props) => {
         )
     })
 
+    const scroll = e => {
+        let listGP = document.getElementById('scroll-dc');
+        listGP.scrollLeft += parseInt(e.target.id)
+    }
+
     return (
-        <div className='list-of-gps' id='last-list'>
-            <span>Book a table in Washington</span>
-            <div className='gp-list'>
-                {mapped}
+        <>
+            <div className='list-of-gps' id='last-list'>
+                <span>Book a table in Washington</span>
+                <div className='gp-list' id='scroll-dc'>
+                    {mapped}
+                </div>
             </div>
-        </div>
+            {visible && (<div className='scroll-buttons'>
+                <button className='scroll-left' onClick={scroll} id='-400'>❮
+                </button>
+                <button className='scroll-right' onClick={scroll} id='400'>❯
+                </button> 
+            </div>)}
+        </>
     );
 };
 

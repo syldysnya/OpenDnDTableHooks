@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_27_204457) do
+ActiveRecord::Schema.define(version: 2021_06_25_035134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,9 +117,11 @@ ActiveRecord::Schema.define(version: 2021_06_27_204457) do
     t.string "game_date", null: false
     t.string "game_start", null: false
     t.integer "players_num", null: false
-    t.integer "dnd_campaign_id"
     t.integer "game_place_id", null: false
     t.integer "player_id", null: false
+    t.string "res_year", null: false
+    t.string "gmt", null: false
+    t.integer "dnd_campaign_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "confirmation_num", null: false
@@ -127,8 +129,6 @@ ActiveRecord::Schema.define(version: 2021_06_27_204457) do
     t.boolean "canceled", default: false, null: false
     t.string "plphone"
     t.string "email"
-    t.string "res_year", null: false
-    t.string "gmt", null: false
     t.index ["dnd_campaign_id"], name: "index_reservations_on_dnd_campaign_id"
     t.index ["game_place_id"], name: "index_reservations_on_game_place_id"
     t.index ["player_id"], name: "index_reservations_on_player_id"
@@ -139,7 +139,7 @@ ActiveRecord::Schema.define(version: 2021_06_27_204457) do
     t.integer "campaign_rating", null: false
     t.integer "service_rating", null: false
     t.integer "org_rating", null: false
-    t.decimal "overall_rating", null: false
+    t.float "overall_rating", null: false
     t.integer "dnd_campaign_id"
     t.integer "game_place_id", null: false
     t.integer "player_id", null: false
