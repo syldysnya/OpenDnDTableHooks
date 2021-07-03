@@ -9,7 +9,7 @@ serviceArr = game_place.reviews.map { |rev| rev.service_rating }
 campArr = game_place.reviews.map { |rev| rev.campaign_rating }
 orgArr = game_place.reviews.map { |rev| rev.org_rating }
 json.length_rat game_place.reviews.length
-json.rating ratingArr
+json.rating (ratingArr.sum).round(1)
 json.serv_rating serviceArr.sum
 json.org_rating orgArr.sum
 json.camp_rating campArr.sum

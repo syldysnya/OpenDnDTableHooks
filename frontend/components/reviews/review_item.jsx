@@ -55,7 +55,7 @@ const ReviewItem = (props) => {
             <div className='review-box'>
                 <StarsShow stars={rating} lengthRat={3}/>
                 <div className='ratings-list'>
-                    Overall <span>{Math.round(review.overallRating)}</span>
+                    Overall <span>{Math.floor(review.overallRating)}</span>
                     · Service <span>{review.serviceRating}</span>
                     · Planning <span>{review.orgRating}</span>
                     · Campaign <span>{review.campaignRating}</span>

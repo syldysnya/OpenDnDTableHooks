@@ -2,7 +2,7 @@
 
 .profile-page {
     display: grid;
-    grid-template-columns: 15% 180px 60% auto;
+    grid-template-columns: auto 180px auto auto;
     background-color: $white-grey;
 }
 
@@ -106,6 +106,7 @@
         height: 35px;
         display: flex;
         align-items: center;
+        width: 400px;
 
         h2 {
             margin: 0;
@@ -123,7 +124,7 @@
 
     .write-review {
         display: flex;
-        width: 52%;
+        width: 100%;
         align-items: center;
         justify-content: space-around;
 

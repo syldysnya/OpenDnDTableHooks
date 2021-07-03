@@ -8,7 +8,7 @@ const AllGamePlaces = (props) => {
     const history = useHistory();
 
     let mapped = Object.values({...gamePlaces.gamePlacesAll}).map((gPlace, i) => {
-        let {rating, id, avatarUrl, name, reviews, lengthRat, reservations} = gPlace;
+        const {rating, id, avatarUrl, name, reviews, lengthRat, reservations} = gPlace;
 
         return (
             <div className='game-place-i' key={`game-place-${i}`}>
