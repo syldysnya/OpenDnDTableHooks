@@ -5,7 +5,7 @@ import StarsForm from '../stars/stars_form';
 
 const CreateReviewForm = (props) => {
 
-    const {player, gamePlaceId, res} = props;
+    const {player, gamePlaceId, res, setOpenWriteBox} = props;
     const dispatch = useDispatch();
     const [errDescription, setErrDescription] = useState('');
     const [errService, setErrService] = useState('');
@@ -61,8 +61,7 @@ const CreateReviewForm = (props) => {
         e.preventDefault();
 
         let overall = ((parseInt(serviceRating) + parseInt(orgRating) + parseInt(campaignRating)) / 3);
-        console.log(overall)
-        debugger
+        console.log(review)
         dispatch(createReview({...review, overallRating: overall}))
             .then(setReview({
                 description: '',
@@ -70,12 +69,15 @@ const CreateReviewForm = (props) => {
                 serviceRating: 0,
                 orgRating: 0,
                 overallRating: 0,
+                gamePlaceId: gamePlaceId,
+                playerId: player.id,
+                reservationId: res.id
             }))
+            .then(() => setOpenWriteBox(false))
     }
 
     return (
         <div className='review-create-box-profile'>
-            {/* <form onSubmit={handleSubmit}> */}
                 <div className='rating-box-profile'>
                     <div>Campaign</div>
                     <StarsForm rating={campaignRating}
@@ -106,11 +108,6 @@ const CreateReviewForm = (props) => {
                     )}
                 </div>
                 <div className='submit-textarea'>
-                    {/* {created && (
-                        <div className="success-text-review">
-                            Thank you for your review!
-                        </div>
-                    )} */}
                     <textarea onChange={updateInfo}
                         id='description'
                         value={description}
@@ -124,7 +121,6 @@ const CreateReviewForm = (props) => {
                         Submit review
                     </button>
                 </div>
-            {/* </form> */}
         </div>
     );
 };

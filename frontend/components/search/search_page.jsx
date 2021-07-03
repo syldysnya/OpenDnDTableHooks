@@ -8,8 +8,8 @@ import SearchFilter from './search_filter';
 
 const SearchPage = (props) => {
 
-    const gamePlaces = useSelector(state => Object.values(state.entities.gamePlaces.gamePlacesAll));
-    const cities = useSelector(state => Object.values(state.entities.cities.citiesAll));
+    const gamePlaces = useSelector(state => Object.values({...state.entities.gamePlaces.gamePlacesAll}));
+    const cities = useSelector(state => Object.values({...state.entities.cities.citiesAll}));
     const dispatch = useDispatch();
     const [searchInp, setSearchInp] = useState('');
     const currentDateFull = new Date();

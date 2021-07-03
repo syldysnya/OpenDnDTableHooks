@@ -6,17 +6,9 @@ import ReviewItem from './review_item';
 
 const ReviewsIndex = (props) => {
 
-    // const params = useParams();
-    // const {gamePlaceId} = params;
     const {reviews} = props;
-    // const reviews = useSelector(state => state.entities.reviews.reviewsAll);
-    // const dispatch = useDispatch();
 
-    // useEffect(() => {
-    //     dispatch(fetchAllReviews(gamePlaceId))
-    // }, [])
-
-    let mapped = Object.values(reviews).map((rev, i) => {
+    let mapped = Object.values({...reviews}).map((rev, i) => {
         return (
             <ReviewItem review={rev} key={`review-${i}`}/>
         )

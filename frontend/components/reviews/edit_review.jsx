@@ -1,63 +1,57 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { editReview } from '../../actions/review_actions';
+import StarsForm from '../stars/stars_form';
 
 const EditReview = (props) => {
 
-    const {player, gamePlaceId, review} = props;
+    const {review, setOpenEditBox} = props;
     const dispatch = useDispatch();
     const [errDescription, setErrDescription] = useState('');
     const [errService, setErrService] = useState('');
     const [errOrg, setErrOrg] = useState('');
     const [errCampaign, setErrCampaign] = useState('');
     const revErrors = useSelector(state => state.entities.reviews.errors);
-
-    const [reviewNew, setReview] = useState('');
-
-    // const {campaignRating, orgRating, serviceRating, description} = review;
-
+    const [reviewNew, setReview] = useState(review);
+    const {campaignRating, orgRating, serviceRating, description} = reviewNew;
 
     useEffect(() => {
-        setReview({review})
-    }, [])
+        revErrors.forEach(err => {
+            if (err.includes('Description')) {
+                setErrDescription(err)
+            } else if (err.includes('Org')) {
+                setErrOrg(err)
+            } else if (err.includes('Service')) {
+                setErrService(err)
+            } else if (err.includes('Campaign')) {
+                setErrCampaign(err)
+            }
+        })
+    }, [revErrors])
 
-    // useEffect(() => {
-    //     revErrors.forEach(err => {
-    //         if (err.includes('Description')) {
-    //             setErrDescription(err)
-    //         } else if (err.includes('Org')) {
-    //             setErrOrg(err)
-    //         } else if (err.includes('Service')) {
-    //             setErrService(err)
-    //         } else if (err.includes('Campaign')) {
-    //             setErrCampaign(err)
-    //         }
-    //     })
-    // }, [revErrors])
+    const updateInfo = (e) => {
+        setReview({ ...reviewNew, [e.target.id]: e.target.value });
+        setErrDescription('');
+    };
 
-    // const updateInfo = (e) => {
-    //     setReview({ ...review, [e.target.id]: e.target.value });
-    //     setErrDescription('');
-    // };
+    const update = (e) => {
+        setReview({ ...reviewNew, [e.currentTarget.id]: e.currentTarget.value})
+        setErrCampaign('');
+        setErrOrg('');
+        setErrService('');
+    }
 
-    // const update = (e) => {
-    //     setReview({ ...review, [e.currentTarget.id]: e.currentTarget.value,
-    //         overallRating: ((parseInt(serviceRating) + parseInt(orgRating) + parseInt(campaignRating)) / 3)
-    //     })
-    //     setErrCampaign('');
-    //     setErrOrg('');
-    //     setErrService('');
-    // }
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-
-    //     dispatch(editReview(review))
-    // }
+        let overall = ((parseInt(serviceRating) + parseInt(orgRating) + parseInt(campaignRating)) / 3);
+        
+        dispatch(editReview({...reviewNew, overallRating: overall}))
+            .then(() => setOpenEditBox(false))
+    }
 
     return (
-        <div className='review-create-box'>
-            {/* <form onSubmit={handleSubmit}>
+        <div className='review-edit-box-profile'>
                 <div className='rating-box-profile'>
                     <div>Campaign</div>
                     <StarsForm rating={campaignRating}
@@ -77,7 +71,7 @@ const EditReview = (props) => {
                             Please, rate
                         </div>
                     )}
-                    <div>Organization</div>
+                    <div>Planning</div>
                     <StarsForm rating={orgRating}
                             ratingType='orgRating'
                             update={update}/>
@@ -88,25 +82,19 @@ const EditReview = (props) => {
                     )}
                 </div>
                 <div className='submit-textarea'>
-                    {/* {created && (
-                        <div className="success-text-review">
-                            Thank you for your review!
-                        </div>
-                    )} */}
-                    {/* <textarea onChange={updateInfo}
+                    <textarea onChange={updateInfo}
                         id='description'
                         value={description}
-                        cols="40" rows="5" />
+                        cols="35" rows="5" />
                     {errDescription && (
                         <div className="err-item">
                             Can't sudmit empty review
                         </div>
                     )}
-                    <button type="submit">
-                        Edit review
+                    <button className='auth-button' type="button" onClick={handleSubmit}>
+                        Submit review
                     </button>
                 </div>
-            </form> */}
         </div>
     );
 };

@@ -10,7 +10,6 @@ const Favorites = (props) => {
         e.preventDefault();
 
         if (fav) {
-            debugger
             dispatch(deleteFav(fav.id)).then(() => setFav(''))
         } else {
             let newFav = {

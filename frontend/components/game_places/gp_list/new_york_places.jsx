@@ -8,7 +8,7 @@ const NewYorkPlaces = (props) => {
     const history = useHistory();
     
     let newyork = cities.filter(city => city.name === 'New York');
-    let newyorkPlaces = Object.values(gamePlaces.gamePlacesAll).filter(gp => gp.cityId === newyork[0].id);
+    let newyorkPlaces = Object.values({...gamePlaces.gamePlacesAll}).filter(gp => gp.cityId === newyork[0].id);
 
     let mapped = newyorkPlaces.map((gPlace, i) => {
         let rating = gPlace.rating;

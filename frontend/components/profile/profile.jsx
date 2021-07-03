@@ -7,10 +7,16 @@ import UpcomingReservations from '../reservations/player_reservations/upcoming_r
 import EditProfile from './edit_profile';
 import { fetchCities } from '../../actions/city_actions';
 import { fetchPlayer } from '../../actions/player_actions';
+import { fetchAllFavs } from '../../actions/favorite_actions';
+import StarsShow from '../stars/stars_show';
+import SavedGamePlaces from '../game_places/gp/saved_game_place';
+import { fetchAllReviews } from '../../actions/review_actions';
 
 const Profile = () => {
 
     const reservations = useSelector(state => state.entities.reservations.reservationsAll);
+    const review = useSelector(state => state.entities.reviews.review);
+    const reviews = useSelector(state => state.entities.reviews.reviewsAll);
     const player = useSelector(state => state.session.currentPlayer);
     const dispatch = useDispatch();
     const location = useLocation();
@@ -21,6 +27,19 @@ const Profile = () => {
     const [pastRes, setPastRes] = useState([]);
     const currentDate = new Date();
     const current = Date.parse(currentDate);
+    let mapped;
+
+    useEffect(() => {
+        dispatch(fetchAllReservations())
+    }, [])
+
+    useEffect(() => {
+        dispatch(fetchAllFavs())
+    }, [])
+
+    useEffect(() => {
+        dispatch(fetchAllReviews())
+    }, [review])
     
     useEffect(() => {
         dispatch(fetchCities())
@@ -31,7 +50,7 @@ const Profile = () => {
     }, [])
 
     useEffect(() => {
-        if (location.pathname === '/my/profile') {
+        if (location.pathname === '/my/profile' || location.pathname === '/my') {
             setVisibleRes(true)
         } else if (location.pathname === '/my/favorites') {
             setVisibleFav(true)
@@ -75,14 +94,10 @@ const Profile = () => {
     }
 
     useEffect(() => {
-        dispatch(fetchAllReservations())
-    }, [])
-
-    useEffect(() => {
         let upres = [];
         let past = [];
     
-        Object.values(reservations).filter(reservation => {
+        Object.values({...reservations}).filter(reservation => {
             let dateFull = new Date(`${reservation.gameDate} ${reservation.resYear} ${reservation.gameStart} ${reservation.gmt}`);
             let resDate = Date.parse(dateFull) 
     
@@ -99,8 +114,6 @@ const Profile = () => {
         setPastRes(past);
 
     }, [reservations])
-
-
 
     return (
         <>
@@ -135,7 +148,7 @@ const Profile = () => {
                     <div className='upcoming-reses'>
                         <div className='text-up'>Saved Restaurants</div>
                         <div className='res-index'>
-                            
+                            <SavedGamePlaces />
                         </div>
                     </div>
                 )}

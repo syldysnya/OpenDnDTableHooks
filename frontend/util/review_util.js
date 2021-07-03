@@ -35,8 +35,6 @@ export const editReview = review => {
 };
 
 export const deleteReview = reviewId => {
-    review = convertToSnakeCase(review);
-
     return $.ajax({
         method: 'DELETE',
         url: `/api/reviews/${reviewId}`

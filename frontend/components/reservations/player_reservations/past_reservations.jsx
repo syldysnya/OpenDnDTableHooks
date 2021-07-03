@@ -7,22 +7,9 @@ import { fetchAllReviews } from '../../../actions/review_actions';
 
 const PastReservations = (props) => {
     const {reservations, currentPlayer} = props;
-    const dispatch = useDispatch();
-    
-    useEffect(() => {
-        dispatch(fetchAllReviews())
-    }, [])
     
     const mapped = reservations.map((res, i) => {
-        const {reviews} = res;
-        let review = {}
-        let playerReviews = {}
-        if (reviews) {
-            playerReviews = Object.values(reviews).filter(rev => rev.player_id === parseInt(currentPlayer.id));
-            review = playerReviews[0];
-        }
-        
-        return <PlayerReservationItem res={res} i={i} currentPlayer={currentPlayer} review={review}/>
+        return <PlayerReservationItem res={res} key={`resPlayer-${i}`} currentPlayer={currentPlayer}/>
     })
 
     return mapped

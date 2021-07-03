@@ -7,7 +7,7 @@ const AllGamePlaces = (props) => {
     const {gamePlaces, cities} = props;
     const history = useHistory();
 
-    let mapped = Object.values(gamePlaces.gamePlacesAll).map((gPlace, i) => {
+    let mapped = Object.values({...gamePlaces.gamePlacesAll}).map((gPlace, i) => {
         let rating = gPlace.rating;
         
         if (!rating && gPlace.campRating) {

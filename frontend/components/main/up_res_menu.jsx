@@ -7,16 +7,11 @@ import { fetchGamePlace } from '../../actions/game_place_actions';
 const UpComMenu = () => {
 
     const player = useSelector(state => state.session.currentPlayer)
-    const [reservations, setReservations] = useState('');
+    const reservations = useSelector(state => state.entities.reservations.reservationsAll)
     const dispatch = useDispatch();
     const [visible, setVisible] = useState(false);
     const [listRes, setListRes] = useState();
     let list;
-
-    useEffect(() => {
-        dispatch(fetchAllReservations())
-            .then(res => setReservations(res.reservations))
-    }, [])
 
     const handleDropdownMenu = e => {
         if (e.target.contains(e.relatedTarget)) {
@@ -28,7 +23,7 @@ const UpComMenu = () => {
 
     useEffect(() => {
         if (reservations) {
-            list = Object.values(reservations).filter(res => res.canceled === false)
+            list = Object.values({...reservations}).filter(res => res.canceled === false)
             setListRes(list[0])
         }
     }, [visible])

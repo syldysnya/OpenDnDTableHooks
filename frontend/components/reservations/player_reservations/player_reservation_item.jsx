@@ -1,29 +1,35 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllFavs } from '../../../actions/favorite_actions';
+import { deleteReview, fetchAllReviews } from '../../../actions/review_actions';
 import Favorites from '../../favorites/favorites';
 import CreateReviewForm from '../../reviews/create_review_form';
 import EditReview from '../../reviews/edit_review';
 import StarsShow from '../../stars/stars_show';
 
 const PlayerReservationItem = (props) => {
-    const {i, currentPlayer, review, res} = props;   
+    const {res} = props;   
+    const currentPlayer = useSelector(state => state.session.currentPlayer);
+    const reviews = useSelector(state => state.entities.reviews.reviewsAll);
+    const favs = useSelector(state => state.entities.favorites.favoritesAll);
+    const dispatch = useDispatch();
     const {gpAvatar, gpName, gameDate, gameStart, playersNum, gamePlaceId, canceled} = res;
     const [writeBox, setWriteBox] = useState(false);
-    const [editBox, setEditBox] = useState(false);
     const [openWriteBox, setOpenWriteBox] = useState(false);
     const [openEditBox, setOpenEditBox] = useState(false);
-    const dispatch = useDispatch();
     const favRef = useRef(null);
     const [fav, setFav] = useState('');
+    const [review, setReview] = useState('');
 
     useEffect(() => {
-        dispatch(fetchAllFavs())
-            .then(res => {
-                let filtered = Object.values(res.favorites).filter(fav => fav.gamePlaceId === parseInt(gamePlaceId));
-                setFav(filtered[0])
-            })
-    }, [])
+        let favArr = Object.values({...favs}).filter(fav => fav.gamePlaceId === parseInt(gamePlaceId));
+        setFav(favArr[0])
+    }, [favs])  
+
+    useEffect(() => {
+        let revArr = Object.values({...reviews}).filter(rev => rev.gamePlaceId === gamePlaceId);
+        setReview(revArr[0])
+    }, [reviews])
 
     useEffect(() => {
         let rev = document.getElementById('write-review')
@@ -34,14 +40,6 @@ const PlayerReservationItem = (props) => {
             rev.style.animation = 'none'
         }
     }, [writeBox])
-
-    // useEffect(() => {
-    //     if (review) {
-    //         setEditBox(true)
-    //     } else {
-    //         setWriteBox(true)
-    //     }
-    // }, [])
 
     useEffect(() => {
         if (fav) {
@@ -60,10 +58,12 @@ const PlayerReservationItem = (props) => {
     }
 
     const handleDelete = e => {
+        dispatch(deleteReview(review.id))
+            .then(() => dispatch(fetchAllReviews()))
     }
 
     return (
-        <div className='res-box-info' key={`res-${i}`}>
+        <div className='res-box-info'>
             <div className='gp-logo'>
                 <img src={gpAvatar} />
             </div>
@@ -81,7 +81,7 @@ const PlayerReservationItem = (props) => {
                                 <Favorites gamePlaceId={gamePlaceId} playerId={currentPlayer.id} fav={fav} setFav={setFav} favRef={favRef}/>
                             </div>
                             <div className="write-review">
-                                {!canceled && (<div className="write-text">
+                                {!review && !canceled && (<div className="write-text">
                                     <i className="far fa-comment-alt"></i>
                                     <h2 onClick={handleWrite}>
                                         Write a review
@@ -100,41 +100,43 @@ const PlayerReservationItem = (props) => {
                                     </h2>
                                 </div>)}
                             </div>
-                            {review && !canceled && (
-                                <div className="show-review">
-                                    <div className="description-box">
-                                        <span>You wrote:</span>
-                                        <div className="description">
-                                            {review}
-                                        </div>
-                                    </div>
-                                    <div className="rating-box">
-                                        <div className="rate">
-                                            <span>OVERALL</span>
-                                            <StarsShow />
-                                        </div>
-                                        <div className="rate">
-                                            <span>CAMPAIGN</span>
-                                            <StarsShow />   
-                                        </div>
-                                        <div className="rate">
-                                            <span>SERVICE</span>
-                                            <StarsShow />
-                                        </div>
-                                        <div className="rate">
-                                            <span>PLANNING</span>
-                                            <StarsShow />
-                                        </div>
+                        </div>
+                        {review && !canceled && (
+                            <article className="show-review">
+                                <div className="description-box">
+                                    <p>You wrote:</p>
+                                    <div className="description">
+                                        <p className='desc-p'>
+                                            {review.description}
+                                        </p>
                                     </div>
                                 </div>
-                            )}
-                        </div>
+                                <div className="rating-box-rate">
+                                    <div className="rate">
+                                        <p>OVERALL</p>
+                                        <StarsShow />
+                                    </div>
+                                    <div className="rate">
+                                        <p>CAMPAIGN</p>
+                                        <StarsShow />   
+                                    </div>
+                                    <div className="rate">
+                                        <p>SERVICE</p>
+                                        <StarsShow />
+                                    </div>
+                                    <div className="rate">
+                                        <p>PLANNING</p>
+                                        <StarsShow />
+                                    </div>
+                                </div>
+                            </article>
+                        )}
                     </div>
                 </div>
                 <div className="name-info-review" id='write-review'>
                     <div className="review-box-user">
-                        {openWriteBox && <CreateReviewForm player={currentPlayer} gamePlaceId={gamePlaceId} res={res}/>}
-                        {openEditBox && <EditReview player={currentPlayer} gamePlaceId={gamePlaceId} />}
+                        {openWriteBox && <CreateReviewForm player={currentPlayer} gamePlaceId={gamePlaceId} res={res} setOpenWriteBox={setOpenWriteBox}/>}
+                        {openEditBox && <EditReview review={review} setOpenEditBox={setOpenEditBox}/>}
                     </div>
                 </div>
             </div>

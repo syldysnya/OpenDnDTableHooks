@@ -47,8 +47,10 @@ export const editReview = review => dispatch => (
         err => dispatch(receiveErrors(err)))
 );
 
-export const deleteReview = reviewId => dispatch => (
+export const deleteReview = reviewId => dispatch => {
+    debugger
+    return (
     ApiUtil.deleteReview(reviewId)
         .then(() => dispatch(removeReview(reviewId)),
         err => dispatch(receiveErrors(err)))
-)
+)}

@@ -282,3 +282,28 @@
     }
 }
 
+.show-review {
+    margin-right: 30px;
+    margin-top: 10px;
+    border: 1px solid $grey-color;
+    border-radius: 5px;
+    padding: 10px;
+
+    p {
+        color: rgb(156, 155, 155);
+        font-weight: 500;
+        margin: 0;
+    }
+
+    .desc-p {
+        font-weight: 400;
+        color: black;
+    }
+}
+
+.show-review > .rating-box-rate {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    justify-content: space-between;
+}   
