@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../actions/session_actions';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 
 const DropdownMenu = () => {
 
     const currentPlayer = useSelector(state => state.session.currentPlayer);
+    const history = useHistory();
     const [visible, setVisible] = useState(false);
     const dispatch = useDispatch();
 

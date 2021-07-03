@@ -15,14 +15,14 @@ const Auth = ({ component: Component, path, loggedIn }) => (
     />
 );
 
-// const Protected = ({ component: Component, path, loggedIn }) => (
-//     <Route 
-//         path={path}
-//         render={props => (
-//             loggedIn ? <Component {...props} /> : <Redirect to='/signup' />
-//         )}
-//     />
-// );
+const Protected = ({ component: Component, path, loggedIn }) => (
+    <Route 
+        path={path}
+        render={props => (
+            loggedIn ? <Component {...props} /> : <Redirect to='/' />
+        )}
+    />
+);
 
 export const AuthRoute = withRouter(connect(mapSTP)(Auth));
-// export const ProtectedRoute = withRouter(connect(mapSTP, undefined)(Protected))
+export const ProtectedRoute = withRouter(connect(mapSTP, undefined)(Protected))

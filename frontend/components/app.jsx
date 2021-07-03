@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import { ProtectedRoute } from '../util/route_util';
 import GamePlace from './game_places/gp/game_place';
 import Footer from './main/footer';
 import Home from './main/home';
@@ -25,14 +26,17 @@ const App = () => {
             <Route path='/' component={NavBar} />
             <Route exact path='/' component={Home} />
             <Route exact path='/gameplaces/:gamePlaceId' component={GamePlace}/>
-            <Route exact path='/booking/details' component={ConfirmationCreateForm} />
-            <Route exact path='/booking/details/edit' component={ConfirmationModifyForm} />
-            <Route exact path='/book/view/:reservationId' component={ReservationView} />
-            <Route exact path='/book/cancel' component={CancelReservation} />
-            <Route exact path='/book/cancel/form' component={CanceledReservationView} />
-            <Route exact path='/booking/:gamePlaceId/:reservationId/modify' component={EditReservationPage} />
-            <Route path='/my' component={Profile} />
-            <Route exact path='/search' component={SearchPage} />
+
+            <Switch>
+                <Route exact path='/search' component={SearchPage} />
+                <ProtectedRoute exact path='/booking/details' component={ConfirmationCreateForm} />
+                <ProtectedRoute exact path='/booking/details/edit' component={ConfirmationModifyForm} />
+                <ProtectedRoute exact path='/book/view/:reservationId' component={ReservationView} />
+                <ProtectedRoute exact path='/book/cancel' component={CancelReservation} />
+                <ProtectedRoute exact path='/book/cancel/form' component={CanceledReservationView} />
+                <ProtectedRoute exact path='/booking/:gamePlaceId/:reservationId/modify' component={EditReservationPage} />
+                <ProtectedRoute path='/my' component={Profile} />
+            </Switch>
             <Route path='/' component={Footer} />
         </>
     );

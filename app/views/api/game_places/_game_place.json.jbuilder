@@ -9,10 +9,10 @@ serviceArr = game_place.reviews.map { |rev| rev.service_rating }
 campArr = game_place.reviews.map { |rev| rev.campaign_rating }
 orgArr = game_place.reviews.map { |rev| rev.org_rating }
 json.length_rat game_place.reviews.length
-json.rating ratingArr.reduce(:+)
-json.serv_rating serviceArr.reduce(:+)
-json.org_rating orgArr.reduce(:+)
-json.camp_rating campArr.reduce(:+)
+json.rating ratingArr
+json.serv_rating serviceArr.sum
+json.org_rating orgArr.sum
+json.camp_rating campArr.sum
 arr = game_place.reviews.map { |rev| [rev.campaign_rating, rev.service_rating, rev.org_rating] }
 sorted = arr.flatten.sort
 obj = {}

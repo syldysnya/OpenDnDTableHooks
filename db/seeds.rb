@@ -1013,6 +1013,163 @@ res1_7 = Reservation.create!(
     gmt: "GMT-0500"
 )
 
+res1_8 = Reservation.create!(
+    game_date: "Fri Jul 02",
+    game_start: "7:30 PM",
+    players_num: 2,
+    dnd_campaign_id: nil,
+    game_place_id: gPlace1.id,
+    player_id: player1.id,
+    confirmation_num: "6936",
+    canceled: false,
+    email: "demo@mail.com",
+    res_year: "2021",
+    gmt: "GMT-0400"
+)
+
+res1_9 = Reservation.create!(
+    game_date: "Sat Jun 12",
+    game_start: "3:45 PM",
+    players_num: 2,
+    game_place_id: gPlace5.id,
+    player_id: player1.id,
+    confirmation_num: "1107",
+    canceled: false,
+    email: "demo@mail.com",
+    res_year: "2021",
+    gmt: "GMT-0400"
+)
+
+res2_1 = Reservation.create!(
+    game_date: "Mon May 03",
+    game_start: "2:30 PM",
+    players_num: 2,
+    game_place_id: gPlace2.id,
+    player_id: player2.id,
+    confirmation_num: "4932",
+    canceled: false,
+    email: "davher@mail.com",
+    res_year: "2021",
+    gmt: "GMT-0400"
+)
+
+res2_2 = Reservation.create!(
+    game_date: "Tue May 18",
+    game_start: "4:15 PM",
+    players_num: 2,
+    game_place_id: gPlace17.id,
+    player_id: player2.id,
+    confirmation_num: "1634",
+    canceled: false,
+    email: "davher@mail.com",
+    res_year: "2021",
+    gmt: "GMT-0400"
+)
+
+res2_3 = Reservation.create!(
+    game_date: "Tue Apr 20",
+    game_start: "1:45 PM",
+    players_num: 2,
+    game_place_id: gPlace19.id,
+    player_id: player2.id,
+    confirmation_num: "4315",
+    canceled: false,
+    email: "davher@mail.com",
+    res_year: "2021",
+    gmt: "GMT-0400"
+)
+
+res2_4 = Reservation.create!(
+    game_date: "Sat Mar 20",
+    game_start: "5:30 PM",
+    players_num: 5,
+    game_place_id: gPlace1.id,
+    player_id: player2.id,
+    confirmation_num: "5311",
+    canceled: false,
+    email: "davher@mail.com",
+    res_year: "2021",
+    gmt: "GMT-0400"
+)
+
+res2_5 = Reservation.create!(
+    game_date: "Tue Jun 15",
+    game_start: "8:00 PM",
+    players_num: 2,
+    game_place_id: gPlace4.id,
+    player_id: player2.id,
+    confirmation_num: "2024",
+    canceled: false,
+    email: "davher@mail.com",
+    res_year: "2021",
+    gmt: "GMT-0400"
+)
+
+res2_6 = Reservation.create!(
+    game_date: "Tue Jun 15",
+    game_start: "8:00 PM",
+    players_num: 2,
+    game_place_id: gPlace8.id,
+    player_id: player2.id,
+    confirmation_num: "2024",
+    canceled: false,
+    email: "davher@mail.com",
+    res_year: "2021",
+    gmt: "GMT-0400"
+)
+
+res2_7 = Reservation.create!(
+    game_date: "Tue Jun 15",
+    game_start: "8:00 PM",
+    players_num: 2,
+    game_place_id: gPlace9.id,
+    player_id: player2.id,
+    confirmation_num: "2024",
+    canceled: false,
+    email: "davher@mail.com",
+    res_year: "2021",
+    gmt: "GMT-0400"
+)
+
+res2_8 = Reservation.create!(
+    game_date: "Tue Jun 15",
+    game_start: "8:00 PM",
+    players_num: 2,
+    game_place_id: gPlace3.id,
+    player_id: player2.id,
+    confirmation_num: "2024",
+    canceled: false,
+    email: "davher@mail.com",
+    res_year: "2021",
+    gmt: "GMT-0400"
+)
+
+res2_9 = Reservation.create!(
+    game_date: "Tue Jun 15",
+    game_start: "8:00 PM",
+    players_num: 2,
+    game_place_id: gPlace18.id,
+    player_id: player2.id,
+    confirmation_num: "2024",
+    canceled: false,
+    email: "davher@mail.com",
+    res_year: "2021",
+    gmt: "GMT-0400"
+)
+
+res2_10 = Reservation.create!(
+    game_date: "Tue Jun 15",
+    game_start: "8:00 PM",
+    players_num: 2,
+    game_place_id: gPlace20.id,
+    player_id: player2.id,
+    confirmation_num: "2024",
+    canceled: false,
+    email: "davher@mail.com",
+    res_year: "2021",
+    gmt: "GMT-0400"
+)
+
 dndcamp1 = DndCampaign.create!(
     title: "The Order of the Phoenix",
     adventure_type: 'dungeon crawling',

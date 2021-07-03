@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useLocation, useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { fetchGamePlace } from '../../../actions/game_place_actions';
-import { createReservation, editReservation, fetchReservation } from '../../../actions/reservation_actions';
+import { editReservation, fetchReservation } from '../../../actions/reservation_actions';
 import { RES_TIME } from '../create_forms/main_page_create_form';
 import { Calendar } from 'react-date-range';
 import TimePickButtons from '../create_forms/time_pick_buttons';
