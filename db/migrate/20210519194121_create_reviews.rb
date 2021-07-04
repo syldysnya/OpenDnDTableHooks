@@ -5,7 +5,7 @@ class CreateReviews < ActiveRecord::Migration[5.2]
       t.integer :campaign_rating, null: false
       t.integer :service_rating,  null: false
       t.integer :org_rating, null: false
-      t.float :overall_rating, null: false
+      t.integer :overall_rating, null: false
       t.integer :dnd_campaign_id, null: false
       t.integer :game_place_id, null: false
       t.integer :player_id, null: false
