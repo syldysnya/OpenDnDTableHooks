@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_04_051829) do
+ActiveRecord::Schema.define(version: 2021_07_04_061108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,10 +64,7 @@ ActiveRecord::Schema.define(version: 2021_07_04_051829) do
     t.integer "player_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-<<<<<<< HEAD
     t.index ["game_place_id", "player_id"], name: "index_favorites_on_game_place_id_and_player_id", unique: true
-=======
->>>>>>> 725610b6f5481f09532c1b7d782bbd7c68170a9b
     t.index ["game_place_id"], name: "index_favorites_on_game_place_id"
     t.index ["player_id"], name: "index_favorites_on_player_id"
   end
@@ -80,18 +77,11 @@ ActiveRecord::Schema.define(version: 2021_07_04_051829) do
     t.decimal "longitude", null: false
     t.string "open_hour", null: false
     t.string "close_hour", null: false
-<<<<<<< HEAD
     t.string "gmt", null: false
     t.string "wedsite"
     t.text "description", null: false
     t.integer "city_id", null: false
     t.integer "dnd_campaign_id"
-=======
-    t.string "wedsite"
-    t.text "description", null: false
-    t.integer "city_id", null: false
-    t.integer "dnd_campaign_id", null: false
->>>>>>> 725610b6f5481f09532c1b7d782bbd7c68170a9b
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["city_id"], name: "index_game_places_on_city_id"
@@ -117,10 +107,7 @@ ActiveRecord::Schema.define(version: 2021_07_04_051829) do
     t.datetime "updated_at", null: false
     t.integer "city_id"
     t.string "dname"
-<<<<<<< HEAD
     t.string "phone"
-=======
->>>>>>> 725610b6f5481f09532c1b7d782bbd7c68170a9b
     t.index ["city_id"], name: "index_players_on_city_id"
     t.index ["email"], name: "index_players_on_email", unique: true
     t.index ["session_token"], name: "index_players_on_session_token", unique: true
@@ -130,15 +117,9 @@ ActiveRecord::Schema.define(version: 2021_07_04_051829) do
     t.string "game_date", null: false
     t.string "game_start", null: false
     t.integer "players_num", null: false
-<<<<<<< HEAD
     t.integer "game_place_id", null: false
     t.integer "player_id", null: false
     t.integer "dnd_campaign_id"
-=======
-    t.integer "dnd_campaign_id", null: false
-    t.integer "game_place_id", null: false
-    t.integer "player_id", null: false
->>>>>>> 725610b6f5481f09532c1b7d782bbd7c68170a9b
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "confirmation_num", null: false
@@ -146,11 +127,8 @@ ActiveRecord::Schema.define(version: 2021_07_04_051829) do
     t.boolean "canceled", default: false, null: false
     t.string "plphone"
     t.string "email"
-<<<<<<< HEAD
     t.string "res_year", null: false
     t.string "gmt", null: false
-=======
->>>>>>> 725610b6f5481f09532c1b7d782bbd7c68170a9b
     t.index ["dnd_campaign_id"], name: "index_reservations_on_dnd_campaign_id"
     t.index ["game_place_id"], name: "index_reservations_on_game_place_id"
     t.index ["player_id"], name: "index_reservations_on_player_id"
@@ -161,28 +139,17 @@ ActiveRecord::Schema.define(version: 2021_07_04_051829) do
     t.integer "campaign_rating", null: false
     t.integer "service_rating", null: false
     t.integer "org_rating", null: false
-<<<<<<< HEAD
     t.float "overall_rating", null: false
     t.integer "dnd_campaign_id"
-=======
-    t.decimal "overall_rating", null: false
-    t.integer "dnd_campaign_id", null: false
->>>>>>> 725610b6f5481f09532c1b7d782bbd7c68170a9b
     t.integer "game_place_id", null: false
     t.integer "player_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-<<<<<<< HEAD
     t.integer "reservation_id", null: false
     t.index ["dnd_campaign_id"], name: "index_reviews_on_dnd_campaign_id"
     t.index ["game_place_id"], name: "index_reviews_on_game_place_id"
     t.index ["player_id"], name: "index_reviews_on_player_id"
     t.index ["reservation_id", "player_id"], name: "index_reviews_on_reservation_id_and_player_id", unique: true
-=======
-    t.index ["dnd_campaign_id"], name: "index_reviews_on_dnd_campaign_id"
-    t.index ["game_place_id"], name: "index_reviews_on_game_place_id"
-    t.index ["player_id"], name: "index_reviews_on_player_id"
->>>>>>> 725610b6f5481f09532c1b7d782bbd7c68170a9b
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
