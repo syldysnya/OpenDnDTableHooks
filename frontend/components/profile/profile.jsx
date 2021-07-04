@@ -51,11 +51,11 @@ const Profile = () => {
     }, [])
 
     useEffect(() => {
-        setVisibleFav(false)
-        setVisibleAcc(false)
-        setVisibleRes(false)
-
-        if (location.pathname === '/my/profile' || location.pathname === '/my') {
+        setVisibleFav(false);
+        setVisibleAcc(false);
+        setVisibleRes(false);
+        
+        if (location.pathname === '/my/profile' || location.pathname === '/my/' || location.pathname === '/my/history') {
             setVisibleRes(true)
         } else if (location.pathname === '/my/favorites') {
             setVisibleFav(true)
@@ -63,6 +63,15 @@ const Profile = () => {
             setVisibleAcc(true)
         }
     }, [location.pathname])
+
+    useEffect(() => {
+        if (visibleRes && location.pathname === '/my/history') {
+            let part = document.getElementById('history');
+            part.scrollIntoView({
+                behavior: "smooth"
+            });
+        }
+    }, [location.pathname, visibleRes])
     
     useEffect(() => {
         let res = document.getElementById("reservations-lb");
@@ -147,7 +156,7 @@ const Profile = () => {
                                 <UpcomingReservations reservations={upcoming} player={player}/>
                             </div>
                         </div>
-                        <div className='past-reses'>
+                        <div className='past-reses' id='history'>
                             <div className='text-up'>Past reservations</div>
                             <div className='res-index'>
                                 <PastReservations reservations={pastRes} currentPlayer={player}/>

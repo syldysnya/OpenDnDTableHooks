@@ -42,7 +42,7 @@ const DropdownMenu = () => {
                     <p>Hello, {currentPlayer.fname}!</p>
                     <div className='break-auth'></div>
                     <NavLink className='menu-links' to='/my/profile' onClick={handleLink}>My Profile</NavLink>
-                    <NavLink className='menu-links' to='/my/profile' onClick={handleLink}>My Dining History</NavLink>
+                    <NavLink className='menu-links' to='/my/history' onClick={handleLink}>My Dining History</NavLink>
                     <NavLink className='menu-links' to='/my/favorites' onClick={handleLink}>My Saved Game Places</NavLink>
                     <div className='signout-div'
                         onClick={handleClick}>
