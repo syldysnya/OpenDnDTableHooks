@@ -23,17 +23,21 @@ const DropdownMenu = () => {
     }
 
     const hideMenu = e => {
+        if (e.target.contains(e.relatedTarget)) {
+            return null
+        }
+        
         setVisible(false)
     }
 
     return (
-        <div className='dropdown-profile-content'>
-            <div className='button-profile' tabIndex='0'
+        <div className='dropdown-profile-content' tabIndex='1' onBlur={hideMenu}>
+            <div className='button-profile'
                 onClick={handleDropdownMenu}
                 >
                 <i className="fas fa-dice-d20"></i>
                 { visible ? (
-                <div className='dropdown-profile-open' onBlur={hideMenu}
+                <div className='dropdown-profile-open' onMouseLeave={hideMenu}
                     onClick={e => e.stopPropagation()}>
                     <p>Hello, {currentPlayer.fname}!</p>
                     <div className='break-auth'></div>

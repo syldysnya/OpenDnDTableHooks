@@ -25,13 +25,15 @@ const UpComMenu = () => {
     }
 
     const hideMenu = e => {
+        if (e.target.contains(e.relatedTarget)) {
+            return null
+        }
         setVisible(false)
     }
 
     return (
-        <div className="upcom-profile-menu">
-            <div className='upres-menu'  tabIndex='1'
-                onClick={handleDropdownMenu}>
+        <div className="upcom-profile-menu" tabIndex='0' onBlur={hideMenu}>
+            <div className='upres-menu' onClick={handleDropdownMenu}>
                 <i className="far fa-calendar"></i>
             </div>
             {visible && (<div className="upcom-menu-box">
@@ -39,7 +41,7 @@ const UpComMenu = () => {
                     Upcoming reservations
                 </div>
                 {listRes ? (
-                    <div className="upcome-box" onBlur={hideMenu}>
+                    <div className="upcome-box" onMouseLeave={hideMenu}>
                         <div className="upcom-icon">
                             <i className="fas fa-store-alt"></i>
                         </div>
@@ -61,7 +63,7 @@ const UpComMenu = () => {
                                     <span>{listRes.playersNum} people</span>
                                 </div>
                             </div>
-                            <div className="crud-links" onClick={hideMenu}>
+                            <div className="crud-links">
                                 <NavLink style={{ textDecoration: 'none' }} to={`/book/view/${listRes.id}`}>
                                     View
                                 </NavLink>

@@ -904,17 +904,17 @@ player2 = Player.create!(
 )
 
 player3 = Player.create!(
-    email: 'oyumdon@mail.com',
-    fname: 'Oyum',
-    lname: 'Don',
+    email: 'larry@mail.com',
+    fname: 'Larry',
+    lname: 'T',
     password: '12345678',
     city_id: city3.id
 )
 
 player4 = Player.create!(
-    email: 'saidon@mail.com',
-    fname: 'Sai',
-    lname: 'Don',
+    email: 'tiff@mail.com',
+    fname: 'Tiff',
+    lname: 'Chef',
     password: '12345678',
     city_id: city4.id
 )

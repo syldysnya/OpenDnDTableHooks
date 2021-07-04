@@ -9,16 +9,20 @@ const NotificationMenu = () => {
     }
 
     const hideMenu = e => {
+        if (e.target.contains(e.relatedTarget)) {
+            return null
+        }
+        
         setVisible(false)
     }
 
     return (
-        <div className="not-profile-menu" >
-            <div className='not-menu' tabIndex='2'
+        <div className="not-profile-menu" tabIndex='2' onBlur={hideMenu}>
+            <div className='not-menu'
                 onClick={handleDropdownMenu}
                 >
                 <i className="far fa-bell"></i>
-                {visible && (<div className="not-menu-box" onBlur={hideMenu}>
+                {visible && (<div className="not-menu-box" onMouseLeave={hideMenu}>
                     <div className="not-title">
                         About this project
                     </div>

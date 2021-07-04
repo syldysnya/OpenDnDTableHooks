@@ -29,7 +29,7 @@ const PlayerReservationItem = (props) => {
     useEffect(() => {
         let revArr = Object.values({...reviews}).filter(rev => rev.gamePlaceId === gamePlaceId && rev.playerId === parseInt(currentPlayer.id));
         setReview(revArr[0])
-    }, [reviews])
+    }, [reviews, openEditBox])
 
     useEffect(() => {
         let rev = document.getElementById('write-review')
@@ -101,7 +101,7 @@ const PlayerReservationItem = (props) => {
                                 </div>)}
                             </div>
                         </div>
-                        {review && !canceled && (
+                        {review && !canceled && !openEditBox && (
                             <article className="show-review">
                                 <div className="description-box">
                                     <p>You wrote:</p>
@@ -114,19 +114,19 @@ const PlayerReservationItem = (props) => {
                                 <div className="rating-box-rate">
                                     <div className="rate">
                                         <p>OVERALL</p>
-                                        <StarsShow />
+                                        <StarsShow stars={review.overallRating} lengthRat={1}/>
                                     </div>
                                     <div className="rate">
                                         <p>CAMPAIGN</p>
-                                        <StarsShow />   
+                                        <StarsShow stars={review.campaignRating} lengthRat={1}/>   
                                     </div>
                                     <div className="rate">
                                         <p>SERVICE</p>
-                                        <StarsShow />
+                                        <StarsShow stars={review.serviceRating} lengthRat={1}/>
                                     </div>
                                     <div className="rate">
                                         <p>PLANNING</p>
-                                        <StarsShow />
+                                        <StarsShow stars={review.orgRating} lengthRat={1}/>
                                     </div>
                                 </div>
                             </article>

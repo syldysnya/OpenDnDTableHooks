@@ -2,21 +2,23 @@
 
 .profile-page {
     display: grid;
-    grid-template-columns: auto 180px auto 0;
+    grid-template-columns: minmax(50px, 20%) 180px 700px 0;
     background-color: $white-grey;
 }
 
 .profile-bar {
-    padding: 2% 0% 2% 13%;
+    padding: 20px 0 20px 18%;
+    height: 80px;
     display: flex;
     flex-direction: column;
     background-color: white;
     border-top: 1px solid $white-grey;
-    border-bottom: 1px solid $white-grey;
+    border-bottom: 1px solid $grey-color;
     grid-column-start: 1;
     grid-column-end: 6;
     font-size: 35px;
     font-weight: 640;
+    justify-content: center;
 
     span {
         font-size: 15px;
@@ -213,7 +215,7 @@
         grid-template-columns: 25px 100px auto;
         column-gap: 20px;
         border-top: 1.5px solid $white-grey;
-        border-bottom: 1.5px solid $white-grey;
+        border-bottom: 1.5px solid $light-grey;
         padding: 2% 3;
         background-color: white;
 
@@ -414,4 +416,5 @@
     font-size: 24px;
     font-weight: 700;
     font-family: $primary-font;
+    border-bottom: 1px solid $grey-color;
 }

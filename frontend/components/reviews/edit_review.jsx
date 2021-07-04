@@ -51,7 +51,7 @@ const EditReview = (props) => {
     }
 
     return (
-        <div className='review-edit-box-profile'>
+        <div className='review-create-box-profile'>
                 <div className='rating-box-profile'>
                     <div>Campaign</div>
                     <StarsForm rating={campaignRating}

@@ -9,7 +9,7 @@ const StarsShow = (props) => {
     
     useEffect(() => {
         starsRef.current.style.width = persentage;
-    }, [starsRef])
+    }, [starsRef, stars, lengthRat])
 
     return (
         <div className='stars-outer'>

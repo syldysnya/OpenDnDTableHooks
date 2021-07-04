@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { fetchAllReservations } from '../../actions/reservation_actions';
 import PastReservations from '../reservations/player_reservations/past_reservations';
 import UpcomingReservations from '../reservations/player_reservations/upcoming_reservations';
@@ -14,6 +14,7 @@ import { fetchAllReviews } from '../../actions/review_actions';
 
 const Profile = () => {
 
+    const history = useHistory();
     const reservations = useSelector(state => state.entities.reservations.reservationsAll);
     const review = useSelector(state => state.entities.reviews.review);
     const reviews = useSelector(state => state.entities.reviews.reviewsAll);
@@ -50,12 +51,18 @@ const Profile = () => {
     }, [])
 
     useEffect(() => {
+        setVisibleFav(false)
+        setVisibleAcc(false)
+        setVisibleRes(false)
+
         if (location.pathname === '/my/profile' || location.pathname === '/my') {
             setVisibleRes(true)
         } else if (location.pathname === '/my/favorites') {
             setVisibleFav(true)
+        } else if (location.pathname === '/my/profile/edit') {
+            setVisibleAcc(true)
         }
-    }, [])
+    }, [location.pathname])
     
     useEffect(() => {
         let res = document.getElementById("reservations-lb");
@@ -70,13 +77,15 @@ const Profile = () => {
             fav.classList.add('active');
             acc.classList.remove('active');
             res.classList.remove('active');
+            
         } else if (visibleAcc) {
             acc.classList.add('active')
             fav.classList.remove('active');
             res.classList.remove('active');
+            
         }
 
-    })
+    }, [visibleAcc, visibleFav, visibleRes])
 
     const handleClick = e => {
         let id = e.target.id;
@@ -86,10 +95,13 @@ const Profile = () => {
 
         if (id === 'reservations-lb') {
             setVisibleRes(true)
+            history.push('/my/profile');
         } else if (id === 'saved-lb') {
             setVisibleFav(true)
+            history.push('/my/favorites');
         } else if (id === 'account-lb') {
             setVisibleAcc(true)
+            history.push('/my/profile/edit');
         }
     }
 
