@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { editReservation } from '../../../actions/reservation_actions';
 
 const CanceledReservationView = (props) => {
 
     const location = useLocation();
-    const {gamePlace, reservation, canceled} = location.aboutProps;
+    const history = useHistory();
+
+    if (!location.state) {
+        history.push('/')
+        window.location.reload()
+    }
+
+    const {gamePlace, reservation, canceled} = location.state;
     const player = useSelector(state => state.session.currentPlayer);
     const dispatch = useDispatch();
 

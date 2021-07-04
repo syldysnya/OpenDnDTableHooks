@@ -2,7 +2,7 @@
 
 .profile-page {
     display: grid;
-    grid-template-columns: auto 180px auto auto;
+    grid-template-columns: auto 180px auto 0;
     background-color: $white-grey;
 }
 
@@ -310,3 +310,51 @@
     padding-left: 10px;
     justify-content: space-between;
 }   
+
+.saved-box-favs {
+    display: grid;
+    grid-template-columns: 100px auto 150px 20px;
+    padding: 40px;
+    font-weight: 500;
+
+    .left-saved {
+        height: 100px;
+        overflow: hidden;
+        display: flex;
+        border-radius: 5px;
+        justify-content: center;
+
+        img {
+            height: 100%;
+        }
+    }
+
+    .right-saved {
+        padding-left: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        .favorites-box {
+            position: relative;
+            top: 0;
+            right: 0;
+            z-index: inherit;
+            width: 200px;
+            height: auto;
+            padding: 0;
+            background-color: transparent;
+            border-radius: 2px;
+            font-weight: 400;
+        }
+
+        .favorites-box:hover {
+            border: none;
+            color: $red-color;
+        }
+
+        .city-saved {
+            font-size: 14px;
+        }
+    }
+}

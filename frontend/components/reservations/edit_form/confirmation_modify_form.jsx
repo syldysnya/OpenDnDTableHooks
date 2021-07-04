@@ -6,12 +6,18 @@ import { createReservation, editReservation } from '../../../actions/reservation
 
 const ConfirmationModifyForm = () => {
 
+    
     const player = useSelector(state => state.session.currentPlayer);
     const location = useLocation();
+    const history = useHistory();
+
+    if (!location.state) {
+        history.push('/')
+        window.location.reload()
+    }
     const [reservation, setReservation] = useState(location.state.reservation);
     const {gamePlace} = location.state;
     const dispatch = useDispatch();
-    const history = useHistory();
     const {fname, lname} = player;
     const [time, setTimer] = useState(300);
     const [mins, setMins] = useState('');

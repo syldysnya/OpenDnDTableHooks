@@ -8,14 +8,19 @@ import { fetchGamePlace } from '../../../actions/game_place_actions';
 const CancelReservation = (props) => {
     
     const location = useLocation();
+    const history = useHistory();
+
+    if (!location.state) {
+        history.push('/')
+        window.location.reload()
+    }
+
     const {reservation} = location.state;
     const [gamePlace, setGamePlace] = useState('');
     const {avatarUrl, name, id} = gamePlace;
     const {playersNum, gameDate, gameStart} = reservation;
     const [reservationInfo, setReservation] = useState(location.state.reservation);
     const dispatch = useDispatch();
-    const history = useHistory();
-    console.log(gamePlace)
 
     useEffect(() => {
         if (location.state.gamePlace) {
@@ -34,7 +39,7 @@ const CancelReservation = (props) => {
         if (reservationInfo.canceled) {
             history.push({
                     pathname: `/book/cancel/form`,
-                    aboutProps: {
+                    state: {
                         reservation: reservation,
                         gamePlace: gamePlace,
                         canceled: reservationInfo.canceled

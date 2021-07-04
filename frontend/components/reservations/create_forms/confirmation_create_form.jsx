@@ -5,9 +5,15 @@ import { openModal } from '../../../actions/modal_actions';
 import { createReservation } from '../../../actions/reservation_actions';
 
 const ConfirmationCreateForm = (props) => {
-
     const player = useSelector(state => state.session.currentPlayer);
     const location = useLocation();
+    const history = useHistory();
+
+    if (!props.location.state) {
+        history.push('/')
+        window.location.reload()
+    }
+
     const randomNum = Math.floor(Math.random() * 10000);
     const currentDateFull = new Date();
     const currentDate = currentDateFull.toString().split(' ');
@@ -32,7 +38,6 @@ const ConfirmationCreateForm = (props) => {
     });
 
     const dispatch = useDispatch();
-    const history = useHistory();
     const {fname, lname} = player;
     const [time, setTimer] = useState(300);
     const [mins, setMins] = useState('');
@@ -44,6 +49,7 @@ const ConfirmationCreateForm = (props) => {
         gameStart,
         playersNum
     } = reservation;
+
 
     useEffect(() => {
         
@@ -69,10 +75,6 @@ const ConfirmationCreateForm = (props) => {
             setFormatted(`${mins}:${secs}`)
         }
     }, [mins, secs])
-
-    // useEffect(() => {
-    //     setReservation({...reservation, gameStart: location.state.gameStart, email: player.email, gamePlaceId: gamePlace.id, playerId: player.id })
-    // }, [])
 
     useEffect(() => {
         if (props.location.state.reservation) {

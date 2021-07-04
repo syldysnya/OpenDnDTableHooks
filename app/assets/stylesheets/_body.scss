@@ -420,7 +420,10 @@ body {
 
 .dropdown-calendar {
     position: relative;
-    top: -16px;
+    width: 300px;
+    height: 320px;
+    background-color: $light-grey;
+    top: 0;
     z-index: 1;
     grid-row-start: 3;
 }
@@ -428,10 +431,12 @@ body {
 .dropdown-calendar-main {
     position: absolute;
     top: 110px;
+    width: 300px;
+    height: 320px;
     left: 0;
     border-radius: 2px;
     border: 1px solid $grey-color;
-    background: white;
+    background-color: $light-grey;
     z-index: 1;
     grid-row-start: 3;
 }
@@ -439,7 +444,10 @@ body {
 .dropdown-calendar.edit {
     position: absolute;
     top: 325px;
+    width: 300px;
+    height: 320px;
     border: 1px solid $grey-color;
+    background-color: $light-grey;
     border-radius: 5px;
 }
 
@@ -483,82 +491,84 @@ body {
             display: block;
             background-color: $light-grey; 
 
-            .rdrCalendarWrapper {
-                width: 90%;
-                margin: 5%;
-                position: relative;
-                top: 0;
-                background-color: $light-grey;
-            }
-
-            .rdrMonthAndYearWrapper, .rdrWeekDays {
-                padding: 0;
-            }
-
-            .rdrDay, .rdrDayToday, .rdrDayWeekend, .rdrDayEndOfWeek {
-
-                    border: 1px solid $grey-color;
-                    color: transparent;
-            }
-
-            .rdrMonthPicker {
-                margin: 0;
-                width: 100px;
-
-                select {
-                    padding: 0;
-                }
-            }
             
-            .rdrYearPicker {
-                margin: 0;
-                width: 50px;
-
-                select {
-                    padding: 0;
-                }
-            }
-
-            .rdrMonthAndYearPickers > span > select {
-                font-weight: 600;
-                font-size: 17px;
-                background: none;
-                font-family: $primary-font;
-            }
-
-            .rdrMonth {
-                width: 100%;
-                padding: 0;
-            }
-
-            .rdrDayDisabled {
-                background-color: $grey-color;
-            }
-
-            .rdrDays > button {
-                width: calc(100% / 7);
-                background-color: white;
-                border: 1px solid $grey-color;
-                border-radius: 0;
-                font-size: 13px;
-                margin: 0;
-            }
-
-            .rdrNextPrevButton, .rdrPprevButton {
-                width: 30px;
-                height: 30px;
-                font-size: 15px;
-                box-sizing: border-box;
-                background-color: $light-grey;
-                border: 1px solid  $grey-color;
-                border-radius: 100%;
-                margin: 0 10px;
-
-                i {
-                    margin: 0 auto;
-                }
-            }
         }
+    }
+}
+
+.rdrCalendarWrapper {
+    width: 90%;
+    margin: 5%;
+    position: relative;
+    top: 0;
+    background: $light-grey !important;
+}
+
+.rdrMonthAndYearWrapper, .rdrWeekDays {
+    padding: 0;
+}
+
+.rdrDay, .rdrDayToday, .rdrDayWeekend, .rdrDayEndOfWeek {
+
+        border: 1px solid $grey-color;
+        color: transparent;
+}
+
+.rdrMonthPicker {
+    margin: 0;
+    width: 100px;
+
+    select {
+        padding: 0;
+    }
+}
+
+.rdrYearPicker {
+    margin: 0;
+    width: 50px;
+
+    select {
+        padding: 0;
+    }
+}
+
+.rdrMonthAndYearPickers > span > select {
+    font-weight: 600;
+    font-size: 17px;
+    background: none;
+    font-family: $primary-font;
+}
+
+.rdrMonth {
+    width: 100% !important;
+    padding: 0 !important;
+}
+
+.rdrDayDisabled {
+    background-color: $light-grey !important;
+}
+
+.rdrDays > button {
+    width: calc(100% / 7);
+    background-color: white;
+    border: .5px solid $grey-color !important;
+    border-radius: 0;
+    font-size: 13px;
+    margin: 0;
+}
+
+.rdrNextPrevButton, .rdrPprevButton {
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
+    box-sizing: border-box;
+    background-color: $light-grey;
+    border: 1px solid  $grey-color;
+    border-radius: 100%;
+    margin: 0 10px;
+
+    i {
+        margin: 0 auto;
     }
 }
 

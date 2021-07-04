@@ -9,7 +9,6 @@ const Favorites = (props) => {
 
     const handleSave = e => {
         e.preventDefault();
-        console.log(fav)
 
         if (fav) {
             dispatch(deleteFav(fav.id)).then(() => setFav(''))
