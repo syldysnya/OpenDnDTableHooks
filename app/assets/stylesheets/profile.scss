@@ -7,7 +7,7 @@
 }
 
 .profile-bar {
-    padding: 2% 0% 2% 15%;
+    padding: 2% 0% 2% 13%;
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -201,12 +201,6 @@
     }
 }
 
-.text-up {
-    padding: 35px 45px;
-    font-size: 25px;
-    font-weight: 600;
-}
-
 .res-index {
     display: flex;
     flex-direction: column;
@@ -357,4 +351,67 @@
             font-size: 14px;
         }
     }
+}
+
+.edit-profile-page {
+    margin-top: 30px;
+    background: white;
+    border-radius: 5px;
+
+    input {
+        height: 50px;
+        border-radius: 5px;
+        border: 1px solid $grey-color;
+        width: 100%;
+        padding: 10px;
+    }
+
+    h2 {
+        margin: 25px 0 15px 0;
+        font-size: 15px;
+    }
+
+    h1 {
+        margin: 25px 0 15px 0;
+        font-size: 25px;
+    }
+
+    h3 {
+        margin: 15px 0 15px 0;
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    .edit-index {
+        padding: 45px;
+        padding-top: 0;
+        display: inline-block;
+        width: 100%;
+
+        .name-info {
+            display: flex;
+            width: 100%;
+        }
+
+        .name-info > * {
+            width: 100%;
+            margin: 2px;
+        }
+    }
+
+    .password-info > h2 {
+        margin-top: 15px;
+    }
+
+    .auth-button {
+        margin-top: 20px;
+        cursor: pointer;
+    }
+
+}
+.text-up {
+    padding: 35px 45px;
+    font-size: 24px;
+    font-weight: 700;
+    font-family: $primary-font;
 }

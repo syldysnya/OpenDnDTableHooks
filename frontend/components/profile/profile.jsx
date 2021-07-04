@@ -120,7 +120,7 @@ const Profile = () => {
         <div className='profile-page'>
                 <div className='profile-bar'>
                     {player.fname} {player.lname}
-                    <span>0 points</span>
+                    {/* <span>0 points</span> */}
                 </div>
                 <div className='profile-left-bar'>
                     <div id='reservations-lb' onClick={handleClick}>Reservations</div>

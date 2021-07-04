@@ -11,11 +11,7 @@ const SavedItem = (props) => {
     const history = useHistory();
 
     useEffect(() => {
-        if (fav) {
-            favRef.current.style.width = '100%'
-        } else {
-            favRef.current.style.width = '0%';
-        }
+        favRef.current.style.width = '100%'
     }, [fav])
 
     return (

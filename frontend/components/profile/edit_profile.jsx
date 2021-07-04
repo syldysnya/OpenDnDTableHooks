@@ -66,7 +66,7 @@ const EditProfile = (props) => {
     }
 
     return (
-        <div className='upcoming-reses'>
+        <div className='edit-profile-page'>
             {created && (
                 <div className="success-box">
                     <i className="fas fa-check-circle"></i>
@@ -74,7 +74,7 @@ const EditProfile = (props) => {
                 </div>
             )}
             <div className='text-up'>About me</div>
-            <div className='res-index'>
+            <div className='edit-index'>
                 <div className="name-info">
                     <div className="fname">
                         <h2>First Name</h2>
