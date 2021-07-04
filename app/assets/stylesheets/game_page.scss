@@ -338,6 +338,8 @@
 
 .parent-calendar-box {
     position: relative;
+    display: flex;
+    justify-content: space-around;  
 
     .dropdown-calendar {
         position: absolute;

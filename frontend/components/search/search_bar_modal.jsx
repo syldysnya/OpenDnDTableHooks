@@ -74,11 +74,10 @@ const SearchBarModal = () => {
                             onClick={showCalendar} tabIndex='0'
                             >
                             <span>{reservation.gameDate}</span>
+                            <i className="fas fa-chevron-down"></i>
                         </div>
-                        <i className="fas fa-chevron-down"></i>
                     </div>
                     <div className='info-create-time' value='gameStart'>
-                        <i className="far fa-clock"></i>
                         <select onChange={updateInfo} 
                             id='gameStart'
                             defaultValue='8:00 PM'>
@@ -86,7 +85,6 @@ const SearchBarModal = () => {
                         </select>
                     </div>
                     <div className='info-create-form'>
-                        <i className="far fa-user"></i>
                         <select defaultValue='2'
                             id='playersNum'
                             onChange={updateInfo}>

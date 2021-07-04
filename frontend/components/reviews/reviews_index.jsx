@@ -1,17 +1,18 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fetchAllReviews } from '../../actions/review_actions';
 import ReviewItem from './review_item';
 
-const ReviewsIndex = (props) => {
+const ReviewsIndex = () => {
 
-    const {reviews} = props;
+    const params = useParams();
+    const reviews = useSelector(state => state.entities.reviews.reviewsAll)
 
     let mapped = Object.values({...reviews}).map((rev, i) => {
-        return (
-            <ReviewItem review={rev} key={`review-${i}`}/>
-        )
+        
+        if (rev.gamePlaceId === parseInt(params.gamePlaceId)) {
+            return <ReviewItem review={rev} key={`review-${i}`}/>
+        }
     })
     
     return mapped;

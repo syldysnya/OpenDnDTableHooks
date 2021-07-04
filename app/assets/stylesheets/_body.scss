@@ -6,6 +6,7 @@ $grey-color: #dadada;
 $red-color: #da3743;
 $blue-color: #247f9e;
 $white-grey: #f7f7f7;
+$light-grey: #f1f2f4;
 $light-blue: #eef8fb;
 $light-red: #fceeef;
 $light-green: #f0faf3;
@@ -425,6 +426,17 @@ body {
     grid-row-start: 3;
 }
 
+.dropdown-calendar-main {
+    position: absolute;
+    top: 110px;
+    left: 0;
+    border-radius: 2px;
+    border: 1px solid $grey-color;
+    background: white;
+    z-index: 1;
+    grid-row-start: 3;
+}
+
 .dropdown-calendar.edit {
     position: absolute;
     top: 325px;
@@ -436,11 +448,16 @@ body {
     width: 100%;
 
     .nav-bar-search {
+        display: grid;
+        grid-template-columns: minmax(50px, 20%) 900px minmax(50px, 20%);
+        grid-template-rows: 15px 50px 250px;
         margin-top: 30px;
         background-image: url('https://app-opendndtable-seed.s3.amazonaws.com/dtp-desktop-efc049.png');
         height: 80px;
         
         .search-search-page {
+            grid-column-start: 2;
+            grid-row-start: 2;
             display: grid;
             grid-template-columns: 48% 32% 17%;
             column-gap: 1.5%;
@@ -448,9 +465,100 @@ body {
             left: 0;
             right: 0;
             margin: 0 auto;
-            top: 20%;
+            top: 0;
             height: 50px;
             width: 900px;
+        }
+
+        .dropdown-calendar.search {
+            position: relative;
+            width: 300px;
+            height: 320px;
+            top: 0;
+            z-index: 1;
+            grid-row-start: 3;
+            grid-column-start: 2;
+            grid-column-end: 5;
+            border: 1px solid $grey-color;
+            border-radius: 2px;
+            display: block;
+            background-color: $light-grey; 
+
+            .rdrCalendarWrapper {
+                width: 90%;
+                margin: 5%;
+                position: relative;
+                top: 0;
+                background-color: $light-grey;
+            }
+
+            .rdrMonthAndYearWrapper, .rdrWeekDays {
+                padding: 0;
+            }
+
+            .rdrDay, .rdrDayToday, .rdrDayWeekend, .rdrDayEndOfWeek {
+
+                    border: 1px solid $grey-color;
+                    color: transparent;
+            }
+
+            .rdrMonthPicker {
+                margin: 0;
+                width: 100px;
+
+                select {
+                    padding: 0;
+                }
+            }
+            
+            .rdrYearPicker {
+                margin: 0;
+                width: 50px;
+
+                select {
+                    padding: 0;
+                }
+            }
+
+            .rdrMonthAndYearPickers > span > select {
+                font-weight: 600;
+                font-size: 17px;
+                background: none;
+                font-family: $primary-font;
+            }
+
+            .rdrMonth {
+                width: 100%;
+                padding: 0;
+            }
+
+            .rdrDayDisabled {
+                background-color: $grey-color;
+            }
+
+            .rdrDays > button {
+                width: calc(100% / 7);
+                background-color: white;
+                border: 1px solid $grey-color;
+                border-radius: 0;
+                font-size: 13px;
+                margin: 0;
+            }
+
+            .rdrNextPrevButton, .rdrPprevButton {
+                width: 30px;
+                height: 30px;
+                font-size: 15px;
+                box-sizing: border-box;
+                background-color: $light-grey;
+                border: 1px solid  $grey-color;
+                border-radius: 100%;
+                margin: 0 10px;
+
+                i {
+                    margin: 0 auto;
+                }
+            }
         }
     }
 }
@@ -490,7 +598,7 @@ body {
         .search-results-list {
             width: 100%;
             display: grid;
-            grid-template-rows: 40px auto;
+            grid-template-rows: 70px auto;
             height: auto;
 
             .number-of-places {

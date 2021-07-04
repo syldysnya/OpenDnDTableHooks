@@ -186,7 +186,7 @@ const GamePlace = () => {
                         )}
                     </div>
                     <div className='reviews-box'>
-                        <ReviewsIndex reviews={reviews} />
+                        <ReviewsIndex />
                     </div>
                 </div>
                 <div className='right-gpage'>

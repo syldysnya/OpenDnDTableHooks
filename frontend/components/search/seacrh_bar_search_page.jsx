@@ -35,6 +35,10 @@ const SearchBarSearchPage = (props) => {
         setVisible(false)
     }
 
+    const hideCalendar = e => {
+        setVisible(false)
+    }
+
     return (
         <>
             <div className='search-search-page'>
@@ -46,15 +50,16 @@ const SearchBarSearchPage = (props) => {
                             onClick={showCalendar} tabIndex='0'
                             >
                             {reservation.gameDate}
+                            <i className="fas fa-chevron-down"></i>
                         </div>
                     </div>
-                    <div className='info-create-time' value='gameStart'>
+                    <div className='info-create-time' value='gameStart' onClick={hideCalendar}>
                         <select onChange={updateInfo} 
                             id='gameStart'>
                             {timePick}
                         </select>
                     </div>
-                    <div className='info-create-form'>
+                    <div className='info-create-form' onClick={hideCalendar}>
                         <select id='playersNum' value={playersNum}
                             onChange={updateInfo}>
                             <option key='1' value='1'>For 1</option>
@@ -76,16 +81,16 @@ const SearchBarSearchPage = (props) => {
                     Find a Table
                 </button>
             </div>
-            <div className='dropdown-calendar' onMouseLeave={showCalendar}>
-                {visible && (
+            {visible && (
+                <div className='dropdown-calendar search' onMouseLeave={hideCalendar}>
                     <Calendar
                         date={new Date()}
                         onChange={e => updateDate(e)}
                         minDate={new Date()}
                         maxDate={new Date('12-31-2021')}
                     />
-                )}
-            </div>
+                </div>
+            )}
         </>
     );
 };

@@ -94,12 +94,16 @@ const MainPageCreateForm = (props) => {
         createForm = <TimePickButtons reservation={reservation} gamePlace={props.gamePlace} formType='MainPage'/>
     }
 
+    const hideCalendar = e => {
+        setVisible(false)
+    }
+
     return (
         <div className='reservation-box-new'>
             <div className='make-res-text'>
                 <h1>Make a reservation</h1>
             </div>
-                <div className='info-create-form-main'>
+                <div className='info-create-form-main' onClick={hideCalendar}>
                     <span>Party Size</span>
                     <select defaultValue='2'
                         id='playersNum'
@@ -119,18 +123,18 @@ const MainPageCreateForm = (props) => {
                         >
                         {gameDate}
                     </div>
-                    <div className='dropdown-calendar'>
-                        {visible && (
+                    {visible && (
+                        <div className='dropdown-calendar-main'>
                             <Calendar
                                 date={new Date()}
                                 onChange={e => updateDate(e)}
                                 minDate={new Date()}
                                 maxDate={new Date('12-31-2021')}
                             />
-                        )}
-                    </div>
+                        </div>
+                    )}
                 </div>
-                <div className='info-create-time-main' value='gameStart'>
+                <div className='info-create-time-main' value='gameStart' onClick={hideCalendar}>
                     <span>Time</span>
                     <select onChange={updateInfo} 
                         id='gameStart'
