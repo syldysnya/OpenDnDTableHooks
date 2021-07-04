@@ -6,7 +6,7 @@ const SearchFilter = (props) => {
 
     let mappedCities = cities.map((city, i) => {
         return (
-            <div className="city-box">
+            <div className="city-box" key={`cities-${i}`}>
                 <div onClick={handleCheckBox}
                     className="city-box-checkbox"
                     id={city.id}>

@@ -139,9 +139,7 @@ const ConfirmationCreateForm = (props) => {
                 <div className='game-session-details'>Game session details</div>
                 <div className="user-info-res">
                     <div>{fname} {lname} (
-                        {/* <div className="open-modal-login"> */}
-                            <span className='modal' onClick={handleModal}>Not {fname}?</span>
-                        {/* </div> */}
+                        <span className='modal' onClick={handleModal}>Not {fname}?</span>
                     )</div>
                 </div>
                 <form className='reservation-completion-box'>
@@ -159,11 +157,6 @@ const ConfirmationCreateForm = (props) => {
                             <input type="text" id="email" onChange={updateInfo} value={player.email}/>
                         </div>
                     </div>
-                    {/* <select className='adventure-type-list'>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select> */}
                     <textarea className='Additional-info-inp'
                             id="add_info"
                             onChange={updateInfo}

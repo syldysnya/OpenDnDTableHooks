@@ -103,7 +103,7 @@ const SearchBar = () => {
                             <i className="fas fa-chevron-down"></i>
                         </div>
                     </div>
-                    <div className='info-create-time' value='gameStart' onClick={hideCalendar}>
+                    <div className='info-create-time' defaultValue='gameStart' onClick={hideCalendar}>
                         <select onChange={updateInfo} 
                             id='gameStart'
                             defaultValue='8:00 PM'>

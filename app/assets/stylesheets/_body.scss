@@ -124,10 +124,6 @@ body {
                     cursor: pointer;
                 }
 
-                i {
-                    color: $red-color;
-                }
-
                 .info-box {
                     grid-row-start: 2;
                     position: relative;
@@ -168,23 +164,7 @@ body {
                         }
                     }
 
-                    .booked {
-                        font-weight: 700;
-                        padding-left: 5px;
-                    }
-
-                    .booked-icon {
-                        display: flex;
-                        align-items: center;
-
-                        i {
-                            color: black;
-                        }
-
-                        div {
-                            font-size: 12px;
-                        }
-                    }
+                    
                 }
             
                 .info-box div:first-child {
@@ -198,6 +178,25 @@ body {
         }
     }
 }
+
+.city-results {
+    font-size: 14px;
+}
+
+.booked-icon {
+    display: flex;
+    align-items: center;
+
+    .fa-chart-line {
+        color: black;
+    }
+
+    .booked {
+        padding-left: 5px;
+        font-weight: 700;
+        font-size: 13px;
+    }
+}   
 
 .stars-outer {
     position: relative;
@@ -565,14 +564,13 @@ body {
 
 .search-grid {
     width: 100%;
-    padding: 0 10%;
     display: grid;
-    grid-template-columns: 22% 75%;
-    column-gap: 3%;
+    grid-template-columns: minmax(50px, 18%) 150px 20px 600px minmax(50px, 12%);
 
     .left-bar-search {
         display: flex;
         flex-direction: column;
+        grid-column-start: 2;
 
         .filter-cities-title {
             font-weight: 500;
@@ -593,7 +591,7 @@ body {
         grid-template-rows: 5% auto;
         row-gap: 3%;
         width: 100%;
-
+        grid-column-start: 4;
 
         .search-results-list {
             width: 100%;
@@ -602,18 +600,20 @@ body {
             height: auto;
 
             .number-of-places {
-                padding: 15px 0;
+                padding: 20px 0;
                 font-weight: 500;
+                font-size: 14px;
+                border-bottom: 1px solid $light-grey;
             }
 
             .list-places {
                 display: grid;
-                grid-auto-rows: 30vh;
+                grid-auto-rows: 250px;
             }
 
             .result-item-info {
                 display: grid;
-                grid-template-rows: 25px 20px 25px 40px;
+                grid-template-rows: 25px 20px 20px 20px 40px;
                 row-gap: 5px;
 
                 .link-place {
@@ -629,6 +629,27 @@ body {
                     color: white;
                     font-weight: 500;
                     
+                }
+
+                .stars-outer {
+                    position: relative;
+                    display: inline-block;
+                }
+
+                .stars-inner {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    width: 0;
+                }
+                
+                .stars-outer::before {
+                    content: '\f005 \f005 \f005 \f005 \f005';
+                    font-family: 'Font Awesome 5 Free';
+                    font-weight: 900;
+                    color: #d2d1d1;
                 }
 
                 .stars-inner::before {
@@ -652,14 +673,14 @@ body {
             .result-item {
                 width: 100%;
                 display: grid;
-                grid-template-columns: 30% 68%;
-                column-gap: 2%;
+                grid-template-columns: 200px auto;
+                column-gap: 20px;
                 padding: 2vh 0;
                 height: 100%;
                 position: relative;
 
                 .avatar {
-                    height: 26vh;
+                    height: 200px;
                     border-radius: 5px;
                     overflow: hidden;
                     display: flex;

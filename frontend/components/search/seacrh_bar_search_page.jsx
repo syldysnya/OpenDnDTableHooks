@@ -53,14 +53,14 @@ const SearchBarSearchPage = (props) => {
                             <i className="fas fa-chevron-down"></i>
                         </div>
                     </div>
-                    <div className='info-create-time' value='gameStart' onClick={hideCalendar}>
+                    <div className='info-create-time' defaultValue='gameStart' onClick={hideCalendar}>
                         <select onChange={updateInfo} 
                             id='gameStart'>
                             {timePick}
                         </select>
                     </div>
                     <div className='info-create-form' onClick={hideCalendar}>
-                        <select id='playersNum' value={playersNum}
+                        <select id='playersNum' defaultValue={playersNum}
                             onChange={updateInfo}>
                             <option key='1' value='1'>For 1</option>
                             <option key='2' value='2'>For 2</option>

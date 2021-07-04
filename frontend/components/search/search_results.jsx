@@ -29,15 +29,21 @@ const SearchResults = (props) => {
                                 {gp.name}
                             </NavLink>
                         </div>
-                        <StarsShow stars={gp.rating} lengthRat={gp.lengthRat} />
-                        <div>{cities.map(city => {
+                        <div className='rating'>
+                            <StarsShow stars={gp.rating} lengthRat={gp.lengthRat} />
+                        </div>
+                        <div className='city-results'>{cities.map(city => {
                             if (city.id === gp.cityId) {
                                 return city.name
                                 }
                             })}
                         </div>
+                        <div className="booked-icon">
+                            <i className="fas fa-chart-line"></i>
+                            {gp.reservations.length === 1 ? (<div className='booked' >Booked 1 time today</div>) : (<div className='booked'>Booked {gp.reservations.length} times today</div>)}
+                        </div>
                         <div className="time-pick-buttons">
-                            <TimePickButtons reservation={reservation} gamePlace={gp} formType='SearchPage'/>
+                            <TimePickButtons key={`picks-${i}`} reservation={reservation} gamePlace={gp} formType='SearchPage'/>
                         </div>
                     </div>
                 </div>
@@ -61,12 +67,18 @@ const SearchResults = (props) => {
                                 {gp.name}
                             </NavLink>
                         </div>
-                        <StarsShow stars={gp.rating} lengthRat={gp.lengthRat} />
-                        <div>{cities.map(city => {
+                        <div className='rating'>
+                            <StarsShow stars={gp.rating} lengthRat={gp.lengthRat} />
+                        </div>
+                        <div className='city-results'>{cities.map(city => {
                             if (city.id === gp.cityId) {
                                 return city.name
                                 }
                             })}
+                        </div>
+                        <div className="booked-icon">
+                            <i className="fas fa-chart-line"></i>
+                            {gp.reservations.length === 1 ? (<div className='booked' >Booked 1 time today</div>) : (<div className='booked'>Booked {gp.reservations.length} times today</div>)}
                         </div>
                         <div className="time-pick-buttons">
                             <TimePickButtons reservation={reservation} gamePlace={gp} formType='SearchPage'/>
@@ -93,12 +105,18 @@ const SearchResults = (props) => {
                                             {gp.name}
                                         </NavLink>
                                     </div>
-                                    <StarsShow stars={gp.rating} lengthRat={gp.lengthRat} />
-                                    <div>{cities.map(city => {
+                                    <div className='rating'>
+                                        <StarsShow stars={gp.rating} lengthRat={gp.lengthRat} />
+                                    </div>
+                                    <div className='city-results'>{cities.map(city => {
                                         if (city.id === gp.cityId) {
                                             return city.name
                                             }
                                         })}
+                                    </div>
+                                    <div className="booked-icon">
+                                        <i className="fas fa-chart-line"></i>
+                                        {gp.reservations.length === 1 ? (<div className='booked' >Booked 1 time today</div>) : (<div className='booked'>Booked {gp.reservations.length} times today</div>)}
                                     </div>
                                     <div className="time-pick-buttons">
                                         <TimePickButtons reservation={reservation} gamePlace={gp} formType='SearchPage'/>

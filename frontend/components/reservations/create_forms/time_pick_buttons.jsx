@@ -97,6 +97,10 @@ const TimePickButtons = (props) => {
             timeOptions = [btn1, btn2, curTime, btn3, btn4]
         }
 
+        if (props.formType ==='SearchPage') {
+            timeOptions = [btn2, curTime, btn3]
+        }
+
         let mapped = timeOptions.map((t, i) => {
 
             if (props.formType === 'MainPage' || props.formType ==='SearchPage') {
