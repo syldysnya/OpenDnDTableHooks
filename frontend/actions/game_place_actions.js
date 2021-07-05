@@ -15,8 +15,8 @@ const receiveGamePlace = gamePlace => ({
     gamePlace
 });
 
-export const fetchAllGamePlaces = () => dispatch => (
-    ApiUtilGP.fetchAllGamePlaces()
+export const fetchAllGamePlaces = filter => dispatch => (
+    ApiUtilGP.fetchAllGamePlaces(filter)
         .then(gamePlaces => dispatch(receiveAllgamePlaces(gamePlaces)))
 );
 

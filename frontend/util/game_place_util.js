@@ -1,8 +1,8 @@
-export const fetchAllGamePlaces = () => {
+export const fetchAllGamePlaces = filter => {
     return $.ajax({
         method: "GET",
         url: 'api/game_places',
-        // contentType: 'application/json'
+        data: { filter }
     })
 }
 

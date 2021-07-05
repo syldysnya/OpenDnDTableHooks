@@ -1,37 +1,54 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { RES_TIME } from '../reservations/create_forms/main_page_create_form';
 import { Calendar } from 'react-date-range';
+import { useHistory, useLocation } from 'react-router-dom';
 
 const SearchBarSearchPage = (props) => {
 
     const [visible, setVisible] = useState(false);
-    const {reservation} = props;
-    const {playersNum} = reservation;
+    const {reservation, setReservation} = props;
+    const {playersNum, gameStart} = reservation;
+    const location = useLocation();
+    const history = useHistory();
+    const searchParams = location.search.substring(1);
+    const [searchInp, setSearchInp] = useState(searchParams);
 
     const updateInfo = (e) => {
-        props.setReservation({ ...reservation, [e.target.id]: e.target.value })
+        setReservation({ ...reservation, [e.target.id]: e.target.value })
     };
 
     const showCalendar = () => {
         setVisible(!visible)
     }
 
+    const handleInput = e => {
+        setSearchInp(e.target.value)
+    }
+
+    const handleClick = e => {
+        e.preventDefault();
+
+        history.push({
+            pathname: '/search',
+            state: {
+                reservation: reservation,
+            },
+            search: searchInp
+        })
+    }
+
     const timePick = RES_TIME.map(t => {
-        if (t === reservation.gameStart) {
-            return (
-                <option selected key={t} value={t}>{t}</option>
-            )
-            
-        } else {
-            return (
-                <option key={t} value={t}>{t}</option>
-            )
-        }
+        return (
+            <option key={t} value={t}>{t}</option>
+        )
     })
 
     const updateDate = (e) => {
-        let newDate = e.toDateString().replace(' 2021', '');
-        props.setReservation({ ...reservation, gameDate: newDate })
+        const newDateFull = e.toString().split(' ');
+        const newDate = newDateFull[0] + ' ' + newDateFull[1] + ' ' + newDateFull[2];
+        const newYear = newDateFull[3];
+        const newGMT = newDateFull[5];
+        setReservation({ ...reservation, gameDate: newDate, resYear: newYear, gmt: newGMT })
         setVisible(false)
     }
 
@@ -54,30 +71,30 @@ const SearchBarSearchPage = (props) => {
                         </div>
                     </div>
                     <div className='info-create-time' defaultValue='gameStart' onClick={hideCalendar}>
-                        <select onChange={updateInfo} 
+                        {reservation && (<select onChange={updateInfo} defaultValue={gameStart}
                             id='gameStart'>
                             {timePick}
-                        </select>
+                        </select>)}
                     </div>
                     <div className='info-create-form' onClick={hideCalendar}>
-                        <select id='playersNum' defaultValue={playersNum}
+                        {reservation && (<select id='playersNum' defaultValue={playersNum}
                             onChange={updateInfo}>
                             <option key='1' value='1'>For 1</option>
                             <option key='2' value='2'>For 2</option>
                             <option key='3' value='3'>For 3</option>
                             <option key='4' value='4'>For 4</option>
                             <option key='5' value='5'>For 5</option>
-                        </select>
+                        </select>)}
                     </div>
                 </div>
                 <div className="search-input">
                     <i className="fas fa-search"></i>
                     <input type="search" 
                         name="search-bar"
-                        onChange={props.handleInput}
-                        value={props.searchInput}/>
+                        onChange={handleInput}
+                        />
                 </div>
-                <button onClick={props.handleClick}>
+                <button onClick={handleClick}>
                     Find a Table
                 </button>
             </div>

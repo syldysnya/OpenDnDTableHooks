@@ -78,6 +78,7 @@ const ConfirmationCreateForm = (props) => {
 
     useEffect(() => {
         if (props.location.state.reservation) {
+            
             const {gameDate, playersNum, resYear, gmt} = props.location.state.reservation;
             setReservation({...reservation, gameDate: gameDate, gameStart: props.location.state.gameStart, playersNum: playersNum, resYear: resYear, gmt: gmt})
         }

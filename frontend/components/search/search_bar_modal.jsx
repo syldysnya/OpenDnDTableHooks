@@ -51,10 +51,10 @@ const SearchBarModal = () => {
         if (player) {
             history.push({
                 pathname: '/search',
-                aboutProps: {
+                state: {
                     reservation: reservation,
-                    searchInput: searchInput
-                }
+                },
+                search: searchInput
             })
             dispatch(hideModal())
         }

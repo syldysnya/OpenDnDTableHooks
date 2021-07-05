@@ -76,10 +76,10 @@ const SearchBar = () => {
         if (player) {
             history.push({
                 pathname: '/search',
-                aboutProps: {
+                state: {
                     reservation: reservation,
-                    searchInput: searchInput
-                }
+                },
+                search: searchInput
             })
         } else {
             dispatch(openModal('Sign In'))

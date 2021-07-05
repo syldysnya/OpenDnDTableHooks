@@ -596,6 +596,20 @@ body {
         input[type='checkbox'] {
             display: inline-block;
         }
+
+        .filter-0 {
+            margin: 5px;
+            font-weight: 500;
+            border: 1px solid $red-color;
+            color: white;
+            background-color: $red-color;
+            width: 60%;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 5px;
+            padding: 3px;
+            font-size: 12px;
+        }
     }
 
     .right-bar-search {
