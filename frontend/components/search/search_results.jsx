@@ -40,7 +40,7 @@ const SearchResults = (props) => {
             </div>)}
         </div>
     )
-
+    
     let mapped = gamePlaces.map((gp, i) => {
         return (
             <div className='result-item'

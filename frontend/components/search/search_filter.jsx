@@ -13,7 +13,7 @@ const SearchFilter = (props) => {
     const handleLocationFilter = e => {
         const value = parseInt(e.currentTarget.id);
         let tag = document.getElementById(value);
-        
+        debugger
         if (locationFilters && locationFilters.includes(value)) {
             let newVal = locationFilters.filter(ele => ele !== value)
             setLocationFilters(newVal)
@@ -31,8 +31,7 @@ const SearchFilter = (props) => {
     }
 
     useEffect(() => {
-        if (locationFilters.length > 0) {
-            debugger
+        if (locationFilters) {
             dispatch(updateFilter('location', locationFilters))
         }
     }, [locationFilters])

@@ -3,7 +3,7 @@ import { REMOVE_FILTER, UPDATE_FILTER } from '../actions/filter_actions';
 const defaultFilters = Object.freeze({
   location: [],
   rating: 0,
-  name: []
+  name: ''
 });
 
 const filtersReducer = (state = defaultFilters, action) => {
@@ -19,9 +19,13 @@ const filtersReducer = (state = defaultFilters, action) => {
       newFilter = {
         location: [] 
       }
-    } else {
+    } else if (action.filter === 'rating') {
       newFilter = {
         rating: 0 
+      }
+    } else {
+      newFilter = {
+        name: '' 
       }
     }
 

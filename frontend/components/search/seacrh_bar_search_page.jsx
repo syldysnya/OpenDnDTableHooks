@@ -6,12 +6,10 @@ import { useHistory, useLocation } from 'react-router-dom';
 const SearchBarSearchPage = (props) => {
 
     const [visible, setVisible] = useState(false);
-    const {reservation, setReservation} = props;
+    const {reservation, setReservation, searchInp, setSearchInp} = props;
     const {playersNum, gameStart} = reservation;
     const location = useLocation();
     const history = useHistory();
-    const searchParams = location.search.substring(1);
-    const [searchInp, setSearchInp] = useState(searchParams);
 
     const updateInfo = (e) => {
         setReservation({ ...reservation, [e.target.id]: e.target.value })

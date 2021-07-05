@@ -19,12 +19,21 @@ const SearchPage = () => {
     const defaultGMT = currentDate[5];
     const [reservation, setReservation] = useState('');
     const locationFilter = useSelector(state => state.ui.filters.location);
-    const [locationFilters, setLocationFilters] = useState(locationFilter);
+    const [searchInp, setSearchInp] = useState(urlParams); 
+    const [locationFilters, setLocationFilters] = useState('');
 
     useEffect(() => {
-        dispatch(fetchAllGamePlaces())
-    }, []);
-    
+        setLocationFilters(locationFilter)
+    }, [locationFilter])
+
+    useEffect(() => {
+        if (searchInp) {
+            dispatch(updateFilter('name', searchInp))
+        } else {
+            dispatch(fetchAllGamePlaces())
+        }
+    }, [searchInp, locationFilters]);
+
     useEffect(() => {
         dispatch(fetchCities())
     }, []);
@@ -51,7 +60,9 @@ const SearchPage = () => {
         <div className='search-results-page'>
             <div className='nav-bar-search'>
                 <SearchBarSearchPage reservation={reservation}
-                                    setReservation={setReservation}/>
+                                    setReservation={setReservation}
+                                    searchInp={searchInp}
+                                    setSearchInp={setSearchInp}/>
             </div>
             <div className="search-grid">
                 <div className='left-bar-search'>
