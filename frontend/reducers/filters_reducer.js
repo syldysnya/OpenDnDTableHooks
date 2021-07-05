@@ -1,4 +1,4 @@
-import { UPDATE_FILTER } from '../actions/filter_actions';
+import { REMOVE_FILTER, UPDATE_FILTER } from '../actions/filter_actions';
 
 const defaultFilters = Object.freeze({
   location: [],
@@ -12,6 +12,19 @@ const filtersReducer = (state = defaultFilters, action) => {
     const newFilter = {
       [action.filter]: action.value
     };
+    return Object.assign({}, state, newFilter);
+  } else if (action.type === REMOVE_FILTER) {
+    let newFilter;
+    if (action.filter === 'location') {
+      newFilter = {
+        location: [] 
+      }
+    } else {
+      newFilter = {
+        rating: 0 
+      }
+    }
+
     return Object.assign({}, state, newFilter);
   } else {
     return state;

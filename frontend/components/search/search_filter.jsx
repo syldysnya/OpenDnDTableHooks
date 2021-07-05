@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateFilter } from '../../actions/filter_actions';
 import { FaStar } from 'react-icons/fa';
 
-const SearchFilter = () => {
+const SearchFilter = (props) => {
 
     const dispatch = useDispatch();
     const cities = useSelector(state => Object.values({...state.entities.cities.citiesAll}));
-    const [locationFilters, setLocationFilters] = useState([]);
+    const locationFilter = useSelector(state => state.ui.filters.location);
+    const {locationFilters, setLocationFilters} = props;
 
     const handleLocationFilter = e => {
         const value = parseInt(e.currentTarget.id);
@@ -26,12 +27,14 @@ const SearchFilter = () => {
 
     const handleRatingFilter = e => {
         const value = parseInt(e.currentTarget.id);
-        console.log(value)
         dispatch(updateFilter('rating', value))
     }
 
     useEffect(() => {
-        dispatch(updateFilter('location', locationFilters))
+        if (locationFilters.length > 0) {
+            debugger
+            dispatch(updateFilter('location', locationFilters))
+        }
     }, [locationFilters])
 
     let mappedCities = cities.map((city, i) => {

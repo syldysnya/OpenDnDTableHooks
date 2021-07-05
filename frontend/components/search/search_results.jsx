@@ -3,11 +3,43 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import TimePickButtons from '../reservations/create_forms/time_pick_buttons';
 import StarsShow from '../stars/stars_show';
+import { deleteFilter } from '../../actions/filter_actions';
 
 const SearchResults = (props) => {
     const gamePlaces = useSelector(state => Object.values({...state.entities.gamePlaces.gamePlacesAll}));
     const cities = useSelector(state => Object.values({...state.entities.cities.citiesAll}));
     const {reservation} = props;
+    const locationFilter = useSelector(state => state.ui.filters.location);
+    const ratingFilter = useSelector(state => state.ui.filters.rating);
+    const dispatch = useDispatch();
+    const {locationFilters, setLocationFilters} = props;
+
+    const resetFilter = e => {
+        const filterId = e.currentTarget.id
+        if (filterId === 'location') {
+            let boxSelector = document.getElementsByClassName("checked");
+            Object.values(boxSelector).map(ele => ele.classList.remove('checked'))
+        } 
+        dispatch(deleteFilter(filterId))
+        setLocationFilters([])
+    }
+
+    let filtered_buttons = (
+        <div className="filt-buttons-box">
+            {locationFilter.length > 0 && (<div className="x-btn location" id={'location'} onClick={resetFilter}>
+                Location
+                <i className="fas fa-times"></i>
+            </div>)}
+            {ratingFilter > 0 && (<div className="x-btn rating" id={'rating'} onClick={resetFilter}>
+                {ratingFilter === 5 ? (
+                    <div>5 stars</div>
+                ) : (
+                    <div>{ratingFilter} stars and up</div>
+                )}
+                <i className="fas fa-times"></i>
+            </div>)}
+        </div>
+    )
 
     let mapped = gamePlaces.map((gp, i) => {
         return (
@@ -46,10 +78,20 @@ const SearchResults = (props) => {
         )}
     )
 
+
     return (
         <div className="search-results-list">
+            {(locationFilter.length > 0 || ratingFilter !== 0) && (
+                <div className="filter-results-text">
+                    FILTERS: {filtered_buttons}
+                </div>
+            ) }
             <div className="number-of-places">
-                {mapped.length} game places available
+                {mapped.length === 0 ? (<div>No results</div>) : mapped.length > 1 ? (
+                    <div>{mapped.length} game places available</div>
+                ) : (
+                    <div>1 game place available</div>
+                )} 
             </div>
             <div className="list-places">
                 {mapped}
