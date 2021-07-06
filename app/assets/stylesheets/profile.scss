@@ -4,6 +4,7 @@
     display: grid;
     grid-template-columns: minmax(50px, 20%) 180px 700px 0;
     background-color: $white-grey;
+    padding-bottom: 50px;
 }
 
 .profile-bar {
@@ -122,6 +123,7 @@
         display: flex;
         align-items: center;
         color: $red-color;
+        cursor: pointer;
     }
 
     .write-review {

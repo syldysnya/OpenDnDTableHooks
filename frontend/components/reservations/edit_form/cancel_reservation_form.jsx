@@ -85,7 +85,7 @@ const CancelReservation = (props) => {
                 <div className='colum-name'>   
                     <span>GAME PLACE</span>
                 <div className='column-info'>
-                    <NavLink to={`/gameplaces/${id}`}>
+                    <NavLink to={`/gameplaces/${id}`} style={{ textDecoration: 'none' }}>
                         {name}
                     </NavLink>
                 </div>

@@ -72,7 +72,7 @@ const SearchResults = (props) => {
                     </div>
                     <div className="booked-icon">
                         <i className="fas fa-chart-line"></i>
-                        {gp.reservations.length === 1 ? (<div className='booked' >Booked 1 time today</div>) : (<div className='booked'>Booked {gp.reservations.length} times today</div>)}
+                        {gp.reservations === 1 ? (<div className='booked' >Booked 1 time today</div>) : (<div className='booked'>Booked {gp.reservations} times today</div>)}
                     </div>
                     <div className="time-pick-buttons">
                         <TimePickButtons key={`picks-${i}`} reservation={reservation} gamePlace={gp} formType='SearchPage'/>

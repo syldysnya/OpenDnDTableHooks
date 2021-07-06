@@ -148,7 +148,7 @@ const ReservationView = () => {
                             </div>
                             <div className="u-reviews">
                                 <i className="far fa-comment-alt"></i>
-                                <span>{player.reviews.length} reviews</span>
+                                <span>{player.reviews} reviews</span>
                             </div>
                         </>
                     )}

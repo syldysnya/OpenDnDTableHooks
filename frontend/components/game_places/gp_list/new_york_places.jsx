@@ -29,7 +29,7 @@ const NewYorkPlaces = (props) => {
                     </div>
                     <div className='rating'>
                         <StarsShow stars={rating} lengthRat={gPlace.lengthRat}/>
-                        {gPlace.reviews.length === 1 ? (<div>{gPlace.reviews.length} review</div>) : (<div>{gPlace.reviews.length} reviews</div>)}
+                        {gPlace.reviews === 1 ? (<div>{gPlace.reviews} review</div>) : (<div>{gPlace.reviews} reviews</div>)}
                     </div>
                     <div className='city'>{cities.map(city => {
                         if (city.id === gPlace.cityId) {
@@ -38,7 +38,7 @@ const NewYorkPlaces = (props) => {
                     })}</div>
                     <div className="booked-icon">
                         <i className="fas fa-chart-line"></i>
-                        {gPlace.reservations.length === 1 ? (<div className='booked' >Booked {gPlace.reservations.length} time today</div>) : (<div className='booked'>Booked {gPlace.reservations.length} times today</div>)}
+                        {gPlace.reservations === 1 ? (<div className='booked' >Booked {gPlace.reservations} time today</div>) : (<div className='booked'>Booked {gPlace.reservations} times today</div>)}
                     </div>
                 </div>
             </div>

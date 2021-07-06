@@ -1,9 +1,5 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import DeleteReview from '../../reviews/delete_review';
-import EditReview from '../../reviews/edit_review';
+import React from 'react';
 import PlayerReservationItem from './player_reservation_item';
-import { fetchAllReviews } from '../../../actions/review_actions';
 
 const PastReservations = (props) => {
     const {reservations, currentPlayer} = props;

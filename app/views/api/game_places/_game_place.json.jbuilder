@@ -2,8 +2,8 @@ json.extract! game_place, :id, :name, :address, :phone_num, :latitude, :longitud
 json.photoUrl url_for(game_place.photo)
 json.avatarUrl url_for(game_place.avatar)
 json.pictureUrls game_place.pictures.map { |file| url_for(file) }
-json.reviews game_place.reviews
-json.reservations game_place.reservations
+json.reviews game_place.reviews.length
+json.reservations game_place.reservations.length
 ratingArr = game_place.reviews.map { |rev| rev.overall_rating }
 serviceArr = game_place.reviews.map { |rev| rev.service_rating }
 campArr = game_place.reviews.map { |rev| rev.campaign_rating }

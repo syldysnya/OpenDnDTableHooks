@@ -35,7 +35,7 @@ const AllGamePlaces = (props) => {
                     })}</div>
                     <div className="booked-icon">
                         <i className="fas fa-chart-line"></i>
-                        {reservations.length === 1 ? (<div className='booked' >Booked {reservations.length} time today</div>) : (<div className='booked'>Booked {reservations.length} times today</div>)}
+                        {reservations === 1 ? (<div className='booked' >Booked {reservations} time today</div>) : (<div className='booked'>Booked {reservations} times today</div>)}
                     </div>
                 </div>
             </div>
