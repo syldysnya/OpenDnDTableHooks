@@ -128,7 +128,7 @@ const MainPageCreateForm = (props) => {
                             <Calendar
                                 date={new Date()}
                                 onChange={e => updateDate(e)}
-                                // minDate={new Date()}
+                                minDate={new Date()}
                                 maxDate={new Date('12-31-2021')}
                             />
                         </div>
