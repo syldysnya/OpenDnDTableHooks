@@ -4,6 +4,10 @@ class Api::GamePlacesController < ApplicationController
         if filter_params
             @game_places = GamePlace.all
 
+            if filter_params[:location]
+                @game_places = GamePlace.where(:city_id => filter_params[:location])
+            end
+
             if filter_params[:name]
                 names = GamePlace.pluck(:name).select {|gp| gp.downcase.include?(filter_params[:name])}
                 cities = City.pluck(:name).select {|gp| gp.downcase.include?(filter_params[:name].downcase)}
@@ -24,10 +28,6 @@ class Api::GamePlacesController < ApplicationController
                     @game_places = game_places
                 end
 
-            end
-            
-            if filter_params[:location]
-                @game_places= @game_places.where(:city_id => filter_params[:location])
             end
 
             if filter_params[:rating] > '0'
