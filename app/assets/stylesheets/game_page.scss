@@ -373,7 +373,7 @@
     grid-column-start: 2;
     top: 14px;
     display: grid;
-    grid-template-rows: 39px 90px 55px 150px 450px auto;
+    grid-template-rows: 39px 90px 55px auto 450px auto;
     background: transparent;
     z-index: 1;
 }
@@ -492,6 +492,7 @@
         display: flex;
         align-items: flex-start;
         height: 100%;
+        padding-bottom: 50px;
     }
 }
 

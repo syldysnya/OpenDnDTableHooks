@@ -13,6 +13,7 @@ Player.destroy_all
 DndCampaign.destroy_all
 Reservation.destroy_all
 Favorite.destroy_all
+Review.destroy_all
 
 city1 = City.create!(
     name: 'Newark',
@@ -1219,7 +1220,7 @@ res19 = Reservation.create!(
 )
 
 reviews = []
-ratings = [1, 2, 3, 4, 5]
+ratings = [3, 4, 5]
 res_pla_gp_ids = Reservation.pluck(:id, :player_id, :game_place_id)
 
 res_pla_gp_ids.each do |array|
@@ -1233,7 +1234,7 @@ res_pla_gp_ids.each do |array|
     review.game_place_id = array[2]
     review.player_id = array[1]
     review.reservation_id = array[0]
-    reviews << reiew
+    reviews << review
 end
 
 reviews.each do |rev|
