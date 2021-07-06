@@ -10,7 +10,6 @@ import { updateFilter } from '../../actions/filter_actions';
 
 const SearchPage = () => {
     const location = useLocation();
-    const urlParams = location.search.substring(1).split('%20').join(' ');
     const dispatch = useDispatch();
     const currentDateFull = new Date();
     const currentDate = currentDateFull.toString().split(' ');
@@ -19,20 +18,12 @@ const SearchPage = () => {
     const defaultGMT = currentDate[5];
     const [reservation, setReservation] = useState('');
     const locationFilter = useSelector(state => state.ui.filters.location);
-    const [searchInp, setSearchInp] = useState(urlParams); 
-    const [locationFilters, setLocationFilters] = useState('');
+    const nameFilter = useSelector(state => state.ui.filters.name);
+    const urlParams = location.search.substring(1).split('%20').join(' ');
 
     useEffect(() => {
-        setLocationFilters(locationFilter)
-    }, [locationFilter])
-
-    useEffect(() => {
-        if (searchInp) {
-            dispatch(updateFilter('name', searchInp))
-        } else {
-            dispatch(fetchAllGamePlaces())
-        }
-    }, [searchInp, locationFilters]);
+        dispatch(updateFilter('name', urlParams))
+    }, [urlParams])
 
     useEffect(() => {
         dispatch(fetchCities())
@@ -60,22 +51,17 @@ const SearchPage = () => {
         <div className='search-results-page'>
             <div className='nav-bar-search'>
                 <SearchBarSearchPage reservation={reservation}
-                                    setReservation={setReservation}
-                                    searchInp={searchInp}
-                                    setSearchInp={setSearchInp}/>
+                                    setReservation={setReservation}/>
             </div>
             <div className="search-grid">
                 <div className='left-bar-search'>
                 <div className="map-page">
 
                 </div>
-                    <SearchFilter locationFilters={locationFilters}
-                                    setLocationFilters={setLocationFilters}/>
+                    <SearchFilter/>
                 </div>
                 <div className='right-bar-search'>
-                    <SearchResults reservation={reservation}
-                                    locationFilters={locationFilters}
-                                    setLocationFilters={setLocationFilters}/>
+                    <SearchResults reservation={reservation} urlParams={urlParams}/>
                 </div>
             </div>
         </div>

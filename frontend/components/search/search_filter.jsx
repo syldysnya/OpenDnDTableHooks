@@ -8,19 +8,18 @@ const SearchFilter = (props) => {
     const dispatch = useDispatch();
     const cities = useSelector(state => Object.values({...state.entities.cities.citiesAll}));
     const locationFilter = useSelector(state => state.ui.filters.location);
-    const {locationFilters, setLocationFilters} = props;
 
     const handleLocationFilter = e => {
         const value = parseInt(e.currentTarget.id);
         let tag = document.getElementById(value);
-        debugger
-        if (locationFilters && locationFilters.includes(value)) {
-            let newVal = locationFilters.filter(ele => ele !== value)
-            setLocationFilters(newVal)
+        
+        if (locationFilter && locationFilter.includes(value)) {
+            let newVal = locationFilter.filter(ele => ele !== value)
+            dispatch(updateFilter('location', newVal))
             tag.classList.remove('checked')
         } else {
-            let newVal = locationFilters.concat([value])
-            setLocationFilters(newVal)
+            let newVal = locationFilter.concat([value])
+            dispatch(updateFilter('location', newVal))
             tag.classList.add('checked')
         }
     };
@@ -29,12 +28,6 @@ const SearchFilter = (props) => {
         const value = parseInt(e.currentTarget.id);
         dispatch(updateFilter('rating', value))
     }
-
-    useEffect(() => {
-        if (locationFilters) {
-            dispatch(updateFilter('location', locationFilters))
-        }
-    }, [locationFilters])
 
     let mappedCities = cities.map((city, i) => {
         return (

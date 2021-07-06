@@ -17,12 +17,12 @@ const GamePlacesAll = () => {
     
     useEffect(() => {
         dispatch(fetchAllGamePlaces())
-            .then(setFetched(true))
+        setFetched(true)
     }, []);
 
     useEffect(() => {
         dispatch(fetchCities());
-    }, [fetched]);
+    }, []);
     
     return (
         <>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import TimePickButtons from '../reservations/create_forms/time_pick_buttons';
 import StarsShow from '../stars/stars_show';
 import { deleteFilter } from '../../actions/filter_actions';
@@ -8,20 +8,20 @@ import { deleteFilter } from '../../actions/filter_actions';
 const SearchResults = (props) => {
     const gamePlaces = useSelector(state => Object.values({...state.entities.gamePlaces.gamePlacesAll}));
     const cities = useSelector(state => Object.values({...state.entities.cities.citiesAll}));
-    const {reservation} = props;
+    const {reservation, urlParams} = props;
     const locationFilter = useSelector(state => state.ui.filters.location);
     const ratingFilter = useSelector(state => state.ui.filters.rating);
+    const nameFilter = useSelector(state => state.ui.filters.name);
     const dispatch = useDispatch();
-    const {locationFilters, setLocationFilters} = props;
+    const history = useHistory();
 
     const resetFilter = e => {
         const filterId = e.currentTarget.id
         if (filterId === 'location') {
             let boxSelector = document.getElementsByClassName("checked");
             Object.values(boxSelector).map(ele => ele.classList.remove('checked'))
-        } 
+        }
         dispatch(deleteFilter(filterId))
-        setLocationFilters([])
     }
 
     let filtered_buttons = (
@@ -33,11 +33,15 @@ const SearchResults = (props) => {
             {ratingFilter > 0 && (<div className="x-btn rating" id={'rating'} onClick={resetFilter}>
                 {ratingFilter === 5 ? (
                     <div>5 stars</div>
-                ) : (
-                    <div>{ratingFilter} stars and up</div>
-                )}
+                    ) : (
+                        <div>{ratingFilter} stars and up</div>
+                        )}
                 <i className="fas fa-times"></i>
             </div>)}
+            {/* {urlParams && (<div className="x-btn location" id={'name'} onClick={resetFilter}>
+                Name
+                <i className="fas fa-times"></i>
+            </div>)} */}
         </div>
     )
     
