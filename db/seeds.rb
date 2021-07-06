@@ -886,7 +886,6 @@ gPlace20.pictures.attach(
         {io: pictures2_19, filename: 'img_19.jpeg'}
     )
 
-
 player1 = Player.create!(
     email: 'demo@mail.com',
     lname: 'User',
@@ -918,6 +917,59 @@ player4 = Player.create!(
     password: '12345678',
     city_id: city4.id
 )
+
+gp_ids = GamePlace.pluck(:id)
+cities = City.pluck(:id)
+
+players = [];
+20.times do |i|
+    player = Player.new
+    player.email = Faker::Internet.email
+    player.fname = Faker::Name.first_name
+    player.lname = Faker::Name.last_name
+    player.password = '12345678'
+    player.city_id = cities.sample
+    players << player
+end
+
+players.each do |player|
+    player.save
+end
+
+players_ids = Player.pluck(:id)
+
+reservations = []
+time_picks = [
+    "3:00 PM", "3:30 PM",
+    "4:00 PM", "4:30 PM",
+    "5:00 PM", "5:30 PM",
+    "6:00 PM", "6:30 PM",
+    "7:00 PM", "7:30 PM",
+    "8:00 PM", "8:30 PM"
+]
+
+60.times do |i|
+    player = players.sample
+    randomDate = Faker::Date.between(from: '2021-01-01', to: '2021-12-31')
+    strDate = randomDate.strftime("%a, %d, %b").split(', ').join(' ')
+
+    reservation = Reservation.new
+    reservation.canceled = [true, false].sample,
+    reservation.confirmation_num = rand(10000..100000),
+    reservation.email = player.email,
+    reservation.game_date = strDate,
+    reservation.game_place_id = gp_ids.sample,
+    reservation.game_start = time_picks.sample,
+    reservation.gmt = "GMT-0400",
+    reservation.player_id = players_ids.sample,
+    reservation.players_num = 2,
+    reservation.res_year = "2021"
+    reservations << reservation
+end
+
+reservations.each do |res|
+    res.save
+end
 
 res1 = Reservation.create!(
     canceled: false,
@@ -1166,32 +1218,27 @@ res19 = Reservation.create!(
     gmt: "GMT-0400"
 )
 
-dndcamp1 = DndCampaign.create!(
-    title: "The Order of the Phoenix",
-    adventure_type: 'dungeon crawling',
-    remote: false,
-    fifth_edition: true,
-    description: 'weirdly enough has nothing to do with the Harry Potter series, but rather a campaign filled with a disturbing amount of fire',
-    game_place_id: gPlace2.id
-)
+reviews = []
+ratings = [1, 2, 3, 4, 5]
+res_pla_gp_ids = Reservation.pluck(:id, :player_id, :game_place_id)
 
-dndcamp2 = DndCampaign.create!(
-    title: "Overcooked",
-    adventure_type: 'one shot',
-    remote: false,
-    fifth_edition: false,
-    description: "a campaign about preparing a meal in the time set by your boss because he's not happy with your performance",
-    game_place_id: gPlace3.id
-)
+res_pla_gp_ids.each do |array|
 
-dndcamp3 = DndCampaign.create!(
-    title: "The Knights of the Burning Empire",
-    adventure_type: 'epic',
-    remote: false,
-    fifth_edition: true,
-    description: "an empire of humans who were blessed by a Phoenix and the Emperor is called the Phoenix King, he dies and is reborn as a new man every time",
-    game_place_id: gPlace1.id
-)
+    review = Review.new
+    review.description = Faker::Restaurant.review
+    review.campaign_rating = ratings.sample
+    review.service_rating = ratings.sample
+    review.org_rating = ratings.sample
+    review.overall_rating = (review.campaign_rating + review.org_rating + review.org_rating) / 3.0
+    review.game_place_id = array[2]
+    review.player_id = array[1]
+    review.reservation_id = array[0]
+    reviews << reiew
+end
+
+reviews.each do |rev|
+    rev.save
+end
 
 fav1 = Favorite.create!(
     player_id: player1.id,
@@ -1218,134 +1265,134 @@ fav5 = Favorite.create!(
     game_place_id: gPlace15.id
 );
 
-rev1 = Review.create!(
-    description: "Had fun with friends",
-    campaign_rating: 5,
-    service_rating: 3,
-    org_rating: 5,
-    overall_rating: 4.3,
-    game_place_id: gPlace2.id,
-    player_id: player1.id,
-    reservation_id: res1.id
-);
+# rev1 = Review.create!(
+#     description: "Had fun with friends",
+#     campaign_rating: 5,
+#     service_rating: 3,
+#     org_rating: 5,
+#     overall_rating: 4.3,
+#     game_place_id: gPlace2.id,
+#     player_id: player1.id,
+#     reservation_id: res1.id
+# );
 
-rev2 = Review.create!(
-    description: "Can't wait to come back!",
-    campaign_rating: 5,
-    service_rating: 5,
-    org_rating: 4,
-    overall_rating: 4.6,
-    game_place_id: gPlace11.id,
-    player_id: player1.id,
-    reservation_id: res5.id
-);
+# rev2 = Review.create!(
+#     description: "Can't wait to come back!",
+#     campaign_rating: 5,
+#     service_rating: 5,
+#     org_rating: 4,
+#     overall_rating: 4.6,
+#     game_place_id: gPlace11.id,
+#     player_id: player1.id,
+#     reservation_id: res5.id
+# );
 
-rev3 = Review.create!(
-    description: "Good place",
-    campaign_rating: 4,
-    service_rating: 4,
-    org_rating: 4,
-    overall_rating: 4.1,
-    game_place_id: gPlace2.id,
-    player_id: player2.id,
-    reservation_id: res10.id
-)
+# rev3 = Review.create!(
+#     description: "Good place",
+#     campaign_rating: 4,
+#     service_rating: 4,
+#     org_rating: 4,
+#     overall_rating: 4.1,
+#     game_place_id: gPlace2.id,
+#     player_id: player2.id,
+#     reservation_id: res10.id
+# )
 
-rev4 = Review.create!(
-    description: "Enjoyed it, will come back again!",
-    campaign_rating: 5,
-    service_rating: 5,
-    org_rating: 4,
-    overall_rating: 4.6,
-    game_place_id: gPlace17.id,
-    player_id: player2.id,
-    reservation_id: res11.id
-)
+# rev4 = Review.create!(
+#     description: "Enjoyed it, will come back again!",
+#     campaign_rating: 5,
+#     service_rating: 5,
+#     org_rating: 4,
+#     overall_rating: 4.6,
+#     game_place_id: gPlace17.id,
+#     player_id: player2.id,
+#     reservation_id: res11.id
+# )
 
-rev5 = Review.create!(
-    description: "Like the story, but it was too short!",
-    campaign_rating: 5,
-    service_rating: 4,
-    org_rating: 3,
-    overall_rating: 4.1,
-    game_place_id: gPlace19.id,
-    player_id: player2.id,
-    reservation_id: res12.id
-)
+# rev5 = Review.create!(
+#     description: "Like the story, but it was too short!",
+#     campaign_rating: 5,
+#     service_rating: 4,
+#     org_rating: 3,
+#     overall_rating: 4.1,
+#     game_place_id: gPlace19.id,
+#     player_id: player2.id,
+#     reservation_id: res12.id
+# )
 
-rev6 = Review.create!(
-    description: "I love this place",
-    campaign_rating: 5,
-    service_rating: 5,
-    org_rating: 5,
-    overall_rating: 5.0,
-    game_place_id: gPlace1.id,
-    player_id: player2.id,
-    reservation_id: res13.id
-)
+# rev6 = Review.create!(
+#     description: "I love this place",
+#     campaign_rating: 5,
+#     service_rating: 5,
+#     org_rating: 5,
+#     overall_rating: 5.0,
+#     game_place_id: gPlace1.id,
+#     player_id: player2.id,
+#     reservation_id: res13.id
+# )
 
-rev7 = Review.create!(
-    description: "It was fine",
-    campaign_rating: 3,
-    service_rating: 3,
-    org_rating: 3,
-    overall_rating: 3.0,
-    game_place_id: gPlace4.id,
-    player_id: player2.id,
-    reservation_id: res14.id
-)
+# rev7 = Review.create!(
+#     description: "It was fine",
+#     campaign_rating: 3,
+#     service_rating: 3,
+#     org_rating: 3,
+#     overall_rating: 3.0,
+#     game_place_id: gPlace4.id,
+#     player_id: player2.id,
+#     reservation_id: res14.id
+# )
 
-rev8 = Review.create!(
-    description: "Stuff is great",
-    campaign_rating: 4,
-    service_rating: 5,
-    org_rating: 3,
-    overall_rating: 4.0,
-    game_place_id: gPlace8.id,
-    player_id: player2.id,
-    reservation_id: res15.id
-)
+# rev8 = Review.create!(
+#     description: "Stuff is great",
+#     campaign_rating: 4,
+#     service_rating: 5,
+#     org_rating: 3,
+#     overall_rating: 4.0,
+#     game_place_id: gPlace8.id,
+#     player_id: player2.id,
+#     reservation_id: res15.id
+# )
 
-rev9 = Review.create!(
-    description: "Kinda expensive",
-    campaign_rating: 3,
-    service_rating: 2,
-    org_rating: 3,
-    overall_rating: 2.6,
-    game_place_id: gPlace9.id,
-    player_id: player2.id, 
-    reservation_id: res16.id
-)
+# rev9 = Review.create!(
+#     description: "Kinda expensive",
+#     campaign_rating: 3,
+#     service_rating: 2,
+#     org_rating: 3,
+#     overall_rating: 2.6,
+#     game_place_id: gPlace9.id,
+#     player_id: player2.id, 
+#     reservation_id: res16.id
+# )
 
-rev10 = Review.create!(
-    description: "Loved it",
-    campaign_rating: 5,
-    service_rating: 5,
-    org_rating: 4,
-    overall_rating: 4.6,
-    game_place_id: gPlace3.id,
-    player_id: player2.id,
-    reservation_id: res17.id
-)
+# rev10 = Review.create!(
+#     description: "Loved it",
+#     campaign_rating: 5,
+#     service_rating: 5,
+#     org_rating: 4,
+#     overall_rating: 4.6,
+#     game_place_id: gPlace3.id,
+#     player_id: player2.id,
+#     reservation_id: res17.id
+# )
 
-rev11 = Review.create!(
-    description: "Enjoyed the game",
-    campaign_rating: 5,
-    service_rating: 4,
-    org_rating: 5,
-    overall_rating: 4.6,
-    game_place_id: gPlace18.id,
-    player_id: player2.id,
-    reservation_id: res18.id
-)
+# rev11 = Review.create!(
+#     description: "Enjoyed the game",
+#     campaign_rating: 5,
+#     service_rating: 4,
+#     org_rating: 5,
+#     overall_rating: 4.6,
+#     game_place_id: gPlace18.id,
+#     player_id: player2.id,
+#     reservation_id: res18.id
+# )
 
-rev12 = Review.create!(
-    description: "Was hard to find",
-    campaign_rating: 5,
-    service_rating: 2,
-    org_rating: 5,
-    overall_rating: 4.0,
-    game_place_id: gPlace20.id,
-    player_id: player2.id,
-    reservation_id: res19.id
-)
+# rev12 = Review.create!(
+#     description: "Was hard to find",
+#     campaign_rating: 5,
+#     service_rating: 2,
+#     org_rating: 5,
+#     overall_rating: 4.0,
+#     game_place_id: gPlace20.id,
+#     player_id: player2.id,
+#     reservation_id: res19.id
+# )

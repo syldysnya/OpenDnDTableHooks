@@ -387,14 +387,15 @@
         width: 100%;
         height: 80px;
         display: grid;
-        grid-template-columns: repeat(5, 119px);
+        grid-template-columns: repeat(5, 1fr);
+        column-gap: 15px;
         align-items: center;
 
         li {
             .auth-button {
                 margin: 0;
                 width: 100%;
-                padding: 8px 25px;
+                padding: 8px auto;
             }
         }
     }
