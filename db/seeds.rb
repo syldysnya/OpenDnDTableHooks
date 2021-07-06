@@ -120,7 +120,7 @@ end
 #seattle
 15.times do |num|
     game_place = GamePlace.new
-    game_place.name = Faker::Movies::Hobbit.unique.location 
+    game_place.name = Faker::Movies::Hobbit.unique.location
     game_place.address = Faker::Address.street_address
     game_place.phone_num = "206-#{rand(100..999)}-#{rand(1000..9999)}"
     game_place.latitude = 47.607388  + rand/20
@@ -342,21 +342,21 @@ headers = [
     'https://app-opendndtable-seed.s3.amazonaws.com/headers/18_header.jpeg',
     'https://app-opendndtable-seed.s3.amazonaws.com/headers/19_header.jpeg',
     'https://app-opendndtable-seed.s3.amazonaws.com/headers/20_header.jpeg',
-    'https://app-opendndtable-seed.s3.amazonaws.com/headers/21_header.jpeg',
-    'https://app-opendndtable-seed.s3.amazonaws.com/headers/22_header.jpeg',
-    'https://app-opendndtable-seed.s3.amazonaws.com/headers/23_header.jpeg',
-    'https://app-opendndtable-seed.s3.amazonaws.com/headers/24_header.jpeg',
-    'https://app-opendndtable-seed.s3.amazonaws.com/headers/25_header.jpeg',
-    'https://app-opendndtable-seed.s3.amazonaws.com/headers/26_header.jpeg',
-    'https://app-opendndtable-seed.s3.amazonaws.com/headers/27_header.jpeg',
-    'https://app-opendndtable-seed.s3.amazonaws.com/headers/28_header.jpeg',
-    'https://app-opendndtable-seed.s3.amazonaws.com/headers/29_header.jpeg',
-    'https://app-opendndtable-seed.s3.amazonaws.com/headers/30_header.jpeg',
-    'https://app-opendndtable-seed.s3.amazonaws.com/headers/31_header.jpeg',
-    'https://app-opendndtable-seed.s3.amazonaws.com/headers/32_header.jpeg',
-    'https://app-opendndtable-seed.s3.amazonaws.com/headers/33_header.jpeg',
-    'https://app-opendndtable-seed.s3.amazonaws.com/headers/34_header.jpeg',
-    'https://app-opendndtable-seed.s3.amazonaws.com/headers/35_header.jpeg',
+    'https://app-opendndtable-seed.s3.amazonaws.com/headers/21_header.jpg',
+    'https://app-opendndtable-seed.s3.amazonaws.com/headers/22_header.jpg',
+    'https://app-opendndtable-seed.s3.amazonaws.com/headers/23_header.jpg',
+    'https://app-opendndtable-seed.s3.amazonaws.com/headers/24_header.jpg',
+    'https://app-opendndtable-seed.s3.amazonaws.com/headers/25_header.jpg',
+    'https://app-opendndtable-seed.s3.amazonaws.com/headers/26_header.jpg',
+    'https://app-opendndtable-seed.s3.amazonaws.com/headers/27_header.jpg',
+    'https://app-opendndtable-seed.s3.amazonaws.com/headers/28_header.jpg',
+    'https://app-opendndtable-seed.s3.amazonaws.com/headers/29_header.jpg',
+    'https://app-opendndtable-seed.s3.amazonaws.com/headers/30_header.jpg',
+    'https://app-opendndtable-seed.s3.amazonaws.com/headers/31_header.jpg',
+    'https://app-opendndtable-seed.s3.amazonaws.com/headers/32_header.jpg',
+    'https://app-opendndtable-seed.s3.amazonaws.com/headers/33_header.jpg',
+    'https://app-opendndtable-seed.s3.amazonaws.com/headers/34_header.jpg',
+    'https://app-opendndtable-seed.s3.amazonaws.com/headers/35_header.jpg',
 ]
 
 GamePlace.all.each do |gp, i|
@@ -372,7 +372,7 @@ end
 GamePlace.all.each do |gp|
     9.times do |i|
         file = URI.open(gallery_images.sample)
-        gp.photos.attach(io: file, filename: "img_#{i}.jpg")
+        gp.photo.attach(io: file, filename: "img_#{i}.jpg")
     end
 end
 
@@ -420,7 +420,7 @@ time_picks = [
 
     reservation = Reservation.new
     reservation.canceled = false,
-    reservation.confirmation_num = rand(10000..100000),
+    reservation.confirmation_num = rand(10000..10000000),
     reservation.email = player.email,
     reservation.game_date = strDate,
     reservation.game_place_id = gp_ids.sample,
@@ -463,7 +463,7 @@ res1 = Reservation.create!(
     confirmation_num: 6125,
     email: "demo@mail.com",
     game_date: "Thu Jul 01",
-    game_place_id: gPlace2.id,
+    game_place_id: gp_ids.sample,
     game_start: "6:15 PM",
     gmt: "GMT-0400",
     player_id: player1.id,
@@ -476,7 +476,7 @@ res2 = Reservation.create!(
     confirmation_num: 5101,
     email: "demo@mail.com",
     game_date: "Fri Nov 19",
-    game_place_id: gPlace2.id,
+    game_place_id: gp_ids.sample,
     game_start: "8:15 PM",
     gmt: "GMT-0400",
     player_id: player1.id,
@@ -489,7 +489,7 @@ res3 = Reservation.create!(
     confirmation_num: 4269,
     email: "demo@mail.com",
     game_date: "Sun Oct 31",
-    game_place_id: gPlace3.id,
+    game_place_id: gp_ids.sample,
     game_start: "7:45 PM",
     gmt: "GMT-0400",
     player_id: player1.id,
@@ -502,7 +502,7 @@ res4 = Reservation.create!(
     confirmation_num: 5753,
     email: "demo@mail.com",
     game_date: "Wed Dec 29",
-    game_place_id: gPlace4.id,
+    game_place_id: gp_ids.sample,
     game_start: "9:15 PM",
     gmt: "GMT-0500",
     player_id: player1.id,
@@ -514,10 +514,10 @@ res5 = Reservation.create!(
     game_date: "Wed Jun 30",
     game_start: "7:30 PM",
     players_num: 5,
-    game_place_id: gPlace11.id,
+    game_place_id: gp_ids.sample,
     player_id: player1.id,
     confirmation_num: "60",
-    canceled: true, 
+    canceled: true,
     email: "demo@mail.com",
     res_year: "2021",
     gmt: "GMT-0400"
@@ -527,9 +527,9 @@ res6 = Reservation.create!(
     game_date: "Wed Jun 30",
     game_start: "8:30 PM",
     players_num: 2,
-    game_place_id: gPlace14.id,
-    player_id: player1.id, 
-    confirmation_num: "9397", 
+    game_place_id: gp_ids.sample,
+    player_id: player1.id,
+    confirmation_num: "9397",
     canceled: true,
     email: "demo@mail.com",
     res_year: "2021",
@@ -540,7 +540,7 @@ res7 = Reservation.create!(
     game_date: "Fri Dec 31",
     game_start: "8:15 PM",
     players_num: 2,
-    game_place_id: gPlace6.id,
+    game_place_id: gp_ids.sample,
     player_id: player1.id,
     confirmation_num: "9739",
     canceled: false,
@@ -553,7 +553,7 @@ res8 = Reservation.create!(
     game_date: "Fri Jul 02",
     game_start: "7:30 PM",
     players_num: 2,
-    game_place_id: gPlace1.id,
+    game_place_id: gp_ids.sample,
     player_id: player1.id,
     confirmation_num: "6936",
     canceled: false,
@@ -566,7 +566,7 @@ res9 = Reservation.create!(
     game_date: "Sat Jun 12",
     game_start: "3:45 PM",
     players_num: 2,
-    game_place_id: gPlace5.id,
+    game_place_id: gp_ids.sample,
     player_id: player1.id,
     confirmation_num: "1107",
     canceled: false,
@@ -575,27 +575,10 @@ res9 = Reservation.create!(
     gmt: "GMT-0400"
 )
 
-fav1 = Favorite.create!(
-    player_id: player1.id,
-    game_place_id: gPlace3.id
-);
-
-fav2 = Favorite.create!(
-    player_id: player1.id,
-    game_place_id: gPlace11.id
-);
-
-fav3 = Favorite.create!(
-    player_id: player1.id,
-    game_place_id: gPlace5.id
-);
-
-fav4 = Favorite.create!(
-    player_id: player1.id,
-    game_place_id: gPlace1.id
-);
-
-fav5 = Favorite.create!(
-    player_id: player1.id,
-    game_place_id: gPlace15.id
-);
+Favorite.create!(player_id: player1.id, game_place_id: gp_ids.sample);
+Favorite.create!(player_id: player1.id, game_place_id: gp_ids.sample);
+Favorite.create!(player_id: player1.id, game_place_id: gp_ids.sample);
+Favorite.create!(player_id: player1.id, game_place_id: gp_ids.sample);
+Favorite.create!(player_id: player1.id, game_place_id: gp_ids.sample);
+Favorite.create!(player_id: player1.id, game_place_id: gp_ids.sample);
+Favorite.create!(player_id: player1.id, game_place_id: gp_ids.sample);
