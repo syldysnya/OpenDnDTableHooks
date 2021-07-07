@@ -117,12 +117,17 @@ body {
                 margin: 6px;
                 max-width: 235px;
                 
-                .avatar img {
+                .avatar {
+
                     width: 100%;
-                    padding-bottom: 5%;
-                    width: 234px;
-                    min-height: 132px;
-                    cursor: pointer;
+                    height: 160px;
+                    overflow: hidden;
+
+                    img {
+                        cursor: pointer;
+                        object-fit: cover;
+                        height: 100%;
+                    }
                 }
 
                 .info-box {
@@ -134,6 +139,7 @@ body {
                     padding-left: 15px;
                     overflow: hidden;
                     width: 94%;
+                    padding-top: 10px;
                     
                     .title {
                         height: 23px;
