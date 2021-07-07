@@ -34,7 +34,8 @@ const ConfirmationCreateForm = (props) => {
         email: player.email,
         dndCampaignId: '',
         resYear: defaultYear,
-        gmt: defaultGMT
+        gmt: defaultGMT,
+        date_info: ''
     });
 
     const dispatch = useDispatch();
@@ -77,10 +78,9 @@ const ConfirmationCreateForm = (props) => {
     }, [mins, secs])
 
     useEffect(() => {
-        if (props.location.state.reservation) {
-            
-            const {gameDate, playersNum, resYear, gmt} = props.location.state.reservation;
-            setReservation({...reservation, gameDate: gameDate, gameStart: props.location.state.gameStart, playersNum: playersNum, resYear: resYear, gmt: gmt})
+        if (location.state.reservation) {
+            const {gameDate, playersNum, resYear, gmt} = location.state.reservation;
+            setReservation({...reservation, gameDate: gameDate, gameStart: location.state.gameStart, playersNum: playersNum, resYear: resYear, gmt: gmt})
         }
     }, [])
 
@@ -90,6 +90,9 @@ const ConfirmationCreateForm = (props) => {
 
     const handleClick = (e) => {
         e.preventDefault();
+        let res = reservation;
+        let newDateInfo = res.gameDate + ' 2021 ' + res.gameStart + " " + res.gmt 
+        res.dateInfo = new Date(newDateInfo)
         dispatch(createReservation(reservation))
             .then(res => history.push(`/book/view/${res.reservation.id}`))
     }

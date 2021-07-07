@@ -24,7 +24,6 @@ export const fetchReservation = reservationId => (
 
 export const createReservation = reservation => {
     reservation = convertToSnakeCase(reservation);
-
     return $.ajax({
             method: 'POST',
             url: '/api/reservations',
