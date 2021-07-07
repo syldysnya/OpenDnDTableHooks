@@ -115,18 +115,20 @@ body {
                 border: 1px solid $grey-color;
                 display: inline-block;
                 margin: 6px;
-                max-width: 235px;
                 
                 .avatar {
 
-                    width: 100%;
+                    width: 235px;
                     height: 160px;
                     overflow: hidden;
+                    display: flex;
+                    align-items: center;
 
                     img {
                         cursor: pointer;
                         object-fit: cover;
-                        height: 100%;
+                        min-width: 235px;
+                        min-height: 160px;
                     }
                 }
 

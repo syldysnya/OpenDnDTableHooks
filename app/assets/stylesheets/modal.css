@@ -122,20 +122,26 @@ body {
   border: 1px solid #dadada;
   display: inline-block;
   margin: 6px;
-  max-width: 235px;
 }
 
 .main-page .list-of-gps .gp-list .game-place-i .avatar {
-  width: 100%;
+  width: 235px;
   height: 160px;
   overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .main-page .list-of-gps .gp-list .game-place-i .avatar img {
   cursor: pointer;
   -o-object-fit: cover;
      object-fit: cover;
-  height: 100%;
+  min-width: 235px;
+  min-height: 160px;
 }
 
 .main-page .list-of-gps .gp-list .game-place-i .info-box {
@@ -1128,12 +1134,9 @@ body {
   cursor: pointer;
 }
 
-.pic-content-search {
-  height: 600px;
-}
-
 .pic-content-search img {
-  height: 600px;
+    max-width: 600px;
+    max-height: 600px;
 }
 
 .gallery-modal {

@@ -1,9 +1,9 @@
 import { convertToSnakeCase } from "./reservations_util";
 
-export const fetchAllFavorites = (id) => (
+export const fetchAllFavorites = () => (
     $.ajax({
         method: 'GET',
-        url: `/api/favorites`
+        url: `/api/favorites`,
     })
 );
 

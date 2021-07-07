@@ -30,10 +30,6 @@ export const fetchAllGPbyRating = () => dispatch => (
         .then(gamePlaces => dispatch(receiveAllgamePlaces(gamePlaces)))
 );
 
-export const fetchAllGPbyReview = () => dispatch => (
-    ApiUtilGP.sortByReviews()
-        .then(gamePlaces => dispatch(receiveAllgamePlaces(gamePlaces)))
-);
 export const fetchAllGPbyDate = () => dispatch => (
     ApiUtilGP.sortByDate()
         .then(gamePlaces => dispatch(receiveAllgamePlaces(gamePlaces)))

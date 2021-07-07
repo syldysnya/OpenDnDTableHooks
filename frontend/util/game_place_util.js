@@ -27,13 +27,6 @@ export const sortByDate = () => {
     })
 }
 
-export const sortByReviews = () => {
-    return $.ajax({
-        method: "POST",
-        url: '/api/game_places/review',
-    })
-}
-
 export const fetchGamePlace = gamePlaceId => (
     $.ajax({
         method: 'GET',

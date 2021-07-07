@@ -13,7 +13,10 @@ const GamePlacesAll = () => {
     
     useEffect(() => {
         dispatch(fetchAllGPbyDefault())
-        dispatch(fetchAllGPbyRating())
+        // dispatch(fetchAllGPbyRating())
+    }, [player]);
+
+    useEffect(() => {
         dispatch(fetchAllGPbyDate())
     }, [player]);
 
@@ -24,7 +27,7 @@ const GamePlacesAll = () => {
     return (
         <>
             <AllGamePlaces />
-            <RatedPage />
+            {/* <RatedPage /> */}
             <NewestPage />
             {/* <NewarkPlaces />
             <WashingtonPlaces /> */}

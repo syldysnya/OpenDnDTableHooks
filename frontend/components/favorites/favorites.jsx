@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch} from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { createFav, deleteFav } from '../../actions/favorite_actions';
 import { openModal } from '../../actions/modal_actions';
 
 const Favorites = (props) => {
-    const { playerId, fav, setFav, favRef, gamePlaceId } = props;
+    const { fav, setFav, favRef } = props;
+    const player = useSelector(state => state.session.currentPlayer);
+    const params = useParams();
     const dispatch = useDispatch();
 
     const handleSave = e => {
@@ -12,12 +15,12 @@ const Favorites = (props) => {
 
         if (fav) {
             dispatch(deleteFav(fav.id)).then(() => setFav(''))
-        } else if (!fav && !playerId) {
+        } else if (!fav && !player.id) {
             dispatch(openModal('Sign In'))
         } else {
             let newFav = {
-                gamePlaceId: gamePlaceId,
-                playerId: playerId
+                gamePlaceId: params.gamePlaceId,
+                playerId: player.id
             }
             dispatch(createFav(newFav)).then((res) => setFav(res.favorite))
         }

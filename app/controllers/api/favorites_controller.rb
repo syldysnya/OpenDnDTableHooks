@@ -1,7 +1,7 @@
 class Api::FavoritesController < ApplicationController
 
     def index
-        @favorites = Favorite.where(player_id: current_player.id)
+        @favorites = Favorite.where(player_id: current_player)
     end
 
     def show 

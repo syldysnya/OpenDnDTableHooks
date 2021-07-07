@@ -25,7 +25,6 @@ const GamePlace = () => {
     const totalServ = (servRating / lengthRat).toFixed(1);
     const totalOrg = (orgRating / lengthRat).toFixed(1);
     const totalCamp = (campRating / lengthRat).toFixed(1);
-    const [fetched, setFetched] = useState(false);
     const [playerInfo, setPlayerInfo] = useState('');
     const [fav, setFav] = useState('');
     const favRef = useRef(null);
@@ -38,7 +37,6 @@ const GamePlace = () => {
 
     useEffect(() => {
         dispatch(fetchGamePlace(params.gamePlaceId))
-            .then(() => setFetched(true))
     }, [])
 
     useEffect(() => {
@@ -99,9 +97,7 @@ const GamePlace = () => {
 
     return (
         <div className='gp-body'>
-            {player ? (<Favorites gamePlaceId={params.gamePlaceId} playerId={player.id} fav={fav} setFav={setFav} favRef={favRef}/>) : (
-                <Favorites gamePlaceId={params.gamePlaceId} fav={fav} setFav={setFav} favRef={favRef}/>
-            )}
+            <Favorites fav={fav} setFav={setFav} favRef={favRef}/>
             <div className='gp-header'>
                 <img src={gamePlace.photoUrl} />
             </div>
@@ -120,7 +116,7 @@ const GamePlace = () => {
                     </div>
                     <div className="rating-box">
                         <div className="rating-list">
-                            {fetched && <StarsShow stars={rating} lengthRat={lengthRat}/>}
+                            <StarsShow stars={rating} lengthRat={lengthRat}/>
                             {lengthRat ? (
                                 <>
                                     <div>{total}</div>
@@ -159,7 +155,7 @@ const GamePlace = () => {
                                             Reviews can only be made by diners who have eaten at this restaurant
                                         </span>
                                         <div className='rating-inreview'>
-                                            {fetched && <StarsShow stars={rating} lengthRat={lengthRat}/>}
+                                            <StarsShow stars={rating} lengthRat={lengthRat}/>
                                             {lengthRat > 0 && (<div>{total}</div>)}
                                             <span>based on recent ratings</span>
                                         </div>
@@ -179,7 +175,7 @@ const GamePlace = () => {
                                         </div>
                                     </div>
                                     <div className="right-reviews">
-                                        {fetched && <RatingsBox nums={allRatingsNums} total={allLength}/>}
+                                        <RatingsBox nums={allRatingsNums} total={allLength}/>
                                     </div>
                                 </div>
                             </>
@@ -193,7 +189,7 @@ const GamePlace = () => {
                     <MainPageCreateForm gamePlace={gamePlace} />
                     <div className='gp-map'>
                         <div className='map-box'>
-                            <GamePlaceMap gamePlace={gamePlace}/>
+                            {/* <GamePlaceMap gamePlace={gamePlace}/> */}
                             <p>{gamePlace.address}</p>
                         </div>
                         <div className='hours-info'>

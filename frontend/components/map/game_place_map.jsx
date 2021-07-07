@@ -1,15 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-const GamePlaceMap = (props) => {
+const GamePlaceMap = () => {
 
-    const {gamePlace} = props;
+    const gamePlace = useSelector(state => Object.values({...state.entities.gamePlaces.gamePlace}))
     const mapRef = useRef();
     let map;
     
     useEffect(() => {
 
-        if (!Array.isArray(gamePlace)) {
+        if (gamePlace.length > 0) {
             const mapOptions = {
                 center: { lat: parseFloat(gamePlace.latitude), lng: parseFloat(gamePlace.longitude) },
                 zoom: 10
@@ -23,7 +24,7 @@ const GamePlaceMap = (props) => {
                 map: map,
             });
         }
-    })
+    }, [gamePlace])
 
     const openMap = e => {
         window.open(`https://maps.google.com?q=${gamePlace.latitude},${gamePlace.longitude}`)

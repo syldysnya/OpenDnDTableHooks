@@ -12,8 +12,8 @@ const receiveAllFavs = favorites => ({
 
 const receiveFav = favorite => {
     return ({
-    type: RECEIVE_FAVORITE,
-    favorite
+        type: RECEIVE_FAVORITE,
+        favorite
 })};
 
 const removeFav = favoriteId => ({

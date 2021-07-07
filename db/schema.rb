@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_07_012702) do
+ActiveRecord::Schema.define(version: 2021_07_07_182451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 2021_07_07_012702) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "area", null: false
+    t.index ["area"], name: "index_cities_on_area"
     t.index ["name"], name: "index_cities_on_name"
-    t.index ["state"], name: "index_cities_on_state"
   end
 
   create_table "dnd_campaigns", force: :cascade do |t|
@@ -86,10 +86,8 @@ ActiveRecord::Schema.define(version: 2021_07_07_012702) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["city_id"], name: "index_game_places_on_city_id"
-    t.index ["close_hour"], name: "index_game_places_on_close_hour"
     t.index ["dnd_campaign_id"], name: "index_game_places_on_dnd_campaign_id"
     t.index ["name"], name: "index_game_places_on_name"
-    t.index ["open_hour"], name: "index_game_places_on_open_hour"
   end
 
   create_table "pictures", force: :cascade do |t|
@@ -148,10 +146,14 @@ ActiveRecord::Schema.define(version: 2021_07_07_012702) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "reservation_id", null: false
+    t.index ["campaign_rating"], name: "index_reviews_on_campaign_rating"
     t.index ["dnd_campaign_id"], name: "index_reviews_on_dnd_campaign_id"
     t.index ["game_place_id"], name: "index_reviews_on_game_place_id"
+    t.index ["org_rating"], name: "index_reviews_on_org_rating"
+    t.index ["overall_rating"], name: "index_reviews_on_overall_rating"
     t.index ["player_id"], name: "index_reviews_on_player_id"
     t.index ["reservation_id", "player_id"], name: "index_reviews_on_reservation_id_and_player_id", unique: true
+    t.index ["service_rating"], name: "index_reviews_on_service_rating"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
