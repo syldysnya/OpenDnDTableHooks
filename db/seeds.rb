@@ -17,14 +17,22 @@ Reservation.destroy_all
 Favorite.destroy_all
 Review.destroy_all
 
-newark = City.create!(name: 'Newark', state: 'DE')
-philly = City.create!(name: 'Philadelphia', state: 'PA')
-dc = City.create!(name: 'Washington', state: 'DC')
-ny = City.create!(name: 'New York', state: 'NY')
-sf = City.create!(name: 'San Francisco', state: 'CA')
-la = City.create!(name: 'Los Angeles', state: 'CA')
-seattle = City.create!(name: 'Seattle', state: 'WA')
-austin = City.create!(name: 'Austin', state: 'TX')
+newark = City.create!(name: 'Newark', state: 'DE', area: 'east')
+philly = City.create!(name: 'Philadelphia', state: 'PA', area: 'east')
+dc = City.create!(name: 'Washington', state: 'DC', area: 'east')
+ny = City.create!(name: 'New York', state: 'NY', area: 'east')
+
+sf = City.create!(name: 'San Francisco', state: 'CA', area: 'west')
+la = City.create!(name: 'Los Angeles', state: 'CA', area: 'west')
+seattle = City.create!(name: 'Seattle', state: 'WA', area: 'west')
+
+austin = City.create!(name: 'Austin', state: 'TX', area: 'south')
+atlanta = City.create!(name: 'Atlanta', state: 'GA', area: 'south')
+miami = City.create!(name: 'Miami', state: 'FL', area: 'south')
+
+chicago = City.create!(name: 'Chicago', state: 'IL', area: 'midwest')
+columbus = City.create!(name: 'Columbus', state: 'OH', area: 'midwest')
+indi = City.create!(name: 'Indianapolis', state: 'IN', area: 'midwest')
 
 cities = City.pluck(:id)
 
@@ -180,6 +188,86 @@ end
     game_place.gmt = 'GMT -0700'
     game_place.description = descriptions.sample
     game_place.city_id = la.id
+    game_places << game_place
+end
+
+#atlanta
+15.times do |num|
+    game_place = GamePlace.new
+    game_place.name = Faker::Books::CultureSeries.unique.culture_ship
+    game_place.address = Faker::Address.street_address
+    game_place.phone_num = "404-#{rand(100..999)}-#{rand(1000..9999)}"
+    game_place.latitude = 33.748854 + rand/20
+    game_place.longitude = -84.392453 + rand/20
+    game_place.open_hour = open_hours.sample
+    game_place.close_hour = close_hours.sample
+    game_place.gmt = 'GMT -0500'
+    game_place.description = descriptions.sample
+    game_place.city_id = atlanta.id
+    game_places << game_place
+end
+
+#chicago
+15.times do |num|
+    game_place = GamePlace.new
+    game_place.name = Faker::Books::CultureSeries.unique.culture_ship
+    game_place.address = Faker::Address.street_address
+    game_place.phone_num = "312-#{rand(100..999)}-#{rand(1000..9999)}"
+    game_place.latitude = 41.776578 + rand/20
+    game_place.longitude = -87.707277 + rand/20
+    game_place.open_hour = open_hours.sample
+    game_place.close_hour = close_hours.sample
+    game_place.gmt = 'GMT -0500'
+    game_place.description = descriptions.sample
+    game_place.city_id = chicago.id
+    game_places << game_place
+end
+
+#miami
+15.times do |num|
+    game_place = GamePlace.new
+    game_place.name = Faker::Books::CultureSeries.unique.culture_ship
+    game_place.address = Faker::Address.street_address
+    game_place.phone_num = "786-#{rand(100..999)}-#{rand(1000..9999)}"
+    game_place.latitude = 25.778321 + rand/20
+    game_place.longitude = -80.234961 + rand/20
+    game_place.open_hour = open_hours.sample
+    game_place.close_hour = close_hours.sample
+    game_place.gmt = 'GMT -0400'
+    game_place.description = descriptions.sample
+    game_place.city_id = miami.id
+    game_places << game_place
+end
+
+#columbus
+15.times do |num|
+    game_place = GamePlace.new
+    game_place.name = Faker::Books::CultureSeries.unique.culture_ship
+    game_place.address = Faker::Address.street_address
+    game_place.phone_num = "614-#{rand(100..999)}-#{rand(1000..9999)}"
+    game_place.latitude = 39.996818 + rand/20
+    game_place.longitude = -83.000475 + rand/20
+    game_place.open_hour = open_hours.sample
+    game_place.close_hour = close_hours.sample
+    game_place.gmt = 'GMT -0400'
+    game_place.description = descriptions.sample
+    game_place.city_id = columbus.id
+    game_places << game_place
+end
+
+#indi
+15.times do |num|
+    game_place = GamePlace.new
+    game_place.name = Faker::Books::CultureSeries.unique.culture_ship
+    game_place.address = Faker::Address.street_address
+    game_place.phone_num = "463-#{rand(100..999)}-#{rand(1000..9999)}"
+    game_place.latitude = 39.790781 + rand/20
+    game_place.longitude = -86.154552 + rand/20
+    game_place.open_hour = open_hours.sample
+    game_place.close_hour = close_hours.sample
+    game_place.gmt = 'GMT -0400'
+    game_place.description = descriptions.sample
+    game_place.city_id = indi.id
     game_places << game_place
 end
 
@@ -374,7 +462,7 @@ end
 GamePlace.all.each do |gp, j|
     gp_pics = []
 
-    2.times do |i|
+    9.times do |i|
         gp_pics << gallery_images.sample
     end
     
@@ -392,10 +480,11 @@ player1 = Player.create!(
     city_id: newark.id
 )
 
-gp_ids = GamePlace.pluck(:id)
+gp_ids = GamePlace.pluck(:id, :gmt)
 
 players = [];
-30.times do |i|
+
+40.times do |i|
     player = Player.new
     player.email = Faker::Internet.email
     player.fname = Faker::Name.first_name
@@ -421,23 +510,29 @@ time_picks = [
     "8:00 PM", "8:30 PM"
 ]
 
-200.times do |i|
-    player = players.sample
-    randomDate = Faker::Date.between(from: '2021-01-01', to: '2021-07-01')
-    strDate = randomDate.strftime("%a, %d, %b").split(', ').join(' ')
+gp_ids.each do |id|
+    num = rand(5..10)
 
-    reservation = Reservation.new
-    reservation.canceled = false,
-    reservation.confirmation_num = rand(10000..10000000),
-    reservation.email = player.email,
-    reservation.game_date = strDate,
-    reservation.game_place_id = gp_ids.sample,
-    reservation.game_start = time_picks.sample,
-    reservation.gmt = "GMT-0400",
-    reservation.player_id = players_ids.sample,
-    reservation.players_num = 2,
-    reservation.res_year = "2021"
-    reservations << reservation
+    num.times do |i|
+        player = players.sample
+        randomDate = Faker::Date.between(from: '2021-01-01', to: '2021-07-01')
+        strDate = randomDate.strftime("%a, %d, %b").split(', ').join(' ')
+        
+        reservation = Reservation.new
+        reservation.canceled = false
+        reservation.confirmation_num = rand(10000..10000000)
+        reservation.email = player.email
+        reservation.game_date = strDate
+        reservation.game_place_id = id[0]
+        reservation.game_start = time_picks.sample
+        reservation.gmt = id[1]
+        reservation.player_id = players_ids.sample
+        reservation.players_num = [1, 2, 3, 4, 5].sample
+        reservation.res_year = "2021"
+        resDate = randomDate.strftime("%a, %d, %b, %Y").split(', ').join(' ') + " " + reservation.game_start + " " + reservation.gmt
+        reservation.date_info = DateTime.parse(resDate)
+        reservations << reservation
+    end
 end
 
 reservations.each do |res|
@@ -445,7 +540,7 @@ reservations.each do |res|
 end
 
 reviews = []
-ratings = [2, 3, 4, 5]
+ratings = [1, 2, 3, 4, 5]
 res_pla_gp_ids = Reservation.pluck(:id, :player_id, :game_place_id)
 
 res_pla_gp_ids.each do |array|
@@ -466,122 +561,55 @@ reviews.each do |rev|
     rev.save
 end
 
-res1 = Reservation.create!(
-    canceled: true,
-    confirmation_num: 6125,
-    email: "demo@mail.com",
-    game_date: "Thu Jul 01",
-    game_place_id: gp_ids.sample,
-    game_start: "6:15 PM",
-    gmt: "GMT-0400",
-    player_id: player1.id,
-    players_num: 4,
-    res_year: "2021"
-)
+newres = []
 
-res2 = Reservation.create!(
-    canceled: false,
-    confirmation_num: 5101,
-    email: "demo@mail.com",
-    game_date: "Fri Nov 19",
-    game_place_id: gp_ids.sample,
-    game_start: "8:15 PM",
-    gmt: "GMT-0400",
-    player_id: player1.id,
-    players_num: 2,
-    res_year: "2021"
-)
+5.times do |i|
+    gp = gp_ids.sample
 
-res3 = Reservation.create!(
-    canceled: false,
-    confirmation_num: 4269,
-    email: "demo@mail.com",
-    game_date: "Sun Oct 31",
-    game_place_id: gp_ids.sample,
-    game_start: "7:45 PM",
-    gmt: "GMT-0400",
-    player_id: player1.id,
-    players_num: 2,
-    res_year: "2021"
-)
+    randomDate = Faker::Date.between(from: '2021-01-01', to: '2021-07-01')
+    strDate = randomDate.strftime("%a, %d, %b").split(', ').join(' ')
+    
+    reservation = Reservation.new
+    reservation.canceled = true
+    reservation.confirmation_num = rand(10000..10000000)
+    reservation.email = player1.email
+    reservation.game_date = strDate
+    reservation.game_place_id = gp[0]
+    reservation.game_start = time_picks.sample
+    reservation.gmt = gp[1]
+    reservation.player_id = player1.id
+    reservation.players_num = [1, 2, 3, 4, 5].sample
+    reservation.res_year = "2021"
+    resDate = randomDate.strftime("%a, %d, %b, %Y").split(', ').join(' ') + " " + reservation.game_start + " " + reservation.gmt
+    reservation.date_info = DateTime.parse(resDate)
+    newres << reservation
+end
 
-res4 = Reservation.create!(
-    canceled: false,
-    confirmation_num: 5753,
-    email: "demo@mail.com",
-    game_date: "Wed Dec 29",
-    game_place_id: gp_ids.sample,
-    game_start: "9:15 PM",
-    gmt: "GMT-0500",
-    player_id: player1.id,
-    players_num: 2,
-    res_year: "2021"
-)
+6.times do |i|
+    gp = gp_ids.sample
 
-res5 = Reservation.create!(
-    game_date: "Wed Jun 30",
-    game_start: "7:30 PM",
-    players_num: 5,
-    game_place_id: gp_ids.sample,
-    player_id: player1.id,
-    confirmation_num: "60",
-    canceled: true,
-    email: "demo@mail.com",
-    res_year: "2021",
-    gmt: "GMT-0400"
-)
+    randomDate = Faker::Date.between(from: '2021-08-01', to: '2021-12-31')
+    strDate = randomDate.strftime("%a, %d, %b").split(', ').join(' ')
+    
+    reservation = Reservation.new
+    reservation.canceled = false
+    reservation.confirmation_num = rand(10000..10000000)
+    reservation.email = player1.email
+    reservation.game_date = strDate
+    reservation.game_place_id = gp[0]
+    reservation.game_start = time_picks.sample
+    reservation.gmt = gp[1]
+    reservation.player_id = player1.id
+    reservation.players_num = [1, 2, 3, 4, 5].sample
+    reservation.res_year = "2021"
+    resDate = randomDate.strftime("%a, %d, %b, %Y").split(', ').join(' ') + " " + reservation.game_start + " " + reservation.gmt
+    reservation.date_info = DateTime.parse(resDate)
+    newres << reservation
+end
 
-res6 = Reservation.create!(
-    game_date: "Wed Jun 30",
-    game_start: "8:30 PM",
-    players_num: 2,
-    game_place_id: gp_ids.sample,
-    player_id: player1.id,
-    confirmation_num: "9397",
-    canceled: true,
-    email: "demo@mail.com",
-    res_year: "2021",
-    gmt: "GMT-0400"
-)
-
-res7 = Reservation.create!(
-    game_date: "Fri Dec 31",
-    game_start: "8:15 PM",
-    players_num: 2,
-    game_place_id: gp_ids.sample,
-    player_id: player1.id,
-    confirmation_num: "9739",
-    canceled: false,
-    email: "demo@mail.com",
-    res_year: "2021",
-    gmt: "GMT-0500"
-)
-
-res8 = Reservation.create!(
-    game_date: "Fri Jul 02",
-    game_start: "7:30 PM",
-    players_num: 2,
-    game_place_id: gp_ids.sample,
-    player_id: player1.id,
-    confirmation_num: "6936",
-    canceled: false,
-    email: "demo@mail.com",
-    res_year: "2021",
-    gmt: "GMT-0400"
-)
-
-res9 = Reservation.create!(
-    game_date: "Sat Jun 12",
-    game_start: "3:45 PM",
-    players_num: 2,
-    game_place_id: gp_ids.sample,
-    player_id: player1.id,
-    confirmation_num: "1107",
-    canceled: false,
-    email: "demo@mail.com",
-    res_year: "2021",
-    gmt: "GMT-0400"
-)
+newres.each do |res|
+    res.save
+end
 
 Favorite.create!(player_id: player1.id, game_place_id: gp_ids.sample);
 Favorite.create!(player_id: player1.id, game_place_id: gp_ids.sample);

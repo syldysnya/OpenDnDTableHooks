@@ -4,8 +4,7 @@ import StarsShow from '../stars/stars_show';
 
 const ReviewItem = (props) => {
 
-    const review = props.review;
-    const city = review.playerCity[0];
+    const { review } = props;
     
     let nameAbb;
     let dName;
@@ -41,7 +40,7 @@ const ReviewItem = (props) => {
                     {dName}
                 </div>
                 <div className='player-info-city'>
-                    {city.name}
+                    {review.playerCity}
                 </div>
                 <div className="player-reviews-num">
                     <i className="far fa-comment-alt"></i>

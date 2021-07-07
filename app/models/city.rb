@@ -1,6 +1,6 @@
 class City < ApplicationRecord 
 
-    validates :name, presence: true
+    validates :name, :area, presence: true
     validates :state, presence: true
 
     has_many :players

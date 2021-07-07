@@ -13,7 +13,9 @@ const NavBar = () => {
     const history = useHistory();
 
     useEffect(() => {
-        dispatch(fetchAllReservations())
+        if (currentPlayer) {
+            dispatch(fetchAllReservations())
+        }
     }, [])
 
     const handleClick = e => {

@@ -1,6 +1,6 @@
 class Reservation < ApplicationRecord 
 
-    validates :game_date, :game_start, :res_year, :gmt, presence: true
+    validates :game_date, :game_start, :res_year, :gmt, :date_info, presence: true
     validates :players_num, presence: true
 
     belongs_to :player

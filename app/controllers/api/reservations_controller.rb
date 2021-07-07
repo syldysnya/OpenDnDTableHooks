@@ -60,7 +60,8 @@ class Api::ReservationsController < ApplicationController
                 :plphone,
                 :email,
                 :res_year,
-                :gmt
+                :gmt, 
+                :date_info
             )
     end
 end

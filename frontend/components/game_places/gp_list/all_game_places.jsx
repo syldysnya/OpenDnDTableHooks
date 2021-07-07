@@ -26,7 +26,7 @@ const AllGamePlaces = (props) => {
                     </div>
                     <div className='rating'>
                         <StarsShow stars={rating} lengthRat={lengthRat}/>
-                        {reviews.length === 1 ? (<div>{reviews.length} review</div>) : (<div>{reviews.length} reviews</div>)}
+                        {reviews === 1 ? (<div>{reviews} review</div>) : (<div>{reviews} reviews</div>)}
                     </div>
                     <div className='city'>{cities.map(city => {
                         if (city.id === gPlace.cityId) {

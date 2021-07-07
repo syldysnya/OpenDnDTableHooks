@@ -1,7 +1,12 @@
 class Api::ReviewsController < ApplicationController
 
     def index
-        @reviews = Review.all
+        if params[:gpId]
+            @reviews = Review.where(game_place_id: params[:gpId])
+        else
+            @reviews = Review.where(player_id: current_player.id)
+        end
+
     end
 
     def show 

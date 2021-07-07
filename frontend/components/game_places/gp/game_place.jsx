@@ -52,7 +52,7 @@ const GamePlace = () => {
     }, [])
 
     useEffect(() => {
-        dispatch(fetchAllReviews())
+        dispatch(fetchAllReviews(params.gamePlaceId))
     }, [])
 
     useEffect(() => {

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_06_230813) do
+ActiveRecord::Schema.define(version: 2021_07_07_012702) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2021_07_06_230813) do
     t.string "state", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "area", null: false
     t.index ["name"], name: "index_cities_on_name"
     t.index ["state"], name: "index_cities_on_state"
   end
@@ -129,6 +130,7 @@ ActiveRecord::Schema.define(version: 2021_07_06_230813) do
     t.string "email"
     t.string "res_year", null: false
     t.string "gmt", null: false
+    t.datetime "date_info", null: false
     t.index ["dnd_campaign_id"], name: "index_reservations_on_dnd_campaign_id"
     t.index ["game_place_id"], name: "index_reservations_on_game_place_id"
     t.index ["player_id"], name: "index_reservations_on_player_id"
