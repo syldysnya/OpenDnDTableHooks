@@ -10,7 +10,7 @@ const reservationsReducer = (state = initialState, action) => {
     
     switch (action.type) {
         case RECEIVE_ALL_RESERVATIONS:
-            
+            debugger
             return {...state, reservationsAll: action.reservations};
         case RECEIVE_RESERVATION:
             return {...state, reservation: action.reservation };

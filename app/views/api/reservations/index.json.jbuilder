@@ -1,5 +1,3 @@
-@reservations.each do |reservation|
-    json.set! reservation.id do 
-        json.partial! 'api/reservations/reservation', reservation: reservation
-    end
+json.array!(@reservations) do |reservation|
+    json.partial! 'api/reservations/reservation', reservation: reservation
 end

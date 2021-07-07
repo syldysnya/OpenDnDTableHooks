@@ -1,7 +1,8 @@
 class Api::ReservationsController < ApplicationController
 
     def index
-        @reservations = Reservation.all.select{ |reservation| reservation.player_id == current_player.id}
+        reservations = Reservation.all.select{ |reservation| reservation.player_id == current_player.id}
+        @reservations = reservations.sort { |a, b| a.date_info <=> b.date_info }
     end
 
     def show
@@ -21,13 +22,11 @@ class Api::ReservationsController < ApplicationController
     def update
         @reservation = Reservation.find(params[:id])
 
-        # if @reservation.player_id === current_player.id
-            if @reservation.update(reservation_params)
-                render 'api/reservations/show'
-            else
-                render @reservation.errors.full_messages, status: 422
-            end
-        # end
+        if @reservation.update(reservation_params)
+            render 'api/reservations/show'
+        else
+            render @reservation.errors.full_messages, status: 422
+        end
 
     end
 

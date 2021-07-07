@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import { openModal } from '../../../actions/modal_actions';
-import { createReservation, editReservation } from '../../../actions/reservation_actions';
+import { editReservation } from '../../../actions/reservation_actions';
 
 const ConfirmationModifyForm = () => {
 
