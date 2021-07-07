@@ -1,34 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import StarsShow from '../../stars/stars_show';
 
-const PhillyPlaces = (props) => {
-    const {gamePlaces, cities} = props;
+const NewestPage = () => {
+    
+    const gamePlaces = useSelector(state => state.entities.gamePlaces);
+    const cities = useSelector(state => Object.values(state.entities.cities.citiesAll));
     const history = useHistory();
+    let mapped;
 
-    let philly = cities.filter(city => city.name === 'Philadelphia');
-    let phillyPlaces = Object.values({...gamePlaces.gamePlacesAll}).filter(gp => gp.cityId === philly[0].id);
-    const [visible, setVisible] = useState(false);
-
-    useEffect(() => {
-        if (window.innerWidth <= 920) {
-            setVisible(true)
-        } else {
-            setVisible(false)
-        }
-
-        const handleResize = () => {
-            if (window.innerWidth <= 920) {
-                setVisible(true)
-            } else {
-                setVisible(false)
-            }
-        }
-      
-        window.addEventListener('resize', handleResize)
-    }, [])
-
-    let mapped = phillyPlaces.map((gPlace, i) => {
+    if (gamePlaces.newest) {
+        mapped = Object.values(gamePlaces.newest).map((gPlace, i) => {
         let rating = gPlace.rating;
         
         return (
@@ -61,7 +44,7 @@ const PhillyPlaces = (props) => {
                 </div>
             </div>
         )
-    })
+    })}
 
     const scroll = e => {
         let listGP = document.getElementById('scroll-ph');
@@ -71,19 +54,19 @@ const PhillyPlaces = (props) => {
     return (
         <>
             <div className='list-of-gps'>
-                <span>Book a table in Philadelphia</span>
+                <span>New places in your area</span>
                 <div className='gp-list' id='scroll-ph'>
                     {mapped}
                 </div>
             </div>
-            {visible && (<div className='scroll-buttons'>
+            <div className='scroll-buttons'>
                 <button className='scroll-left' onClick={scroll} id='-500'>❮
                 </button>
                 <button className='scroll-right' onClick={scroll} id='500'>❯
                 </button> 
-            </div>)}
+            </div>
         </>
     );
 };
 
-export default PhillyPlaces;
+export default NewestPage;

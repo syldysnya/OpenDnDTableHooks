@@ -3,10 +3,10 @@ import { NavLink, useHistory } from 'react-router-dom';
 import StarsShow from '../../stars/stars_show';
 
 const NewarkPlaces = (props) => {
-    const {gamePlaces, cities} = props;
+    const gamePlaces = useSelector(state => state.entities.gamePlaces);
+    const cities = useSelector(state => Object.values(state.entities.cities.citiesAll));
     const history = useHistory();
-    let newark = cities.filter(city => city.name === 'Newark');
-    let newarkPlaces = Object.values({...gamePlaces.gamePlacesAll}).filter(gp => gp.cityId === newark[0].id);
+    let mapped;
     const [visible, setVisible] = useState(false);
 
     useEffect(() => {
@@ -27,7 +27,7 @@ const NewarkPlaces = (props) => {
         window.addEventListener('resize', handleResize)
     }, [])
 
-    let mapped = newarkPlaces.map((gPlace, i) => {
+    mapped = newarkPlaces.map((gPlace, i) => {
         let rating = gPlace.rating;
         
         return (

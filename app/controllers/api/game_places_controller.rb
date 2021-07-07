@@ -51,45 +51,41 @@ class Api::GamePlacesController < ApplicationController
 
     def rating
 
-        game_places = []
+        game_places = GamePlace.joins(:reviews)
+                                .group('game_places.id')
+                                .order('SUM(reviews.overall_rating)/COUNT(reviews.overall_rating) DESC')
 
+        @game_places = []
         if current_player
-            GamePlace.joins(:reviews).each { |gp| game_places << gp if gp.city.area == current_player.city.area}
+            game_places.each { |gp| @game_places << gp if gp.city.id == current_player.city.id}
         else
-            game_places = GamePlace.joins(:reviews)
+            @game_places = game_places[0..10]
         end
         
-        @game_places = game_places.each_with_index do |gp1, i|
-            return gp1 if i == game_places.length 
-            gp2 = game_places[i + 1]
-            total1 = gp1.reviews.pluck(:overall_rating)
-            total1 = total1.sum / total1.length
-
-            total2 = gp2.reviews.pluck(:overall_rating)
-            total2 = total2.sum / total2.length
-
-            if total1 < total2
-                game_places
-            end
-        end
-
-        @game_places = @game_places[0..14]
-        
-        # if current_player
-        #     @game_places = GamePlace.where(city_id: current_player.city_id).sort { |gp1, gp2| gp1.reviews.average(:overall_rating) <=> gp2.reviews.average(:overall_rating) }
-        # else
-        #     @game_places = GamePlace.all.sort { |gp1, gp2| gp1.reviews.average(:overall_rating) <=> gp2.reviews.average(:overall_rating) }
-        # end
     end
 
     def default
         @game_places = []
         
         if current_player
-            GamePlace.all.limit(15).each { |gp| @game_places << gp if gp.city.area == current_player.city.area}
+            GamePlace.all.each { |gp| @game_places << gp if gp.city.area == current_player.city.area}
         else
-            @game_places = GamePlace.all.limit(15)
+            @game_places = GamePlace.all
         end
+
+        @game_places = @game_places[0..10].shuffle
+    end
+
+    def newest
+        @game_places = []
+        
+        if current_player
+            GamePlace.all.order('created_at DESC').each { |gp| @game_places << gp if gp.city.area == current_player.city.area}
+        else
+            @game_places = GamePlace.all.order('created_at DESC')
+        end
+
+        @game_places = @game_places[0..10]
     end
 
     def show

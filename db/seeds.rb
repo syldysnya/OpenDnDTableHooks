@@ -271,6 +271,7 @@ end
     game_places << game_place
 end
 
+game_places = game_places.shuffle
 game_places.each do |gp|
     gp.save
 end
