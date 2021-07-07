@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import { ProtectedRoute } from '../util/route_util';
+import AreaPage from './area/area_page';
+import CityPage from './area/city_page';
 import GamePlace from './game_places/gp/game_place';
 import Footer from './main/footer';
 import Home from './main/home';
@@ -26,6 +28,8 @@ const App = () => {
             <Route path='/' component={NavBar} />
             <Route exact path='/' component={Home} />
             <Route exact path='/gameplaces/:gamePlaceId' component={GamePlace}/>
+            <Route exact path='/:area' component={AreaPage}/>
+            <Route exact path='/:cityId' component={CityPage}/>
 
             <Switch>
                 <Route exact path='/search' component={SearchPage} />

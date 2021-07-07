@@ -611,10 +611,10 @@ newres.each do |res|
     res.save
 end
 
-Favorite.create!(player_id: player1.id, game_place_id: gp_ids.sample);
-Favorite.create!(player_id: player1.id, game_place_id: gp_ids.sample);
-Favorite.create!(player_id: player1.id, game_place_id: gp_ids.sample);
-Favorite.create!(player_id: player1.id, game_place_id: gp_ids.sample);
-Favorite.create!(player_id: player1.id, game_place_id: gp_ids.sample);
-Favorite.create!(player_id: player1.id, game_place_id: gp_ids.sample);
-Favorite.create!(player_id: player1.id, game_place_id: gp_ids.sample);
+Favorite.create!(player_id: player1.id, game_place_id: gp_ids.sample[0]);
+Favorite.create!(player_id: player1.id, game_place_id: gp_ids.sample[0]);
+Favorite.create!(player_id: player1.id, game_place_id: gp_ids.sample[0]);
+Favorite.create!(player_id: player1.id, game_place_id: gp_ids.sample[0]);
+Favorite.create!(player_id: player1.id, game_place_id: gp_ids.sample[0]);
+Favorite.create!(player_id: player1.id, game_place_id: gp_ids.sample[0]);
+Favorite.create!(player_id: player1.id, game_place_id: gp_ids.sample[0]); 

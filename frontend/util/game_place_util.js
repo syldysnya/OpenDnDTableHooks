@@ -6,6 +6,34 @@ export const fetchAllGamePlaces = filter => {
     })
 }
 
+export const sortByDefault = () => {
+    return $.ajax({
+        method: "POST",
+        url: '/api/game_places/default',
+    })
+}
+
+export const sortByRating = () => {
+    return $.ajax({
+        method: "POST",
+        url: '/api/game_places/rating',
+    })
+}
+
+export const sortByDate = () => {
+    return $.ajax({
+        method: "POST",
+        url: '/api/game_places/newest',
+    })
+}
+
+export const sortByReviews = () => {
+    return $.ajax({
+        method: "POST",
+        url: '/api/game_places/review',
+    })
+}
+
 export const fetchGamePlace = gamePlaceId => (
     $.ajax({
         method: 'GET',

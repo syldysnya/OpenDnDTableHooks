@@ -5,8 +5,8 @@ export const RECEIVE_GAME_PLACES = 'RECEIVE_GAME_PLACES';
 const receiveAllgamePlaces = gamePlaces => {
     
     return ({
-    type: RECEIVE_GAME_PLACES,
-    gamePlaces
+        type: RECEIVE_GAME_PLACES,
+        gamePlaces
     })
 };
 
@@ -17,6 +17,25 @@ const receiveGamePlace = gamePlace => ({
 
 export const fetchAllGamePlaces = filter => dispatch => (
     ApiUtilGP.fetchAllGamePlaces(filter)
+        .then(gamePlaces => dispatch(receiveAllgamePlaces(gamePlaces)))
+);
+
+export const fetchAllGPbyDefault = () => dispatch => (
+    ApiUtilGP.sortByDefault()
+        .then(gamePlaces => dispatch(receiveAllgamePlaces(gamePlaces)))
+);
+
+export const fetchAllGPbyRating = () => dispatch => (
+    ApiUtilGP.sortByRating()
+        .then(gamePlaces => dispatch(receiveAllgamePlaces(gamePlaces)))
+);
+
+export const fetchAllGPbyReview = () => dispatch => (
+    ApiUtilGP.sortByReviews()
+        .then(gamePlaces => dispatch(receiveAllgamePlaces(gamePlaces)))
+);
+export const fetchAllGPbyDate = () => dispatch => (
+    ApiUtilGP.sortByDate()
         .then(gamePlaces => dispatch(receiveAllgamePlaces(gamePlaces)))
 );
 

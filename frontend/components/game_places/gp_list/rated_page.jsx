@@ -1,49 +1,50 @@
 import React, { useRef } from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import StarsShow from '../../stars/stars_show';
 
-const NewYorkPlaces = (props) => {
+const RatedPage = () => {
 
-    const {gamePlaces, cities} = props;
+    const gamePlaces = useSelector(state => state.entities.gamePlaces);
+    const cities = useSelector(state => Object.values(state.entities.cities.citiesAll));
     const history = useHistory();
-    
-    let newyork = cities.filter(city => city.name === 'New York');
-    let newyorkPlaces = Object.values({...gamePlaces.gamePlacesAll}).filter(gp => gp.cityId === newyork[0].id);
+    let mapped;
 
-    let mapped = newyorkPlaces.map((gPlace, i) => {
-        let rating = gPlace.rating;
-        
-        return (
-            <div className='game-place-i' key={`game-place-${i}`}>
+    if (gamePlaces.rating) {
+        mapped = Object.values(gamePlaces.rating).map((gPlace, i) => {
+            const { rating, id, avatarUrl, name, lengthRat, reviews, cityId, reservations } = gPlace;
+            
+            return (
+                <div className='game-place-i' key={`game-place-${i}`}>
                 <div className='avatar'>
-                    <img onClick={() => history.push(`/gameplaces/${gPlace.id}`)} src={gPlace.avatarUrl}/>
+                    <img onClick={() => history.push(`/gameplaces/${id}`)} src={avatarUrl}/>
                 </div>
                 <div className='info-box'>
                     <div className='title'>
                         <NavLink to={{
-                            pathname: `/gameplaces/${gPlace.id}`
-                            }}
-                            style={{ textDecoration: 'none' }}>
-                            {gPlace.name}
+                            pathname: `/gameplaces/${id}`
+                        }}
+                        style={{ textDecoration: 'none' }}>
+                            {name}
                         </NavLink>
                     </div>
                     <div className='rating'>
-                        <StarsShow stars={rating} lengthRat={gPlace.lengthRat}/>
-                        {gPlace.reviews === 1 ? (<div>{gPlace.reviews} review</div>) : (<div>{gPlace.reviews} reviews</div>)}
+                        <StarsShow stars={rating} lengthRat={lengthRat}/>
+                        {reviews === 1 ? (<div>{reviews} review</div>) : (<div>{reviews} reviews</div>)}
                     </div>
                     <div className='city'>{cities.map(city => {
-                        if (city.id === gPlace.cityId) {
+                        if (city.id === cityId) {
                             return city.name
                         }
                     })}</div>
                     <div className="booked-icon">
                         <i className="fas fa-chart-line"></i>
-                        {gPlace.reservations === 1 ? (<div className='booked' >Booked {gPlace.reservations} time today</div>) : (<div className='booked'>Booked {gPlace.reservations} times today</div>)}
+                        {reservations === 1 ? (<div className='booked' >Booked {reservations} time today</div>) : (<div className='booked'>Booked {reservations} times today</div>)}
                     </div>
                 </div>
             </div>
-        )
-    })
+        )})
+    }
 
     const scroll = e => {
         let listGP = document.getElementById('scroll-ny');
@@ -53,7 +54,7 @@ const NewYorkPlaces = (props) => {
     return (
         <>
             <div className='list-of-gps'>
-                <span>Book a table in New York</span>
+                <span>Best rated game places</span>
                 <div className='gp-list' id='scroll-ny'>
                     {mapped}
                 </div>
@@ -68,4 +69,4 @@ const NewYorkPlaces = (props) => {
     );
 };
 
-export default NewYorkPlaces;
+export default RatedPage;

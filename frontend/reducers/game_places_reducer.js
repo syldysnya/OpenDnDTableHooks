@@ -1,8 +1,11 @@
 import { RECEIVE_GAME_PLACE, RECEIVE_GAME_PLACES } from "../actions/game_place_actions";
 
 const initialState = {
-    gamePlacesAll: [],
-    gamePlace: []
+    default: {},
+    gamePlace: {},
+    rating: {},
+    review: {},
+    newest: {}
 } 
 
 const gamePlacesReducer = (state=initialState, action) => {
@@ -10,8 +13,9 @@ const gamePlacesReducer = (state=initialState, action) => {
     
     switch (action.type) {
         case RECEIVE_GAME_PLACES:
-            
-            return {...state, gamePlacesAll: action.gamePlaces}
+            debugger
+            let key = Object.keys(action.gamePlaces)[0];
+            return {...state, [key]: action.gamePlaces[key]}
         case RECEIVE_GAME_PLACE:
             
             return { ...state, gamePlace: action.gamePlace };

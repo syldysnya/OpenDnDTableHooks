@@ -1,24 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllGamePlaces } from '../../../actions/game_place_actions';
+import { fetchAllGPbyDefault, fetchAllGPbyRating } from '../../../actions/game_place_actions';
 import { fetchCities } from '../../../actions/city_actions';
 import AllGamePlaces from './all_game_places';
-import NewYorkPlaces from './new_york_places';
-import PhillyPlaces from './philly_places';
-import NewarkPlaces from './newark_places';
-import WashingtonPlaces from './washington_places';
+import RatedPage from './rated_page';
 
 const GamePlacesAll = () => {
 
-    const gamePlaces = useSelector(state => state.entities.gamePlaces);
-    const cities = useSelector(state => Object.values(state.entities.cities.citiesAll));
     const dispatch = useDispatch();
-    const [fetched, setFetched] = useState(false);
+    const player = useSelector(state => state.session.currentPlayer)
     
     useEffect(() => {
-        dispatch(fetchAllGamePlaces())
-        setFetched(true)
-    }, []);
+        dispatch(fetchAllGPbyDefault())
+        dispatch(fetchAllGPbyRating())
+    }, [player]);
 
     useEffect(() => {
         dispatch(fetchCities());
@@ -26,11 +21,11 @@ const GamePlacesAll = () => {
     
     return (
         <>
-            <AllGamePlaces gamePlaces={gamePlaces} cities={cities} />
-            <NewYorkPlaces gamePlaces={gamePlaces} cities={cities} />
-            <PhillyPlaces gamePlaces={gamePlaces} cities={cities} />
-            <NewarkPlaces gamePlaces={gamePlaces} cities={cities} />
-            <WashingtonPlaces gamePlaces={gamePlaces} cities={cities} />
+            <AllGamePlaces />
+            <RatedPage />
+            {/* <PhillyPlaces />
+            <NewarkPlaces />
+            <WashingtonPlaces /> */}
         </>
     );
 };
