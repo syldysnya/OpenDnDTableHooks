@@ -68,7 +68,7 @@ class Api::GamePlacesController < ApplicationController
         @game_places = []
         
         if current_player
-            GamePlace.all.each { |gp| @game_places << gp if gp.city.area == current_player.city.area}
+            GamePlace.all.each { |gp| @game_places << gp if gp.city.id == current_player.city.id}
         else
             @game_places = GamePlace.all
         end
