@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import GamePlacesAll from '../game_places/gp_list/game_places_all';
 import SearchBar from '../search/search_bar';
 

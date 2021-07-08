@@ -1,12 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import SearchResults from './search_results';
 import { fetchCities } from '../../actions/city_actions';
-import { fetchAllGamePlaces } from '../../actions/game_place_actions';
 import SearchBarSearchPage from './seacrh_bar_search_page';
 import SearchFilter from './search_filter';
-import { useLocation, useParams } from 'react-router-dom';
-import { updateFilter } from '../../actions/filter_actions';
+import { useLocation } from 'react-router-dom';
+import { deleteFilter, updateFilter } from '../../actions/filter_actions';
 
 const SearchPage = () => {
     const location = useLocation();
@@ -17,9 +16,13 @@ const SearchPage = () => {
     const defaultYear = currentDate[3];
     const defaultGMT = currentDate[5];
     const [reservation, setReservation] = useState('');
-    const locationFilter = useSelector(state => state.ui.filters.location);
-    const nameFilter = useSelector(state => state.ui.filters.name);
     const urlParams = location.search.substring(1).split('%20').join(' ');
+
+    useEffect(() => {
+        return () => {
+            dispatch(deleteFilter())
+        }
+    }, [])
 
     useEffect(() => {
         dispatch(updateFilter('name', urlParams))
@@ -61,7 +64,7 @@ const SearchPage = () => {
                     <SearchFilter/>
                 </div>
                 <div className='right-bar-search'>
-                    <SearchResults reservation={reservation} urlParams={urlParams}/>
+                    <SearchResults reservation={reservation}/>
                 </div>
             </div>
         </div>

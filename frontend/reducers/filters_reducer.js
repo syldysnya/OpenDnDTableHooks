@@ -9,26 +9,27 @@ const defaultFilters = Object.freeze({
 const filtersReducer = (state = defaultFilters, action) => {
   Object.freeze(state);
   if (action.type === UPDATE_FILTER) {
-    const newFilter = {
-      [action.filter]: action.value
-    };
+      const newFilter = {
+        [action.filter]: action.value
+      };
     return Object.assign({}, state, newFilter);
   } else if (action.type === REMOVE_FILTER) {
-    let newFilter;
-    if (action.filter === 'location') {
-      newFilter = {
-        location: [] 
+      let newFilter;
+      if (action.filter === 'location') {
+        newFilter = {
+          location: [] 
+        }
+      } else if (action.filter === 'rating') {
+        newFilter = {
+          rating: 0 
+        }
+      } else if (action.filter === 'name') {
+        newFilter = {
+          name: '' 
+        }
+      } else {
+        newFilter = defaultFilters
       }
-    } else if (action.filter === 'rating') {
-      newFilter = {
-        rating: 0 
-      }
-    } else {
-      newFilter = {
-        name: '' 
-      }
-    }
-
     return Object.assign({}, state, newFilter);
   } else {
     return state;

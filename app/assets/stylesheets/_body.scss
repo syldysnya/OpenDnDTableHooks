@@ -632,7 +632,7 @@ body {
         .search-results-list {
             width: 100%;
             display: grid;
-            grid-template-rows: 70px auto;
+            grid-template-rows: auto auto 70px;
             height: auto;
 
             .number-of-places {
@@ -643,11 +643,19 @@ body {
             }
 
             .filter-results-text {
-                padding: 20px 0;
+                
+                h1 {
+                    display: flex;
+                    padding: 20px 0;
+                    font-weight: 500;
+                    font-size: 14px;
+                    border-bottom: 1px solid $light-grey;
+                }
+            }
+
+            .name-results-text {
+                font-size: 20px;
                 font-weight: 500;
-                font-size: 14px;
-                border-bottom: 1px solid $light-grey;
-                display: flex;
             }
 
             .filt-buttons-box {
@@ -683,13 +691,15 @@ body {
 
             .result-item-info {
                 display: grid;
-                grid-template-rows: 25px 20px 20px 20px 40px;
+                grid-template-rows: 45px 20px 20px 20px 40px;
                 row-gap: 5px;
 
                 .link-place {
                     color: $blue-color;
                     font-weight: 700;
                     font-size: 18px;
+                    display: flex;
+                    align-items: center;
                 }
 
                 .time-pick-buttons .time-buttons {

@@ -27,13 +27,12 @@ const App = () => {
             <Modal />
             <Route path='/' component={NavBar} />
             <Route exact path='/' component={Home} />
-            <Route exact path='/:area' component={Home} />
+            <Route exact path='/discover/:area' component={Home} />
             <Route exact path='/gameplaces/:gamePlaceId' component={GamePlace}/>
-            <Route exact path='/:area' component={AreaPage}/>
             <Route exact path='/:cityId' component={CityPage}/>
+            <Route exact path='/search' component={SearchPage} />
 
             <Switch>
-                <Route exact path='/search' component={SearchPage} />
                 <ProtectedRoute exact path='/booking/details' component={ConfirmationCreateForm} />
                 <ProtectedRoute exact path='/booking/details/edit' component={ConfirmationModifyForm} />
                 <ProtectedRoute exact path='/book/view/:reservationId' component={ReservationView} />

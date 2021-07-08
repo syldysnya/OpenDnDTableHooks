@@ -1,5 +1,3 @@
-@game_places.each do |game_place|
-    json.set! game_place.id do 
-        json.partial! 'api/game_places/game_place', game_place: game_place
-    end
+json.game_places_all(@game_places) do |game_place|
+    json.partial! 'api/game_places/game_place', game_place: game_place
 end

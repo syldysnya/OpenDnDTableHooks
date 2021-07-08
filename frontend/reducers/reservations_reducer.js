@@ -11,7 +11,6 @@ const reservationsReducer = (state = initialState, action) => {
     
     switch (action.type) {
         case RECEIVE_ALL_RESERVATIONS:
-            debugger
             let key = Object.keys(action.reservations);
             return {...state, [key[0]]: action.reservations[key[0]], [key[1]]: action.reservations[key[1]]}
         case RECEIVE_RESERVATION:

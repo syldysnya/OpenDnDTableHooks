@@ -55,7 +55,7 @@ const GamePlacesAll = () => {
     const handleClick = e => {
         let value = e.target.id;
 
-        history.push(`/${value}`)
+        history.push(`/discover/${value}`)
     }
 
     if (cities) {

@@ -2,51 +2,30 @@ class Api::GamePlacesController < ApplicationController
 
     def index
         if filter_params
-            @game_places = GamePlace.all
-
-            if filter_params[:location]
-                @game_places = GamePlace.where(:city_id => filter_params[:location])
-            end
+            gp_indicies = GamePlace.joins(:reviews)
+                                    .group('game_places.id')
+                                    .having('SUM(reviews.overall_rating)/COUNT(reviews.overall_rating)*1.0 >= ?', filter_params[:rating])
+                                    .pluck(:id)
 
             if filter_params[:name]
-                names = GamePlace.pluck(:name).select {|gp| gp.downcase.include?(filter_params[:name])}
-                cities = City.pluck(:name).select {|gp| gp.downcase.include?(filter_params[:name].downcase)}
-                
-                if names.length > 0 
-                    @game_places = @game_places.where("lower(name) LIKE lower(?)", "%#{filter_params[:name]}%")
-                end
+                results_name = GamePlace.where("lower(name) LIKE lower(?)", "%#{filter_params[:name]}%").pluck(:id)
+                cities = City.where('lower(name) LIKE lower(?)', "%#{filter_params[:name]}%").pluck(:id)
+                results_cities = GamePlace.where(:city_id => cities).pluck(:id)
+                res = results_name + results_cities
 
-                if cities.length > 0
-                    game_places = []
-                    @game_places = @game_places.each do |gp|
-                        cities.each do |city|
-                            if gp.city.name == city
-                                game_places << gp
-                            end
-                        end
-                    end
-                    @game_places = game_places
-                end
-
+                gp_indicies = gp_indicies & res.uniq
+            end
+            
+            if filter_params[:location]
+                gp_idx = GamePlace.where(:city_id => filter_params[:location]).pluck(:id)
+                gp_indicies = gp_idx & gp_indicies
             end
 
-            if filter_params[:rating] > '0'
-                game_places = []
-
-                @game_places.each do |gp|
-                    rat_reviews = gp.reviews.pluck(:overall_rating)
-                    avg = rat_reviews.sum / rat_reviews.length
-                    if avg >= filter_params[:rating].to_i
-                        game_places << gp
-                    end
-                end
-
-                @game_places = game_places
-            end
-
+            @game_places = GamePlace.where(:id => gp_indicies)
         else
-            @game_places = GamePlace.all.limit(15)
+            @game_places = GamePlace.order("RANDOM()").limit(15)
         end
+
     end 
 
     def rating

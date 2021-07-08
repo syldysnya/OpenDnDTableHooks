@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import TimePickButtons from '../reservations/create_forms/time_pick_buttons';
 import StarsShow from '../stars/stars_show';
 import { deleteFilter } from '../../actions/filter_actions';
@@ -8,12 +8,11 @@ import { deleteFilter } from '../../actions/filter_actions';
 const SearchResults = (props) => {
     const gamePlaces = useSelector(state => Object.values({...state.entities.gamePlaces.gamePlacesAll}));
     const cities = useSelector(state => Object.values({...state.entities.cities.citiesAll}));
-    const {reservation, urlParams} = props;
+    const { reservation } = props;
     const locationFilter = useSelector(state => state.ui.filters.location);
     const ratingFilter = useSelector(state => state.ui.filters.rating);
     const nameFilter = useSelector(state => state.ui.filters.name);
     const dispatch = useDispatch();
-    const history = useHistory();
 
     const resetFilter = e => {
         const filterId = e.currentTarget.id
@@ -85,17 +84,24 @@ const SearchResults = (props) => {
 
     return (
         <div className="search-results-list">
-            {(locationFilter.length > 0 || ratingFilter !== 0) && (
-                <div className="filter-results-text">
-                    FILTERS: {filtered_buttons}
-                </div>
-            ) }
+            <div className="filter-results-text">
+                {(locationFilter.length > 0 || ratingFilter !== 0) && (
+                    <h1>
+                        FILTERS: {filtered_buttons}
+                    </h1>
+                )}
+            </div>
+            <div className="name-results-text">
+                {nameFilter && (
+                    <p>You searched for '{nameFilter}'</p>
+                )}
+            </div>
             <div className="number-of-places">
                 {mapped.length === 0 ? (<div>No results</div>) : mapped.length > 1 ? (
                     <div>{mapped.length} game places available</div>
-                ) : (
-                    <div>1 game place available</div>
-                )} 
+                    ) : (
+                        <div>1 game place available</div>
+                        )} 
             </div>
             <div className="list-places">
                 {mapped}
