@@ -5,77 +5,86 @@ import { fetchCities } from '../../../actions/city_actions';
 import AllGamePlaces from './all_game_places';
 import RatedPage from './rated_page';
 import NewestPage from './newest_page';
+import { useHistory, useLocation, useParams } from 'react-router-dom';
 
 const GamePlacesAll = () => {
 
     const dispatch = useDispatch();
     const player = useSelector(state => state.session.currentPlayer);
     const cities = useSelector(state => Object.values({...state.entities.cities.citiesAll}));
+    const history = useHistory();
+    const location = useLocation();
+    const params = useParams();
     let mapped;
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
+    }, [location.pathname])
     
     useEffect(() => {
-        dispatch(fetchAllGPbyDefault())
-    }, [player]);
+        if (params) {
+            dispatch(fetchAllGPbyDefault(params.area))
+        } else {
+            dispatch(fetchAllGPbyDefault())
+        }
+    }, [player, location]);
 
     useEffect(() => {
-        dispatch(fetchAllGPbyRating())
-    }, [player]);
+        if (params) {
+            dispatch(fetchAllGPbyRating(params.area))
+        } else {
+            dispatch(fetchAllGPbyRating())
+        }
+    }, [player, location]);
 
     useEffect(() => {
-        dispatch(fetchAllGPbyDate())
-    }, [player]);
+        if (params) {
+            dispatch(fetchAllGPbyDate(params.area))
+        } else {
+            dispatch(fetchAllGPbyDate())
+        }
+    }, [player, location]);
 
     useEffect(() => {
         dispatch(fetchCities());
     }, []);
 
+    const handleClick = e => {
+        let value = e.target.id;
+
+        history.push(`/${value}`)
+    }
+
     if (cities) {
         mapped = cities.map((city, i) => {
             return (
-            <div className={`link-city-${i}`}>
+            <div className={`link-city-${i}`} key={`link-city-${i}`} id={city.id} onClick={handleClick}>
                 {city.name}
             </div>
             )
         })
     }
-    
+
     return (
         <>
             <AllGamePlaces />
             <RatedPage />
             <NewestPage />
-            {/* <div className="flux-ad">
-                <article>FLUX</article>
-                <div className="photos-of-us">
-                    <div className='rectangle-fr-1'></div>
-                    <div className='rectangle-fr-2'></div>
-                    <div className='rectangle-fr-3'></div>
-                    <div className='rectangle-fr-4'></div>
-                </div>
-                <h1>Flux is a travel planner app</h1>
-                <span>made by us</span>
-                <ul>
-                    <li>MongoDB</li>
-                    <li>React</li>
-                    <li>Redux</li>
-                    <li>Node.js</li>
-                    <li>Gmail API</li>
-                </ul>
-            </div> */}
             <div className="destination-box">
                 <span className='explore-title'>Explore OpenDnDTable</span>
                 <div className="area-box">
-                    <div className="east-area">the East</div>
-                    <div className="west-area">the West</div>
-                    <div className="south-area">the South</div>
-                    <div className="midwest-area">the Midwest</div>
+                    <div className="east-area" id='east' onClick={handleClick}>the East</div>
+                    <div className="west-area" id='west' onClick={handleClick}>the West</div>
+                    <div className="south-area" id='south' onClick={handleClick}>the South</div>
+                    <div className="midwest-area" id='midwest' onClick={handleClick}>the Midwest</div>
                 </div>
                 <div className="cities-list-links">
                     {mapped}
                 </div>
             </div>
-            {/* <NewarkPlaces />
-            <WashingtonPlaces /> */}
         </>
     );
 };

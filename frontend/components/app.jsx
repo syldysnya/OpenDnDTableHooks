@@ -27,6 +27,7 @@ const App = () => {
             <Modal />
             <Route path='/' component={NavBar} />
             <Route exact path='/' component={Home} />
+            <Route exact path='/:area' component={Home} />
             <Route exact path='/gameplaces/:gamePlaceId' component={GamePlace}/>
             <Route exact path='/:area' component={AreaPage}/>
             <Route exact path='/:cityId' component={CityPage}/>

@@ -50,42 +50,82 @@ class Api::GamePlacesController < ApplicationController
     end 
 
     def rating
+        areaParams = params[:filter] if params[:filter]
 
-        game_places = GamePlace.joins(:reviews)
-                                .group('game_places.id')
-                                .order('SUM(reviews.overall_rating)/COUNT(reviews.overall_rating) DESC')
-
-        @game_places = []
-        if current_player
-            game_places.each { |gp| @game_places << gp if gp.city.id == current_player.city.id}
+        if areaParams && areaParams.to_i > 0
+            city_idx = areaParams.to_i
+            @game_places = GamePlace.joins(:reviews)
+                                    .where(:city_id => city_idx)
+                                    .group('game_places.id')
+                                    .order('SUM(reviews.overall_rating)/COUNT(reviews.overall_rating) desc')
+                                    .limit(11)
+        elsif areaParams && areaParams.to_i == 0
+            indicies = City.where(:area => areaParams).pluck(:id)
+            @game_places = GamePlace.joins(:reviews)
+                                    .where(:city_id => indicies)
+                                    .group('game_places.id')
+                                    .order('SUM(reviews.overall_rating)/COUNT(reviews.overall_rating) desc')
+                                    .limit(11)
         else
-            @game_places = game_places[0..10]
+            if current_player
+                player_city_id = current_player.city.id
+                @game_places = GamePlace.joins(:reviews)
+                                        .where(:city_id => player_city_id)
+                                        .group('game_places.id')
+                                        .order('SUM(reviews.overall_rating)/COUNT(reviews.overall_rating) desc')
+                                        .limit(11)
+            else
+                @game_places = GamePlace.joins(:reviews)
+                                        .group('game_places.id')
+                                        .order('SUM(reviews.overall_rating)/COUNT(reviews.overall_rating) DESC')
+                                        .limit(11)
+            end
         end
-        
     end
 
     def default
-        @game_places = []
-        
-        if current_player
-            GamePlace.all.each { |gp| @game_places << gp if gp.city.id == current_player.city.id}
-        else
-            @game_places = GamePlace.all
+        areaParams = params[:filter] if params[:filter]
+
+        if areaParams && areaParams.to_i > 0
+            city_idx = areaParams.to_i
+            @game_places = GamePlace.where(:city_id => city_idx).order("RANDOM()").limit(11)
+        elsif areaParams && areaParams.to_i == 0
+            indicies = City.where(:area => areaParams).pluck(:id)
+            @game_places = GamePlace.where(:city_id => indicies).order("RANDOM()").limit(11)
+        else 
+            if current_player
+                player_city_id = current_player.city.id
+                @game_places = GamePlace.where(:city_id => player_city_id).order("RANDOM()").limit(11)
+            else
+                @game_places = GamePlace.order("RANDOM()").limit(11)
+            end
         end
 
-        @game_places = @game_places[0..10].shuffle
     end
 
     def newest
-        @game_places = []
-        
-        if current_player
-            GamePlace.all.order('created_at DESC').each { |gp| @game_places << gp if gp.city.area == current_player.city.area}
-        else
-            @game_places = GamePlace.all.order('created_at DESC')
-        end
+        areaParams = params[:filter] if params[:filter]
 
-        @game_places = @game_places[0..10]
+        if areaParams && areaParams.to_i > 0
+            city_idx = areaParams.to_i
+            @game_places = GamePlace.joins(:reviews)
+                                    .where(:city_id => city_idx)
+                                    .order('id DESC')
+                                    .limit(11)
+        elsif areaParams && areaParams.to_i == 0
+            indicies = City.where(:area => areaParams).pluck(:id)
+            @game_places = GamePlace.joins(:reviews)
+                                    .where(:city_id => indicies)
+                                    .order('id DESC')
+                                    .limit(11)
+        else
+            if current_player
+                player_city_id = current_player.city.id
+                @game_places = GamePlace.where(:city_id => player_city_id).order('id DESC').limit(11)
+            else
+                @game_places = GamePlace.all.order('id DESC').limit(11)
+            end
+        end
     end
 
     def show

@@ -17,7 +17,7 @@ const Footer = () => {
                             <a href="https://angel.co/u/syldysnya" target='_blank'><i className="fab fa-angellist"></i>AngelList</a>
                         </li>
                         <li key='github' >
-                            <a href="https://github.com/syldysnya" target='_blank'><i className="fas fa-dragon"></i>Github</a>
+                            <a href="https://github.com/syldysnya" target='_blank'><i className="fab fa-github"></i>Github</a>
                         </li>
                         <li key='portfolio' >
                             <a href="#" target='_blank'><i className="fas fa-dragon"></i>Personal Site</a>

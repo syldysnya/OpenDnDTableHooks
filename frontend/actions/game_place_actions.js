@@ -20,18 +20,18 @@ export const fetchAllGamePlaces = filter => dispatch => (
         .then(gamePlaces => dispatch(receiveAllgamePlaces(gamePlaces)))
 );
 
-export const fetchAllGPbyDefault = () => dispatch => (
-    ApiUtilGP.sortByDefault()
+export const fetchAllGPbyDefault = filter => dispatch => (
+    ApiUtilGP.sortByDefault(filter)
         .then(gamePlaces => dispatch(receiveAllgamePlaces(gamePlaces)))
 );
 
-export const fetchAllGPbyRating = () => dispatch => (
-    ApiUtilGP.sortByRating()
+export const fetchAllGPbyRating = filter => dispatch => (
+    ApiUtilGP.sortByRating(filter)
         .then(gamePlaces => dispatch(receiveAllgamePlaces(gamePlaces)))
 );
 
-export const fetchAllGPbyDate = () => dispatch => (
-    ApiUtilGP.sortByDate()
+export const fetchAllGPbyDate = filter => dispatch => (
+    ApiUtilGP.sortByDate(filter)
         .then(gamePlaces => dispatch(receiveAllgamePlaces(gamePlaces)))
 );
 

@@ -6,24 +6,27 @@ export const fetchAllGamePlaces = filter => {
     })
 }
 
-export const sortByDefault = () => {
+export const sortByDefault = filter => {
     return $.ajax({
         method: "POST",
         url: '/api/game_places/default',
+        data: {filter}
     })
 }
 
-export const sortByRating = () => {
+export const sortByRating = filter => {
     return $.ajax({
         method: "POST",
         url: '/api/game_places/rating',
+        data: {filter}
     })
 }
 
-export const sortByDate = () => {
+export const sortByDate = filter => {
     return $.ajax({
         method: "POST",
         url: '/api/game_places/newest',
+        data: {filter}
     })
 }
 
