@@ -24,6 +24,7 @@ const Login = () => {
         
         return () => {
             dispatch(receiveErrors([]))
+            setErrored(false)
         }
     }, [user])
 

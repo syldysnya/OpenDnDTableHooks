@@ -1,24 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector, useStore } from 'react-redux';
-import { fetchAllReservations } from '../../actions/reservation_actions';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { fetchGamePlace } from '../../actions/game_place_actions';
 
 const UpComMenu = () => {
 
     const player = useSelector(state => state.session.currentPlayer)
-    const reservations = useSelector(state => state.entities.reservations.reservationsAll)
-    const dispatch = useDispatch();
+    const reservations = useSelector(state => state.entities.reservations.future)
     const [visible, setVisible] = useState(false);
-    const [listRes, setListRes] = useState();
-    let list;
-    
-    useEffect(() => {
-        if (reservations) {
-            list = Object.values({...reservations}).filter(res => res.canceled === false)
-            setListRes(list[0])
-        }
-    }, [visible])
 
     const handleDropdownMenu = e => {
         setVisible(!visible)
@@ -38,37 +26,37 @@ const UpComMenu = () => {
             </div>
             {visible && (<div className="upcom-menu-box">
                 <div className="upcom-title">
-                    Upcoming reservations
+                    Upcoming reservation
                 </div>
-                {listRes ? (
+                {reservations[0] ? (
                     <div className="upcome-box" onMouseLeave={hideMenu}>
                         <div className="upcom-icon">
                             <i className="fas fa-store-alt"></i>
                         </div>
                         <div className="upcome-info">
                             <span className='gp-name-span-up'>
-                                {listRes.gpName}
+                                {reservations[0].gpName}
                             </span>
                             <div className='gp-info-down-up'>
                                 <div>
                                     <i className="far fa-calendar"></i>
-                                    <span>{listRes.gameDate}</span>
+                                    <span>{reservations[0].gameDate}</span>
                                 </div>
                                 <div>
                                     <i className="far fa-clock"></i>
-                                    <span>{listRes.gameStart}</span>
+                                    <span>{reservations[0].gameStart}</span>
                                 </div>
                                 <div>
                                     <i className="far fa-user"></i>
-                                    <span>{listRes.playersNum} people</span>
+                                    <span>{reservations[0].playersNum} people</span>
                                 </div>
                             </div>
                             <div className="crud-links">
-                                <NavLink style={{ textDecoration: 'none' }} to={`/book/view/${listRes.id}`}>
+                                <NavLink style={{ textDecoration: 'none' }} to={`/book/view/${reservations[0].id}`}>
                                     View
                                 </NavLink>
                                 <i className="fas fa-circle"></i>
-                                <NavLink style={{ textDecoration: 'none' }} to={`/book/view/${listRes.id}`}>
+                                <NavLink style={{ textDecoration: 'none' }} to={`/book/view/${reservations[0].id}`}>
                                     Modify
                                 </NavLink>
                             </div>
@@ -77,8 +65,8 @@ const UpComMenu = () => {
                                     to={{
                                         pathname: '/book/cancel',
                                         state: {
-                                            reservation: listRes,
-                                            gamePlaceId: listRes.gamePlaceId,
+                                            reservation: reservations[0],
+                                            gamePlaceId: reservations[0].gamePlaceId,
                                             currentPlayer: player
                                         }
                                     }}>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCities } from '../../actions/city_actions';
 import { hideModal, openModal } from '../../actions/modal_actions';
-import { login, signup } from '../../actions/session_actions';
+import { login, receiveErrors, signup } from '../../actions/session_actions';
 
 const Signup = () => {
     
@@ -25,6 +25,13 @@ const Signup = () => {
     const cities = useSelector(state => Object.values(state.entities.cities.citiesAll));
     const isSignedIn = useSelector(state => state.session.isSignedIn);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        
+        return () => {
+            dispatch(receiveErrors([]))
+        }
+    }, [])
 
     useEffect(() => {
         if (isSignedIn) {
