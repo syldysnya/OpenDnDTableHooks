@@ -62,7 +62,6 @@ const ConfirmationModifyForm = () => {
         
         let res = reservation;
         let newDateInfo = res.gameDate + ' 2021 ' + res.gameStart + " " + res.gmt 
-        console.log(newDateInfo, new Date(newDateInfo), res.gameStart)
         res.dateInfo = new Date(newDateInfo)
 
         dispatch(editReservation(reservation))
