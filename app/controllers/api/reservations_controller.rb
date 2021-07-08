@@ -1,8 +1,11 @@
 class Api::ReservationsController < ApplicationController
 
     def index
-        reservations = Reservation.all.select{ |reservation| reservation.player_id == current_player.id}
-        @reservations = reservations.sort { |a, b| a.date_info <=> b.date_info }
+        player_id = current_player.id
+        past = Reservation.where(:player_id => player_id).where('date_info < ?', Date.today).order('date_info')
+        future = Reservation.where(:player_id => player_id).where('date_info >= ?', Date.today).order('date_info')
+
+        @reservations = [past, future]
     end
 
     def show

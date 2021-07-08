@@ -420,3 +420,13 @@
     font-family: $primary-font;
     border-bottom: 1px solid $grey-color;
 }
+
+.success-box {
+    display: flex;
+    padding: 20px 45px 0;
+    color: $red-color;
+
+    i {
+        padding-right: 10px;
+    }
+}

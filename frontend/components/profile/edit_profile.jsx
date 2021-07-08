@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { editPlayer, fetchPlayer } from '../../actions/player_actions';
 
 const EditProfile = (props) => {
-    const {id} = props.curPlayer;
+    const id = useSelector(state => state.session.currentPlayer.id);
     const [player, setPlayer] = useState({
         id: '',
         email: '',
@@ -18,23 +18,13 @@ const EditProfile = (props) => {
     });
     const dispatch = useDispatch();
     const cities = useSelector(state => Object.values(state.entities.cities.citiesAll));
+    const newPlayer = useSelector(state => state.entities.player)
     const [erroredConfPass, setConfPassErr] = useState(false);
     const [created, setCreated] = useState(false);
 
     useEffect(() => {
         if (created) {
-            setPlayer({
-                id: '',
-                email: '',
-                password: '',
-                fname: '',
-                lname: '',
-                cityId: '',
-                confirmPassword: '',
-                phone: '',
-                email: '',
-                dname: ''
-            })
+            setPlayer(player)
         }
     }, [created])
 
@@ -43,15 +33,16 @@ const EditProfile = (props) => {
             .then(res => setPlayer(res.player))
     }, [])
 
-
     const updateInfo = e => {
         const { name, value } = e.target;
         setPlayer({ ...player, [name]: value })
+        setCreated(false)
     }
 
     const handleInputCity = e => {
         const idx = parseInt(e.target.value);
         setPlayer({ ...player, cityId: idx });
+        setCreated(false)
     }
 
     const handleSubmit = e => {
@@ -62,6 +53,10 @@ const EditProfile = (props) => {
         } else {
             dispatch(editPlayer(player))
             setCreated(true)
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            })
         }
     }
 

@@ -1,8 +1,9 @@
 import { RECEIVE_ALL_RESERVATIONS, RECEIVE_RESERVATION } from "../actions/reservation_actions";
 
 const initialState = {
-    reservationsAll: [],
-    reservation: []
+    past: {},
+    future: {},
+    reservation: {}
 } 
 
 const reservationsReducer = (state = initialState, action) => {
@@ -10,7 +11,9 @@ const reservationsReducer = (state = initialState, action) => {
     
     switch (action.type) {
         case RECEIVE_ALL_RESERVATIONS:
-            return {...state, reservationsAll: action.reservations};
+            debugger
+            let key = Object.keys(action.reservations);
+            return {...state, [key[0]]: action.reservations[key[0]], [key[1]]: action.reservations[key[1]]}
         case RECEIVE_RESERVATION:
             return {...state, reservation: action.reservation };
         default:

@@ -15,20 +15,16 @@ import { fetchAllReviews } from '../../actions/review_actions';
 const Profile = () => {
 
     const history = useHistory();
-    const reservations = useSelector(state => state.entities.reservations.reservationsAll);
     const review = useSelector(state => state.entities.reviews.review);
     const reviews = useSelector(state => state.entities.reviews.reviewsAll);
+    const futureRes = useSelector(state => state.entities.reservations.future);
+    const pastRes = useSelector(state => state.entities.reservations.past);
     const player = useSelector(state => state.session.currentPlayer);
     const dispatch = useDispatch();
     const location = useLocation();
     const [visibleRes, setVisibleRes] = useState(false);
     const [visibleFav, setVisibleFav] = useState(false);
     const [visibleAcc, setVisibleAcc] = useState(false);
-    const [upcoming, setUpcoming] = useState([]);
-    const [pastRes, setPastRes] = useState([]);
-    const currentDate = new Date();
-    const current = Date.parse(currentDate);
-    let mapped;
 
     useEffect(() => {
         dispatch(fetchAllReservations())
@@ -51,10 +47,14 @@ const Profile = () => {
     }, [])
 
     useEffect(() => {
-        setVisibleFav(false);
-        setVisibleAcc(false);
-        setVisibleRes(false);
-        
+        return () => {
+            setVisibleFav(false);
+            setVisibleAcc(false);
+            setVisibleRes(false);
+        }
+    }, [location.pathname])
+
+    useEffect(() => {
         if (location.pathname === '/my/profile' || location.pathname === '/my/' || location.pathname === '/my/history') {
             setVisibleRes(true)
         } else if (location.pathname === '/my/favorites') {
@@ -71,36 +71,10 @@ const Profile = () => {
                 behavior: "smooth"
             });
         }
-    }, [location.pathname, visibleRes])
-    
-    useEffect(() => {
-        let res = document.getElementById("reservations-lb");
-        let acc = document.getElementById("account-lb");
-        let fav = document.getElementById("saved-lb");
-        
-        if (visibleRes) {
-            res.classList.add('active');
-            acc.classList.remove('active');
-            fav.classList.remove('active');
-        } else if (visibleFav) {
-            fav.classList.add('active');
-            acc.classList.remove('active');
-            res.classList.remove('active');
-            
-        } else if (visibleAcc) {
-            acc.classList.add('active')
-            fav.classList.remove('active');
-            res.classList.remove('active');
-            
-        }
-
-    }, [visibleAcc, visibleFav, visibleRes])
+    }, [location, visibleRes])
 
     const handleClick = e => {
         let id = e.target.id;
-        setVisibleFav(false);
-        setVisibleAcc(false);
-        setVisibleRes(false);
 
         if (id === 'reservations-lb') {
             setVisibleRes(true)
@@ -114,57 +88,34 @@ const Profile = () => {
         }
     }
 
-    useEffect(() => {
-        let upres = [];
-        let past = [];
-    
-        Object.values({...reservations}).filter(reservation => {
-            let dateFull = new Date(`${reservation.gameDate} ${reservation.resYear} ${reservation.gameStart} ${reservation.gmt}`);
-            let resDate = Date.parse(dateFull) 
-    
-            if (reservation.canceled === true) {
-                past.push(reservation)
-            } else if (current > resDate) {
-                past.push(reservation)
-            } else {
-                upres.push(reservation)
-            }
-        });
-
-        setUpcoming(upres);
-        setPastRes(past);
-
-    }, [reservations])
-
     return (
         <>
         <div className='profile-page'>
                 <div className='profile-bar'>
                     {player.fname} {player.lname}
-                    {/* <span>0 points</span> */}
                 </div>
                 <div className='profile-left-bar'>
-                    <div id='reservations-lb' onClick={handleClick}>Reservations</div>
-                    <div id='saved-lb' onClick={handleClick}>Saved Places</div>
-                    <div id='account-lb' onClick={handleClick}>Account Details</div>
+                    <div id='reservations-lb' className={visibleRes ? 'active' : ''} onClick={handleClick}>Reservations</div>
+                    <div id='saved-lb' className={visibleFav ? 'active' : ''} onClick={handleClick}>Saved Places</div>
+                    <div id='account-lb' className={visibleAcc ? 'active' : ''} onClick={handleClick}>Account Details</div>
                 </div>
                 {visibleRes && (
                     <>
                         <div className='upcoming-reses'>
                             <div className='text-up'>Upcoming reservations</div>
                             <div className='res-index'>
-                                <UpcomingReservations reservations={upcoming} player={player}/>
+                                {futureRes.length > 0 && (<UpcomingReservations/>)}
                             </div>
                         </div>
                         <div className='past-reses' id='history'>
                             <div className='text-up'>Past reservations</div>
                             <div className='res-index'>
-                                <PastReservations reservations={pastRes} currentPlayer={player}/>
+                                {pastRes.length > 0 && (<PastReservations/>)}
                             </div>
                         </div>
                     </>
                 )}
-                {visibleAcc && <EditProfile curPlayer={player}/>}
+                {visibleAcc && <EditProfile/>}
                 {visibleFav && (
                     <div className='upcoming-reses'>
                         <div className='text-up'>Saved Restaurants</div>

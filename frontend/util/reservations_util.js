@@ -11,7 +11,7 @@ export const convertToSnakeCase = obj => {
 export const fetchAllReservations = () => (
     $.ajax({
         method: 'GET',
-        url: '/api/reservations'
+        url: '/api/reservations',
     })
 );
 

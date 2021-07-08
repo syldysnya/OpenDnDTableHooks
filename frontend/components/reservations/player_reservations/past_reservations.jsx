@@ -1,11 +1,13 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import PlayerReservationItem from './player_reservation_item';
 
-const PastReservations = (props) => {
-    const {reservations, currentPlayer} = props;
+const PastReservations = () => {
+
+    const reservations = useSelector(state => state.entities.reservations.past);
     
-    const mapped = reservations.map((res, i) => {
-        return <PlayerReservationItem res={res} key={`resPlayer-${i}`} currentPlayer={currentPlayer}/>
+    let mapped = reservations.map((res, i) => {
+        return <PlayerReservationItem res={res} key={`resPlayer-${i}`}/>
     })
 
     return mapped

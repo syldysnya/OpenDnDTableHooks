@@ -14,7 +14,6 @@ const receiveReservation = reservation => ({
 });
 
 export const fetchAllReservations = () => dispatch => {
-    
     return ApiUtil.fetchAllReservations()
         .then(reservations => dispatch(receiveAllReservations(reservations)))
 };
