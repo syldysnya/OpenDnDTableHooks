@@ -12,10 +12,9 @@ const Favorites = (props) => {
 
     const handleSave = e => {
         e.preventDefault();
-
         if (fav) {
             dispatch(deleteFav(fav.id)).then(() => setFav(''))
-        } else if (!fav && !player.id) {
+        } else if (!fav && !player) {
             dispatch(openModal('Sign In'))
         } else {
             let newFav = {
