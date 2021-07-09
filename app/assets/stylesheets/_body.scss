@@ -614,7 +614,7 @@ select, option {
 .search-grid {
     width: 100%;
     display: grid;
-    grid-template-columns: minmax(50px, 18%) 150px 20px 600px minmax(50px, 12%);
+    grid-template-columns: minmax(50px, 18%) 180px 20px 600px minmax(50px, 12%);
 
     .left-bar-search {
         display: flex;
@@ -814,7 +814,7 @@ select, option {
 
 .city-box-checkbox {
     display: grid;
-    grid-template-columns: 18px 100px;
+    grid-template-columns: 18px auto;
     column-gap: 3px;
     margin-bottom: 3px;
     grid-auto-rows: 18px;
