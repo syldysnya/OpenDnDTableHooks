@@ -1,7 +1,7 @@
 import { RECEIVE_CITIES, RECEIVE_CITY } from "../actions/city_actions";
 
 const initialState = {
-    citiesAll: []
+    citiesAll: {}
 } 
 
 const citiesReducer = (state = initialState, action) => {
@@ -14,7 +14,7 @@ const citiesReducer = (state = initialState, action) => {
             newState.citiesAll = action.cities;
             return newState;
         case RECEIVE_CITY:
-            return Object.assign({}, { [action.city.id]: action.city })
+            return Object.assign({}, state, { city: action.city })
         default:
             return state;
     }

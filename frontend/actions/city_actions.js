@@ -12,7 +12,7 @@ const receiveCity = city => ({
     city
 });
 
-export const fetchCity = cityId => (
+export const fetchCity = cityId => dispatch => (
     ApiUtil.fetchCity(cityId)
         .then(city => dispatch(receiveCity(city)))
 );

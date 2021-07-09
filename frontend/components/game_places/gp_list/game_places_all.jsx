@@ -48,10 +48,6 @@ const GamePlacesAll = () => {
         }
     }, [player, location]);
 
-    useEffect(() => {
-        dispatch(fetchCities());
-    }, []);
-
     const handleClick = e => {
         let value = e.target.id;
 

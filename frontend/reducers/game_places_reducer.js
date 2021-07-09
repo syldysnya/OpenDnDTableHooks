@@ -13,7 +13,6 @@ const gamePlacesReducer = (state=initialState, action) => {
     
     switch (action.type) {
         case RECEIVE_GAME_PLACES:
-            debugger
             let key = Object.keys(action.gamePlaces)[0];
             return {...state, [key]: action.gamePlaces[key]}
         case RECEIVE_GAME_PLACE:
