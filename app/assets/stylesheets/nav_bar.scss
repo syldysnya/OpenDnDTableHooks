@@ -298,12 +298,24 @@
     padding: 10px 0px;
     text-decoration: none;
     color: #2d333f;
+    width: 100%;
+    transition: 400ms;
+}
+
+.menu-links:hover {
+    background-color: $light-grey;
 }
 
 .signout-div {
     cursor: pointer;
     padding: 10px 0px;
     color: #da3743;
+    width: 100%;
+    transition: 400ms;
+
+    &:hover {
+        background-color: $light-grey;
+    }
 }
 
 .gp-info-down > i {

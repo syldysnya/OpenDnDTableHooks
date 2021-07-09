@@ -33,7 +33,7 @@ const NotificationMenu = () => {
                             And I am a software engineer.</span>
                         </p>
                         <p>
-                            <span>OpenDnDTable is an online servise for booking table for DnD sessions.
+                            <span>OpenDnDTable is an online service for booking table for DnD sessions.
                             It was inspired by
                             <a href="https://www.opentable.com/">  OpenTable</a> website.</span>
                         </p>
