@@ -78,14 +78,14 @@ const SearchBarModal = () => {
                         </div>
                     </div>
                     <div className='info-create-time' defaultValue='gameStart'>
-                        <select onChange={updateInfo} 
+                        <select onChange={updateInfo} dir='rtl'
                             id='gameStart'
                             defaultValue='8:00 PM'>
                             {timePick}
                         </select>
                     </div>
                     <div className='info-create-form'>
-                        <select defaultValue='2'
+                        <select defaultValue='2' dir='rtl'
                             id='playersNum'
                             onChange={updateInfo}>
                             <option key='1'value="1">For 1</option>
