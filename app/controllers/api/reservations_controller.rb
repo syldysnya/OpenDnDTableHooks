@@ -2,7 +2,7 @@ class Api::ReservationsController < ApplicationController
 
     def index
         player_id = current_player.id
-        past = Reservation.where(:player_id => player_id).where('date_info < ?', Date.today).order('date_info')
+        past = Reservation.where(:player_id => player_id).where('date_info < ?', Date.today).order('date_info DESC').limit(10)
         future = Reservation.where(:player_id => player_id).where('date_info >= ?', Date.today).order('date_info')
 
         @reservations = [past, future]
