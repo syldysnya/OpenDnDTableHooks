@@ -21,7 +21,7 @@ class Api::GamePlacesController < ApplicationController
                 gp_indicies = gp_idx & gp_indicies
             end
 
-            @game_places = GamePlace.where(:id => gp_indicies).limit(50)
+            @game_places = GamePlace.where(:id => gp_indicies).limit(30)
         else
             @game_places = GamePlace.order("RANDOM()").limit(15)
         end
@@ -30,7 +30,6 @@ class Api::GamePlacesController < ApplicationController
 
     def rating
         areaParams = params[:filter] if params[:filter]
-
         if areaParams && areaParams.to_i > 0
             city_idx = areaParams.to_i
             @game_places = GamePlace.joins(:reviews)
@@ -84,25 +83,22 @@ class Api::GamePlacesController < ApplicationController
 
     def newest
         areaParams = params[:filter] if params[:filter]
-
         if areaParams && areaParams.to_i > 0
             city_idx = areaParams.to_i
-            @game_places = GamePlace.joins(:reviews)
-                                    .where(:city_id => city_idx)
-                                    .order('id DESC')
+            @game_places = GamePlace.where(:city_id => city_idx)
+                                    .order('created_at DESC')
                                     .limit(11)
         elsif areaParams && areaParams.to_i == 0
             indicies = City.where(:area => areaParams).pluck(:id)
-            @game_places = GamePlace.joins(:reviews)
-                                    .where(:city_id => indicies)
-                                    .order('id DESC')
+            @game_places = GamePlace.where(:city_id => indicies)
+                                    .order('created_at DESC')
                                     .limit(11)
         else
             if current_player
                 player_city_id = current_player.city.id
-                @game_places = GamePlace.where(:city_id => player_city_id).order('id DESC').limit(11)
+                @game_places = GamePlace.where(:city_id => player_city_id).order('created_at DESC').limit(11)
             else
-                @game_places = GamePlace.all.order('id DESC').limit(11)
+                @game_places = GamePlace.all.order('created_at DESC').limit(11)
             end
         end
     end
