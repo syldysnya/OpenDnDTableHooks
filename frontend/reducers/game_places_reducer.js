@@ -16,7 +16,6 @@ const gamePlacesReducer = (state=initialState, action) => {
             let key = Object.keys(action.gamePlaces)[0];
             return {...state, [key]: action.gamePlaces[key]}
         case RECEIVE_GAME_PLACE:
-            
             return { ...state, gamePlace: action.gamePlace };
         default:
             return state;

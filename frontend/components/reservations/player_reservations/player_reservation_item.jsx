@@ -78,7 +78,7 @@ const PlayerReservationItem = (props) => {
                         <div className="numplayers-inf">{`Table for ${playersNum} people`}</div>
                         <div className="red-text">
                             <div className="save-fav">
-                                <Favorites gamePlaceId={gamePlaceId} playerId={currentPlayer.id} fav={fav} setFav={setFav} favRef={favRef}/>
+                                <Favorites gamePlaceId={gamePlaceId} fav={fav} setFav={setFav} favRef={favRef}/>
                             </div>
                             <div className="write-review">
                                 {!review && !canceled && (<div className="write-text">

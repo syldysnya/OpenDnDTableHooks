@@ -17,10 +17,12 @@ const Favorites = (props) => {
         } else if (!fav && !player) {
             dispatch(openModal('Sign In'))
         } else {
+            let gpId = params.gamePlaceId || props.gamePlaceId
             let newFav = {
-                gamePlaceId: params.gamePlaceId,
+                gamePlaceId: gpId,
                 playerId: player.id
             }
+            
             dispatch(createFav(newFav)).then((res) => setFav(res.favorite))
         }
     }

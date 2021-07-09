@@ -21,7 +21,7 @@ class Api::GamePlacesController < ApplicationController
                 gp_indicies = gp_idx & gp_indicies
             end
 
-            @game_places = GamePlace.where(:id => gp_indicies)
+            @game_places = GamePlace.where(:id => gp_indicies).limit(50)
         else
             @game_places = GamePlace.order("RANDOM()").limit(15)
         end

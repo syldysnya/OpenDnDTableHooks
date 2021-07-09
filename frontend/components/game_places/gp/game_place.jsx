@@ -46,8 +46,10 @@ const GamePlace = () => {
                 let filtered = Object.values(res.favorites).filter(fav => fav.gamePlaceId === parseInt(params.gamePlaceId));
                 setFav(filtered[0])
             })
+        } else {
+            setFav('')
         }
-    }, [])
+    }, [player])
 
     useEffect(() => {
         dispatch(fetchAllReviews(params.gamePlaceId))
@@ -189,7 +191,7 @@ const GamePlace = () => {
                     <MainPageCreateForm gamePlace={gamePlace} />
                     <div className='gp-map'>
                         <div className='map-box'>
-                            {/* <GamePlaceMap gamePlace={gamePlace}/> */}
+                            <GamePlaceMap />
                             <p>{gamePlace.address}</p>
                         </div>
                         <div className='hours-info'>

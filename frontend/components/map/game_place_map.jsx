@@ -4,18 +4,17 @@ import { useHistory } from 'react-router-dom';
 
 const GamePlaceMap = () => {
 
-    const gamePlace = useSelector(state => Object.values({...state.entities.gamePlaces.gamePlace}))
+    const gamePlace = useSelector(state => state.entities.gamePlaces.gamePlace)
     const mapRef = useRef();
     let map;
     
     useEffect(() => {
-
-        if (gamePlace.length > 0) {
+        
+        if (gamePlace.id) {
             const mapOptions = {
                 center: { lat: parseFloat(gamePlace.latitude), lng: parseFloat(gamePlace.longitude) },
                 zoom: 10
             };
-
             map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
             const gamePlacePos = { lat: parseFloat(gamePlace.latitude), lng: parseFloat(gamePlace.longitude) };
@@ -24,7 +23,7 @@ const GamePlaceMap = () => {
                 map: map,
             });
         }
-    }, [gamePlace])
+    }, [gamePlace.id])
 
     const openMap = e => {
         window.open(`https://maps.google.com?q=${gamePlace.latitude},${gamePlace.longitude}`)

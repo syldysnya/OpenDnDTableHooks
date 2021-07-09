@@ -1,4 +1,5 @@
 json.partial! 'api/game_places/game_place', game_place: @game_place
+
 json.pictureUrls @game_place.pictures.map { |file| url_for(file) }
 json.photoUrl url_for(@game_place.photo)
 serviceArr = @game_place.reviews.map { |rev| rev.service_rating }
