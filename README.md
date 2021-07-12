@@ -44,34 +44,30 @@ Next step of a reservation process is to confirm your reservation.
 ```js
 // this code will give an option of 5 different times with 15 min difference based on a time user provided
 
-TimePick = () => {
-        
-        return (
-            <select onChange={this.update('gameStart')} 
-                defaultValue='8:00 PM'>
-                {RES_TIME.map(t => {
-                    return (
-                        <option key={t} value={t}>{t}</option>
-                    )
-                })}
-            </select>
-        )
-    }
-    render() {
+if filter_params
+    gp_indicies = GamePlace.joins(:reviews)
+                            .group('game_places.id')
+                            .having('SUM(reviews.overall_rating)/COUNT(reviews.overall_rating)*1.0 >= ?', filter_params[:rating])
+                            .pluck(:id)
 
-        let createForm;
+    if filter_params[:name]
+        results_name = GamePlace.where("lower(name) LIKE lower(?)", "%#{filter_params[:name]}%").pluck(:id)
+        cities = City.where('lower(name) LIKE lower(?)', "%#{filter_params[:name]}%").pluck(:id)
+        results_cities = GamePlace.where(:city_id => cities).pluck(:id)
+        res = results_name + results_cities
 
-        if (!this.props.currentPlayer) {
-            createForm = <LoggedOutForm openModal={this.props.openModal}/>
-        } else {
-            createForm = <LoggedInForm reservation={this.state}
-                gamePlace={this.props.gamePlaces[0]}
-                player={this.props.players[0]}
-                createReservation={this.props.createReservation}
-                currentPlayer={this.props.currentPlayer}
-                fetchReservation={this.props.fetchReservation}
-            />
-        }
+        gp_indicies = gp_indicies & res.uniq
+    end
+
+    if filter_params[:location]
+        gp_idx = GamePlace.where(:city_id => filter_params[:location]).pluck(:id)
+        gp_indicies = gp_idx & gp_indicies
+    end
+
+    @game_places = GamePlace.where(:id => gp_indicies).limit(30)
+else
+    @game_places = GamePlace.order("RANDOM()").limit(15)
+end
 ```
 
 ## Project Design
