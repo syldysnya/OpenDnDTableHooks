@@ -20,7 +20,7 @@ const Footer = () => {
                             <a href="https://github.com/syldysnya" target='_blank'><i className="fab fa-github"></i>Github</a>
                         </li>
                         <li key='portfolio' >
-                            <a href="#" target='_blank'><i className="fas fa-dragon"></i>Personal Site</a>
+                            <a href="https://syldysnya.github.io/portfolio/" target='_blank'><i className="fas fa-dragon"></i>Personal Site</a>
                         </li>
                     </ul>
                 </div>
