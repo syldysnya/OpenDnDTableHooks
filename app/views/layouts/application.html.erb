@@ -4,6 +4,7 @@
     <title>OpenDndTable</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= favicon_link_tag asset_path('logo_sq.jpeg') %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -12,6 +13,15 @@
       window.googleAPIKey = "<%= Rails.application.credentials.google[:api_key] %>"
     </script>
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.google[:api_key]}" %>
+    
+    <meta property="og:title" content="OpenDnDTable"/>
+    <meta property="og:image" content="https://app-opendndtable-seed.s3.amazonaws.com/gifs/opendndtable-main-page.jpg"/>
+    <meta property="og:description" 
+      content="OpenDnDTable is an online service for booking table for DnD sessions. It was inspired by OpenTable website."
+    />
+    <meta property="og:url" 
+      content="https://opendndtable.herokuapp.com/"
+    />
   </head>
 
   <body>

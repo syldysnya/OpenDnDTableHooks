@@ -1,4 +1,4 @@
-import { CLOSE_MODAL, SHOW_MODAL } from "../actions/modal_actions";
+ import { CLOSE_MODAL, SHOW_MODAL } from "../actions/modal_actions";
 
 
 const modalReducer = (state = {}, action) => {

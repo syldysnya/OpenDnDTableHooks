@@ -154,7 +154,7 @@ const GamePlace = () => {
                                             Overall ratings and reviews
                                         </h1>
                                         <span>
-                                            Reviews can only be made by diners who have eaten at this restaurant
+                                            Reviews can only be made by players who have played at this place
                                         </span>
                                         <div className='rating-inreview'>
                                             <StarsShow stars={rating} lengthRat={lengthRat}/>
