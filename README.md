@@ -13,36 +13,30 @@ Users can make, edit, cancel reservations.
 Users can add reviews.
 Game places support images.
 
-![home page](https://app-opendndtable-seed.s3.amazonaws.com/Screen+Shot+2021-05-21+at+10.02.00+AM.png "Home page of the project")
+![open-main](https://user-images.githubusercontent.com/78821780/125368583-809f3500-e348-11eb-83e4-cf7a35577f99.gif)
 
 ## Sign In and Sign Up
 
-![sign in](https://app-opendndtable-seed.s3.amazonaws.com/Screen+Shot+2021-05-21+at+10.05.01+AM.png "Sign In module")
+![open-auth](https://user-images.githubusercontent.com/78821780/125367681-9b70aa00-e346-11eb-8ddf-c6750c4acd79.gif)
 
 ## Make a reservation
 
-1st step of making a reservation is to choose you time, date and a number of people. Once you choose time, you'll have an option to choose new time between 5 options that were generated based on your first input.
-
-![reservation box](https://app-opendndtable-seed.s3.amazonaws.com/Screen+Shot+2021-05-21+at+10.09.13+AM.png)
-
-Next step of a reservation process is to confirm your reservation.
-
-![confirmation form](https://app-opendndtable-seed.s3.amazonaws.com/Screen+Shot+2021-05-21+at+10.10.52+AM.png)
-
-## Edit and Cancel options
-
-![editing form](https://app-opendndtable-seed.s3.amazonaws.com/Screen+Shot+2021-05-21+at+10.12.53+AM.png)
+![open-res](https://user-images.githubusercontent.com/78821780/125368408-22725200-e348-11eb-85aa-42d8fa140a61.gif)
 
 ## Profile page
 
 `My profile` page stores an information about your reservations.
 
-![profile page](https://app-opendndtable-seed.s3.amazonaws.com/Screen+Shot+2021-05-21+at+10.14.35+AM.png)
+![open-profile](https://user-images.githubusercontent.com/78821780/125368212-c3144200-e347-11eb-91c0-8d11b095e89f.gif)
+
+## Search and filter
+
+![open-search](https://user-images.githubusercontent.com/78821780/125367992-484b2700-e347-11eb-82d5-68163b1746e9.gif)
 
 ## Code Snippet
 
 ```js
-// this code will give an option of 5 different times with 15 min difference based on a time user provided
+// this code will send a list of game places to the frontend based on params
 
 if filter_params
     gp_indicies = GamePlace.joins(:reviews)
