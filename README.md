@@ -4,7 +4,7 @@
 
 [Live Demo](https://opendndtable.herokuapp.com/)
 
-OpenDnDTable is an online servise for booking table for DnD sessions. This project was inspired by [OpenTable](https://www.opentable.com/) website.
+OpenDnDTable is an online service for booking table for DnD sessions. Built with Rails, React Hooks, Redux, Javascript, and PostgreSQL. Integrates Google Maps API and AWS S3.This project was inspired by [OpenTable](https://www.opentable.com/) website.
 
 ## Features
 
